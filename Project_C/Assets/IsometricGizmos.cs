@@ -12,23 +12,25 @@ public class IsometricGizmos : MonoBehaviour
         if(view != null && view.camera != null)
         {
             Camera sceneCamera = view.camera;
+
+            
             //sceneCamera.ScreenToWorldPoint()
         }
 
-        Quaternion isomectricRot = Quaternion.Inverse(Quaternion.LookRotation(new Vector3(-1, 1, 1).normalized, Vector3.up));
-
-        for (int x = -10; x <= 10; ++x)
+        for (int x = -10; x < 10; ++x)
         {
-            Vector3 left = new Vector3(x, -0f, -10f), right = new Vector3(x, 0f, 10f);
+            Vector3 left = new Vector3((x + 0.5f) * Isometric._isometricTileSize.x, 0f, -9.5f * Isometric._isometricTileSize.y), 
+                right = new Vector3((x + 0.5f) * Isometric._isometricTileSize.x, 0f, 9.5f * Isometric._isometricTileSize.y);
 
-            Gizmos.DrawLine(isomectricRot * left, isomectricRot * right);
+            Gizmos.DrawLine(Isometric.IsometricToWorldRotation * left, Isometric.IsometricToWorldRotation * right);
         }
 
-        for (int z = -10; z <= 10; ++z)
+        for (int z = -10; z < 10; ++z)
         {
-            Vector3 down = new Vector3(-10f, 0f, z), top = new Vector3(10f, 0f, z);
+            Vector3 down = new Vector3(-9.5f * Isometric._isometricTileSize.x, 0f, (z + 0.5f) * Isometric._isometricTileSize.y), 
+                top = new Vector3(9.5f * Isometric._isometricTileSize.x, 0f, (z + 0.5f) * Isometric._isometricTileSize.y);
 
-            Gizmos.DrawLine(isomectricRot * down, isomectricRot * top);
+            Gizmos.DrawLine(Isometric.IsometricToWorldRotation * down, Isometric.IsometricToWorldRotation * top);
         }
     }
 
