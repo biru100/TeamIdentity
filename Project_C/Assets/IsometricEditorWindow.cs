@@ -23,5 +23,6 @@ public class IsometricEditorWindow : EditorWindow
         GUILayout.Label("Base Settings", EditorStyles.boldLabel);
         Isometric._isometricTileSize.x = EditorGUILayout.FloatField("TileSize_X", Isometric._isometricTileSize.x);
         Isometric._isometricTileSize.y = EditorGUILayout.FloatField("TileSize_Y", Isometric._isometricTileSize.y);
+        Isometric._isometricTileSize.z = EditorGUILayout.FloatField("TileSize_Z", Isometric._isometricTileSize.z);
     }
 }
