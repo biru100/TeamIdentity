@@ -2,17 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[ExecuteInEditMode]
 public class IsometricTransform : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public Vector3 position = Vector3.zero;
+    public Quaternion rotation = Quaternion.identity;
+    public Vector3 localScale = Vector3.one;
+
+
+    private void Update()
     {
-        
+        if(!Application.IsPlaying(gameObject))
+            TranslateIsometricToWorldCoordination();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void LateUpdate()
     {
-        
+        TranslateIsometricToWorldCoordination();
+    }
+
+    void TranslateIsometricToWorldCoordination()
+    {
+        transform.position = EffectiveUtility.RoundPixelPerfect(Isometric.IsometricToWorldRotation * position);
+        transform.rotation = rotation;
+        transform.localScale = localScale;
     }
 }

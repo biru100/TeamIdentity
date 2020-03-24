@@ -3,78 +3,94 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
+[RequireComponent(typeof(Camera))]
 public class IsometricGizmos : MonoBehaviour
 {
-    Vector3 _mousePoint;
+    public Material lineMat;
 
+    Vector3 lastMousePos;
 
-    public void OnDrawGizmos()
+    public void Start()
     {
-        var view = SceneView.currentDrawingSceneView;
-
-        if(view != null && view.camera != null)
-        {
-            Camera sceneCamera = view.camera;
-
-            Vector3 mousePosition = Event.current.mousePosition;
-            mousePosition.y = SceneView.currentDrawingSceneView.camera.pixelHeight - mousePosition.y;
-            mousePosition = SceneView.currentDrawingSceneView.camera.ScreenToWorldPoint(mousePosition);
-            mousePosition.y = -mousePosition.y;
-
-
-
-            Vector3 currentCameraCenterTilePos = Isometric.GetOwnedTilePos(
-                Isometric.GetIsometicBasePositionByWorldRay(sceneCamera.transform.position, sceneCamera.transform.forward));
-
-            for (int x = -10; x < 10; ++x)
-            {
-                Vector3 left = new Vector3((x + 0.5f) * Isometric._isometricTileSize.x, 0f
-                    , -9.5f * Isometric._isometricTileSize.z),
-                    right = new Vector3((x + 0.5f) * Isometric._isometricTileSize.x, 0f, 
-                    9.5f * Isometric._isometricTileSize.z);
-
-                Gizmos.DrawLine(Isometric.IsometricToWorldRotation * (left + currentCameraCenterTilePos)
-                    , Isometric.IsometricToWorldRotation * (right + currentCameraCenterTilePos));
-            }
-
-            for (int z = -10; z < 10; ++z)
-            {
-                Vector3 down = new Vector3(-9.5f * Isometric._isometricTileSize.x, 0f, 
-                    (z + 0.5f) * Isometric._isometricTileSize.z),
-                    top = new Vector3(9.5f * Isometric._isometricTileSize.x, 0f, 
-                    (z + 0.5f) * Isometric._isometricTileSize.z);
-
-                Gizmos.DrawLine(Isometric.IsometricToWorldRotation * (down + currentCameraCenterTilePos), 
-                    Isometric.IsometricToWorldRotation * (top + currentCameraCenterTilePos));
-            }
-
-            Vector3 leftBottom = currentCameraCenterTilePos - 0.5f * new Vector3(Isometric._isometricTileSize.x, 0f, Isometric._isometricTileSize.z); ;
-            Vector3 leftTop = currentCameraCenterTilePos + 0.5f * new Vector3(-Isometric._isometricTileSize.x, 0f, Isometric._isometricTileSize.z);
-            Vector3 rightBottom = currentCameraCenterTilePos + 0.5f * new Vector3(Isometric._isometricTileSize.x, 0f, -Isometric._isometricTileSize.z);
-            Vector3 rightTop = currentCameraCenterTilePos + 0.5f * new Vector3(Isometric._isometricTileSize.x, 0f, Isometric._isometricTileSize.z); ;
-
-            Gizmos.color = new Color(1f, 0f, 0f);
-
-            Gizmos.DrawSphere(Isometric.IsometricToWorldRotation * currentCameraCenterTilePos, 0.05f);
-
-            Gizmos.DrawLine(Isometric.IsometricToWorldRotation * leftBottom, Isometric.IsometricToWorldRotation * leftTop);
-            Gizmos.DrawLine(Isometric.IsometricToWorldRotation * leftBottom, Isometric.IsometricToWorldRotation * rightBottom);
-            Gizmos.DrawLine(Isometric.IsometricToWorldRotation * leftTop, Isometric.IsometricToWorldRotation * rightTop);
-            Gizmos.DrawLine(Isometric.IsometricToWorldRotation * rightBottom, Isometric.IsometricToWorldRotation * rightTop);
-
-            Gizmos.color = new Color(1f, 1f, 1f);
-        }
+        lastMousePos = new Vector3();
     }
 
-    // Start is called before the first frame update
-    void Start()
+    private void OnPostRender()
     {
+        if (!lineMat)
+        {
+            Debug.LogError("Please Assign a material on the inspector");
+            return;
+        }
 
+        GL.Begin(GL.LINES);
+        lineMat.SetPass(0);
+
+        Vector3 currentCameraCenterTilePos = Isometric.GetOwnedTilePos(
+            Isometric.GetIsometicBasePositionByWorldRay(Camera.main.transform.position, Camera.main.transform.forward));
+
+        Vector3 currentMouseTilePos = Isometric.GetOwnedTilePos(
+            Isometric.GetIsometicBasePositionByWorldRay(Camera.main.ScreenToWorldPoint(Input.mousePosition), Camera.main.transform.forward));
+
+        GL.Color(Color.white);
+
+        for (int x = -10; x < 10; ++x)
+        {
+            Vector3 left = new Vector3((x + 0.5f) * Isometric.IsometricTileSize.x, 0f
+                , -9.5f * Isometric.IsometricTileSize.z),
+                right = new Vector3((x + 0.5f) * Isometric.IsometricTileSize.x, 0f,
+                9.5f * Isometric.IsometricTileSize.z);
+
+            GL.Vertex(Isometric.TranslationIsometricToScreen(left + currentCameraCenterTilePos));
+            GL.Vertex(Isometric.TranslationIsometricToScreen(right + currentCameraCenterTilePos));
+        }
+
+        for (int z = -10; z < 10; ++z)
+        {
+            Vector3 down = new Vector3(-9.5f * Isometric.IsometricTileSize.x, 0f,
+                (z + 0.5f) * Isometric.IsometricTileSize.z),
+                top = new Vector3(9.5f * Isometric.IsometricTileSize.x, 0f,
+                (z + 0.5f) * Isometric.IsometricTileSize.z);
+
+            GL.Vertex(Isometric.TranslationIsometricToScreen(down + currentCameraCenterTilePos));
+            GL.Vertex(Isometric.TranslationIsometricToScreen(top + currentCameraCenterTilePos));
+        }
+
+        GL.Color(Color.red);
+
+        Vector3 leftBottom = currentMouseTilePos - 0.5f * new Vector3(Isometric.IsometricTileSize.x, 0f, Isometric.IsometricTileSize.z); ;
+        Vector3 leftTop = currentMouseTilePos + 0.5f * new Vector3(-Isometric.IsometricTileSize.x, 0f, Isometric.IsometricTileSize.z);
+        Vector3 rightBottom = currentMouseTilePos + 0.5f * new Vector3(Isometric.IsometricTileSize.x, 0f, -Isometric.IsometricTileSize.z);
+        Vector3 rightTop = currentMouseTilePos + 0.5f * new Vector3(Isometric.IsometricTileSize.x, 0f, Isometric.IsometricTileSize.z); ;
+
+        GL.Vertex(Isometric.TranslationIsometricToScreen(leftBottom));
+        GL.Vertex(Isometric.TranslationIsometricToScreen(leftTop));
+
+        GL.Vertex(Isometric.TranslationIsometricToScreen(leftBottom));
+        GL.Vertex(Isometric.TranslationIsometricToScreen(rightBottom));
+
+        GL.Vertex(Isometric.TranslationIsometricToScreen(leftTop));
+        GL.Vertex(Isometric.TranslationIsometricToScreen(rightTop));
+
+        GL.Vertex(Isometric.TranslationIsometricToScreen(rightBottom));
+        GL.Vertex(Isometric.TranslationIsometricToScreen(rightTop));
+
+        GL.End();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKey(KeyCode.Mouse2))
+        {
+            transform.position += (Input.mousePosition - lastMousePos) * 0.005f;
+        }
+
+        if (Input.mouseScrollDelta.y != 0)
+        {
+            Camera.main.orthographicSize -= Input.mouseScrollDelta.y * 0.1f;
+        }
+
+        lastMousePos = Input.mousePosition;
     }
 }

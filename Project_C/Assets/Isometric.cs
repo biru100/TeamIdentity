@@ -8,7 +8,7 @@ using UnityEditor;
 [InitializeOnLoad]
 public class Isometric
 {
-    public static Vector3 _isometricTileSize = Vector3.one;
+    public static Vector3 IsometricTileSize = Vector3.one;
 
     static Isometric()
     {
@@ -34,21 +34,28 @@ public class Isometric
         if (File.Exists(Application.dataPath + "/IsomectricConfig.txt"))
         {
             string[] tileSize = File.ReadAllText(Application.dataPath + "/IsomectricConfig.txt").Split('\t');
-            _isometricTileSize = new Vector3(float.Parse(tileSize[0]), float.Parse(tileSize[1]),
+            IsometricTileSize = new Vector3(float.Parse(tileSize[0]), float.Parse(tileSize[1]),
                 float.Parse(tileSize[2]));
         }
     }
 
     public static void SaveConfig()
     {
-        File.WriteAllText(Application.dataPath + "/IsomectricConfig.txt", _isometricTileSize.x + "\t" +
-            _isometricTileSize.y + "\t" +
-            _isometricTileSize.z);
+        File.WriteAllText(Application.dataPath + "/IsomectricConfig.txt", IsometricTileSize.x + "\t" +
+            IsometricTileSize.y + "\t" +
+            IsometricTileSize.z);
     }
 
     public static Quaternion WorldToIsometricRotation { get; private set; }
 
     public static Quaternion IsometricToWorldRotation { get; private set; }
+
+    public static Vector3 TranslationIsometricToScreen(Vector3 isoPosition)
+    {
+        Vector3 worldPos = IsometricToWorldRotation * isoPosition;
+        worldPos.z = 0f;
+        return worldPos;
+    }
 
     public static Vector3 GetIsometicBasePositionByWorldRay(Vector3 origin, Vector3 direction)
     {
@@ -61,9 +68,9 @@ public class Isometric
 
     public static Vector3 GetOwnedTilePos(Vector3 pos)
     {
-        float tileX = _isometricTileSize.x * Mathf.Floor((pos.x + 0.5f * _isometricTileSize.x) / _isometricTileSize.x);
-        float tileY = _isometricTileSize.y * Mathf.Floor((pos.y + 0.5f * _isometricTileSize.y) / _isometricTileSize.y);
-        float tileZ = _isometricTileSize.z * Mathf.Floor((pos.z + 0.5f * _isometricTileSize.z) / _isometricTileSize.z);
+        float tileX = IsometricTileSize.x * Mathf.Floor((pos.x + 0.5f * IsometricTileSize.x) / IsometricTileSize.x);
+        float tileY = IsometricTileSize.y * Mathf.Floor((pos.y + 0.5f * IsometricTileSize.y) / IsometricTileSize.y);
+        float tileZ = IsometricTileSize.z * Mathf.Floor((pos.z + 0.5f * IsometricTileSize.z) / IsometricTileSize.z);
 
         return new Vector3(tileX, tileY, tileZ);
     }

@@ -16,9 +16,9 @@ public class IsometricEditorWindow : EditorWindow
     void OnGUI()
     {
         GUILayout.Label("Base Settings", EditorStyles.boldLabel);
-        Isometric._isometricTileSize.x = EditorGUILayout.FloatField("TileSize_X", Isometric._isometricTileSize.x);
-        Isometric._isometricTileSize.y = EditorGUILayout.FloatField("TileSize_Y", Isometric._isometricTileSize.y);
-        Isometric._isometricTileSize.z = EditorGUILayout.FloatField("TileSize_Z", Isometric._isometricTileSize.z);
+        Isometric.IsometricTileSize.x = EditorGUILayout.FloatField("TileSize_X", Isometric.IsometricTileSize.x);
+        Isometric.IsometricTileSize.y = EditorGUILayout.FloatField("TileSize_Y", Isometric.IsometricTileSize.y);
+        Isometric.IsometricTileSize.z = EditorGUILayout.FloatField("TileSize_Z", Isometric.IsometricTileSize.z);
 
         if (GUILayout.Button("Save"))
         {
