@@ -1,29 +1,54 @@
-﻿using System.Collections;
+﻿using System.IO;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using UnityEditor;
+
+[InitializeOnLoad]
 public class Isometric
 {
-    private static readonly Quaternion _isometricToWorldRotation = new Quaternion(0.2798482f, 0.3647052f, 0.1159169f, 0.8804762f);
-    private static readonly Quaternion _worldToIsometricRotation = new Quaternion(-0.2798482f, -0.3647052f, -0.1159169f, 0.8804762f);
-
     public static Vector3 _isometricTileSize = Vector3.one;
 
-    public static Quaternion WorldToIsometricRotation
+    static Isometric()
     {
-        get
+        UpdateConfig();
+    }
+
+    public static void UpdateConfig()
+    {
+        if (File.Exists(Application.dataPath + "/IsometricToWorld.txt"))
         {
-            return _worldToIsometricRotation;
+            string[] quaternion = File.ReadAllText(Application.dataPath + "/IsometricToWorld.txt").Split('\t');
+            IsometricToWorldRotation = new Quaternion(float.Parse(quaternion[0]), float.Parse(quaternion[1]),
+                float.Parse(quaternion[2]), float.Parse(quaternion[3]));
+        }
+
+        if (File.Exists(Application.dataPath + "/WorldToIsometric.txt"))
+        {
+            string[] quaternion = File.ReadAllText(Application.dataPath + "/WorldToIsometric.txt").Split('\t');
+            WorldToIsometricRotation = new Quaternion(float.Parse(quaternion[0]), float.Parse(quaternion[1]),
+                float.Parse(quaternion[2]), float.Parse(quaternion[3]));
+        }
+
+        if (File.Exists(Application.dataPath + "/IsomectricConfig.txt"))
+        {
+            string[] tileSize = File.ReadAllText(Application.dataPath + "/IsomectricConfig.txt").Split('\t');
+            _isometricTileSize = new Vector3(float.Parse(tileSize[0]), float.Parse(tileSize[1]),
+                float.Parse(tileSize[2]));
         }
     }
 
-    public static Quaternion IsometricToWorldRotation
+    public static void SaveConfig()
     {
-        get
-        {
-            return _isometricToWorldRotation;
-        }
+        File.WriteAllText(Application.dataPath + "/IsomectricConfig.txt", _isometricTileSize.x + "\t" +
+            _isometricTileSize.y + "\t" +
+            _isometricTileSize.z);
     }
+
+    public static Quaternion WorldToIsometricRotation { get; private set; }
+
+    public static Quaternion IsometricToWorldRotation { get; private set; }
 
     public static Vector3 GetIsometicBasePositionByWorldRay(Vector3 origin, Vector3 direction)
     {
