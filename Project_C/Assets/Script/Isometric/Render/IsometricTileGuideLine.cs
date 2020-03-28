@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(IsometricTransform))]
+[RequireComponent(typeof(RenderTransform))]
 [RequireComponent(typeof(TileTag))]
 public class IsometricTileGuideLine : MonoBehaviour
 {
@@ -11,21 +11,20 @@ public class IsometricTileGuideLine : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        if (!visible)
+        if (!visible && Application.IsPlaying(gameObject))
             return;
 
-        IsometricTransform itransform = GetComponent<IsometricTransform>();
         Vector3 boxSize = EffectiveUtility.VectorMultiple(guideSize, Isometric.IsometricTileSize);
 
         Vector3[] box = new Vector3[]
         {
-            itransform.position + EffectiveUtility.VectorMultiple(new Vector3(-0.5f, 1f, 0.5f), boxSize),
-            itransform.position + EffectiveUtility.VectorMultiple(new Vector3(-0.5f, 1f, -0.5f), boxSize),
-            itransform.position + EffectiveUtility.VectorMultiple(new Vector3(0.5f, 1f, -0.5f), boxSize),
-            itransform.position + EffectiveUtility.VectorMultiple(new Vector3(0.5f, 1f, 0.5f), boxSize),
-            itransform.position + EffectiveUtility.VectorMultiple(new Vector3(-0.5f, 0f, -0.5f), boxSize),
-            itransform.position + EffectiveUtility.VectorMultiple(new Vector3(0.5f, 0f, -0.5f), boxSize),
-            itransform.position + EffectiveUtility.VectorMultiple(new Vector3(0.5f, 0f, 0.5f), boxSize)
+            transform.parent.position + EffectiveUtility.VectorMultiple(new Vector3(-0.5f, 1f, 0.5f), boxSize),
+            transform.parent.position + EffectiveUtility.VectorMultiple(new Vector3(-0.5f, 1f, -0.5f), boxSize),
+            transform.parent.position + EffectiveUtility.VectorMultiple(new Vector3(0.5f, 1f, -0.5f), boxSize),
+            transform.parent.position + EffectiveUtility.VectorMultiple(new Vector3(0.5f, 1f, 0.5f), boxSize),
+            transform.parent.position + EffectiveUtility.VectorMultiple(new Vector3(-0.5f, 0f, -0.5f), boxSize),
+            transform.parent.position + EffectiveUtility.VectorMultiple(new Vector3(0.5f, 0f, -0.5f), boxSize),
+            transform.parent.position + EffectiveUtility.VectorMultiple(new Vector3(0.5f, 0f, 0.5f), boxSize)
         };
 
         Gizmos.color = new Color(0.1f, 0.9f, 0.1f);

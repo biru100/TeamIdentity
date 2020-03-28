@@ -10,6 +10,6 @@ public class TileTag : MonoBehaviour
     void Update()
     {
         if (!Application.IsPlaying(gameObject))
-            Tag = gameObject.name;
+            Tag = transform.parent.gameObject.name;
     }
 }

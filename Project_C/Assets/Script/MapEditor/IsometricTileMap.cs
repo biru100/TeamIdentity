@@ -26,10 +26,9 @@ public class TileData
     }
 }
 
-[RequireComponent(typeof(IsometricTileMapEditor))]
 public class IsometricTileMap : MonoBehaviour
 {
-    Dictionary<Vector3Int, GameObject> _tileMap;
+    Dictionary<Vector3Int, GameObject> _tileMap = new Dictionary<Vector3Int, GameObject>();
     GameObject _tileMapPivotObject;
 
     public Vector3Int min { get; private set; }
@@ -37,8 +36,10 @@ public class IsometricTileMap : MonoBehaviour
 
     void Start()
     {
-        _tileMap = new Dictionary<Vector3Int, GameObject>();
-        CreatePivot();
+        if (_tileMapPivotObject == null)
+        {
+            CreatePivot();
+        }
     }
 
     void CreatePivot()
@@ -46,7 +47,7 @@ public class IsometricTileMap : MonoBehaviour
         _tileMapPivotObject = new GameObject("TileMap");
         _tileMapPivotObject.transform.position = Vector3.zero;
         _tileMapPivotObject.transform.rotation = Quaternion.identity;
-        _tileMapPivotObject.AddComponent<IsometricTransform>().position = Vector3.zero;
+        _tileMapPivotObject.transform.position = Vector3.zero;
         _tileMapPivotObject.AddComponent<TileTag>().Tag = "TileMap";
     }
 
@@ -54,7 +55,7 @@ public class IsometricTileMap : MonoBehaviour
     {
         _tileMap.Clear();
         Destroy(_tileMapPivotObject);
-        _tileMapPivotObject = null;
+        if (_tileMapPivotObject != null) _tileMapPivotObject = null;
         min = Vector3Int.zero;
         max = Vector3Int.zero;
     }
@@ -64,7 +65,7 @@ public class IsometricTileMap : MonoBehaviour
         List<TileIndexStringPair> data = new List<TileIndexStringPair>();
         foreach (var iter in _tileMap)
         {
-            data.Add(new TileIndexStringPair(iter.Key, iter.Value.GetComponent<TileTag>().Tag));
+            data.Add(new TileIndexStringPair(iter.Key, iter.Value.GetComponentInChildren<TileTag>().Tag));
         }
 
         TileData dataOBJ = new TileData(data);
@@ -110,9 +111,7 @@ public class IsometricTileMap : MonoBehaviour
                 max = EffectiveUtility.Min(max, index);
             }
 
-            GameObject instance = Instantiate(go, Vector3.zero, Quaternion.identity, _tileMapPivotObject.transform);
-            IsometricTransform itrasform = instance.GetComponent<IsometricTransform>();
-            itrasform.position = isoPos;
+            GameObject instance = Instantiate(go, isoPos, Quaternion.identity, _tileMapPivotObject.transform);
             _tileMap.Add(index, instance);
         }
     }

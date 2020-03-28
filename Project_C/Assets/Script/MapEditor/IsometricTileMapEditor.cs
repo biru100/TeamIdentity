@@ -18,7 +18,7 @@ public class IsometricTileMapEditor : MonoBehaviour
 
     [SerializeField] private GameObject currentTile;
 
-    IsometricTransform previewTileTransform;
+    Transform previewTileTransform;
 
     public GameObject CurrentTile
     {
@@ -56,7 +56,7 @@ public class IsometricTileMapEditor : MonoBehaviour
             previewTileTransform = null;
         }
 
-        previewTileTransform = Instantiate(newBrush).GetComponent<IsometricTransform>();
+        previewTileTransform = Instantiate(newBrush).transform;
         previewTileTransform.gameObject.SetActive(!(currentEditorMode > 0));
     }
 
