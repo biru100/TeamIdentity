@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 [RequireComponent(typeof(IsometricTileMap))]
 public class MapTest : MonoBehaviour
@@ -13,6 +14,14 @@ public class MapTest : MonoBehaviour
         string jsonData = ResourceManager.GetResource<TextAsset>("Map/" + _mapDataName).text;
         TileMapData data = JsonUtility.FromJson<TileMapData>(jsonData);
         GetComponent<IsometricTileMap>().FromJson(data.mapData);
+        DynamicNavigation.Instance.BuildNavigation();
+
+        Debug.Log(Type.GetType(typeof(void).FullName).IsClass);
+        Debug.Log(typeof(void).Name);
+        Debug.Log(Type.GetType(typeof(Character).FullName).IsClass);
+        Debug.Log(typeof(Character).Name);
+        Debug.Log(Type.GetType(typeof(float).FullName).IsClass);
+        Debug.Log(typeof(float).Name);
     }
 
     // Update is called once per frame

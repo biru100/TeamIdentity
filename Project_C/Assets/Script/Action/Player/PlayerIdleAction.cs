@@ -22,6 +22,11 @@ public class PlayerIdleAction : CharacterAction
             return;
         }
 
+        if(Input.GetKeyDown(KeyCode.I))
+        {
+            Owner.CurrentAction = PalyerCustom2Action.Instance;
+        }
+
         Vector3 velocity = PlayerUtil.GetVelocityInput();
 
         if (velocity.magnitude > 0.1f)

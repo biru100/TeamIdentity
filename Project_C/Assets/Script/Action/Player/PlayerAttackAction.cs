@@ -19,9 +19,7 @@ public class PlayerAttackAction : CharacterAction
     {
         base.UpdateAction();
 
-        Owner.transform.position = Vector3.Lerp(originPos, 
-            originPos + 0.5f * Owner.transform.forward * Isometric.IsometricTileSize.x, 
-            Mathf.Min(AnimUtil.GetAnimNormalizedTime(Owner) * 2f, 1f));
+        Owner.NavAgent.Move(Owner.transform.forward * Isometric.IsometricTileSize.x * 0.7f * Time.deltaTime);
 
         if (AnimUtil.IsLastFrame(Owner))
         {
