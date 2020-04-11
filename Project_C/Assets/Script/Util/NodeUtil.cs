@@ -170,9 +170,34 @@ public static class NodeUtil
 
     public static bool IsLastFrame(Character owner)
     {
-        return (owner.Anim.GetCurrentAnimatorStateInfo(0).normalizedTime
-            + Time.deltaTime / owner.Anim.GetCurrentAnimatorStateInfo(0).length) >= 1f;
+        return AnimUtil.IsLastFrame(owner);
     }
+
+    public static void ChangeAction(Character owner, string actionName)
+    {
+        EntityUtil.ChangeAction(owner, actionName);
+    }
+
+    public static bool HitDeadLogicMacro(Character owner, string hitActionName, string deadActionName)
+    {
+        return EntityUtil.HitDeadLogicMacro(owner, hitActionName, deadActionName);
+    }
+
+    public static bool DeadLogicMacro(Character owner, string deadActionName)
+    {
+        return EntityUtil.DeadLogicMacro(owner, deadActionName);
+    }
+
+    public static bool GetDamageNotify(Character owner)
+    {
+        return EntityUtil.GetDamageNotify(owner);
+    }
+
+    public static bool GetDeadNotify(Character owner)
+    {
+        return EntityUtil.GetDeadNotify(owner);
+    }
+
 
     public static void RotateToVelocity(Character owner, Vector3 velocity)
     {

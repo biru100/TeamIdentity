@@ -16,15 +16,15 @@ public class PlayerIdleAction : CharacterAction
     {
         base.UpdateAction();
 
+        if(EntityUtil.HitDeadLogicMacro(Owner, "PlayerHitAction", "PlayerDeadAction"))
+        {
+            return;
+        }
+
         if (PlayerUtil.GetAttackInput())
         {
             Owner.CurrentAction = PlayerAttackAction.Instance;
             return;
-        }
-
-        if(Input.GetKeyDown(KeyCode.I))
-        {
-            Owner.CurrentAction = PalyerCustom2Action.Instance;
         }
 
         Vector3 velocity = PlayerUtil.GetVelocityInput();

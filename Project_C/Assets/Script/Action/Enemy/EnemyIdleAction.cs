@@ -12,12 +12,20 @@ public static EnemyIdleAction Instance = new EnemyIdleAction();
 public override void StartAction(Character owner)
 {
 base.StartAction(owner);
-NodeUtil.Move(Owner ,NodeUtil.CreateVector3(10 ,1 ,5));
+NodeUtil.PlayAnim(Owner ,"idle");
 }
 
 public override void UpdateAction()
 {
 base.UpdateAction();
+
+if(NodeUtil.HitDeadLogicMacro(Owner ,"EnemyHitAction" ,""))
+{
+}
+
+else
+{
+}
 }
 
 public override void FinishAction()

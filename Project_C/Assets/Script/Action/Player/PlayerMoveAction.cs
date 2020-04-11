@@ -16,6 +16,11 @@ public class PlayerMoveAction : CharacterAction
     {
         base.UpdateAction();
 
+        if (EntityUtil.HitDeadLogicMacro(Owner, "PlayerHitAction", "PlayerDeadAction"))
+        {
+            return;
+        }
+
         if (PlayerUtil.GetAttackInput())
         {
             Owner.CurrentAction = PlayerAttackAction.Instance;

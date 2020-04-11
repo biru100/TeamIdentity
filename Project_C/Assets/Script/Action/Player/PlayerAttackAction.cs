@@ -13,11 +13,17 @@ public class PlayerAttackAction : CharacterAction
         base.StartAction(owner);
         AnimUtil.PlayAnim(owner, "attack");
         originPos = Owner.transform.position;
+        TimelineEvents.Add(new TimeLineEvent(0.25f, SendDamage));
     }
 
     public override void UpdateAction()
     {
         base.UpdateAction();
+
+        if (EntityUtil.HitDeadLogicMacro(Owner, "PlayerHitAction", "PlayerDeadAction"))
+        {
+            return;
+        }
 
         Owner.NavAgent.Move(Owner.transform.forward * Isometric.IsometricTileSize.x * 0.7f * Time.deltaTime);
 
@@ -25,6 +31,30 @@ public class PlayerAttackAction : CharacterAction
         {
             Owner.CurrentAction = PlayerIdleAction.Instance;
             return;
+        }
+    }
+
+    public void SendDamage()
+    {
+
+        Enemy[] enemys = Object.FindObjectsOfType<Enemy>();
+
+        if (enemys == null)
+            return;
+
+        foreach(var e in enemys)
+        {
+            if((Owner.transform.position - e.transform.position).magnitude <= Isometric.IsometricTileSize.x * 1.5f &&
+                Vector3.Dot((e.transform.position - Owner.transform.position).normalized, Owner.transform.forward) < Mathf.Deg2Rad * 90f)
+            {
+                e.AddNotifyEvent(new CharacterNotifyEvent(CharacterNotifyType.E_Damage, 0f));
+                IsoParticle.CreateParticle("SlicedParticle1", e.transform.position
+                    + new Vector3(0f, Isometric.IsometricTileSize.y * 0.5f, 0f),
+                    0f, 0.4f);
+                IsoParticle.CreateParticle("SlicedParticle2", e.transform.position
+                    + new Vector3(0f, Isometric.IsometricTileSize.y * 0.5f, 0f),
+                    90f, 0.4f);
+            }
         }
     }
 }

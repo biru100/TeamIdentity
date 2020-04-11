@@ -118,7 +118,7 @@ public class StateCompiler
                 CompileFunction(nextCode, ((ConditionCode)parent.code).isFalse);
             }
 
-            targetFunctionBlock.CommandLines.Add(new CodeLine() { code = parent.code });
+            targetFunctionBlock.CommandLines.Add(parent.code);
         }
         //add for
         else

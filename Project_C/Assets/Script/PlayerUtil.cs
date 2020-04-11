@@ -1,9 +1,56 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+
+public static class EntityUtil
+{
+    public static bool HitDeadLogicMacro(Character owner, string hitActionName, string deadActionName)
+    {
+        if (GetDeadNotify(owner))
+        {
+            ChangeAction(owner, deadActionName);
+            return true;
+        }
+
+        if (GetDamageNotify(owner))
+        {
+            ChangeAction(owner, hitActionName);
+            return true;
+        }
+
+        return false;
+    }
+
+    public static bool DeadLogicMacro(Character owner, string deadActionName)
+    {
+        if (GetDeadNotify(owner))
+        {
+            ChangeAction(owner, deadActionName);
+            return true;
+        }
+        return false;
+    }
+
+    public static bool GetDamageNotify(Character owner)
+    {
+        return owner.GetNotifyEvents().Find((n) => n.Type == CharacterNotifyType.E_Damage) != null;
+    }
+
+    public static bool GetDeadNotify(Character owner)
+    {
+        return owner.GetNotifyEvents().Find((n) => n.Type == CharacterNotifyType.E_Dead) != null;
+    }
+
+    public static void ChangeAction(Character owner, string actionName)
+    {
+        owner.CurrentAction = (CharacterAction)Type.GetType(actionName).GetField("Instance").GetValue(null);
+    }
+}
 
 public static class PlayerUtil
 {
+
     public static bool GetAttackInput()
     {
         return Input.GetKeyDown(KeyCode.X);
@@ -69,7 +116,7 @@ public static class AnimUtil
 
     public static bool IsLastFrame(Character owner)
     {
-        return (owner.Anim.GetCurrentAnimatorStateInfo(0).normalizedTime 
-            + Time.deltaTime / owner.Anim.GetCurrentAnimatorStateInfo(0).length) >= 1f;
+        return ((owner.Anim.GetCurrentAnimatorStateInfo(0).normalizedTime)
+            + Time.deltaTime / owner.Anim.GetCurrentAnimatorStateInfo(0).length) >= 0.99f;
     }
 }

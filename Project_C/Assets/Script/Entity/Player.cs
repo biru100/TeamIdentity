@@ -10,10 +10,4 @@ public class Player : Character
     {
         CurrentAction = PlayerIdleAction.Instance;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        CurrentAction?.UpdateAction();
-    }
 }
