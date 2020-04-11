@@ -11,6 +11,9 @@ TextureImporter:
   - first:
       213: 6981544602886358247
     second: cha_atk_ef_315_2
+  - first:
+      213: 5461608293393130392
+    second: cha_atk_ef_315_3
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -152,8 +155,8 @@ TextureImporter:
       name: cha_atk_ef_315_2
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
+        x: 160
+        y: 60
         width: 80
         height: 60
       alignment: 0
@@ -165,6 +168,27 @@ TextureImporter:
       bones: []
       spriteID: 7e4469693dd63e060800000000000000
       internalID: 6981544602886358247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cha_atk_ef_315_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 80
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89366065ec78bcb40800000000000000
+      internalID: 5461608293393130392
       vertices: []
       indices: 
       edges: []
