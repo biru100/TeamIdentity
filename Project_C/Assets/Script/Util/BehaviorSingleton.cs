@@ -25,8 +25,11 @@ public abstract class BehaviorSingleton<SingletonClass> : MonoBehaviour
 
     protected virtual void Awake()
     {
-        if (_instance == null)
+        if (_instance == null || _instance == this)
+        {
             _instance = (SingletonClass)this;
+            DontDestroyOnLoad(gameObject);
+        }
         else if (_instance != this)
             Destroy(gameObject);      
     }
