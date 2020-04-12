@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerAttackAction : CharacterAction
 {
+    protected static int AttackCount = 0;
     public static CharacterAction Instance = new PlayerAttackAction();
 
     Vector3 originPos;
@@ -11,7 +12,7 @@ public class PlayerAttackAction : CharacterAction
     public override void StartAction(Character owner)
     {
         base.StartAction(owner);
-        AnimUtil.PlayAnim(owner, "attack");
+        AnimUtil.PlayAnim(owner, "attack" + AttackCount);
         originPos = Owner.transform.position;
         TimelineEvents.Add(new TimeLineEvent(0.25f, SendDamage));
     }
@@ -32,6 +33,12 @@ public class PlayerAttackAction : CharacterAction
             Owner.CurrentAction = PlayerIdleAction.Instance;
             return;
         }
+    }
+
+    public override void FinishAction()
+    {
+        base.FinishAction();
+        AttackCount = (AttackCount + 1) % 3;
     }
 
     public void SendDamage()

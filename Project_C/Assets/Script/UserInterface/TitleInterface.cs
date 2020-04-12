@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TitleInterface : UIBase
+public class TitleInterface : UIBase<TitleInterface>
 {
     public void PressStart()
     {
