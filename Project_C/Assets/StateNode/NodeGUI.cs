@@ -15,7 +15,8 @@ namespace StateBehavior.Node
         Variable,
         Condition,
         For,
-        Event
+        Event,
+        TimeLine
     }
 
     [Serializable]
@@ -229,6 +230,12 @@ namespace StateBehavior.Node
                 {
                     AddPoint(new NodePointData(0, data.GUID, ConnectionPointType.Out, typeof(void).FullName, "Logic", null));
                     AddPoint(new NodePointData(1, data.GUID, ConnectionPointType.Return, typeof(Character).FullName, "Owner", null));
+                }
+                else if (data.nodeType == NodeType.TimeLine)
+                {
+                    AddPoint(new NodePointData(0, data.GUID, ConnectionPointType.Out, typeof(void).FullName, "Logic", null));
+                    AddPoint(new NodePointData(1, data.GUID, ConnectionPointType.Return, typeof(Character).FullName, "Owner", null));
+                    AddPoint(new NodePointData(1, data.GUID, ConnectionPointType.Parameter, typeof(float).FullName, "Time"));
                 }
             }
         }

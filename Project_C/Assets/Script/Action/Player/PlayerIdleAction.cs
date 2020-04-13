@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerIdleAction : CharacterAction
 {
-    public static CharacterAction Instance = new PlayerIdleAction();
+    public static PlayerIdleAction GetInstance() { return new PlayerIdleAction(); }
 
     public override void StartAction(Character owner)
     {
@@ -23,7 +23,7 @@ public class PlayerIdleAction : CharacterAction
 
         if (PlayerUtil.GetAttackInput())
         {
-            Owner.CurrentAction = PlayerAttackAction.Instance;
+            Owner.CurrentAction = PlayerAttackAction.GetInstance();
             return;
         }
 
@@ -31,7 +31,7 @@ public class PlayerIdleAction : CharacterAction
 
         if (velocity.magnitude > 0.1f)
         {
-            Owner.CurrentAction = PlayerMoveAction.Instance;
+            Owner.CurrentAction = PlayerMoveAction.GetInstance();
             return;
         }
     }

@@ -219,6 +219,8 @@ namespace StateBehavior.Node
 
             genericMenu.AddItem(new GUIContent("Start"), false, () => OnClickAddNode(mousePosition, NodeType.Event, "Start"));
             genericMenu.AddItem(new GUIContent("Update"), false, () => OnClickAddNode(mousePosition, NodeType.Event, "Update"));
+            genericMenu.AddItem(new GUIContent("Finish"), false, () => OnClickAddNode(mousePosition, NodeType.Event, "Finish"));
+            genericMenu.AddItem(new GUIContent("TimeLine"), false, () => OnClickAddNode(mousePosition, NodeType.TimeLine, "TimeLine"));
             genericMenu.AddItem(new GUIContent("IF"), false, () => OnClickAddNode(mousePosition, NodeType.Condition, "IF"));
             genericMenu.AddItem(new GUIContent("For"), false, () => OnClickAddNode(mousePosition, NodeType.For, "For"));
 
@@ -248,6 +250,10 @@ namespace StateBehavior.Node
             }
 
             if (nodeType == NodeType.Event)
+            {
+                CreateNodeInRuntime(new NodeData(mousePosition, nodeName, "Character", nodeType));
+            }
+            else if (nodeType == NodeType.TimeLine)
             {
                 CreateNodeInRuntime(new NodeData(mousePosition, nodeName, "Character", nodeType));
             }

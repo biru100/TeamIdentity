@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEditor;
 using System;
 using System.Reflection;
@@ -128,9 +129,95 @@ namespace StateBehavior.Node
 public static class NodeUtil
 {
 
-    public static void Move(Character owner, Vector3 targetPosition)
+    public static void MoveDelta(Character owner, Vector3 targetPosition)
     {
         owner.NavAgent.Move(targetPosition);
+    }
+
+    public static void MoveToPlayer(Character owner)
+    {
+        owner.NavAgent.destination = Player.CurrentPlayer.transform.position;
+    }
+    public static void MoveToPpsition(Character owner, Vector3 position)
+    {
+        owner.NavAgent.destination = position;
+    }
+
+    public static bool IsDestination(Character owner)
+    {
+        return owner.NavAgent.isStopped;
+    }
+
+    public static void StopMovement(Character owner)
+    {
+        owner.NavAgent.isStopped = true;
+        owner.NavAgent.ResetPath();
+    }
+
+    public static void DestroyEntity(Character target)
+    {
+        UnityEngine.Object.Destroy(target.gameObject);
+    }
+
+    public static void AvoidFormPlayer(Character owner)
+    {
+        //Quaternion avoidDir = Quaternion.LookRotation(Player.CurrentPlayer.transform.position - owner.transform.position);
+        //NavMeshHit hit;
+        //if(NavMesh.Raycast(owner.transform.position, 
+        //    owner.transform.position + avoidDir * -Vector3.forward * 3f * Isometric.IsometricTileSize.x, 
+        //    out hit, 0))
+        //{
+        //    if(NavMesh.Raycast(owner.transform.position,
+        //    owner.transform.position + avoidDir * Quaternion.Euler(0f, 60f, 0f) * -Vector3.forward * 3f * Isometric.IsometricTileSize.x,
+        //    out hit, 0))
+        //    {
+        //        if (NavMesh.Raycast(owner.transform.position,
+        //            owner.transform.position + avoidDir * Quaternion.Euler(0f, 60f, 0f) * -Vector3.forward * 3f * Isometric.IsometricTileSize.x,
+        //            out hit, 0))
+        //        {
+
+        //        }
+        //    }
+        //}
+        //else
+        //{
+        //    NavMesh.SamplePosition(
+        //}    
+    }
+
+    public static void LookPlayer(Character owner)
+    {
+        owner.transform.rotation = Quaternion.LookRotation((Player.CurrentPlayer.transform.position - owner.transform.position).normalized
+            , Vector3.up);
+    }
+
+    public static Character CreateEntity(string name, Vector3 position)
+    {
+        return UnityEngine.Object.Instantiate(ResourceManager.GetResource<GameObject>("Tiles/" + name), position, 
+            Quaternion.Euler(0f, 135f, 0f)).GetComponent<Character>();
+    }
+
+    public static void TakeDamageToPlayer(float damage)
+    {
+        Player.CurrentPlayer.AddNotifyEvent(new CharacterNotifyEvent(CharacterNotifyType.E_Damage, damage));
+    }
+
+    public static void TakeDamage(Character target, float damage)
+    {
+        target.AddNotifyEvent(new CharacterNotifyEvent(CharacterNotifyType.E_Damage, damage));
+    }
+
+    public static bool PlayerInRange(Character owner, float range)
+    {
+        Player player = Player.CurrentPlayer;
+        return (owner.transform.position - player.transform.position).magnitude <= Isometric.IsometricTileSize.x * range;
+    }
+
+    public static bool PlayerInSight(Character owner, float range, float angle)
+    {
+        Player player = Player.CurrentPlayer;
+        return (owner.transform.position - player.transform.position).magnitude <= Isometric.IsometricTileSize.x * range &&
+                Mathf.Acos(Vector3.Dot((player.transform.position - owner.transform.position).normalized, owner.transform.forward)) < Mathf.Deg2Rad * angle;
     }
 
     public static Vector3 CreateVector3(float x, float y, float z)
@@ -161,6 +248,11 @@ public static class NodeUtil
     public static void PlayAnim(Character owner, string animationName)
     {
         AnimUtil.PlayAnim(owner, animationName);
+    }
+
+    public static void PlayAnimOneSide(Character owner, string animationName)
+    {
+        AnimUtil.PlayAnimOneSide(owner, animationName);
     }
 
     public static void RotationAnim(Character owner, string animationName)
@@ -197,7 +289,6 @@ public static class NodeUtil
     {
         return EntityUtil.GetDeadNotify(owner);
     }
-
 
     public static void RotateToVelocity(Character owner, Vector3 velocity)
     {

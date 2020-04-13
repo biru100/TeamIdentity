@@ -4,17 +4,18 @@ using UnityEngine;
 
 public class PlayerAttackAction : CharacterAction
 {
-    protected static int AttackCount = 0;
-    public static CharacterAction Instance = new PlayerAttackAction();
+    public static PlayerAttackAction GetInstance() { return new PlayerAttackAction(); }
 
     Vector3 originPos;
+    bool isAttackCommand;
 
     public override void StartAction(Character owner)
     {
         base.StartAction(owner);
-        AnimUtil.PlayAnim(owner, "attack" + AttackCount);
+        AnimUtil.PlayAnim(owner, "attack0");
         originPos = Owner.transform.position;
-        TimelineEvents.Add(new TimeLineEvent(0.25f, SendDamage));
+        isAttackCommand = false;
+        TimelineEvents.Add(new TimeLineEvent(0.22f, SendDamage));
     }
 
     public override void UpdateAction()
@@ -26,41 +27,53 @@ public class PlayerAttackAction : CharacterAction
             return;
         }
 
-        Owner.NavAgent.Move(Owner.transform.forward * Isometric.IsometricTileSize.x * 0.7f * Time.deltaTime);
+        Owner.NavAgent.Move(Owner.transform.forward * Isometric.IsometricTileSize.x * 0.5f * Time.deltaTime);
+
+        float currentAnimTime = AnimUtil.GetAnimNormalizedTime(Owner);
+
+        if (currentAnimTime > 0.6f)
+        {
+            if (PlayerUtil.GetAttackInput())
+                isAttackCommand = true;
+        }
 
         if (AnimUtil.IsLastFrame(Owner))
         {
-            Owner.CurrentAction = PlayerIdleAction.Instance;
+            Owner.CurrentAction = isAttackCommand ? (CharacterAction)PlayerAttack1Action.GetInstance() 
+                : (CharacterAction)PlayerIdleAction.GetInstance();
             return;
+
         }
     }
 
     public override void FinishAction()
     {
         base.FinishAction();
-        AttackCount = (AttackCount + 1) % 3;
     }
 
     public void SendDamage()
     {
 
-        Enemy[] enemys = Object.FindObjectsOfType<Enemy>();
+        Character[] enemys = Object.FindObjectsOfType<Character>();
 
         if (enemys == null)
             return;
 
         foreach(var e in enemys)
         {
-            if((Owner.transform.position - e.transform.position).magnitude <= Isometric.IsometricTileSize.x * 1.5f &&
-                Vector3.Dot((e.transform.position - Owner.transform.position).normalized, Owner.transform.forward) < Mathf.Deg2Rad * 90f)
+            if (e == Owner) continue;
+            float angle = Mathf.Acos(Vector3.Dot((e.transform.position - Owner.transform.position).normalized, Owner.transform.forward))
+                * Mathf.Rad2Deg;
+            if ((Owner.transform.position - e.transform.position).magnitude <= Isometric.IsometricTileSize.x * 1.8f &&
+                angle < 45f)
             {
-                e.AddNotifyEvent(new CharacterNotifyEvent(CharacterNotifyType.E_Damage, 0f));
+                e.AddNotifyEvent(new CharacterNotifyEvent(CharacterNotifyType.E_Damage, 30f));
                 IsoParticle.CreateParticle("SlicedParticle1", e.transform.position
                     + new Vector3(0f, Isometric.IsometricTileSize.y * 0.5f, 0f),
-                    0f, 0.4f);
+                    angle, 0.4f);
                 IsoParticle.CreateParticle("SlicedParticle2", e.transform.position
                     + new Vector3(0f, Isometric.IsometricTileSize.y * 0.5f, 0f),
-                    90f, 0.4f);
+                    angle + 90f, 0.4f);
             }
         }
     }

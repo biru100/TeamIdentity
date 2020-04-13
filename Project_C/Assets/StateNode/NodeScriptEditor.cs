@@ -33,5 +33,10 @@ public class NodeScriptEditor : Editor
             StateCompiler.CompileNodeScript(script);
             CompilationPipeline.RequestScriptCompilation();
         }
+
+        if (GUILayout.Button("Hot Compile Code(VisualStudio User Use Only)"))
+        {
+            StateCompiler.CompileNodeScript(script);
+        }
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,7 +8,7 @@ using UnityEngine;
 public class EnemyIdleAction : CharacterAction
 {
 
-public static EnemyIdleAction Instance = new EnemyIdleAction();
+public static EnemyIdleAction GetInstance() { return new EnemyIdleAction(); }
 
 public override void StartAction(Character owner)
 {
@@ -19,7 +20,7 @@ public override void UpdateAction()
 {
 base.UpdateAction();
 
-if(NodeUtil.HitDeadLogicMacro(Owner ,"EnemyHitAction" ,""))
+if(NodeUtil.HitDeadLogicMacro(Owner ,"EnemyHitAction" , "EnemyIdleAction"))
 {
 }
 

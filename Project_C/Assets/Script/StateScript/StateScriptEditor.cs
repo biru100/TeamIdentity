@@ -66,6 +66,12 @@ public class StateCompiler
             node.AttachParameter();
         }
 
+        List<NodeCode> parents = nodes.FindAll((node) => node.funcNodeData.methodName == "TimeLine");
+        foreach (var node in parents)
+        {
+            CompileTimeLine(node, data.nodeDatas.FindIndex((n)=>n == node.funcNodeData), classCode.ClassBlock);
+        }
+
         NodeCode parent = nodes.Find((node) => node.funcNodeData.methodName == "Start");
         if (parent != null)
         {
@@ -78,11 +84,32 @@ public class StateCompiler
             CompileFunction(parent, (CodeBlock)classCode.ClassBlock.CommandLines[2]);
         }
 
+
         parent = nodes.Find((node) => node.funcNodeData.methodName == "Finish");
         if (parent != null)
         {
             CompileFunction(parent, (CodeBlock)classCode.ClassBlock.CommandLines[3]);
         }
+    }
+
+    void CompileTimeLine(NodeCode parent, int index, CodeBlock targetFunctionBlock)
+    {
+        CodeBlock TimeLineCodeBlock = new CodeBlock(new Variable() { Var = "void TimeLine_" + index + "()" }, new List<ICodeBase>());
+        targetFunctionBlock.CommandLines.Add(TimeLineCodeBlock);
+
+        ((CodeBlock)(targetFunctionBlock.CommandLines[1])).CommandLines.Add(new Variable(
+            "TimelineEvents.Add(new TimeLineEvent(" + parent.GetPointData(ConnectionPointType.Parameter)[0].cachedValue + "f, TimeLine_" + index + "));\n"
+            ));
+
+        List<NodePointData> flowPoint = parent.GetPointData(ConnectionPointType.Out);
+        NodePointData currentFlow = flowPoint[0];
+
+        if (currentFlow.connections.Count == 0)
+            return;
+
+        NodeCode nextCode = guidMap.GetCode(guidMap.GetData<NodePointData>(
+            guidMap.GetData<NodeConnectionData>(currentFlow.connections[0]).inGUID).nodeGUID);
+        CompileFunction(nextCode, TimeLineCodeBlock);
     }
 
     void CompileFunction(NodeCode parent, CodeBlock targetFunctionBlock)
@@ -91,7 +118,7 @@ public class StateCompiler
 
         NodePointData currentFlow = flowPoint[0];
 
-        if(parent.funcNodeData.nodeType == NodeType.Event)
+        if (parent.funcNodeData.nodeType == NodeType.Event)
         {
             if (currentFlow.connections.Count == 0)
                 return;
@@ -216,7 +243,8 @@ public class NodeCode
 
     public void InitLogic()
     {
-        if (funcNodeData.nodeType == NodeType.Event)
+        if (funcNodeData.nodeType == NodeType.Event ||
+            funcNodeData.nodeType == NodeType.TimeLine)
         {
             code = new Variable() { Var = "Owner" };
         }
@@ -310,7 +338,8 @@ public class NodeCode
                     var.Var = param.cachedValue;
                 }
 
-                connectMapping[param.GUID].connectiongAction.Invoke(var);
+                if(connectMapping.ContainsKey(param.GUID))
+                    connectMapping[param.GUID].connectiongAction.Invoke(var);
             }
             else
             {
@@ -366,7 +395,7 @@ public class StateClassCode : ICodeBase
         CodeBlock updateAction = new CodeBlock();
         CodeBlock finishAction = new CodeBlock();
 
-        Variable defineInstance = new Variable() { Var = "\npublic static " + ClassName + " Instance = new " + ClassName + "();\n" };
+        Variable defineInstance = new Variable() { Var = "\npublic static " + ClassName + " GetInstance() { return new " + ClassName + "(); }\n" };
 
         startAction.Condition = new Variable() { Var = "public override void StartAction(Character owner)" };
         updateAction.Condition = new Variable() { Var = "public override void UpdateAction()" };
@@ -385,6 +414,7 @@ public class StateClassCode : ICodeBase
     public string ToCodeText()
     {
         StringBuilder sb = new StringBuilder();
+        sb.Append("using System;\n");
         sb.Append("using System.Collections;\n");
         sb.Append("using System.Collections.Generic;\n");
         sb.Append("using UnityEngine;\n\n\n\n");
@@ -460,6 +490,16 @@ public class OperatorBlock : ICodeBase
 public class Variable : ICodeBase
 {
     public string Var;
+
+    public Variable()
+    {
+
+    }
+
+    public Variable(string var)
+    {
+        Var = var;
+    }
 
     public string ToCodeText()
     {

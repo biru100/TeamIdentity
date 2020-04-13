@@ -57,6 +57,10 @@ public class IsometricTileMapEditor : MonoBehaviour
         }
 
         previewTileTransform = Instantiate(newBrush).transform;
+
+        if (previewTileTransform.GetComponent<Character>())
+            previewTileTransform.GetComponent<Character>().enabled = false;
+
         previewTileTransform.gameObject.SetActive(!(currentEditorMode > 0));
     }
 

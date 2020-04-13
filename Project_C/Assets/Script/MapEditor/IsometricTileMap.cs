@@ -73,14 +73,15 @@ public class IsometricTileMap : MonoBehaviour
         return dataOBJ;
     }
 
-    public void FromJson(TileData data)
+    public void FromJson(TileData data, bool activateLogic = false)
     {
         DestroyMap();
         CreatePivot();
 
         foreach (var pair in data.data)
         {
-            AddTile(EffectiveUtility.VectorMultiple(new Vector3(pair.index.x, pair.index.y, pair.index.z), Isometric.IsometricTileSize), ResourceManager.GetResource<GameObject>("Tiles/" + pair.tag));
+            AddTile(EffectiveUtility.VectorMultiple(new Vector3(pair.index.x, pair.index.y, pair.index.z), Isometric.IsometricTileSize), 
+                ResourceManager.GetResource<GameObject>("Tiles/" + pair.tag), activateLogic);
         }
     }
 
@@ -95,7 +96,7 @@ public class IsometricTileMap : MonoBehaviour
         return _tileMap.ContainsKey(index);
     }
 
-    public void AddTile(Vector3 isoPos, GameObject go)
+    public void AddTile(Vector3 isoPos, GameObject go, bool activateLogic = false)
     {
         Vector3Int index = EffectiveUtility.IsoPositionToIndex(isoPos);
         if(!ContainsTile(index))
@@ -112,6 +113,8 @@ public class IsometricTileMap : MonoBehaviour
             }
 
             GameObject instance = Instantiate(go, isoPos, Quaternion.identity, _tileMapPivotObject.transform);
+            if(instance.GetComponent<Character>())
+                instance.GetComponent<Character>().enabled = activateLogic;
             _tileMap.Add(index, instance);
         }
     }

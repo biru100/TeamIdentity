@@ -18,6 +18,8 @@ public class CardInterface : MonoBehaviour
 
     public Animator Anim { get; set; }
     public CardSlotType SlotType { get; set; }
+    public bool IsShow { get; set; }
+
     public Card CardData 
     {
         get => _cardData;
@@ -46,12 +48,36 @@ public class CardInterface : MonoBehaviour
     public void ShowAction()
     {
         //show_0,1,2,3
-        Anim?.Play("Show_" + (int)SlotType);
+        if (!IsShow)
+        {
+            Anim?.Play("show_" + (int)SlotType);
+            StopAllCoroutines();
+            StartCoroutine(ControlTimeScale(0.1f));
+            IsShow = true;
+        }
+        else
+        {
+            Anim?.Play("unshow_" + (int)SlotType);
+            StopAllCoroutines();
+            StartCoroutine(ControlTimeScale(1f));
+            IsShow = false;
+        }
     }
 
     public void UsedAction()
     {
         //use_0,1,2,3
         Anim?.Play("use_" + (int)SlotType);
+    }
+
+    IEnumerator ControlTimeScale(float targetTimeScale)
+    {
+        while(Mathf.Abs(Time.timeScale - targetTimeScale) > 0.005f)
+        {
+            yield return null;
+            Time.timeScale = Mathf.Lerp(Time.timeScale, targetTimeScale, 0.3f * Time.unscaledDeltaTime);
+            Anim.speed = 1f / Time.timeScale;
+        }
+        Time.timeScale = targetTimeScale;
     }
 }

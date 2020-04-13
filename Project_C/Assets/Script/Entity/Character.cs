@@ -70,8 +70,8 @@ public class Character : MonoBehaviour
 
     public virtual void AddNotifyEvent(CharacterNotifyEvent notifyEvent)
     {
-        Status?.UpdateStatus(notifyEvent);
-        NotifyEventQueues[CurrentNotifyQueueIndex].Add(notifyEvent);
+        if(Status.UpdateStatus(notifyEvent));
+            NotifyEventQueues[CurrentNotifyQueueIndex].Add(notifyEvent);
     }
 
     public virtual void AddNextFrameNotifyEvent(CharacterNotifyEvent notifyEvent)

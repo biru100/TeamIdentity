@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Reflection;
 
 public static class EntityUtil
 {
@@ -44,7 +45,7 @@ public static class EntityUtil
 
     public static void ChangeAction(Character owner, string actionName)
     {
-        owner.CurrentAction = (CharacterAction)Type.GetType(actionName).GetField("Instance").GetValue(null);
+        owner.CurrentAction = (CharacterAction)Type.GetType(actionName).GetMethod("GetInstance", BindingFlags.Public | BindingFlags.Static).Invoke(null, null);
     }
 }
 
@@ -99,6 +100,11 @@ public static class AnimUtil
     public static void PlayAnim(Character owner, string animationName)
     {
         owner.Anim.Play(animationName + "_" + GetRenderAngle(owner.transform.rotation), 0);
+    }
+
+    public static void PlayAnimOneSide(Character owner, string animationName)
+    {
+        owner.Anim.Play(animationName, 0);
     }
 
     //use movement
