@@ -16,7 +16,7 @@ public class UIBase<SingletonClass> : MonoBehaviour where SingletonClass : UIBas
                 SingletonClass instance = FindObjectOfType<SingletonClass>();
                 if (instance == null)
                     instance = Instantiate(ResourceManager.GetResource<GameObject>("UI/" + typeof(SingletonClass).Name)
-                        , FindObjectOfType<Canvas>().transform).GetComponent<SingletonClass>();
+                        , FindObjectOfType<Canvas>().rootCanvas.transform).GetComponent<SingletonClass>();
 
                 _instance = instance;
             }

@@ -6,19 +6,17 @@ public class PlayerAttack2Action : CharacterAction
 {
     public static PlayerAttack2Action GetInstance() { return new PlayerAttack2Action(); }
 
-    Vector3 originPos;
-
     public override void StartAction(Character owner)
     {
         base.StartAction(owner);
         AnimUtil.PlayAnim(owner, "attack2");
-        originPos = Owner.transform.position;
         TimelineEvents.Add(new TimeLineEvent(0.22f, SendDamage));
     }
 
     public override void UpdateAction()
     {
         base.UpdateAction();
+        PlayerUtil.CardInterfaceLogicMacro();
 
         if (EntityUtil.HitDeadLogicMacro(Owner, "PlayerHitAction", "PlayerDeadAction"))
         {
@@ -57,10 +55,10 @@ public class PlayerAttack2Action : CharacterAction
                 angle < 80f)
             {
                 e.AddNotifyEvent(new CharacterNotifyEvent(CharacterNotifyType.E_Damage, 30f));
-                IsoParticle.CreateParticle("SlicedParticle1", e.transform.position
+                IsoParticle.CreateParticle("Sliced1", e.transform.position
                     + new Vector3(0f, Isometric.IsometricTileSize.y * 0.5f, 0f),
                     angle, 0.4f);
-                IsoParticle.CreateParticle("SlicedParticle2", e.transform.position
+                IsoParticle.CreateParticle("Sliced2", e.transform.position
                     + new Vector3(0f, Isometric.IsometricTileSize.y * 0.5f, 0f),
                     angle + 90f, 0.4f);
             }

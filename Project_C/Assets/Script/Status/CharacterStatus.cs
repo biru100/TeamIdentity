@@ -7,6 +7,11 @@ public class PlayerStatus : CharacterStatus
 {
     public static PlayerStatus CurrentStatus{ get; set; }
 
+    public int BaseCardPowerScale { get; set; }
+    public int CardPowerScale { get; set; }
+    public int BaseCardPowerSupport { get; set; }
+    public int CardPowerSupport { get; set; }
+
     protected List<Card> Deck { get; set; }
     public Dictionary<CardSlotType, Card> SlotCard { get; set; }
 
@@ -15,6 +20,11 @@ public class PlayerStatus : CharacterStatus
         CurrentStatus = this;
         Deck = new List<Card>();
         SlotCard = new Dictionary<CardSlotType, Card>();
+
+        BaseCardPowerScale = 1;
+        BaseCardPowerSupport = 0;
+        CardPowerScale = BaseCardPowerScale;
+        CardPowerSupport = BaseCardPowerSupport;
     }
 
     public void AddCard(Card card, bool isDirectDraw = false)
@@ -42,7 +52,7 @@ public class PlayerStatus : CharacterStatus
         SlotCard[newSlot] = Deck[0];
         Deck.RemoveAt(0);
         InGameInterface.Instance.DrawCard(SlotCard[newSlot], newSlot);
-        InGameInterface.Instance.SetVisibleDeck(false);
+        InGameInterface.Instance.SetVisibleDeck(Deck.Count == 0 ? false : true);
     }
 
     public bool UseCard(CardSlotType newSlot)
@@ -52,7 +62,7 @@ public class PlayerStatus : CharacterStatus
 
         Card useCard = SlotCard[newSlot];
         SlotCard.Remove(newSlot);
-        InGameInterface.Instance.UseCard(useCard, newSlot);
+        InGameInterface.Instance.UseCard(newSlot);
         DrawCard(newSlot);
         return true;
     }
@@ -64,6 +74,19 @@ public class PlayerStatus : CharacterStatus
 
         InGameInterface.Instance.ShowCard(newSlot);
         return true;
+    }
+
+    public void HideCard(CardSlotType newSlot)
+    {
+        if (!SlotCard.ContainsKey(newSlot))
+            return;
+
+        InGameInterface.Instance.HideCard(newSlot);
+    }
+
+    public override bool UpdateStatus(CharacterNotifyEvent notify)
+    {
+        return base.UpdateStatus(notify);
     }
 }
 
@@ -98,7 +121,7 @@ public class CharacterStatus
         CurrentSpeed = 1.2f;
     }
 
-    public bool UpdateStatus(CharacterNotifyEvent notify)
+    public virtual bool UpdateStatus(CharacterNotifyEvent notify)
     {
         if(notify.Type == CharacterNotifyType.E_Damage && CurrentHp > 0f)
         {

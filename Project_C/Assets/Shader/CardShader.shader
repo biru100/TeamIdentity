@@ -3,7 +3,10 @@
 	Properties
 	{
 		[PerRendererData] _MainTex("Sprite Texture", 2D) = "white" {}
-		//_BackTex("Back Sprite Texture", 2D) = "white" {}
+		_NoiseTex("Noise Texture", 2D) = "white" {}
+		_GradientTex("Gradient Texture", 2D) = "white" {}
+		_DissolveValue("Dissolve Value", Range(0,1)) = 0
+		_GradientAdjust("Gradient Adjust", Range(0,2)) = 0
 		_Color("Tint", Color) = (1,1,1,1)
 
 		_StencilComp("Stencil Comparison", Float) = 8
@@ -76,7 +79,12 @@
 				};
 
 				sampler2D _MainTex;
-				//sampler2D _BackTex;
+				sampler2D _NoiseTex;
+				sampler2D _GradientTex;
+
+				float _DissolveValue;
+				float _GradientAdjust;
+
 				fixed4 _Color;
 				fixed4 _TextureSampleAdd;
 				float4 _ClipRect;
@@ -98,7 +106,15 @@
 
 				fixed4 frag(v2f IN) : SV_Target
 				{
-					half4 color = (tex2D(_MainTex, IN.texcoord) + _TextureSampleAdd) * IN.color;
+					fixed4 mainTex = (tex2D(_MainTex, IN.texcoord) + _TextureSampleAdd) * IN.color;
+					fixed noiseVal = tex2D(_NoiseTex, IN.texcoord).r;
+
+					fixed d = (2.0 * _DissolveValue + noiseVal) - 1.0;
+					fixed overOne = saturate(d * _GradientAdjust);
+
+					fixed4 burn = tex2D(_GradientTex, float2(overOne, 0.5));
+
+					half4 color = mainTex * burn;
 
 					#ifdef UNITY_UI_CLIP_RECT
 					color.a *= UnityGet2DClipping(IN.worldPosition.xy, _ClipRect);

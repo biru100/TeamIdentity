@@ -6,6 +6,7 @@ using System.Text;
 public class Card
 {
     public string CardName { get; protected set; }
+    public string CardActionName { get; protected set; }
     /// <summary>
     /// Tokenize '_'
     /// </summary>
@@ -15,14 +16,30 @@ public class Card
     public Sprite FrontSprite { get; protected set; }
     public Sprite BackSprite { get; protected set; }
 
-    public Card()
+    public Card(int i)
     {
-        CardName = "dummy";
-        CardLoreFormat = "";
-        CardStatus = new List<float>();
+        if (i == 0)
+        {
+            CardName = "Power Attack";
+            CardLoreFormat = "범위내 적에게 _ 만큼의 데미지를 준다.";
+            CardStatus = new List<float>() { 80f };
 
-        FrontSprite = ResourceManager.GetResource<Sprite>("Sprites/card_sample_front");
-        BackSprite = ResourceManager.GetResource<Sprite>("Sprites/card_sample_back");
+            CardActionName = "PlayerPowerAttackAction";
+
+            FrontSprite = ResourceManager.GetResource<Sprite>("Sprites/card_power_atk");
+            BackSprite = ResourceManager.GetResource<Sprite>("Sprites/card_sample_back");
+        }
+        else if (i == 1)
+        {
+            CardName = "Power Up";
+            CardLoreFormat = "카드 주문력을 _ 올려준다";
+            CardStatus = new List<float>() { 50f };
+
+            CardActionName = "PlayerCardPowerUpAction";
+
+            FrontSprite = ResourceManager.GetResource<Sprite>("Sprites/card_atk_up");
+            BackSprite = ResourceManager.GetResource<Sprite>("Sprites/card_sample_back");
+        }
     }
 
     public Card(string name, string loreFormat, List<float> status,
@@ -45,7 +62,9 @@ public class Card
             sb.Append(tokens[i]);
             if (tokens.Length != 1 && CardStatus.Count > i)
             {
-                sb.Append(CardStatus[i]);
+                sb.Append( ((PlayerStatus.CurrentStatus.CardPowerSupport != PlayerStatus.CurrentStatus.BaseCardPowerSupport) ||
+                    (PlayerStatus.CurrentStatus.CardPowerScale != PlayerStatus.CurrentStatus.BaseCardPowerScale) ? "*" : "")
+                    + (CardStatus[i] + PlayerStatus.CurrentStatus.CardPowerSupport) * PlayerStatus.CurrentStatus.CardPowerScale);
             }
         }
         return sb.ToString();

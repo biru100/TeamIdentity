@@ -11,13 +11,17 @@ public class Player : Character
     {
         base.Awake();
         CurrentPlayer = this;
+        Status = new PlayerStatus(this);
     }
 
     // Start is called before the first frame update
     void Start()
     {
         CurrentAction = PlayerIdleAction.GetInstance();
-        //Card card = new Card("Power Attack", "범위내 적에게 _ 만큼의 데미지를 준다.", new List<float>() { 100f }, 
-        //    ResourceManager.GetResource<Sprite>("Sprites/"))
+
+        for(int i = 0; i < 30; ++i)
+        {
+            PlayerStatus.CurrentStatus.AddCard(new Card(Random.Range(0, 2)), true);
+        }
     }
 }
