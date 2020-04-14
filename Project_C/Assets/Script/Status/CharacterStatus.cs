@@ -17,6 +17,9 @@ public class PlayerStatus : CharacterStatus
 
     public PlayerStatus(Character owner) : base(owner)
     {
+        Hp = 100000000000f;
+        CurrentHp = 100000000000f;
+
         CurrentStatus = this;
         Deck = new List<Card>();
         SlotCard = new Dictionary<CardSlotType, Card>();
@@ -84,9 +87,15 @@ public class PlayerStatus : CharacterStatus
         InGameInterface.Instance.HideCard(newSlot);
     }
 
-    public override bool UpdateStatus(CharacterNotifyEvent notify)
+    public override bool SendStatusNotify(CharacterNotifyEvent notify)
     {
-        return base.UpdateStatus(notify);
+        if (notify.Type == CharacterNotifyType.E_Damage)
+        {
+            Owner.ConsumeNotifyEvent(notify);
+            return false;
+        }
+
+        return base.SendStatusNotify(notify);
     }
 }
 
@@ -102,6 +111,10 @@ public class CharacterStatus
     public float CurrentHp { get; set; }
     public float Speed { get; set; }
     public float CurrentSpeed { get; set; }
+
+    public float CurrentStunTime { get; set; }
+    public bool IsStun { get; set; }
+    public bool IsInvincibility { get; set; }
 
     public CharacterStatus(Character owner)
     {
@@ -121,9 +134,22 @@ public class CharacterStatus
         CurrentSpeed = 1.2f;
     }
 
-    public virtual bool UpdateStatus(CharacterNotifyEvent notify)
+    public virtual void UpdateStatus()
     {
-        if(notify.Type == CharacterNotifyType.E_Damage && CurrentHp > 0f)
+        if (IsStun)
+        {
+            CurrentStunTime -= Time.deltaTime;
+            if (CurrentStunTime <= 0f)
+                IsStun = false;
+        }
+    }
+
+    public virtual bool SendStatusNotify(CharacterNotifyEvent notify)
+    {
+        if (IsInvincibility)
+            return false;
+
+        if (notify.Type == CharacterNotifyType.E_Damage && CurrentHp > 0f)
         {
             CurrentHp = Mathf.Max(CurrentHp - (float)notify.Data, 0f);
             if(CurrentHp <= 0f)
@@ -132,6 +158,16 @@ public class CharacterStatus
                 Owner.AddNotifyEvent(new CharacterNotifyEvent(CharacterNotifyType.E_Dead, null));
                 return false;
             }
+        }
+
+        else if (notify.Type == CharacterNotifyType.E_Stun)
+        {
+            IsStun = true;
+            CurrentStunTime = (float)notify.Data;
+        }
+        else if (notify.Type == CharacterNotifyType.E_Invincibility)
+        {
+            IsInvincibility = (bool)notify.Data;
         }
 
         return true;

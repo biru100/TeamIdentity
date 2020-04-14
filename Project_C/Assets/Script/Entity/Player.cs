@@ -24,4 +24,10 @@ public class Player : Character
             PlayerStatus.CurrentStatus.AddCard(new Card(Random.Range(0, 2)), true);
         }
     }
+
+    protected void OnDestroy()
+    {
+        if (CurrentPlayer == this)
+            CurrentPlayer = null;
+    }
 }

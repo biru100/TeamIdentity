@@ -98,7 +98,7 @@ public class StateCompiler
         targetFunctionBlock.CommandLines.Add(TimeLineCodeBlock);
 
         ((CodeBlock)(targetFunctionBlock.CommandLines[1])).CommandLines.Add(new Variable(
-            "TimelineEvents.Add(new TimeLineEvent(" + parent.GetPointData(ConnectionPointType.Parameter)[0].cachedValue + "f, TimeLine_" + index + "));\n"
+            "TimelineEvents.Add(new TimeLineEvent(" + parent.logicParamCode.ToCodeText() + ", TimeLine_" + index + "));\n"
             ));
 
         List<NodePointData> flowPoint = parent.GetPointData(ConnectionPointType.Out);
@@ -224,6 +224,8 @@ public class NodeCode
     public ICodeBase code;
     public NodeData funcNodeData;
 
+    public ICodeBase logicParamCode;
+
     public Dictionary<string, ParmeterConnectingAction> connectMapping;
 
 
@@ -243,10 +245,19 @@ public class NodeCode
 
     public void InitLogic()
     {
-        if (funcNodeData.nodeType == NodeType.Event ||
-            funcNodeData.nodeType == NodeType.TimeLine)
+        if (funcNodeData.nodeType == NodeType.Event)
         {
             code = new Variable() { Var = "Owner" };
+        }
+        else if(funcNodeData.nodeType == NodeType.TimeLine)
+        {
+            code = new Variable() { Var = "Owner" };
+            List<NodePointData> parameterPoint = GetPointData(ConnectionPointType.Parameter);
+
+            AddMapping(parameterPoint[0].GUID, (c) =>
+            {
+                logicParamCode = c;
+            });
         }
         else if(funcNodeData.nodeType == NodeType.Condition)
         {

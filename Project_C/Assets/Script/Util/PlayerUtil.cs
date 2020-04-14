@@ -116,12 +116,12 @@ public static class PlayerUtil
 
     public static bool GetAttackInput()
     {
-        return Input.GetKeyDown(KeyCode.X);
+        return !PlayerStatus.CurrentStatus.IsStun && Input.GetKeyDown(KeyCode.X);
     }
 
     public static bool GetDashInput()
     {
-        return Input.GetKeyDown(KeyCode.C);
+        return !PlayerStatus.CurrentStatus.IsStun && Input.GetKeyDown(KeyCode.C);
     }
 
     public static Vector3 GetVelocityInput()
@@ -148,7 +148,7 @@ public static class PlayerUtil
             velocity += new Vector3(-1f, 0f, -1f);
         }
 
-        return velocity.normalized;
+        return PlayerStatus.CurrentStatus.IsStun ? Vector3.zero : velocity.normalized;
     }
 }
 

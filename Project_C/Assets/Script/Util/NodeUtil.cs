@@ -128,7 +128,6 @@ namespace StateBehavior.Node
 
 public static class NodeUtil
 {
-
     public static void MoveDelta(Character owner, Vector3 targetPosition)
     {
         owner.NavAgent.Move(targetPosition);
@@ -141,6 +140,11 @@ public static class NodeUtil
     public static void MoveToPpsition(Character owner, Vector3 position)
     {
         owner.NavAgent.destination = position;
+    }
+
+    public static float Random(float min, float max)
+    {
+        return UnityEngine.Random.Range(min, max);
     }
 
     public static bool IsDestination(Character owner)

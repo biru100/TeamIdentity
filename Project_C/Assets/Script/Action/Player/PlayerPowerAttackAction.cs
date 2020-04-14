@@ -58,10 +58,10 @@ public class PlayerPowerAttackAction : CharacterAction
                 e.AddNotifyEvent(new CharacterNotifyEvent(CharacterNotifyType.E_Damage, damage));
                 IsoParticle.CreateParticle("Sliced_Power1", e.transform.position
                     + new Vector3(0f, Isometric.IsometricTileSize.y * 0.5f, 0f),
-                    angle, 0.4f);
+                    angle);
                 IsoParticle.CreateParticle("Sliced_Power2", e.transform.position
                     + new Vector3(0f, Isometric.IsometricTileSize.y * 0.5f, 0f),
-                    angle + 90f, 0.4f);
+                    angle + 90f);
             }
         }
 

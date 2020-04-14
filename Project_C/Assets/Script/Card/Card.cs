@@ -32,12 +32,23 @@ public class Card
         else if (i == 1)
         {
             CardName = "Power Up";
-            CardLoreFormat = "카드 주문력을 _ 올려준다";
+            CardLoreFormat = "카드 주문력을 _ 올려준다.";
             CardStatus = new List<float>() { 50f };
 
             CardActionName = "PlayerCardPowerUpAction";
 
             FrontSprite = ResourceManager.GetResource<Sprite>("Sprites/card_atk_up");
+            BackSprite = ResourceManager.GetResource<Sprite>("Sprites/card_sample_back");
+        }
+        else if (i == 2)
+        {
+            CardName = "Family Kill";
+            CardLoreFormat = "같은 방에 있는 동일한 유닛에게 _ 만큼의 데미지를 준다.";
+            CardStatus = new List<float>() { 50f };
+
+            CardActionName = "PlayerFamilyKillAction";
+
+            FrontSprite = ResourceManager.GetResource<Sprite>("Sprites/card_family_kill");
             BackSprite = ResourceManager.GetResource<Sprite>("Sprites/card_sample_back");
         }
     }

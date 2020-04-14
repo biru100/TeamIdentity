@@ -8,6 +8,8 @@ public enum CharacterNotifyType
 {
     E_None,
     E_Damage,
+    E_Invincibility,
+    E_Stun,
     E_Dead
 }
 
@@ -26,6 +28,8 @@ public class CharacterNotifyEvent
 [RequireComponent(typeof(NavMeshAgent))]
 public class Character : MonoBehaviour
 {
+    public RenderTransform RenderTrasform { get; protected set; }
+
     public Animator Anim { get; protected set; }
     public NavMeshAgent NavAgent { get; protected set; }
     public CharacterStatus Status { get; protected set; }
@@ -51,6 +55,7 @@ public class Character : MonoBehaviour
     protected virtual void Awake()
     {
         Status = new CharacterStatus(this);
+        RenderTrasform = GetComponentInChildren<RenderTransform>();
         Anim = GetComponentInChildren<Animator>();
         NavAgent = GetComponent<NavMeshAgent>();
         NotifyEventQueues = new List<CharacterNotifyEvent>[2] 
@@ -63,6 +68,7 @@ public class Character : MonoBehaviour
 
     protected virtual void Update()
     {
+        Status.UpdateStatus();
         CurrentAction?.UpdateAction();
         NotifyEventQueues[CurrentNotifyQueueIndex].Clear();
         CurrentNotifyQueueIndex = NextNotifyQueueIndex;
@@ -70,7 +76,7 @@ public class Character : MonoBehaviour
 
     public virtual void AddNotifyEvent(CharacterNotifyEvent notifyEvent)
     {
-        if(Status.UpdateStatus(notifyEvent));
+        if(Status.SendStatusNotify(notifyEvent))
             NotifyEventQueues[CurrentNotifyQueueIndex].Add(notifyEvent);
     }
 

@@ -9,11 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1733917069441335323}
-  - component: {fileID: 1863826237270208557}
   - component: {fileID: 5715847190844324880}
   - component: {fileID: 1670504127013103769}
+  - component: {fileID: 124362952535472307}
   m_Layer: 0
-  m_Name: Player
+  m_Name: WoodTotem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34,18 +34,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!114 &1863826237270208557
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1733917069441335322}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60d0e48c74002a144a44053b28785f7b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!136 &5715847190844324880
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -56,7 +44,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.2
+  m_Radius: 0.14
   m_Height: 0.4808326
   m_Direction: 1
   m_Center: {x: 0, y: 0.2404163, z: 0}
@@ -69,7 +57,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 1733917069441335322}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.2404163
+  m_Radius: 0.26
   m_Speed: 0.24
   m_Acceleration: 8
   avoidancePriority: 50
@@ -81,7 +69,19 @@ NavMeshAgent:
   m_Height: 0.4808326
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 1
+  m_ObstacleAvoidanceType: 0
+--- !u!114 &124362952535472307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1733917069441335322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15c273c984fc1654ca2ca4a89531b18c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3816121814293771836
 GameObject:
   m_ObjectHideFlags: 0
@@ -111,7 +111,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3816121814293771836}
   m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
-  m_LocalPosition: {x: 0, y: 0.2, z: 0}
+  m_LocalPosition: {x: 0, y: 0.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1733917069441335323}
@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86bed7d58ad6e044da0a5e75d8c369eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imageOffset: {x: 0, y: 0.2, z: 0}
+  imageOffset: {x: 0, y: 0.3, z: 0}
   rotation: {x: 0, y: 0, z: 0, w: 1}
   z_weight: 0
 --- !u!212 &2005298741044575556
@@ -171,7 +171,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -3746368943522104918, guid: 65e9025b1049a084490fea71028895e3,
+  m_Sprite: {fileID: 9096742133696665998, guid: da93a532c074c384399048f783894f9b,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -193,7 +193,7 @@ Animator:
   m_GameObject: {fileID: 3816121814293771836}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 66617bcdcf03b3041b315e6577b09682, type: 2}
+  m_Controller: {fileID: 9100000, guid: c3b90cc2b2a925e4e8531b5fc9c7004d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -214,7 +214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34768437faac7a646a710d2fc0e197b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Tag: Player
+  Tag: WoodTotem
 --- !u!114 &5529772523035914740
 MonoBehaviour:
   m_ObjectHideFlags: 0
