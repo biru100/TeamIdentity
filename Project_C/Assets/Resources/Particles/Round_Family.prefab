@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1733917069441335323}
   - component: {fileID: 1252845492595239132}
   m_Layer: 0
-  m_Name: Sliced_Family
+  m_Name: Round_Family
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -133,7 +133,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7641383439044874295, guid: ae3f23341cc3abd4796ba5c70ff5085c,
+  m_Sprite: {fileID: -2520104689267503865, guid: c849ef81baefe2b48a09b05734a45949,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -155,7 +155,7 @@ Animator:
   m_GameObject: {fileID: 3816121814293771836}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 9ccc68a98ab347a499c17641175cce93, type: 2}
+  m_Controller: {fileID: 9100000, guid: fdebf3915c69fea4584fde38dc742ca0, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -176,7 +176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34768437faac7a646a710d2fc0e197b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Tag: Sliced_Family
+  Tag: Round_Family
 --- !u!114 &5529772523035914740
 MonoBehaviour:
   m_ObjectHideFlags: 0

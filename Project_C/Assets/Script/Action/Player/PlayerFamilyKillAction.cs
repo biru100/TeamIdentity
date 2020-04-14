@@ -55,33 +55,23 @@ public class PlayerFamilyKillAction : CharacterAction
         targetCharacters.Sort((c1, c2) => (c1.transform.position - owner.transform.position).magnitude 
         < (c2.transform.position - owner.transform.position).magnitude ? -1 : 1);
 
-
-
         damage = PlayerUtil.CalculatingCardPowerValue(50f);
         Owner.AddNotifyEvent(new CharacterNotifyEvent(CharacterNotifyType.E_Invincibility, true));
     }
 
     public override void UpdateAction()
     {
-        base.UpdateAction();
-
         if (StateOrder == 0 && AnimUtil.IsLastFrame(Owner))
         {
             ReadyToAction();
-        }
-        else if(StateOrder == 1)
-        {
-            if (targetCharacters.Count == 0)
-                ReadyToFinish();
-            else
-            {
-                AttackCurrentTarget();
-            }
         }
         else if (StateOrder == 2 && AnimUtil.IsLastFrame(Owner))
         {
             Owner.CurrentAction = PlayerIdleAction.GetInstance();
         }
+
+        base.UpdateAction();
+
 
     }
 
@@ -96,11 +86,20 @@ public class PlayerFamilyKillAction : CharacterAction
     {
         StateOrder = 1;
         Owner.RenderTrasform.GetComponent<SpriteRenderer>().enabled = false;
+
+        if (targetCharacters.Count == 0)
+            ReadyToFinish();
+        else
+        {
+            AttackCurrentTarget();
+        }
+
     }
 
     public void GotoBehindPosition(Vector3 target, Vector3 player)
     {
-         Owner.NavAgent.Move(target - player + (target - player).normalized * Isometric.IsometricTileSize.x);
+        Owner.NavAgent.Move(target - player + (target - player).normalized * Isometric.IsometricTileSize.x * 0.5f);
+        Owner.transform.rotation = Quaternion.LookRotation((target - player).normalized);
     }
 
     public void ReadyToFinish()
@@ -112,7 +111,7 @@ public class PlayerFamilyKillAction : CharacterAction
 
     public void AttackCurrentTarget()
     {
-        Vector3 velocity = targetCharacters[currentTargetIndex].RenderTrasform.transform.position - Owner.RenderTrasform.transform.position;
+        Vector3 velocity = Owner.RenderTrasform.transform.position - targetCharacters[currentTargetIndex].RenderTrasform.transform.position;
         velocity.z = 0f;
         velocity.Normalize();
 
@@ -120,7 +119,7 @@ public class PlayerFamilyKillAction : CharacterAction
 
         float zAngle = Quaternion.FromToRotation(Vector3.right, velocity).eulerAngles.z;
 
-        IsoParticle.CreateParticle("Sliced_Family", targetCharacters[currentTargetIndex].transform.position, zAngle);
+        IsoParticle.CreateParticle("Sliced_Family", targetCharacters[currentTargetIndex].transform.position, zAngle, false , 0.3f);
         targetCharacters[currentTargetIndex].AddNotifyEvent(new CharacterNotifyEvent(CharacterNotifyType.E_Damage, damage));
         Owner.NavAgent.Move(targetCharacters[currentTargetIndex].transform.position - Owner.transform.position);
 
@@ -128,28 +127,29 @@ public class PlayerFamilyKillAction : CharacterAction
 
         if (currentTargetIndex < targetCharacters.Count - 1)
         {
-            TimelineEvents.Add(new TimeLineEvent(ElapsedTime + 0.3f, RotateNextTarget));
+            TimelineEvents.Add(new TimeLineEvent(ElapsedTime + 0.25f, RotateNextTarget));
         }
         else
         {
             nextAction = ()=> GotoBehindPosition(tPos, oPos);
             nextAction += ReadyToFinish;
-            TimelineEvents.Add(new TimeLineEvent(ElapsedTime + 0.3f, nextAction));
+            TimelineEvents.Add(new TimeLineEvent(ElapsedTime + 0.2f, nextAction));
         }
     }
 
     public void RotateNextTarget()
     {
-        Vector3 velocity = targetCharacters[currentTargetIndex + 1].RenderTrasform.transform.position - Owner.RenderTrasform.transform.position;
+        Vector3 velocity = Owner.RenderTrasform.transform.position - targetCharacters[currentTargetIndex + 1].RenderTrasform.transform.position;
 
         velocity.z = 0f;
         velocity.Normalize();
 
         float zAngle = Quaternion.FromToRotation(Vector3.right, velocity).eulerAngles.z;
 
-        IsoParticle.CreateParticle("Rotate_Family", Owner.transform.position, zAngle);
+        IsoParticle.CreateParticle("Round_Family", Owner.transform.position, 0f, false, 0.2f);
+        IsoParticle.CreateParticle("Rotate_Family", Owner.transform.position, zAngle, false, 0.1f);
 
-        TimelineEvents.Add(new TimeLineEvent(ElapsedTime + 0.12f, AttackCurrentTarget));
+        TimelineEvents.Add(new TimeLineEvent(ElapsedTime + 0.1f, AttackCurrentTarget));
         currentTargetIndex++;
     }
 }

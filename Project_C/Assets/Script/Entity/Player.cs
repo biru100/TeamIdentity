@@ -21,7 +21,7 @@ public class Player : Character
 
         for(int i = 0; i < 30; ++i)
         {
-            PlayerStatus.CurrentStatus.AddCard(new Card(Random.Range(0, 2)), true);
+            PlayerStatus.CurrentStatus.AddCard(new Card(Random.Range(0, 3)), true);
         }
     }
 
