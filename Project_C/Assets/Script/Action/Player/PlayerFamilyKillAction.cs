@@ -120,7 +120,7 @@ public class PlayerFamilyKillAction : CharacterAction
 
         float zAngle = Quaternion.FromToRotation(Vector3.right, velocity).eulerAngles.z;
 
-        IsoParticle.CreateParticle("Slice_Family", targetCharacters[currentTargetIndex].transform.position, zAngle);
+        IsoParticle.CreateParticle("Sliced_Family", targetCharacters[currentTargetIndex].transform.position, zAngle);
         targetCharacters[currentTargetIndex].AddNotifyEvent(new CharacterNotifyEvent(CharacterNotifyType.E_Damage, damage));
         Owner.NavAgent.Move(targetCharacters[currentTargetIndex].transform.position - Owner.transform.position);
 
