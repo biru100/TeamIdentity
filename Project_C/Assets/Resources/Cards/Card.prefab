@@ -159,7 +159,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7094684520077042733}
-  - component: {fileID: -3352051166599396971}
   - component: {fileID: 7859930492096941005}
   m_Layer: 5
   m_Name: Card
@@ -189,25 +188,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 194, y: 281}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!95 &-3352051166599396971
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7094684520077042732}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 9517ac7045d66e24887669a0dd45c757, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &7859930492096941005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -223,6 +203,7 @@ MonoBehaviour:
   _backSide: {fileID: 7094684519467483246}
   _frontSide: {fileID: 6950808000100548651}
   _cardLore: {fileID: 7838790361048134525}
+  _originCardSize: {x: 194, y: 281}
 --- !u!1 &8212703175483096462
 GameObject:
   m_ObjectHideFlags: 0

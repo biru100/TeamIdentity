@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using System;
 using System.Reflection;
 
@@ -64,59 +65,55 @@ public static class PlayerUtil
 
     public static void CardInterfaceLogicMacro()
     {
-        CardSlotType type;
-        if(GetCardKeyDown(out type))
-        {
-            if (!InGameInterface.IsShowCard)
-            {
-                PlayerStatus.CurrentStatus.ShowCard(type);
-            }
-            else if(InGameInterface.IsShowCard && InGameInterface.ShowSlot == type)
-            {
-                PlayerStatus.CurrentStatus.UseCard(type);
-            }
-        }
-        else if(InGameInterface.IsShowCard && Input.GetKeyDown(KeyCode.C))
-        {
-            PlayerStatus.CurrentStatus.HideCard(InGameInterface.ShowSlot);
-        }
+        //CardSlotType type;
+        //if(GetCardKeyDown(out type))
+        //{
+        //    if (!InGameInterface.IsShowCard)
+        //    {
+        //        PlayerStatus.CurrentStatus.ShowCard(type);
+        //    }
+        //    else if(InGameInterface.IsShowCard && InGameInterface.ShowSlot == type)
+        //    {
+        //        PlayerStatus.CurrentStatus.UseCard(type);
+        //    }
+        //}
+        //else if(InGameInterface.IsShowCard && Input.GetKeyDown(KeyCode.C))
+        //{
+        //    PlayerStatus.CurrentStatus.HideCard(InGameInterface.ShowSlot);
+        //}
     }
 
     public static bool GetCardKeyDown(out CardSlotType type)
     {
-        if(Input.GetKeyDown(KeyCode.A))
-        {
-            type = CardSlotType.E_A;
-            return true;
-        }
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            type = CardSlotType.E_S;
-            return true;
-        }
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            type = CardSlotType.E_D;
-            return true;
-        }
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            type = CardSlotType.E_F;
-            return true;
-        }
+        //if(Input.GetKeyDown(KeyCode.A))
+        //{
+        //    type = CardSlotType.E_A;
+        //    return true;
+        //}
+        //if (Input.GetKeyDown(KeyCode.S))
+        //{
+        //    type = CardSlotType.E_S;
+        //    return true;
+        //}
+        //if (Input.GetKeyDown(KeyCode.D))
+        //{
+        //    type = CardSlotType.E_D;
+        //    return true;
+        //}
+        //if (Input.GetKeyDown(KeyCode.F))
+        //{
+        //    type = CardSlotType.E_F;
+        //    return true;
+        //}
 
         type = CardSlotType.E_None;
         return false;
     }
 
-    public static bool GetCancelKeyDown()
-    {
-        return Input.GetKeyDown(KeyCode.C);
-    }
-
     public static bool GetAttackInput()
     {
-        return !PlayerStatus.CurrentStatus.IsStun && Input.GetKeyDown(KeyCode.X);
+        return !PlayerStatus.CurrentStatus.IsStun && Input.GetKeyDown(KeyCode.Mouse0) 
+            && !EventSystem.current.IsPointerOverGameObject();
     }
 
     public static bool GetDashInput()
@@ -128,22 +125,22 @@ public static class PlayerUtil
     {
         Vector3 velocity = Vector3.zero;
 
-        if (Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.W))
         {
             velocity += new Vector3(-1f, 0f, 1f);
         }
 
-        if (Input.GetKey(KeyCode.DownArrow))
+        if (Input.GetKey(KeyCode.S))
         {
             velocity += new Vector3(1f, 0f, -1f);
         }
 
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.D))
         {
             velocity += new Vector3(1f, 0f, 1f);
         }
 
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.A))
         {
             velocity += new Vector3(-1f, 0f, -1f);
         }
@@ -184,6 +181,9 @@ public static class AnimUtil
 
     public static bool IsLastFrame(Character owner)
     {
+        if (owner.Anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 1f)
+            return false;
+
         return ((owner.Anim.GetCurrentAnimatorStateInfo(0).normalizedTime)
             + Time.deltaTime / owner.Anim.GetCurrentAnimatorStateInfo(0).length) >= 0.99f;
     }

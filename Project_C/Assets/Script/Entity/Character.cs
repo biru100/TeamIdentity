@@ -10,7 +10,8 @@ public enum CharacterNotifyType
     E_Damage,
     E_Invincibility,
     E_Stun,
-    E_Dead
+    E_Dead,
+    E_ChangeAction
 }
 
 public class CharacterNotifyEvent

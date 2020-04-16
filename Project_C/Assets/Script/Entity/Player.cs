@@ -21,8 +21,13 @@ public class Player : Character
 
         for(int i = 0; i < 30; ++i)
         {
-            PlayerStatus.CurrentStatus.AddCard(new Card(Random.Range(0, 3)), true);
+            Deck.Instance.AddCard(new Card(Random.Range(0, 3)));
         }
+
+        InGameInterface.Instance.DrawCard();
+        InGameInterface.Instance.DrawCard();
+        InGameInterface.Instance.DrawCard();
+        InGameInterface.Instance.DrawCard();
     }
 
     protected void OnDestroy()

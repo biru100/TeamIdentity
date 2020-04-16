@@ -12,79 +12,17 @@ public class PlayerStatus : CharacterStatus
     public int BaseCardPowerSupport { get; set; }
     public int CardPowerSupport { get; set; }
 
-    protected List<Card> Deck { get; set; }
-    public Dictionary<CardSlotType, Card> SlotCard { get; set; }
-
     public PlayerStatus(Character owner) : base(owner)
     {
         Hp = 100000000000f;
         CurrentHp = 100000000000f;
 
         CurrentStatus = this;
-        Deck = new List<Card>();
-        SlotCard = new Dictionary<CardSlotType, Card>();
 
         BaseCardPowerScale = 1;
         BaseCardPowerSupport = 0;
         CardPowerScale = BaseCardPowerScale;
         CardPowerSupport = BaseCardPowerSupport;
-    }
-
-    public void AddCard(Card card, bool isDirectDraw = false)
-    {
-        Deck.Add(card);
-        InGameInterface.Instance.SetVisibleDeck(true);
-
-        if(isDirectDraw && SlotCard.Count < 4)
-        {
-            for(int i = 0; i < 4; ++i)
-            {
-                if (!SlotCard.ContainsKey((CardSlotType)i))
-                {
-                    DrawCard((CardSlotType)i);
-                    break;
-                }
-            }
-        }
-    }
-
-    public void DrawCard(CardSlotType newSlot)
-    {
-        if (Deck.Count == 0)
-            return;
-        SlotCard[newSlot] = Deck[0];
-        Deck.RemoveAt(0);
-        InGameInterface.Instance.DrawCard(SlotCard[newSlot], newSlot);
-        InGameInterface.Instance.SetVisibleDeck(Deck.Count == 0 ? false : true);
-    }
-
-    public bool UseCard(CardSlotType newSlot)
-    {
-        if (!SlotCard.ContainsKey(newSlot))
-            return false;
-
-        Card useCard = SlotCard[newSlot];
-        SlotCard.Remove(newSlot);
-        InGameInterface.Instance.UseCard(newSlot);
-        DrawCard(newSlot);
-        return true;
-    }
-
-    public bool ShowCard(CardSlotType newSlot)
-    {
-        if (!SlotCard.ContainsKey(newSlot))
-            return false;
-
-        InGameInterface.Instance.ShowCard(newSlot);
-        return true;
-    }
-
-    public void HideCard(CardSlotType newSlot)
-    {
-        if (!SlotCard.ContainsKey(newSlot))
-            return;
-
-        InGameInterface.Instance.HideCard(newSlot);
     }
 
     public override bool SendStatusNotify(CharacterNotifyEvent notify)

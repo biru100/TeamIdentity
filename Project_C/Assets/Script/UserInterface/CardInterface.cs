@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public enum CardSlotType
 {
     E_A, E_S, E_D, E_F, E_None
 }
 
-[RequireComponent(typeof(Animator))]
-public class CardInterface : MonoBehaviour
+public class CardInterface : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public static CardInterface CreateCard()
     {
@@ -21,10 +21,18 @@ public class CardInterface : MonoBehaviour
     [SerializeField]    protected Image _backSide;
     [SerializeField]    protected Image _frontSide;
     [SerializeField]    protected Text _cardLore;
+    [SerializeField]    protected Vector2 _originCardSize;
 
-    public Animator Anim { get; set; }
     public CardSlotType SlotType { get; set; }
-    public bool IsShow { get; set; }
+    public int HandIndex { get; set; }
+    public bool IsHover { get; set; }
+    public bool IsDrag { get; set; }
+    public bool IsUsing { get; set; }
+
+    Vector2 _destCardSize;
+    Vector2 _targetPosition;
+
+    Quaternion _destRotation;
 
     public Card CardData 
     {
@@ -43,74 +51,115 @@ public class CardInterface : MonoBehaviour
 
     private void Awake()
     {
-        Anim = GetComponent<Animator>();
         Material instanceMat = Instantiate(_frontSide.material);
         _frontSide.material = instanceMat;
         _backSide.material = instanceMat;
         _cardLore.material = instanceMat;
+
+        _destCardSize = _originCardSize;
+        _destRotation = Quaternion.identity;
     }
 
-    public void DrawAction()
+    private void Update()
     {
-        //draw_0,1,2,3
-        Anim?.Play("draw_" + (int)SlotType);
-    }
-
-    public void ShowAction()
-    {
-        if (!IsShow)
+        if (!IsUsing)
         {
-            _cardLore.text = CardData.GetLore();
-            Anim?.Play("show_" + (int)SlotType);
-            StopAllCoroutines();
-            StartCoroutine(ControlTimeScale(0.1f));
-            IsShow = true;
+            if(IsHover)
+                InGameInterface.Instance.MouseOverCard();
+
+            ((RectTransform)transform).sizeDelta = Vector3.Lerp(((RectTransform)transform).sizeDelta, _destCardSize,
+                3f * Time.unscaledDeltaTime);
+
+            if (!IsDrag)
+            {
+                _targetPosition = InGameInterface.Instance.GetCardLocationInHand(HandIndex);
+                _destRotation = Quaternion.identity;
+            }
+
+        ((RectTransform)transform).anchoredPosition = Vector2.Lerp(((RectTransform)transform).anchoredPosition, _targetPosition, 5f * Time.unscaledDeltaTime);
+            transform.rotation = Quaternion.Slerp(transform.rotation, _destRotation, 5f * Time.unscaledDeltaTime);
+            ((RectTransform)transform).sizeDelta = Vector3.Lerp(((RectTransform)transform).sizeDelta, _destCardSize, 3f * Time.unscaledDeltaTime);
         }
     }
 
-    public void HideAction()
+    public void OnBeginDrag(PointerEventData eventData)
     {
-        if (IsShow)
+        InGameInterface.Instance.IsCardDrag = true;
+        IsDrag = true;
+    }
+
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        InGameInterface.Instance.IsCardDrag = false;
+        IsDrag = false;
+
+        if(!RectTransformUtility.RectangleContainsScreenPoint(InGameInterface.Instance.HandField, Input.mousePosition))
         {
-            Anim?.Play("hide_" + (int)SlotType);
-            StopAllCoroutines();
-            StartCoroutine(ControlTimeScale(1f));
-            IsShow = false;
+            NodeUtil.ChangeAction(Player.CurrentPlayer, CardData.CardActionName);
+            StartCoroutine(DestroyCard());
+            IsUsing = true;
+            DisableEventSystem();
+            InGameInterface.Instance.UseCard(this);
         }
     }
 
-    public void UsedAction()
+    public void OnPointerEnter(PointerEventData eventData)
     {
-        if (IsShow)
-        { 
-            StopAllCoroutines();
-            StartCoroutine(FadeOutCard());
-        }
+        IsHover = true;
+
+        if (!IsDrag)
+            _destCardSize = _originCardSize * 1.5f;
+        else
+            _destCardSize = _originCardSize;
     }
 
-    IEnumerator ControlTimeScale(float targetTimeScale)
+    public void OnPointerExit(PointerEventData eventData)
     {
-        while(Mathf.Abs(Time.timeScale - targetTimeScale) > 0.005f)
+        IsHover = false;
+        _destCardSize = _originCardSize;
+    }
+
+    public void OnDrag(PointerEventData eventData)
+    {
+        Vector3 deltaVector3 = new Vector3(eventData.delta.x, eventData.delta.y);
+
+        _targetPosition += eventData.delta * 1f / transform.lossyScale ;
+
+        Quaternion velocityRotation = Quaternion.LookRotation(deltaVector3);
+
+        Vector3 rotationAxis = velocityRotation * Vector3.up;
+
+        _destRotation = Quaternion.AngleAxis(eventData.delta.magnitude * 5f, rotationAxis);
+    }
+
+    public void DisableEventSystem()
+    {
+        _frontSide.raycastTarget = false;
+        _backSide.raycastTarget = false;
+        _cardLore.raycastTarget = false;
+    }
+
+    public void EnableEventSystem()
+    {
+        _frontSide.raycastTarget = true;
+        _backSide.raycastTarget = true;
+        _cardLore.raycastTarget = true;
+    }
+
+    public void UpdateLore()
+    {
+        _cardLore.text = CardData.GetLore();
+    }
+
+    IEnumerator DestroyCard()
+    {
+        float elapsedTime = 0f;
+
+        while(elapsedTime < 1f)
         {
             yield return null;
-            Time.timeScale = Mathf.Lerp(Time.timeScale, targetTimeScale, 0.4f);
-            Anim.speed = 1f / Time.timeScale;
-        }
-        Time.timeScale = targetTimeScale;
-    }
-
-    IEnumerator FadeOutCard()
-    {
-        Time.timeScale = 1f;
-        Anim.speed = 1f;
-        float elapsedTime = 0.5f;
-        EntityUtil.ChangeAction(Player.CurrentPlayer, CardData.CardActionName);
-        while (elapsedTime > 0f)
-        {
-            yield return null;
-            elapsedTime = Mathf.Max(elapsedTime - Time.deltaTime, 0f);
-
-            _frontSide.material.SetFloat("_DissolveValue", Mathf.Pow(elapsedTime * 2f, 2f));
+            elapsedTime += Time.unscaledDeltaTime;
+            _frontSide.material.SetFloat("_DissolveValue", 1f - elapsedTime);
         }
 
         Destroy(gameObject);

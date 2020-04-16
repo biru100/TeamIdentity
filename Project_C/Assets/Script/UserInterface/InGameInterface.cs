@@ -3,66 +3,147 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+public class Deck
+{
+
+    protected static Deck _instance;
+
+    public static Deck Instance
+    {
+        get
+        {
+            if (_instance == null)
+                _instance = new Deck();
+            return _instance;
+        }
+    }
+
+    protected List<Card> DeckCards;
+
+    protected Deck()
+    {
+        DeckCards = new List<Card>();
+    }
+
+    public void AddCard(Card card)
+    {
+        if (DeckCards.Count == 0)
+            DeckCards.Add(card);
+        else
+        {
+            int inputIndex = Random.Range(0, DeckCards.Count);
+            Card temp = DeckCards[inputIndex];
+            DeckCards[inputIndex] = card;
+            DeckCards.Add(temp);
+        }
+    }
+
+    public void SetCard(List<Card> card)
+    {
+        Suffle(card);
+        DeckCards = card;
+    }
+
+    public bool DispenseOneCard(out Card card)
+    {
+        card = null;
+        if (DeckCards.Count != 0)
+        {
+            card = DeckCards[0];
+            DeckCards.RemoveAt(0);
+        }
+
+        return card != null;
+    }
+
+    void Suffle(List<Card> card)
+    {
+        for(int i = 0; i < 100; ++i)
+        {
+            int pre = Random.Range(0, card.Count), next = Random.Range(0, card.Count);
+            Card temp = card[pre];
+            card[pre] = card[next];
+            card[next] = temp;
+        }
+    }
+
+    public void Destroy()
+    {
+        _instance = null;
+    }
+}
+
 public class InGameInterface : UIBase<InGameInterface>
 {
-    protected Dictionary<CardSlotType, CardInterface> SlotCard;
+    protected List<CardInterface> HandCards;
 
     [SerializeField] protected GameObject _deckImg;
 
-    public static bool IsShowCard { get; set; }
-    public static CardSlotType ShowSlot { get; set; }
+    [SerializeField] protected RectTransform _handField;
+
+    public RectTransform HandField { get => _handField; set => _handField = value; }
+    public bool IsStart { get; set; }
+    public bool IsMouseOver { get; set; }
+    public bool IsCardDrag { get; set; }
 
     protected override void Awake()
     {
         base.Awake();
-        SlotCard = new Dictionary<CardSlotType, CardInterface>();
-        IsShowCard = false;
-        ShowSlot = CardSlotType.E_None;
+        HandCards = new List<CardInterface>();
+    }
+
+    private void Update()
+    {
+        Time.timeScale = Mathf.Lerp(Time.timeScale, IsMouseOver || IsCardDrag ? 0.05f : 1f, 0.05f);
+        IsMouseOver = false;
+    }
+
+    public void DrawCard()
+    {
+        if (Deck.Instance.DispenseOneCard(out Card dispencedCard))
+        {
+            CardInterface ci = CardInterface.CreateCard();
+            ci.CardData = dispencedCard;
+            
+            if(HandCards.Count == 10)
+            {
+                //draw burnCard ani
+                Destroy(ci.gameObject);
+            }
+            else
+            {
+                HandCards.Add(ci);
+                ci.HandIndex = HandCards.Count - 1;
+                //draw card ani
+            }
+        }
+    }
+
+    public void UseCard(CardInterface card)
+    {
+        HandCards.Remove(card);
+        for(int i = 0; i < HandCards.Count; ++i)
+        {
+            HandCards[i].UpdateLore();
+            HandCards[i].HandIndex = i;
+        }
+    }
+
+    public Vector3 GetCardLocationInHand(int index)
+    {
+        float half = (HandCards.Count - 1) * 0.5f;
+
+        return new Vector3((index - half) * 250f, -380f, 0f);
     }
     
-    public void SetVisibleDeck(bool isVisible)
+    public void MouseOverCard()
     {
-        _deckImg.SetActive(isVisible);
+        IsMouseOver = true;
     }
 
-    public void DrawCard(Card card, CardSlotType slot)
+    protected override void OnDestroy()
     {
-        CardInterface ci = CardInterface.CreateCard();
-        ci.CardData = card;
-        ci.SlotType = slot;
-        ci.DrawAction();
-        SlotCard[slot] = ci;
-    }
-
-    public void ShowCard(CardSlotType slot)
-    {
-        if (!IsShowCard && SlotCard.ContainsKey(slot))
-        {
-            ShowSlot = slot;
-            IsShowCard = true;
-            SlotCard[slot].ShowAction();
-        }
-    }
-
-    public void HideCard(CardSlotType slot)
-    {
-        if (IsShowCard && SlotCard.ContainsKey(slot))
-        {
-            ShowSlot = CardSlotType.E_None;
-            IsShowCard = false;
-            SlotCard[slot].HideAction();
-        }
-    }
-
-    public void UseCard(CardSlotType slot)
-    {
-        if (IsShowCard && ShowSlot == slot)
-        {
-            CardInterface ci = SlotCard[slot];
-            ci.UsedAction();
-            SlotCard.Remove(slot);
-            IsShowCard = false;
-            ShowSlot = CardSlotType.E_None;
-        }
+        base.OnDestroy();
+        Deck.Instance.Destroy();
     }
 }
