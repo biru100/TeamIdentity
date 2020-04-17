@@ -138,7 +138,7 @@ public class InGameInterface : UIBase<InGameInterface>
     
     public void MouseOverCard()
     {
-        IsMouseOver = true;
+        //IsMouseOver = true;
     }
 
     protected override void OnDestroy()

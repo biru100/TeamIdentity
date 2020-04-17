@@ -18,7 +18,7 @@ public class TimeLineEvent
     }
 }
 
-
+[Serializable]
 public abstract class CharacterAction
 {
     public Character Owner { get; protected set; }

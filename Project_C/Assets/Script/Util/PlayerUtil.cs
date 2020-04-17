@@ -181,7 +181,7 @@ public static class AnimUtil
 
     public static bool IsLastFrame(Character owner)
     {
-        if (owner.Anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 1f)
+        if (owner.Anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 2f)
             return false;
 
         return ((owner.Anim.GetCurrentAnimatorStateInfo(0).normalizedTime)

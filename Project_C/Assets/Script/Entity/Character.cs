@@ -39,7 +39,7 @@ public class Character : MonoBehaviour
     protected int NextNotifyQueueIndex { get => _currentNotifyQueueIndex; }
 
     protected int _currentNotifyQueueIndex;
-    protected CharacterAction _currentAction;
+    [SerializeField] protected CharacterAction _currentAction;
 
 
     public CharacterAction CurrentAction {

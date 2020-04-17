@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -43,7 +42,7 @@ public class TilePreviewElement : MonoBehaviour
         if (tilePreviewSprite != null)
             Destroy(tilePreviewSprite);
 
-        tilePreviewSprite = Sprite.Create(AssetPreview.GetAssetPreview(_tile), new Rect(Vector2.zero, Vector2.one * 100f), Vector2.one * 0.5f, 100f);
+        tilePreviewSprite = _tile.GetComponentInChildren<SpriteRenderer>().sprite;//Sprite.Create(AssetPreview.GetAssetPreview(_tile), new Rect(Vector2.zero, Vector2.one * 100f), Vector2.one * 0.5f, 100f);
         tilePreview.sprite = tilePreviewSprite;
 
         tileName.text = _tile.name;

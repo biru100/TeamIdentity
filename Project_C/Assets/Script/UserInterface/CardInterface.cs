@@ -155,11 +155,11 @@ public class CardInterface : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     {
         float elapsedTime = 0f;
 
-        while(elapsedTime < 1f)
+        while(elapsedTime < 0.5f)
         {
             yield return null;
             elapsedTime += Time.unscaledDeltaTime;
-            _frontSide.material.SetFloat("_DissolveValue", 1f - elapsedTime);
+            _frontSide.material.SetFloat("_DissolveValue", 1f - elapsedTime * 2f);
         }
 
         Destroy(gameObject);
