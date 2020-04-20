@@ -58,6 +58,7 @@ GameObject:
   - component: {fileID: 4161580864594127159}
   - component: {fileID: 6318100383045352182}
   - component: {fileID: 8659442397728919051}
+  - component: {fileID: 2636269502340303156}
   m_Layer: 0
   m_Name: img
   m_TagString: Untagged
@@ -97,7 +98,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: fb1d6a8d42d9eed4ebf486bb65acc682, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -142,6 +143,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   imageOffset: {x: 0.17, y: 0.315, z: 0}
+  rotation: {x: 0, y: 0, z: 0, w: 1}
   z_weight: 0
 --- !u!114 &6318100383045352182
 MonoBehaviour:
@@ -170,3 +172,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   guideSize: {x: 1, y: 1, z: 1}
   visible: 1
+--- !u!114 &2636269502340303156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3207232222329823915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e09456f176cd1b340bf0a01905cef67b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

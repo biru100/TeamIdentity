@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class IsoParticle : MonoBehaviour
 {
+    public static int _zFightingOffset = 0;
+    public static int _zFightingPoolLenght = 100;
+
     public static IsoParticle CreateParticle(string particleName, Vector3 position, float zAngle, bool isAnimLifeTime = true, float lifeTime = 1f)
     {
         GameObject particle = ResourceManager.GetResource<GameObject>("Particles/" + particleName);
@@ -16,7 +19,9 @@ public class IsoParticle : MonoBehaviour
         IsoParticle iparticle = Instantiate(particle, position, Quaternion.identity).GetComponent<IsoParticle>();
         iparticle.Angle = zAngle;
         iparticle.LifeTime = lifeTime;
+        iparticle.RenderChild.z_weight += _zFightingOffset * 0.001f;
         iparticle.RenderChild.TranslateIsometricToWorldCoordination();
+        _zFightingOffset = (_zFightingOffset + 1) % _zFightingPoolLenght;
         return iparticle;
     }
 

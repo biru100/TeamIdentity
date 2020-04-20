@@ -58,6 +58,7 @@ GameObject:
   - component: {fileID: 6318100383045352182}
   - component: {fileID: 8659442397728919051}
   - component: {fileID: 8656008949316816142}
+  - component: {fileID: 6364279857411223177}
   m_Layer: 0
   m_Name: img
   m_TagString: Untagged
@@ -73,7 +74,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3207232222329823915}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.02404163}
+  m_LocalPosition: {x: 0, y: 0.4175, z: 0.19233304}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 645318466934733753}
@@ -97,7 +98,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: fb1d6a8d42d9eed4ebf486bb65acc682, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -142,9 +143,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86bed7d58ad6e044da0a5e75d8c369eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imageOffset: {x: 0, y: 0, z: 0}
+  imageOffset: {x: 0, y: 0.4175, z: 0}
   rotation: {x: 0, y: 0, z: 0, w: 1}
-  z_weight: 0.1
+  z_weight: 0.8
 --- !u!114 &6318100383045352182
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,3 +192,15 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &6364279857411223177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3207232222329823915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e09456f176cd1b340bf0a01905cef67b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

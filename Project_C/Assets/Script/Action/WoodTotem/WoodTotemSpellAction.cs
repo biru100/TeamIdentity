@@ -15,7 +15,7 @@ public class WoodTotemSpellAction : CharacterAction
     public override void StartAction(Character owner)
     {
         base.StartAction(owner);
-        highlight = IsoParticle.CreateParticle("HighLight", Player.CurrentPlayer.transform.position, 0f, false, 4f) as IsoHighLight;
+        highlight = IsoParticle.CreateParticle("HighLight", Player.CurrentPlayer.transform.position + Vector3.down * Isometric.IsometricGridSize, 0f, false, 4f) as IsoHighLight;
         highlight.IsMove = true;
         highlight.Target = Player.CurrentPlayer.transform;
         highlight.AfterHighLightLogic += CalculateStun;

@@ -26,7 +26,7 @@ public class IsoHighLight : IsoParticle
 
         if (IsMove && Target != null)
         {
-            transform.position += (Target.position - transform.position).normalized * 1f * Isometric.IsometricTileSize.x * Time.deltaTime;
+            transform.position += ((Target.position + Vector3.down * Isometric.IsometricGridSize) - transform.position).normalized * 1f * Isometric.IsometricGridSize * Time.deltaTime;
         }
     }
 }

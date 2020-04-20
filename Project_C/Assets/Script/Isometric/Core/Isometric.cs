@@ -22,6 +22,8 @@ public class Isometric
         set => instance.isometricRenderSize = value;
     }
 
+    public static float IsometricGridSize { get => instance.isometricTileSize.x; }
+
     private static Isometric _instance = null;
 
     public static Isometric instance
@@ -49,6 +51,22 @@ public class Isometric
 
         Quaternion isoToWorld = q1 * q;
         Quaternion worldToIso = Quaternion.Inverse(isoToWorld);
+        q = worldToIso;
+
+        Matrix4x4 mat = new Matrix4x4();
+
+        mat[0, 0] = 1 - 2 * (q.y * q.y + q.z * q.z);
+        mat[1, 0] = 2 * (q.x * q.y - q.z * q.w);
+        mat[2, 0] = 2 * (q.x * q.z + q.y * q.w);
+        mat[0, 1] = 2 * (q.x * q.y + q.z * q.w);
+        mat[1, 1] = 1 - 2 * (q.x * q.x + q.z * q.z);
+        mat[2, 1] = 2 * (q.y * q.z - q.x * q.w);
+        mat[0, 2] = 2 * (q.x * q.z - q.y * q.w);
+        mat[1, 2] = 2 * (q.y * q.z + q.x * q.w);
+        mat[2, 2] = 1 - 2 * (q.x * q.x + q.y * q.y);
+        mat[3, 0] = mat[3, 1] = mat[3, 2] = mat[0, 3] = mat[1, 3] = mat[2, 3] = 0;
+        mat[3, 3] = 1;
+
 
         File.WriteAllText(Application.dataPath + "/Resources/Config/IsometricToWorld.txt", isoToWorld.x + "\t" +
             isoToWorld.y + "\t" +
@@ -59,6 +77,8 @@ public class Isometric
             worldToIso.y + "\t" +
             worldToIso.z + "\t" +
             worldToIso.w);
+
+        File.WriteAllText(Application.dataPath + "/Resources/Config/IsometricToWorldMatrix.txt", mat.ToString());
 
         UpdateConfig();
     }

@@ -12,13 +12,14 @@ public class RenderTransform : MonoBehaviour
 
     private void Update()
     {
-        TranslateIsometricToWorldCoordination();
+        if(!Application.isPlaying)
+            TranslateIsometricToWorldCoordination();
     }
 
-    //private void LateUpdate()
-    //{
-    //    TranslateIsometricToWorldCoordination();
-    //}
+    private void LateUpdate()
+    {
+        TranslateIsometricToWorldCoordination();
+    }
 
     public void TranslateIsometricToWorldCoordination()
     {
