@@ -11,14 +11,14 @@ public class PlayerPowerAttackAction : CharacterAction
         base.StartAction(owner);
         AnimUtil.PlayAnim(owner, "power_atk");
         TimelineEvents.Add(new TimeLineEvent(0.22f, SendDamage));
+        Owner.AddState(new CharacterSuperArmorState(Owner).Init());
     }
 
     public override void UpdateAction()
     {
         base.UpdateAction();
-        PlayerUtil.CardInterfaceLogicMacro();
 
-        if (EntityUtil.DeadLogicMacro(Owner, "PlayerDeadAction"))
+        if (EntityUtil.StateActionMacro(Owner))
         {
             return;
         }
@@ -29,13 +29,13 @@ public class PlayerPowerAttackAction : CharacterAction
         {
             Owner.CurrentAction = PlayerIdleAction.GetInstance();
             return;
-
         }
     }
 
     public override void FinishAction()
     {
         base.FinishAction();
+        Owner.DeleteState(CharacterStateType.E_SuperArmor);
     }
 
     public void SendDamage()
@@ -55,7 +55,7 @@ public class PlayerPowerAttackAction : CharacterAction
             if ((Owner.transform.position - e.transform.position).magnitude <= Isometric.IsometricTileSize.x * 1.8f &&
                 angle < 80f)
             {
-                e.AddNotifyEvent(new CharacterNotifyEvent(CharacterNotifyType.E_Damage, damage));
+                e.AddState(new CharacterHitState(e, damage, 0.1f).Init());
                 IsoParticle.CreateParticle("Sliced_Power1", e.transform.position
                     + new Vector3(0f, Isometric.IsometricTileSize.y * 0.5f, 0f),
                     angle);

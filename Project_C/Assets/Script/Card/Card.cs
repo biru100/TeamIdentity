@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Text;
 
+public enum CardTargetType
+{
+    E_NonTarget, E_Target, E_Range
+}
+
 public class Card
 {
     public string CardName { get; protected set; }
@@ -16,6 +21,8 @@ public class Card
     public Sprite FrontSprite { get; protected set; }
     public Sprite BackSprite { get; protected set; }
 
+    public CardTargetType TargetType { get; protected set; }
+
     public Card(int i)
     {
         if (i == 0)
@@ -28,6 +35,7 @@ public class Card
 
             FrontSprite = ResourceManager.GetResource<Sprite>("Sprites/card_power_atk");
             BackSprite = ResourceManager.GetResource<Sprite>("Sprites/card_sample_back");
+            TargetType = CardTargetType.E_NonTarget;
         }
         else if (i == 1)
         {
@@ -39,6 +47,7 @@ public class Card
 
             FrontSprite = ResourceManager.GetResource<Sprite>("Sprites/card_atk_up");
             BackSprite = ResourceManager.GetResource<Sprite>("Sprites/card_sample_back");
+            TargetType = CardTargetType.E_NonTarget;
         }
         else if (i == 2)
         {
@@ -50,6 +59,7 @@ public class Card
 
             FrontSprite = ResourceManager.GetResource<Sprite>("Sprites/card_family_kill");
             BackSprite = ResourceManager.GetResource<Sprite>("Sprites/card_sample_back");
+            TargetType = CardTargetType.E_Target;
         }
     }
 

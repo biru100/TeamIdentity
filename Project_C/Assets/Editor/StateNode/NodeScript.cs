@@ -121,6 +121,8 @@ namespace StateBehavior.Node
         public static string DrawBool(NodePointData data)
         {
             GUILayout.Label(data.parameterName, NodeGUIResources.styles.inputPort, GUILayout.Height(20));
+            if (data.cachedValue == null)
+                data.cachedValue = "False";
             return EditorGUILayout.Toggle(bool.Parse(data.cachedValue), GUILayout.Width(20), GUILayout.Height(20)).ToString();
         }
     }

@@ -14,16 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   userName: CSlime
   stateName: Attack
-  dataJson: '{"nodeDatas":[{"GUID":"75e42c7f-73cc-4748-b336-480a944126de","rect":{"serializedVersion":"2","x":0.0,"y":-7.0,"width":180.0,"height":60.0},"methodName":"Start","returnType":"Character","nodeType":5,"points":["67ddf35e-4d9f-4361-8478-ebb068228907","9c96b3db-1a24-46e5-b27f-c0dda91cb3d5"]},{"GUID":"7b067d3b-c6da-4d65-8412-9a517f82f77e","rect":{"serializedVersion":"2","x":1.0,"y":183.0,"width":180.0,"height":60.0},"methodName":"Update","returnType":"Character","nodeType":5,"points":["e4708966-207c-40a7-8d7c-c6fbfa83cad1","15fbe6f5-cb81-4a8e-b48a-dca45a6ee649"]},{"GUID":"5adf3281-07a4-470b-8238-862917c9d160","rect":{"serializedVersion":"2","x":328.0,"y":187.0,"width":180.0,"height":100.0},"methodName":"IF","returnType":"True
-    Logic, False Logic","nodeType":3,"points":["be07e76b-7b92-4390-879b-435f2cdd9790","48552297-3851-4e19-b67d-c83587792704","b5a40a26-8e94-470d-8dd6-9b421a631143","95aa9a9a-9fe0-4276-b05a-40c6cc9b9624"]},{"GUID":"bc0e587b-ca0d-4fb8-bd32-4b26e31d981f","rect":{"serializedVersion":"2","x":700.0,"y":218.0,"width":180.0,"height":100.0},"methodName":"IF","returnType":"True
-    Logic, False Logic","nodeType":3,"points":["fd3e55a9-12db-46f6-972f-3c1b9fb32883","38da913f-cac1-4161-8aa7-6b734c1ed419","bfad273e-910c-4f78-abd8-44724ecbcd95","a5faf51f-e348-49f9-9716-7a5a41703a95"]},{"GUID":"51a4da1e-4c04-4907-b097-df04a1312e87","rect":{"serializedVersion":"2","x":13.0,"y":572.0,"width":180.0,"height":100.0},"methodName":"TimeLine","returnType":"Character","nodeType":6,"points":["83034e1d-8e87-4b12-ad39-d66eb6571655","01a35f4f-e11f-4b22-b726-01ec0243a4d8","06796b24-5abe-42b7-aaeb-3154f9c7d32b"]}],"nodeFuncDatas":[{"GUID":"cb68ff15-11cd-4cf6-9f85-40b07b3d3e44","rect":{"serializedVersion":"2","x":291.0,"y":-5.0,"width":180.0,"height":140.0},"methodName":"PlayAnim","returnType":"Void","nodeType":0,"points":["a23f8277-93ab-45d0-96e2-f39026089444","2bb3effd-bd34-4ac1-957e-31ab0d00ddd6","e71e3fc1-343b-4beb-81d9-f6b5b00abb90","e166c06c-8091-4d0c-8f8e-dc1f690801a5"],"funcClassType":"NodeUtil"},{"GUID":"40fa23c6-2f83-4ee5-b0d8-0e6ecd07089d","rect":{"serializedVersion":"2","x":155.0,"y":316.0,"width":180.0,"height":180.0},"methodName":"HitDeadLogicMacro","returnType":"Boolean","nodeType":1,"points":["001c9422-83a0-479e-8fdb-92ea37a2b7b7","edb18448-dc1b-49cf-9d34-ca176a89e61a","4b1a6c39-2032-40db-aa5d-4621e3e5fbf1","5d7bffcc-ba11-4758-94b2-a62108762945"],"funcClassType":"NodeUtil"},{"GUID":"80e1cfe4-a40f-4895-8656-70bf1480816c","rect":{"serializedVersion":"2","x":501.0,"y":328.0,"width":180.0,"height":100.0},"methodName":"IsLastFrame","returnType":"Boolean","nodeType":1,"points":["5afde552-4686-4ace-ab26-afc86f0783d2","239ce138-ef46-4b6b-ad18-0194131bad55"],"funcClassType":"NodeUtil"},{"GUID":"4520c9e8-fa57-4884-98a4-10c9fe0a959e","rect":{"serializedVersion":"2","x":344.0,"y":569.0,"width":180.0,"height":100.0},"methodName":"TakeDamageToPlayer","returnType":"Void","nodeType":0,"points":["85e29da7-9331-4ef6-b3be-dd1066716072","191bbbe1-a69c-421d-b2db-75babcf99fed","49a1f2a4-9f17-4793-8499-a902b9bdb570"],"funcClassType":"NodeUtil"},{"GUID":"be1a9000-b81d-4104-8090-962a4f0fda64","rect":{"serializedVersion":"2","x":974.0,"y":338.0,"width":180.0,"height":140.0},"methodName":"ChangeAction","returnType":"Void","nodeType":0,"points":["abd8c48a-3ce1-4dbc-b531-e743e6b91dd6","6200028a-8a89-4ca3-b687-5ac62f8378d0","9cdadaa9-02b8-4257-8ad6-24df610bac2a","cf35c2af-9893-4904-b7cf-4adb92ed8e3a"],"funcClassType":"NodeUtil"}],"nodePointDatas":[{"GUID":"abd8c48a-3ce1-4dbc-b531-e743e6b91dd6","rect":{"serializedVersion":"2","x":967.0,"y":345.5,"width":15.0,"height":15.0},"index":0,"nodeGUID":"be1a9000-b81d-4104-8090-962a4f0fda64","pointType":0,"parameterType":"System.Void","parameterName":"Logic","cachedValue":"","connections":["ef44a04c-d977-499d-83da-943463c606d3"]},{"GUID":"49a1f2a4-9f17-4793-8499-a902b9bdb570","rect":{"serializedVersion":"2","x":337.0,"y":616.5,"width":15.0,"height":15.0},"index":1,"nodeGUID":"4520c9e8-fa57-4884-98a4-10c9fe0a959e","pointType":1,"parameterType":"System.Single","parameterName":"damage","cachedValue":"10","connections":[]},{"GUID":"83034e1d-8e87-4b12-ad39-d66eb6571655","rect":{"serializedVersion":"2","x":185.0,"y":579.5,"width":15.0,"height":15.0},"index":0,"nodeGUID":"51a4da1e-4c04-4907-b097-df04a1312e87","pointType":2,"parameterType":"System.Void","parameterName":"Logic","cachedValue":"null","connections":["c532c1b9-820a-46c3-8562-e43e8ff9c052"]},{"GUID":"fd3e55a9-12db-46f6-972f-3c1b9fb32883","rect":{"serializedVersion":"2","x":693.0,"y":225.5,"width":15.0,"height":15.0},"index":0,"nodeGUID":"bc0e587b-ca0d-4fb8-bd32-4b26e31d981f","pointType":0,"parameterType":"System.Void","parameterName":"Logic","cachedValue":"","connections":["7f93a5ba-5555-4329-b691-04659ddd74a8"]},{"GUID":"a23f8277-93ab-45d0-96e2-f39026089444","rect":{"serializedVersion":"2","x":284.0,"y":2.5,"width":15.0,"height":15.0},"index":0,"nodeGUID":"cb68ff15-11cd-4cf6-9f85-40b07b3d3e44","pointType":0,"parameterType":"System.Void","parameterName":"Logic","cachedValue":"","connections":["df031004-2fd5-4639-a969-f24c8b2c32ae"]},{"GUID":"9c96b3db-1a24-46e5-b27f-c0dda91cb3d5","rect":{"serializedVersion":"2","x":172.0,"y":40.5,"width":15.0,"height":15.0},"index":1,"nodeGUID":"75e42c7f-73cc-4748-b336-480a944126de","pointType":3,"parameterType":"Character","parameterName":"Owner","cachedValue":"null","connections":["a3075c8a-116c-4408-a5f7-2ba7662bfaa5"]},{"GUID":"67ddf35e-4d9f-4361-8478-ebb068228907","rect":{"serializedVersion":"2","x":172.0,"y":0.5,"width":15.0,"height":15.0},"index":0,"nodeGUID":"75e42c7f-73cc-4748-b336-480a944126de","pointType":2,"parameterType":"System.Void","parameterName":"Logic","cachedValue":"null","connections":["df031004-2fd5-4639-a969-f24c8b2c32ae"]},{"GUID":"e166c06c-8091-4d0c-8f8e-dc1f690801a5","rect":{"serializedVersion":"2","x":284.0,"y":82.5,"width":15.0,"height":15.0},"index":2,"nodeGUID":"cb68ff15-11cd-4cf6-9f85-40b07b3d3e44","pointType":1,"parameterType":"System.String","parameterName":"animationName","cachedValue":"idle","connections":[]},{"GUID":"e71e3fc1-343b-4beb-81d9-f6b5b00abb90","rect":{"serializedVersion":"2","x":284.0,"y":42.5,"width":15.0,"height":15.0},"index":1,"nodeGUID":"cb68ff15-11cd-4cf6-9f85-40b07b3d3e44","pointType":1,"parameterType":"Character","parameterName":"owner","cachedValue":"","connections":["a3075c8a-116c-4408-a5f7-2ba7662bfaa5"]},{"GUID":"2bb3effd-bd34-4ac1-957e-31ab0d00ddd6","rect":{"serializedVersion":"2","x":463.0,"y":2.5,"width":15.0,"height":15.0},"index":0,"nodeGUID":"cb68ff15-11cd-4cf6-9f85-40b07b3d3e44","pointType":2,"parameterType":"System.Void","parameterName":"Logic","cachedValue":"null","connections":[]},{"GUID":"e4708966-207c-40a7-8d7c-c6fbfa83cad1","rect":{"serializedVersion":"2","x":173.0,"y":190.5,"width":15.0,"height":15.0},"index":0,"nodeGUID":"7b067d3b-c6da-4d65-8412-9a517f82f77e","pointType":2,"parameterType":"System.Void","parameterName":"Logic","cachedValue":"null","connections":["54d90e71-7300-44f0-a73b-4dae886b5d9f"]},{"GUID":"15fbe6f5-cb81-4a8e-b48a-dca45a6ee649","rect":{"serializedVersion":"2","x":173.0,"y":230.5,"width":15.0,"height":15.0},"index":1,"nodeGUID":"7b067d3b-c6da-4d65-8412-9a517f82f77e","pointType":3,"parameterType":"Character","parameterName":"Owner","cachedValue":"null","connections":["91a8fef0-f9ba-4047-8666-6d5d7dda9685","a5437a67-57f1-4dee-a450-6b80abb88184","34db999b-b82b-40ad-9a5b-b94d62880b65"]},{"GUID":"be07e76b-7b92-4390-879b-435f2cdd9790","rect":{"serializedVersion":"2","x":321.0,"y":194.5,"width":15.0,"height":15.0},"index":0,"nodeGUID":"5adf3281-07a4-470b-8238-862917c9d160","pointType":0,"parameterType":"System.Void","parameterName":"Logic","cachedValue":"","connections":["54d90e71-7300-44f0-a73b-4dae886b5d9f"]},{"GUID":"48552297-3851-4e19-b67d-c83587792704","rect":{"serializedVersion":"2","x":321.0,"y":234.5,"width":15.0,"height":15.0},"index":1,"nodeGUID":"5adf3281-07a4-470b-8238-862917c9d160","pointType":1,"parameterType":"System.Boolean","parameterName":"Condition","cachedValue":"","connections":["50aeb315-902c-46ab-ae03-778eb23803b7"]},{"GUID":"b5a40a26-8e94-470d-8dd6-9b421a631143","rect":{"serializedVersion":"2","x":500.0,"y":194.5,"width":15.0,"height":15.0},"index":0,"nodeGUID":"5adf3281-07a4-470b-8238-862917c9d160","pointType":2,"parameterType":"System.Void","parameterName":"Logic","cachedValue":"null","connections":[]},{"GUID":"95aa9a9a-9fe0-4276-b05a-40c6cc9b9624","rect":{"serializedVersion":"2","x":500.0,"y":234.5,"width":15.0,"height":15.0},"index":1,"nodeGUID":"5adf3281-07a4-470b-8238-862917c9d160","pointType":2,"parameterType":"System.Void","parameterName":"Logic","cachedValue":"null","connections":["7f93a5ba-5555-4329-b691-04659ddd74a8"]},{"GUID":"001c9422-83a0-479e-8fdb-92ea37a2b7b7","rect":{"serializedVersion":"2","x":327.0,"y":363.5,"width":15.0,"height":15.0},"index":1,"nodeGUID":"40fa23c6-2f83-4ee5-b0d8-0e6ecd07089d","pointType":3,"parameterType":"System.Boolean","parameterName":"","cachedValue":"False","connections":["50aeb315-902c-46ab-ae03-778eb23803b7"]},{"GUID":"edb18448-dc1b-49cf-9d34-ca176a89e61a","rect":{"serializedVersion":"2","x":148.0,"y":363.5,"width":15.0,"height":15.0},"index":1,"nodeGUID":"40fa23c6-2f83-4ee5-b0d8-0e6ecd07089d","pointType":1,"parameterType":"Character","parameterName":"owner","cachedValue":"","connections":["91a8fef0-f9ba-4047-8666-6d5d7dda9685"]},{"GUID":"4b1a6c39-2032-40db-aa5d-4621e3e5fbf1","rect":{"serializedVersion":"2","x":148.0,"y":403.5,"width":15.0,"height":15.0},"index":2,"nodeGUID":"40fa23c6-2f83-4ee5-b0d8-0e6ecd07089d","pointType":1,"parameterType":"System.String","parameterName":"hitActionName","cachedValue":"CSlimeHitAction","connections":[]},{"GUID":"5d7bffcc-ba11-4758-94b2-a62108762945","rect":{"serializedVersion":"2","x":148.0,"y":443.5,"width":15.0,"height":15.0},"index":3,"nodeGUID":"40fa23c6-2f83-4ee5-b0d8-0e6ecd07089d","pointType":1,"parameterType":"System.String","parameterName":"deadActionName","cachedValue":"CSlimeDeadAction","connections":[]},{"GUID":"cf35c2af-9893-4904-b7cf-4adb92ed8e3a","rect":{"serializedVersion":"2","x":967.0,"y":425.5,"width":15.0,"height":15.0},"index":2,"nodeGUID":"be1a9000-b81d-4104-8090-962a4f0fda64","pointType":1,"parameterType":"System.String","parameterName":"actionName","cachedValue":"CSlimeIdleAction","connections":[]},{"GUID":"9cdadaa9-02b8-4257-8ad6-24df610bac2a","rect":{"serializedVersion":"2","x":967.0,"y":385.5,"width":15.0,"height":15.0},"index":1,"nodeGUID":"be1a9000-b81d-4104-8090-962a4f0fda64","pointType":1,"parameterType":"Character","parameterName":"owner","cachedValue":"","connections":["34db999b-b82b-40ad-9a5b-b94d62880b65"]},{"GUID":"6200028a-8a89-4ca3-b687-5ac62f8378d0","rect":{"serializedVersion":"2","x":1146.0,"y":345.5,"width":15.0,"height":15.0},"index":0,"nodeGUID":"be1a9000-b81d-4104-8090-962a4f0fda64","pointType":2,"parameterType":"System.Void","parameterName":"Logic","cachedValue":"null","connections":[]},{"GUID":"239ce138-ef46-4b6b-ad18-0194131bad55","rect":{"serializedVersion":"2","x":494.0,"y":375.5,"width":15.0,"height":15.0},"index":1,"nodeGUID":"80e1cfe4-a40f-4895-8656-70bf1480816c","pointType":1,"parameterType":"Character","parameterName":"owner","cachedValue":"","connections":["a5437a67-57f1-4dee-a450-6b80abb88184"]},{"GUID":"5afde552-4686-4ace-ab26-afc86f0783d2","rect":{"serializedVersion":"2","x":673.0,"y":375.5,"width":15.0,"height":15.0},"index":1,"nodeGUID":"80e1cfe4-a40f-4895-8656-70bf1480816c","pointType":3,"parameterType":"System.Boolean","parameterName":"","cachedValue":"False","connections":["1bc66987-d283-4b01-a91b-501fd01150a8"]},{"GUID":"06796b24-5abe-42b7-aaeb-3154f9c7d32b","rect":{"serializedVersion":"2","x":6.0,"y":619.5,"width":15.0,"height":15.0},"index":1,"nodeGUID":"51a4da1e-4c04-4907-b097-df04a1312e87","pointType":1,"parameterType":"System.Single","parameterName":"Time","cachedValue":"0.7","connections":[]},{"GUID":"01a35f4f-e11f-4b22-b726-01ec0243a4d8","rect":{"serializedVersion":"2","x":185.0,"y":619.5,"width":15.0,"height":15.0},"index":1,"nodeGUID":"51a4da1e-4c04-4907-b097-df04a1312e87","pointType":3,"parameterType":"Character","parameterName":"Owner","cachedValue":"null","connections":[]},{"GUID":"a5faf51f-e348-49f9-9716-7a5a41703a95","rect":{"serializedVersion":"2","x":872.0,"y":265.5,"width":15.0,"height":15.0},"index":1,"nodeGUID":"bc0e587b-ca0d-4fb8-bd32-4b26e31d981f","pointType":2,"parameterType":"System.Void","parameterName":"Logic","cachedValue":"null","connections":[]},{"GUID":"bfad273e-910c-4f78-abd8-44724ecbcd95","rect":{"serializedVersion":"2","x":872.0,"y":225.5,"width":15.0,"height":15.0},"index":0,"nodeGUID":"bc0e587b-ca0d-4fb8-bd32-4b26e31d981f","pointType":2,"parameterType":"System.Void","parameterName":"Logic","cachedValue":"null","connections":["ef44a04c-d977-499d-83da-943463c606d3"]},{"GUID":"38da913f-cac1-4161-8aa7-6b734c1ed419","rect":{"serializedVersion":"2","x":693.0,"y":265.5,"width":15.0,"height":15.0},"index":1,"nodeGUID":"bc0e587b-ca0d-4fb8-bd32-4b26e31d981f","pointType":1,"parameterType":"System.Boolean","parameterName":"Condition","cachedValue":"","connections":["1bc66987-d283-4b01-a91b-501fd01150a8"]},{"GUID":"191bbbe1-a69c-421d-b2db-75babcf99fed","rect":{"serializedVersion":"2","x":516.0,"y":576.5,"width":15.0,"height":15.0},"index":0,"nodeGUID":"4520c9e8-fa57-4884-98a4-10c9fe0a959e","pointType":2,"parameterType":"System.Void","parameterName":"Logic","cachedValue":"null","connections":[]},{"GUID":"85e29da7-9331-4ef6-b3be-dd1066716072","rect":{"serializedVersion":"2","x":337.0,"y":576.5,"width":15.0,"height":15.0},"index":0,"nodeGUID":"4520c9e8-fa57-4884-98a4-10c9fe0a959e","pointType":0,"parameterType":"System.Void","parameterName":"Logic","cachedValue":"","connections":["c532c1b9-820a-46c3-8562-e43e8ff9c052"]}],"nodeConnectionDatas":[{"GUID":"ef44a04c-d977-499d-83da-943463c606d3","inGUID":"abd8c48a-3ce1-4dbc-b531-e743e6b91dd6","outGUID":"bfad273e-910c-4f78-abd8-44724ecbcd95"},{"GUID":"a5437a67-57f1-4dee-a450-6b80abb88184","inGUID":"239ce138-ef46-4b6b-ad18-0194131bad55","outGUID":"15fbe6f5-cb81-4a8e-b48a-dca45a6ee649"},{"GUID":"c532c1b9-820a-46c3-8562-e43e8ff9c052","inGUID":"85e29da7-9331-4ef6-b3be-dd1066716072","outGUID":"83034e1d-8e87-4b12-ad39-d66eb6571655"},{"GUID":"7f93a5ba-5555-4329-b691-04659ddd74a8","inGUID":"fd3e55a9-12db-46f6-972f-3c1b9fb32883","outGUID":"95aa9a9a-9fe0-4276-b05a-40c6cc9b9624"},{"GUID":"a3075c8a-116c-4408-a5f7-2ba7662bfaa5","inGUID":"e71e3fc1-343b-4beb-81d9-f6b5b00abb90","outGUID":"9c96b3db-1a24-46e5-b27f-c0dda91cb3d5"},{"GUID":"df031004-2fd5-4639-a969-f24c8b2c32ae","inGUID":"a23f8277-93ab-45d0-96e2-f39026089444","outGUID":"67ddf35e-4d9f-4361-8478-ebb068228907"},{"GUID":"54d90e71-7300-44f0-a73b-4dae886b5d9f","inGUID":"be07e76b-7b92-4390-879b-435f2cdd9790","outGUID":"e4708966-207c-40a7-8d7c-c6fbfa83cad1"},{"GUID":"91a8fef0-f9ba-4047-8666-6d5d7dda9685","inGUID":"edb18448-dc1b-49cf-9d34-ca176a89e61a","outGUID":"15fbe6f5-cb81-4a8e-b48a-dca45a6ee649"},{"GUID":"50aeb315-902c-46ab-ae03-778eb23803b7","inGUID":"48552297-3851-4e19-b67d-c83587792704","outGUID":"001c9422-83a0-479e-8fdb-92ea37a2b7b7"},{"GUID":"34db999b-b82b-40ad-9a5b-b94d62880b65","inGUID":"9cdadaa9-02b8-4257-8ad6-24df610bac2a","outGUID":"15fbe6f5-cb81-4a8e-b48a-dca45a6ee649"},{"GUID":"1bc66987-d283-4b01-a91b-501fd01150a8","inGUID":"38da913f-cac1-4161-8aa7-6b734c1ed419","outGUID":"5afde552-4686-4ace-ab26-afc86f0783d2"}]}'
+  dataJson: '{"nodeDatas":[{"GUID":"75e42c7f-73cc-4748-b336-480a944126de","rect":{"serializedVersion":"2","x":181.0,"y":-61.0,"width":180.0,"height":60.0},"methodName":"Start","returnType":"Character","nodeType":5,"points":["67ddf35e-4d9f-4361-8478-ebb068228907","9c96b3db-1a24-46e5-b27f-c0dda91cb3d5"]},{"GUID":"7b067d3b-c6da-4d65-8412-9a517f82f77e","rect":{"serializedVersion":"2","x":182.0,"y":129.0,"width":180.0,"height":60.0},"methodName":"Update","returnType":"Character","nodeType":5,"points":["e4708966-207c-40a7-8d7c-c6fbfa83cad1","15fbe6f5-cb81-4a8e-b48a-dca45a6ee649"]},{"GUID":"5adf3281-07a4-470b-8238-862917c9d160","rect":{"serializedVersion":"2","x":509.0,"y":133.0,"width":180.0,"height":100.0},"methodName":"IF","returnType":"True
+    Logic, False Logic","nodeType":3,"points":["be07e76b-7b92-4390-879b-435f2cdd9790","48552297-3851-4e19-b67d-c83587792704","b5a40a26-8e94-470d-8dd6-9b421a631143","95aa9a9a-9fe0-4276-b05a-40c6cc9b9624"]},{"GUID":"bc0e587b-ca0d-4fb8-bd32-4b26e31d981f","rect":{"serializedVersion":"2","x":881.0,"y":164.0,"width":180.0,"height":100.0},"methodName":"IF","returnType":"True
+    Logic, False Logic","nodeType":3,"points":["fd3e55a9-12db-46f6-972f-3c1b9fb32883","38da913f-cac1-4161-8aa7-6b734c1ed419","bfad273e-910c-4f78-abd8-44724ecbcd95","a5faf51f-e348-49f9-9716-7a5a41703a95"]},{"GUID":"51a4da1e-4c04-4907-b097-df04a1312e87","rect":{"serializedVersion":"2","x":194.0,"y":518.0,"width":180.0,"height":100.0},"methodName":"TimeLine","returnType":"Character","nodeType":6,"points":["83034e1d-8e87-4b12-ad39-d66eb6571655","01a35f4f-e11f-4b22-b726-01ec0243a4d8","06796b24-5abe-42b7-aaeb-3154f9c7d32b"]}],"nodeFuncDatas":[{"GUID":"cb68ff15-11cd-4cf6-9f85-40b07b3d3e44","rect":{"serializedVersion":"2","x":472.0,"y":-59.0,"width":180.0,"height":140.0},"methodName":"PlayAnim","returnType":"Void","nodeType":0,"points":["a23f8277-93ab-45d0-96e2-f39026089444","2bb3effd-bd34-4ac1-957e-31ab0d00ddd6","e71e3fc1-343b-4beb-81d9-f6b5b00abb90","e166c06c-8091-4d0c-8f8e-dc1f690801a5"],"funcClassType":"NodeUtil"},{"GUID":"3bf0884f-02d3-4d12-ba53-6bd18cc099c9","rect":{"serializedVersion":"2","x":350.0,"y":264.0,"width":180.0,"height":100.0},"methodName":"StateActionMacro","returnType":"Boolean","nodeType":1,"points":["d33d9545-192c-400b-a9ff-ce748eaea0d5","77b744a5-5b35-4b5c-9303-1336509a0489"],"funcClassType":"NodeUtil"},{"GUID":"80e1cfe4-a40f-4895-8656-70bf1480816c","rect":{"serializedVersion":"2","x":682.0,"y":274.0,"width":180.0,"height":100.0},"methodName":"IsLastFrame","returnType":"Boolean","nodeType":1,"points":["5afde552-4686-4ace-ab26-afc86f0783d2","239ce138-ef46-4b6b-ad18-0194131bad55"],"funcClassType":"NodeUtil"},{"GUID":"4520c9e8-fa57-4884-98a4-10c9fe0a959e","rect":{"serializedVersion":"2","x":525.0,"y":515.0,"width":180.0,"height":100.0},"methodName":"TakeDamageToPlayer","returnType":"Void","nodeType":0,"points":["85e29da7-9331-4ef6-b3be-dd1066716072","191bbbe1-a69c-421d-b2db-75babcf99fed","49a1f2a4-9f17-4793-8499-a902b9bdb570"],"funcClassType":"NodeUtil"},{"GUID":"be1a9000-b81d-4104-8090-962a4f0fda64","rect":{"serializedVersion":"2","x":1155.0,"y":284.0,"width":180.0,"height":140.0},"methodName":"ChangeAction","returnType":"Void","nodeType":0,"points":["abd8c48a-3ce1-4dbc-b531-e743e6b91dd6","6200028a-8a89-4ca3-b687-5ac62f8378d0","9cdadaa9-02b8-4257-8ad6-24df610bac2a","cf35c2af-9893-4904-b7cf-4adb92ed8e3a"],"funcClassType":"NodeUtil"}],"nodePointDatas":[{"GUID":"abd8c48a-3ce1-4dbc-b531-e743e6b91dd6","rect":{"serializedVersion":"2","x":1148.0,"y":291.5,"width":15.0,"height":15.0},"index":0,"nodeGUID":"be1a9000-b81d-4104-8090-962a4f0fda64","pointType":0,"parameterType":"System.Void","parameterName":"Logic","cachedValue":"","connections":["ef44a04c-d977-499d-83da-943463c606d3"]},{"GUID":"49a1f2a4-9f17-4793-8499-a902b9bdb570","rect":{"serializedVersion":"2","x":518.0,"y":562.5,"width":15.0,"height":15.0},"index":1,"nodeGUID":"4520c9e8-fa57-4884-98a4-10c9fe0a959e","pointType":1,"parameterType":"System.Single","parameterName":"damage","cachedValue":"10","connections":[]},{"GUID":"83034e1d-8e87-4b12-ad39-d66eb6571655","rect":{"serializedVersion":"2","x":366.0,"y":525.5,"width":15.0,"height":15.0},"index":0,"nodeGUID":"51a4da1e-4c04-4907-b097-df04a1312e87","pointType":2,"parameterType":"System.Void","parameterName":"Logic","cachedValue":"null","connections":["c532c1b9-820a-46c3-8562-e43e8ff9c052"]},{"GUID":"fd3e55a9-12db-46f6-972f-3c1b9fb32883","rect":{"serializedVersion":"2","x":874.0,"y":171.5,"width":15.0,"height":15.0},"index":0,"nodeGUID":"bc0e587b-ca0d-4fb8-bd32-4b26e31d981f","pointType":0,"parameterType":"System.Void","parameterName":"Logic","cachedValue":"","connections":["7f93a5ba-5555-4329-b691-04659ddd74a8"]},{"GUID":"a23f8277-93ab-45d0-96e2-f39026089444","rect":{"serializedVersion":"2","x":465.0,"y":-51.5,"width":15.0,"height":15.0},"index":0,"nodeGUID":"cb68ff15-11cd-4cf6-9f85-40b07b3d3e44","pointType":0,"parameterType":"System.Void","parameterName":"Logic","cachedValue":"","connections":["df031004-2fd5-4639-a969-f24c8b2c32ae"]},{"GUID":"9c96b3db-1a24-46e5-b27f-c0dda91cb3d5","rect":{"serializedVersion":"2","x":353.0,"y":-13.5,"width":15.0,"height":15.0},"index":1,"nodeGUID":"75e42c7f-73cc-4748-b336-480a944126de","pointType":3,"parameterType":"Character","parameterName":"Owner","cachedValue":"null","connections":["a3075c8a-116c-4408-a5f7-2ba7662bfaa5"]},{"GUID":"67ddf35e-4d9f-4361-8478-ebb068228907","rect":{"serializedVersion":"2","x":353.0,"y":-53.5,"width":15.0,"height":15.0},"index":0,"nodeGUID":"75e42c7f-73cc-4748-b336-480a944126de","pointType":2,"parameterType":"System.Void","parameterName":"Logic","cachedValue":"null","connections":["df031004-2fd5-4639-a969-f24c8b2c32ae"]},{"GUID":"e166c06c-8091-4d0c-8f8e-dc1f690801a5","rect":{"serializedVersion":"2","x":465.0,"y":28.5,"width":15.0,"height":15.0},"index":2,"nodeGUID":"cb68ff15-11cd-4cf6-9f85-40b07b3d3e44","pointType":1,"parameterType":"System.String","parameterName":"animationName","cachedValue":"idle","connections":[]},{"GUID":"e71e3fc1-343b-4beb-81d9-f6b5b00abb90","rect":{"serializedVersion":"2","x":465.0,"y":-11.5,"width":15.0,"height":15.0},"index":1,"nodeGUID":"cb68ff15-11cd-4cf6-9f85-40b07b3d3e44","pointType":1,"parameterType":"Character","parameterName":"owner","cachedValue":"","connections":["a3075c8a-116c-4408-a5f7-2ba7662bfaa5"]},{"GUID":"2bb3effd-bd34-4ac1-957e-31ab0d00ddd6","rect":{"serializedVersion":"2","x":644.0,"y":-51.5,"width":15.0,"height":15.0},"index":0,"nodeGUID":"cb68ff15-11cd-4cf6-9f85-40b07b3d3e44","pointType":2,"parameterType":"System.Void","parameterName":"Logic","cachedValue":"null","connections":[]},{"GUID":"e4708966-207c-40a7-8d7c-c6fbfa83cad1","rect":{"serializedVersion":"2","x":354.0,"y":136.5,"width":15.0,"height":15.0},"index":0,"nodeGUID":"7b067d3b-c6da-4d65-8412-9a517f82f77e","pointType":2,"parameterType":"System.Void","parameterName":"Logic","cachedValue":"null","connections":["54d90e71-7300-44f0-a73b-4dae886b5d9f"]},{"GUID":"15fbe6f5-cb81-4a8e-b48a-dca45a6ee649","rect":{"serializedVersion":"2","x":354.0,"y":176.5,"width":15.0,"height":15.0},"index":1,"nodeGUID":"7b067d3b-c6da-4d65-8412-9a517f82f77e","pointType":3,"parameterType":"Character","parameterName":"Owner","cachedValue":"null","connections":["a5437a67-57f1-4dee-a450-6b80abb88184","34db999b-b82b-40ad-9a5b-b94d62880b65","03866ce6-2937-4616-b358-05cd6f17c629"]},{"GUID":"be07e76b-7b92-4390-879b-435f2cdd9790","rect":{"serializedVersion":"2","x":502.0,"y":140.5,"width":15.0,"height":15.0},"index":0,"nodeGUID":"5adf3281-07a4-470b-8238-862917c9d160","pointType":0,"parameterType":"System.Void","parameterName":"Logic","cachedValue":"","connections":["54d90e71-7300-44f0-a73b-4dae886b5d9f"]},{"GUID":"48552297-3851-4e19-b67d-c83587792704","rect":{"serializedVersion":"2","x":502.0,"y":180.5,"width":15.0,"height":15.0},"index":1,"nodeGUID":"5adf3281-07a4-470b-8238-862917c9d160","pointType":1,"parameterType":"System.Boolean","parameterName":"Condition","cachedValue":"","connections":["cb46d806-c607-4ca6-aceb-f064e6d58f0c"]},{"GUID":"b5a40a26-8e94-470d-8dd6-9b421a631143","rect":{"serializedVersion":"2","x":681.0,"y":140.5,"width":15.0,"height":15.0},"index":0,"nodeGUID":"5adf3281-07a4-470b-8238-862917c9d160","pointType":2,"parameterType":"System.Void","parameterName":"Logic","cachedValue":"null","connections":[]},{"GUID":"95aa9a9a-9fe0-4276-b05a-40c6cc9b9624","rect":{"serializedVersion":"2","x":681.0,"y":180.5,"width":15.0,"height":15.0},"index":1,"nodeGUID":"5adf3281-07a4-470b-8238-862917c9d160","pointType":2,"parameterType":"System.Void","parameterName":"Logic","cachedValue":"null","connections":["7f93a5ba-5555-4329-b691-04659ddd74a8"]},{"GUID":"77b744a5-5b35-4b5c-9303-1336509a0489","rect":{"serializedVersion":"2","x":343.0,"y":311.5,"width":15.0,"height":15.0},"index":1,"nodeGUID":"3bf0884f-02d3-4d12-ba53-6bd18cc099c9","pointType":1,"parameterType":"Character","parameterName":"owner","cachedValue":"","connections":["03866ce6-2937-4616-b358-05cd6f17c629"]},{"GUID":"d33d9545-192c-400b-a9ff-ce748eaea0d5","rect":{"serializedVersion":"2","x":522.0,"y":311.5,"width":15.0,"height":15.0},"index":1,"nodeGUID":"3bf0884f-02d3-4d12-ba53-6bd18cc099c9","pointType":3,"parameterType":"System.Boolean","parameterName":"","cachedValue":"False","connections":["cb46d806-c607-4ca6-aceb-f064e6d58f0c"]},{"GUID":"cf35c2af-9893-4904-b7cf-4adb92ed8e3a","rect":{"serializedVersion":"2","x":1148.0,"y":371.5,"width":15.0,"height":15.0},"index":2,"nodeGUID":"be1a9000-b81d-4104-8090-962a4f0fda64","pointType":1,"parameterType":"System.String","parameterName":"actionName","cachedValue":"CSlimeIdleAction","connections":[]},{"GUID":"9cdadaa9-02b8-4257-8ad6-24df610bac2a","rect":{"serializedVersion":"2","x":1148.0,"y":331.5,"width":15.0,"height":15.0},"index":1,"nodeGUID":"be1a9000-b81d-4104-8090-962a4f0fda64","pointType":1,"parameterType":"Character","parameterName":"owner","cachedValue":"","connections":["34db999b-b82b-40ad-9a5b-b94d62880b65"]},{"GUID":"6200028a-8a89-4ca3-b687-5ac62f8378d0","rect":{"serializedVersion":"2","x":1327.0,"y":291.5,"width":15.0,"height":15.0},"index":0,"nodeGUID":"be1a9000-b81d-4104-8090-962a4f0fda64","pointType":2,"parameterType":"System.Void","parameterName":"Logic","cachedValue":"null","connections":[]},{"GUID":"239ce138-ef46-4b6b-ad18-0194131bad55","rect":{"serializedVersion":"2","x":675.0,"y":321.5,"width":15.0,"height":15.0},"index":1,"nodeGUID":"80e1cfe4-a40f-4895-8656-70bf1480816c","pointType":1,"parameterType":"Character","parameterName":"owner","cachedValue":"","connections":["a5437a67-57f1-4dee-a450-6b80abb88184"]},{"GUID":"5afde552-4686-4ace-ab26-afc86f0783d2","rect":{"serializedVersion":"2","x":854.0,"y":321.5,"width":15.0,"height":15.0},"index":1,"nodeGUID":"80e1cfe4-a40f-4895-8656-70bf1480816c","pointType":3,"parameterType":"System.Boolean","parameterName":"","cachedValue":"False","connections":["1bc66987-d283-4b01-a91b-501fd01150a8"]},{"GUID":"06796b24-5abe-42b7-aaeb-3154f9c7d32b","rect":{"serializedVersion":"2","x":187.0,"y":565.5,"width":15.0,"height":15.0},"index":1,"nodeGUID":"51a4da1e-4c04-4907-b097-df04a1312e87","pointType":1,"parameterType":"System.Single","parameterName":"Time","cachedValue":"0.7","connections":[]},{"GUID":"01a35f4f-e11f-4b22-b726-01ec0243a4d8","rect":{"serializedVersion":"2","x":366.0,"y":565.5,"width":15.0,"height":15.0},"index":1,"nodeGUID":"51a4da1e-4c04-4907-b097-df04a1312e87","pointType":3,"parameterType":"Character","parameterName":"Owner","cachedValue":"null","connections":[]},{"GUID":"a5faf51f-e348-49f9-9716-7a5a41703a95","rect":{"serializedVersion":"2","x":1053.0,"y":211.5,"width":15.0,"height":15.0},"index":1,"nodeGUID":"bc0e587b-ca0d-4fb8-bd32-4b26e31d981f","pointType":2,"parameterType":"System.Void","parameterName":"Logic","cachedValue":"null","connections":[]},{"GUID":"bfad273e-910c-4f78-abd8-44724ecbcd95","rect":{"serializedVersion":"2","x":1053.0,"y":171.5,"width":15.0,"height":15.0},"index":0,"nodeGUID":"bc0e587b-ca0d-4fb8-bd32-4b26e31d981f","pointType":2,"parameterType":"System.Void","parameterName":"Logic","cachedValue":"null","connections":["ef44a04c-d977-499d-83da-943463c606d3"]},{"GUID":"38da913f-cac1-4161-8aa7-6b734c1ed419","rect":{"serializedVersion":"2","x":874.0,"y":211.5,"width":15.0,"height":15.0},"index":1,"nodeGUID":"bc0e587b-ca0d-4fb8-bd32-4b26e31d981f","pointType":1,"parameterType":"System.Boolean","parameterName":"Condition","cachedValue":"","connections":["1bc66987-d283-4b01-a91b-501fd01150a8"]},{"GUID":"191bbbe1-a69c-421d-b2db-75babcf99fed","rect":{"serializedVersion":"2","x":697.0,"y":522.5,"width":15.0,"height":15.0},"index":0,"nodeGUID":"4520c9e8-fa57-4884-98a4-10c9fe0a959e","pointType":2,"parameterType":"System.Void","parameterName":"Logic","cachedValue":"null","connections":[]},{"GUID":"85e29da7-9331-4ef6-b3be-dd1066716072","rect":{"serializedVersion":"2","x":518.0,"y":522.5,"width":15.0,"height":15.0},"index":0,"nodeGUID":"4520c9e8-fa57-4884-98a4-10c9fe0a959e","pointType":0,"parameterType":"System.Void","parameterName":"Logic","cachedValue":"","connections":["c532c1b9-820a-46c3-8562-e43e8ff9c052"]}],"nodeConnectionDatas":[{"GUID":"cb46d806-c607-4ca6-aceb-f064e6d58f0c","inGUID":"48552297-3851-4e19-b67d-c83587792704","outGUID":"d33d9545-192c-400b-a9ff-ce748eaea0d5"},{"GUID":"03866ce6-2937-4616-b358-05cd6f17c629","inGUID":"77b744a5-5b35-4b5c-9303-1336509a0489","outGUID":"15fbe6f5-cb81-4a8e-b48a-dca45a6ee649"},{"GUID":"ef44a04c-d977-499d-83da-943463c606d3","inGUID":"abd8c48a-3ce1-4dbc-b531-e743e6b91dd6","outGUID":"bfad273e-910c-4f78-abd8-44724ecbcd95"},{"GUID":"a5437a67-57f1-4dee-a450-6b80abb88184","inGUID":"239ce138-ef46-4b6b-ad18-0194131bad55","outGUID":"15fbe6f5-cb81-4a8e-b48a-dca45a6ee649"},{"GUID":"c532c1b9-820a-46c3-8562-e43e8ff9c052","inGUID":"85e29da7-9331-4ef6-b3be-dd1066716072","outGUID":"83034e1d-8e87-4b12-ad39-d66eb6571655"},{"GUID":"7f93a5ba-5555-4329-b691-04659ddd74a8","inGUID":"fd3e55a9-12db-46f6-972f-3c1b9fb32883","outGUID":"95aa9a9a-9fe0-4276-b05a-40c6cc9b9624"},{"GUID":"a3075c8a-116c-4408-a5f7-2ba7662bfaa5","inGUID":"e71e3fc1-343b-4beb-81d9-f6b5b00abb90","outGUID":"9c96b3db-1a24-46e5-b27f-c0dda91cb3d5"},{"GUID":"df031004-2fd5-4639-a969-f24c8b2c32ae","inGUID":"a23f8277-93ab-45d0-96e2-f39026089444","outGUID":"67ddf35e-4d9f-4361-8478-ebb068228907"},{"GUID":"54d90e71-7300-44f0-a73b-4dae886b5d9f","inGUID":"be07e76b-7b92-4390-879b-435f2cdd9790","outGUID":"e4708966-207c-40a7-8d7c-c6fbfa83cad1"},{"GUID":"34db999b-b82b-40ad-9a5b-b94d62880b65","inGUID":"9cdadaa9-02b8-4257-8ad6-24df610bac2a","outGUID":"15fbe6f5-cb81-4a8e-b48a-dca45a6ee649"},{"GUID":"1bc66987-d283-4b01-a91b-501fd01150a8","inGUID":"38da913f-cac1-4161-8aa7-6b734c1ed419","outGUID":"5afde552-4686-4ace-ab26-afc86f0783d2"}]}'
   serializableNodeData:
     nodeDatas:
     - GUID: 75e42c7f-73cc-4748-b336-480a944126de
       rect:
         serializedVersion: 2
-        x: 38
-        y: -223
+        x: 181
+        y: -61
         width: 180
         height: 60
       methodName: Start
@@ -35,8 +35,8 @@ MonoBehaviour:
     - GUID: 7b067d3b-c6da-4d65-8412-9a517f82f77e
       rect:
         serializedVersion: 2
-        x: 39
-        y: -33
+        x: 182
+        y: 129
         width: 180
         height: 60
       methodName: Update
@@ -48,8 +48,8 @@ MonoBehaviour:
     - GUID: 5adf3281-07a4-470b-8238-862917c9d160
       rect:
         serializedVersion: 2
-        x: 366
-        y: -29
+        x: 509
+        y: 133
         width: 180
         height: 100
       methodName: IF
@@ -63,8 +63,8 @@ MonoBehaviour:
     - GUID: bc0e587b-ca0d-4fb8-bd32-4b26e31d981f
       rect:
         serializedVersion: 2
-        x: 738
-        y: 2
+        x: 881
+        y: 164
         width: 180
         height: 100
       methodName: IF
@@ -78,8 +78,8 @@ MonoBehaviour:
     - GUID: 51a4da1e-4c04-4907-b097-df04a1312e87
       rect:
         serializedVersion: 2
-        x: 51
-        y: 356
+        x: 194
+        y: 518
         width: 180
         height: 100
       methodName: TimeLine
@@ -93,8 +93,8 @@ MonoBehaviour:
     - GUID: cb68ff15-11cd-4cf6-9f85-40b07b3d3e44
       rect:
         serializedVersion: 2
-        x: 329
-        y: -221
+        x: 472
+        y: -59
         width: 180
         height: 140
       methodName: PlayAnim
@@ -106,27 +106,25 @@ MonoBehaviour:
       - e71e3fc1-343b-4beb-81d9-f6b5b00abb90
       - e166c06c-8091-4d0c-8f8e-dc1f690801a5
       funcClassType: NodeUtil
-    - GUID: 40fa23c6-2f83-4ee5-b0d8-0e6ecd07089d
+    - GUID: 3bf0884f-02d3-4d12-ba53-6bd18cc099c9
       rect:
         serializedVersion: 2
-        x: 193
-        y: 100
+        x: 350
+        y: 264
         width: 180
-        height: 180
-      methodName: HitDeadLogicMacro
+        height: 100
+      methodName: StateActionMacro
       returnType: Boolean
       nodeType: 1
       points:
-      - 001c9422-83a0-479e-8fdb-92ea37a2b7b7
-      - edb18448-dc1b-49cf-9d34-ca176a89e61a
-      - 4b1a6c39-2032-40db-aa5d-4621e3e5fbf1
-      - 5d7bffcc-ba11-4758-94b2-a62108762945
+      - d33d9545-192c-400b-a9ff-ce748eaea0d5
+      - 77b744a5-5b35-4b5c-9303-1336509a0489
       funcClassType: NodeUtil
     - GUID: 80e1cfe4-a40f-4895-8656-70bf1480816c
       rect:
         serializedVersion: 2
-        x: 539
-        y: 112
+        x: 682
+        y: 274
         width: 180
         height: 100
       methodName: IsLastFrame
@@ -139,8 +137,8 @@ MonoBehaviour:
     - GUID: 4520c9e8-fa57-4884-98a4-10c9fe0a959e
       rect:
         serializedVersion: 2
-        x: 382
-        y: 353
+        x: 525
+        y: 515
         width: 180
         height: 100
       methodName: TakeDamageToPlayer
@@ -154,8 +152,8 @@ MonoBehaviour:
     - GUID: be1a9000-b81d-4104-8090-962a4f0fda64
       rect:
         serializedVersion: 2
-        x: 1012
-        y: 122
+        x: 1155
+        y: 284
         width: 180
         height: 140
       methodName: ChangeAction
@@ -171,8 +169,8 @@ MonoBehaviour:
     - GUID: abd8c48a-3ce1-4dbc-b531-e743e6b91dd6
       rect:
         serializedVersion: 2
-        x: 1005
-        y: 129.5
+        x: 1148
+        y: 291.5
         width: 15
         height: 15
       index: 0
@@ -186,8 +184,8 @@ MonoBehaviour:
     - GUID: 49a1f2a4-9f17-4793-8499-a902b9bdb570
       rect:
         serializedVersion: 2
-        x: 375
-        y: 400.5
+        x: 518
+        y: 562.5
         width: 15
         height: 15
       index: 1
@@ -200,8 +198,8 @@ MonoBehaviour:
     - GUID: 83034e1d-8e87-4b12-ad39-d66eb6571655
       rect:
         serializedVersion: 2
-        x: 223
-        y: 363.5
+        x: 366
+        y: 525.5
         width: 15
         height: 15
       index: 0
@@ -215,8 +213,8 @@ MonoBehaviour:
     - GUID: fd3e55a9-12db-46f6-972f-3c1b9fb32883
       rect:
         serializedVersion: 2
-        x: 731
-        y: 9.5
+        x: 874
+        y: 171.5
         width: 15
         height: 15
       index: 0
@@ -230,8 +228,8 @@ MonoBehaviour:
     - GUID: a23f8277-93ab-45d0-96e2-f39026089444
       rect:
         serializedVersion: 2
-        x: 322
-        y: -213.5
+        x: 465
+        y: -51.5
         width: 15
         height: 15
       index: 0
@@ -245,8 +243,8 @@ MonoBehaviour:
     - GUID: 9c96b3db-1a24-46e5-b27f-c0dda91cb3d5
       rect:
         serializedVersion: 2
-        x: 210
-        y: -175.5
+        x: 353
+        y: -13.5
         width: 15
         height: 15
       index: 1
@@ -260,8 +258,8 @@ MonoBehaviour:
     - GUID: 67ddf35e-4d9f-4361-8478-ebb068228907
       rect:
         serializedVersion: 2
-        x: 210
-        y: -215.5
+        x: 353
+        y: -53.5
         width: 15
         height: 15
       index: 0
@@ -275,8 +273,8 @@ MonoBehaviour:
     - GUID: e166c06c-8091-4d0c-8f8e-dc1f690801a5
       rect:
         serializedVersion: 2
-        x: 322
-        y: -133.5
+        x: 465
+        y: 28.5
         width: 15
         height: 15
       index: 2
@@ -289,8 +287,8 @@ MonoBehaviour:
     - GUID: e71e3fc1-343b-4beb-81d9-f6b5b00abb90
       rect:
         serializedVersion: 2
-        x: 322
-        y: -173.5
+        x: 465
+        y: -11.5
         width: 15
         height: 15
       index: 1
@@ -304,8 +302,8 @@ MonoBehaviour:
     - GUID: 2bb3effd-bd34-4ac1-957e-31ab0d00ddd6
       rect:
         serializedVersion: 2
-        x: 501
-        y: -213.5
+        x: 644
+        y: -51.5
         width: 15
         height: 15
       index: 0
@@ -318,8 +316,8 @@ MonoBehaviour:
     - GUID: e4708966-207c-40a7-8d7c-c6fbfa83cad1
       rect:
         serializedVersion: 2
-        x: 211
-        y: -25.5
+        x: 354
+        y: 136.5
         width: 15
         height: 15
       index: 0
@@ -333,8 +331,8 @@ MonoBehaviour:
     - GUID: 15fbe6f5-cb81-4a8e-b48a-dca45a6ee649
       rect:
         serializedVersion: 2
-        x: 211
-        y: 14.5
+        x: 354
+        y: 176.5
         width: 15
         height: 15
       index: 1
@@ -344,14 +342,14 @@ MonoBehaviour:
       parameterName: Owner
       cachedValue: null
       connections:
-      - 91a8fef0-f9ba-4047-8666-6d5d7dda9685
       - a5437a67-57f1-4dee-a450-6b80abb88184
       - 34db999b-b82b-40ad-9a5b-b94d62880b65
+      - 03866ce6-2937-4616-b358-05cd6f17c629
     - GUID: be07e76b-7b92-4390-879b-435f2cdd9790
       rect:
         serializedVersion: 2
-        x: 359
-        y: -21.5
+        x: 502
+        y: 140.5
         width: 15
         height: 15
       index: 0
@@ -365,8 +363,8 @@ MonoBehaviour:
     - GUID: 48552297-3851-4e19-b67d-c83587792704
       rect:
         serializedVersion: 2
-        x: 359
-        y: 18.5
+        x: 502
+        y: 180.5
         width: 15
         height: 15
       index: 1
@@ -376,12 +374,12 @@ MonoBehaviour:
       parameterName: Condition
       cachedValue: 
       connections:
-      - 50aeb315-902c-46ab-ae03-778eb23803b7
+      - cb46d806-c607-4ca6-aceb-f064e6d58f0c
     - GUID: b5a40a26-8e94-470d-8dd6-9b421a631143
       rect:
         serializedVersion: 2
-        x: 538
-        y: -21.5
+        x: 681
+        y: 140.5
         width: 15
         height: 15
       index: 0
@@ -394,8 +392,8 @@ MonoBehaviour:
     - GUID: 95aa9a9a-9fe0-4276-b05a-40c6cc9b9624
       rect:
         serializedVersion: 2
-        x: 538
-        y: 18.5
+        x: 681
+        y: 180.5
         width: 15
         height: 15
       index: 1
@@ -406,69 +404,41 @@ MonoBehaviour:
       cachedValue: null
       connections:
       - 7f93a5ba-5555-4329-b691-04659ddd74a8
-    - GUID: 001c9422-83a0-479e-8fdb-92ea37a2b7b7
+    - GUID: 77b744a5-5b35-4b5c-9303-1336509a0489
       rect:
         serializedVersion: 2
-        x: 365
-        y: 147.5
+        x: 343
+        y: 311.5
         width: 15
         height: 15
       index: 1
-      nodeGUID: 40fa23c6-2f83-4ee5-b0d8-0e6ecd07089d
-      pointType: 3
-      parameterType: System.Boolean
-      parameterName: 
-      cachedValue: False
-      connections:
-      - 50aeb315-902c-46ab-ae03-778eb23803b7
-    - GUID: edb18448-dc1b-49cf-9d34-ca176a89e61a
-      rect:
-        serializedVersion: 2
-        x: 186
-        y: 147.5
-        width: 15
-        height: 15
-      index: 1
-      nodeGUID: 40fa23c6-2f83-4ee5-b0d8-0e6ecd07089d
+      nodeGUID: 3bf0884f-02d3-4d12-ba53-6bd18cc099c9
       pointType: 1
       parameterType: Character
       parameterName: owner
       cachedValue: 
       connections:
-      - 91a8fef0-f9ba-4047-8666-6d5d7dda9685
-    - GUID: 4b1a6c39-2032-40db-aa5d-4621e3e5fbf1
+      - 03866ce6-2937-4616-b358-05cd6f17c629
+    - GUID: d33d9545-192c-400b-a9ff-ce748eaea0d5
       rect:
         serializedVersion: 2
-        x: 186
-        y: 187.5
+        x: 522
+        y: 311.5
         width: 15
         height: 15
-      index: 2
-      nodeGUID: 40fa23c6-2f83-4ee5-b0d8-0e6ecd07089d
-      pointType: 1
-      parameterType: System.String
-      parameterName: hitActionName
-      cachedValue: CSlimeHitAction
-      connections: []
-    - GUID: 5d7bffcc-ba11-4758-94b2-a62108762945
-      rect:
-        serializedVersion: 2
-        x: 186
-        y: 227.5
-        width: 15
-        height: 15
-      index: 3
-      nodeGUID: 40fa23c6-2f83-4ee5-b0d8-0e6ecd07089d
-      pointType: 1
-      parameterType: System.String
-      parameterName: deadActionName
-      cachedValue: CSlimeDeadAction
-      connections: []
+      index: 1
+      nodeGUID: 3bf0884f-02d3-4d12-ba53-6bd18cc099c9
+      pointType: 3
+      parameterType: System.Boolean
+      parameterName: 
+      cachedValue: False
+      connections:
+      - cb46d806-c607-4ca6-aceb-f064e6d58f0c
     - GUID: cf35c2af-9893-4904-b7cf-4adb92ed8e3a
       rect:
         serializedVersion: 2
-        x: 1005
-        y: 209.5
+        x: 1148
+        y: 371.5
         width: 15
         height: 15
       index: 2
@@ -481,8 +451,8 @@ MonoBehaviour:
     - GUID: 9cdadaa9-02b8-4257-8ad6-24df610bac2a
       rect:
         serializedVersion: 2
-        x: 1005
-        y: 169.5
+        x: 1148
+        y: 331.5
         width: 15
         height: 15
       index: 1
@@ -496,8 +466,8 @@ MonoBehaviour:
     - GUID: 6200028a-8a89-4ca3-b687-5ac62f8378d0
       rect:
         serializedVersion: 2
-        x: 1184
-        y: 129.5
+        x: 1327
+        y: 291.5
         width: 15
         height: 15
       index: 0
@@ -510,8 +480,8 @@ MonoBehaviour:
     - GUID: 239ce138-ef46-4b6b-ad18-0194131bad55
       rect:
         serializedVersion: 2
-        x: 532
-        y: 159.5
+        x: 675
+        y: 321.5
         width: 15
         height: 15
       index: 1
@@ -525,8 +495,8 @@ MonoBehaviour:
     - GUID: 5afde552-4686-4ace-ab26-afc86f0783d2
       rect:
         serializedVersion: 2
-        x: 711
-        y: 159.5
+        x: 854
+        y: 321.5
         width: 15
         height: 15
       index: 1
@@ -540,8 +510,8 @@ MonoBehaviour:
     - GUID: 06796b24-5abe-42b7-aaeb-3154f9c7d32b
       rect:
         serializedVersion: 2
-        x: 44
-        y: 403.5
+        x: 187
+        y: 565.5
         width: 15
         height: 15
       index: 1
@@ -554,8 +524,8 @@ MonoBehaviour:
     - GUID: 01a35f4f-e11f-4b22-b726-01ec0243a4d8
       rect:
         serializedVersion: 2
-        x: 223
-        y: 403.5
+        x: 366
+        y: 565.5
         width: 15
         height: 15
       index: 1
@@ -568,8 +538,8 @@ MonoBehaviour:
     - GUID: a5faf51f-e348-49f9-9716-7a5a41703a95
       rect:
         serializedVersion: 2
-        x: 910
-        y: 49.5
+        x: 1053
+        y: 211.5
         width: 15
         height: 15
       index: 1
@@ -582,8 +552,8 @@ MonoBehaviour:
     - GUID: bfad273e-910c-4f78-abd8-44724ecbcd95
       rect:
         serializedVersion: 2
-        x: 910
-        y: 9.5
+        x: 1053
+        y: 171.5
         width: 15
         height: 15
       index: 0
@@ -597,8 +567,8 @@ MonoBehaviour:
     - GUID: 38da913f-cac1-4161-8aa7-6b734c1ed419
       rect:
         serializedVersion: 2
-        x: 731
-        y: 49.5
+        x: 874
+        y: 211.5
         width: 15
         height: 15
       index: 1
@@ -612,8 +582,8 @@ MonoBehaviour:
     - GUID: 191bbbe1-a69c-421d-b2db-75babcf99fed
       rect:
         serializedVersion: 2
-        x: 554
-        y: 360.5
+        x: 697
+        y: 522.5
         width: 15
         height: 15
       index: 0
@@ -626,8 +596,8 @@ MonoBehaviour:
     - GUID: 85e29da7-9331-4ef6-b3be-dd1066716072
       rect:
         serializedVersion: 2
-        x: 375
-        y: 360.5
+        x: 518
+        y: 522.5
         width: 15
         height: 15
       index: 0
@@ -639,6 +609,12 @@ MonoBehaviour:
       connections:
       - c532c1b9-820a-46c3-8562-e43e8ff9c052
     nodeConnectionDatas:
+    - GUID: cb46d806-c607-4ca6-aceb-f064e6d58f0c
+      inGUID: 48552297-3851-4e19-b67d-c83587792704
+      outGUID: d33d9545-192c-400b-a9ff-ce748eaea0d5
+    - GUID: 03866ce6-2937-4616-b358-05cd6f17c629
+      inGUID: 77b744a5-5b35-4b5c-9303-1336509a0489
+      outGUID: 15fbe6f5-cb81-4a8e-b48a-dca45a6ee649
     - GUID: ef44a04c-d977-499d-83da-943463c606d3
       inGUID: abd8c48a-3ce1-4dbc-b531-e743e6b91dd6
       outGUID: bfad273e-910c-4f78-abd8-44724ecbcd95
@@ -660,12 +636,6 @@ MonoBehaviour:
     - GUID: 54d90e71-7300-44f0-a73b-4dae886b5d9f
       inGUID: be07e76b-7b92-4390-879b-435f2cdd9790
       outGUID: e4708966-207c-40a7-8d7c-c6fbfa83cad1
-    - GUID: 91a8fef0-f9ba-4047-8666-6d5d7dda9685
-      inGUID: edb18448-dc1b-49cf-9d34-ca176a89e61a
-      outGUID: 15fbe6f5-cb81-4a8e-b48a-dca45a6ee649
-    - GUID: 50aeb315-902c-46ab-ae03-778eb23803b7
-      inGUID: 48552297-3851-4e19-b67d-c83587792704
-      outGUID: 001c9422-83a0-479e-8fdb-92ea37a2b7b7
     - GUID: 34db999b-b82b-40ad-9a5b-b94d62880b65
       inGUID: 9cdadaa9-02b8-4257-8ad6-24df610bac2a
       outGUID: 15fbe6f5-cb81-4a8e-b48a-dca45a6ee649

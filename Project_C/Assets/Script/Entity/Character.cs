@@ -4,28 +4,6 @@ using UnityEngine;
 using UnityEngine.AI;
 using System.Linq;
 
-public enum CharacterNotifyType
-{
-    E_None,
-    E_Damage,
-    E_Invincibility,
-    E_Stun,
-    E_Dead,
-    E_ChangeAction
-}
-
-public class CharacterNotifyEvent
-{
-    public CharacterNotifyType Type { get; set; }
-    public object Data { get; set; }
-
-    public CharacterNotifyEvent(CharacterNotifyType type, object data)
-    {
-        Type = type;
-        Data = data;
-    }
-}
-
 [RequireComponent(typeof(NavMeshAgent))]
 public class Character : MonoBehaviour
 {
@@ -34,12 +12,11 @@ public class Character : MonoBehaviour
     public Animator Anim { get; protected set; }
     public NavMeshAgent NavAgent { get; protected set; }
     public CharacterStatus Status { get; protected set; }
-    protected List<CharacterNotifyEvent>[] NotifyEventQueues { get; set; }
-    protected int CurrentNotifyQueueIndex { get => _currentNotifyQueueIndex; set => _currentNotifyQueueIndex = value; }
-    protected int NextNotifyQueueIndex { get => _currentNotifyQueueIndex; }
 
-    protected int _currentNotifyQueueIndex;
-    [SerializeField] protected CharacterAction _currentAction;
+    public List<CharacterState> StateStack { get; protected set; }
+
+    protected List<CharacterState> DeleteStateList { get; set; }
+    protected CharacterAction _currentAction;
 
 
     public CharacterAction CurrentAction {
@@ -56,43 +33,59 @@ public class Character : MonoBehaviour
     protected virtual void Awake()
     {
         Status = new CharacterStatus(this);
+        StateStack = new List<CharacterState>();
+        DeleteStateList = new List<CharacterState>();
         RenderTrasform = GetComponentInChildren<RenderTransform>();
         Anim = GetComponentInChildren<Animator>();
         NavAgent = GetComponent<NavMeshAgent>();
-        NotifyEventQueues = new List<CharacterNotifyEvent>[2] 
-        {
-            new List<CharacterNotifyEvent>(),
-            new List<CharacterNotifyEvent>()
-        };
-        _currentNotifyQueueIndex = 0;
     }
 
     protected virtual void Update()
     {
-        Status.UpdateStatus();
+        Status.PrepareState();
+        for (int i = 0; i < StateStack.Count; ++i)
+            StateStack[i].UpdateState();
+
+        foreach (var deletedState in DeleteStateList)
+            StateStack.Remove(deletedState);
+
         CurrentAction?.UpdateAction();
-        NotifyEventQueues[CurrentNotifyQueueIndex].Clear();
-        CurrentNotifyQueueIndex = NextNotifyQueueIndex;
+
     }
 
-    public virtual void AddNotifyEvent(CharacterNotifyEvent notifyEvent)
+    public virtual bool AddState(CharacterState state, bool isUnique = false)
     {
-        if(Status.SendStatusNotify(notifyEvent))
-            NotifyEventQueues[CurrentNotifyQueueIndex].Add(notifyEvent);
+        if (Status.IgnoreStateList.Contains(state.StateType))
+            return false;
+
+        if (isUnique)
+        {
+            if (StateStack.Find((s) => s.StateType == state.StateType) == null)
+            {
+                StateStack.Add(state);
+                return true;
+            }
+            return false;
+        }
+        else
+        {
+            StateStack.Add(state);
+            return true;
+        }
     }
 
-    public virtual void AddNextFrameNotifyEvent(CharacterNotifyEvent notifyEvent)
+    public virtual List<CharacterState> FindState(CharacterStateType type)
     {
-        NotifyEventQueues[NextNotifyQueueIndex].Add(notifyEvent);
+        return StateStack.FindAll((s) => s.StateType == type);
     }
 
-    public virtual void ConsumeNotifyEvent(CharacterNotifyEvent notifyEvent)
+    public virtual void DeleteState(CharacterState state)
     {
-        NotifyEventQueues[CurrentNotifyQueueIndex].Remove(notifyEvent);
+        DeleteStateList.Add(state);
     }
 
-    public virtual List<CharacterNotifyEvent> GetNotifyEvents()
+    public virtual void DeleteState(CharacterStateType type)
     {
-        return NotifyEventQueues[CurrentNotifyQueueIndex];
+        DeleteStateList.Add(StateStack.FindLast((s)=>s.StateType == type));
     }
 }

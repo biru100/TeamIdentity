@@ -17,9 +17,8 @@ public class PlayerCardPowerUpAction : CharacterAction
     public override void UpdateAction()
     {
         base.UpdateAction();
-        PlayerUtil.CardInterfaceLogicMacro();
 
-        if (EntityUtil.DeadLogicMacro(Owner, "PlayerDeadAction"))
+        if (EntityUtil.StateActionMacro(Owner))
         {
             return;
         }

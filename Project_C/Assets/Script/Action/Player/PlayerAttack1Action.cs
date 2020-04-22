@@ -19,9 +19,8 @@ public class PlayerAttack1Action : CharacterAction
     public override void UpdateAction()
     {
         base.UpdateAction();
-        PlayerUtil.CardInterfaceLogicMacro();
 
-        if (EntityUtil.HitDeadLogicMacro(Owner, "PlayerHitAction", "PlayerDeadAction"))
+        if (EntityUtil.StateActionMacro(Owner))
         {
             return;
         }
@@ -66,7 +65,7 @@ public class PlayerAttack1Action : CharacterAction
             if ((Owner.transform.position - e.transform.position).magnitude <= Isometric.IsometricTileSize.x * 2.5f &&
                 angle < 30f)
             {
-                e.AddNotifyEvent(new CharacterNotifyEvent(CharacterNotifyType.E_Damage, 30f));
+                e.AddState(new CharacterHitState(e, Owner.Status.CurrentDamage, 0.1f).Init());
                 IsoParticle.CreateParticle("Sliced1", e.transform.position
                     + new Vector3(0f, Isometric.IsometricTileSize.y * 0.5f, 0f),
                     angle);

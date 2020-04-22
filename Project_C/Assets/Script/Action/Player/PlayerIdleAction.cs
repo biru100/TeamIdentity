@@ -15,9 +15,8 @@ public class PlayerIdleAction : CharacterAction
     public override void UpdateAction()
     {
         base.UpdateAction();
-        PlayerUtil.CardInterfaceLogicMacro();
 
-        if(EntityUtil.HitDeadLogicMacro(Owner, "PlayerHitAction", "PlayerDeadAction"))
+        if(EntityUtil.StateActionMacro(Owner))
         {
             return;
         }

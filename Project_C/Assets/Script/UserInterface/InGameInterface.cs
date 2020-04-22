@@ -80,8 +80,12 @@ public class InGameInterface : UIBase<InGameInterface>
     [SerializeField] protected GameObject _deckImg;
 
     [SerializeField] protected RectTransform _handField;
+    [SerializeField] protected GameObject _arrowBody;
+    [SerializeField] protected GameObject _collectCircle;
 
     public RectTransform HandField { get => _handField; set => _handField = value; }
+    public GameObject ArrowBody { get => _arrowBody; set => _arrowBody = value; }
+    public GameObject CollectCircle { get => _collectCircle; set => _collectCircle = value; }
     public bool IsStart { get; set; }
     public bool IsMouseOver { get; set; }
     public bool IsCardDrag { get; set; }

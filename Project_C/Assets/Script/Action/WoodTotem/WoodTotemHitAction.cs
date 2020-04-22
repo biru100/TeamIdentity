@@ -21,7 +21,7 @@ public override void UpdateAction()
 {
 base.UpdateAction();
 
-if(NodeUtil.HitDeadLogicMacro(Owner ,"WoodTotemHitAction" ,"WoodTotemDeadAction"))
+if(NodeUtil.StateActionMacroByCurrentOrder(Owner ,3))
 {
 }
 

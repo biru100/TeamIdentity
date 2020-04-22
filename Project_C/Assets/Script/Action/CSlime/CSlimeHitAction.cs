@@ -21,6 +21,13 @@ public override void UpdateAction()
 {
 base.UpdateAction();
 
+if(NodeUtil.StateActionMacroByCurrentOrder(Owner ,3))
+{
+}
+
+else
+{
+
 if(NodeUtil.IsLastFrame(Owner))
 {
 NodeUtil.ChangeAction(Owner ,"CSlimeIdleAction");
@@ -28,6 +35,7 @@ NodeUtil.ChangeAction(Owner ,"CSlimeIdleAction");
 
 else
 {
+}
 }
 }
 

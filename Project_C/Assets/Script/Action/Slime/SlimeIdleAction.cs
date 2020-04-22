@@ -20,7 +20,7 @@ public override void UpdateAction()
 {
 base.UpdateAction();
 
-if(NodeUtil.HitDeadLogicMacro(Owner ,"SlimeHitAction" ,"SlimeDeadAction"))
+if(NodeUtil.StateActionMacro(Owner))
 {
 }
 

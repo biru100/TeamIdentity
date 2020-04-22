@@ -25,7 +25,7 @@ public class WoodTotemSpellAction : CharacterAction
     {
         base.UpdateAction();
 
-        if(NodeUtil.HitDeadLogicMacro(Owner, "WoodTotemHitAction", "WoodTotemDeadAction"))
+        if(NodeUtil.StateActionMacro(Owner))
         {
             return;
         }
@@ -43,8 +43,8 @@ public class WoodTotemSpellAction : CharacterAction
         isFinish = true;
         if ((Player.CurrentPlayer.transform.position - position).magnitude < 1.2 * Isometric.IsometricTileSize.x)
         {
-            Player.CurrentPlayer.AddNotifyEvent(new CharacterNotifyEvent(CharacterNotifyType.E_Stun, 1f));
-            Player.CurrentPlayer.AddNotifyEvent(new CharacterNotifyEvent(CharacterNotifyType.E_Damage, 20f));
+            Player.CurrentPlayer.AddState(new CharacterHoldState(Player.CurrentPlayer, 1f));
+            Player.CurrentPlayer.AddState(new CharacterHitState(Player.CurrentPlayer, 20f, 0.1f));
         }
 
         IsoParticle.CreateParticle("ExplosionHighlight", position, 0f);

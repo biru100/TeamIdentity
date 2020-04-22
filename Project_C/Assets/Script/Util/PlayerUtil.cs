@@ -7,41 +7,37 @@ using System.Reflection;
 
 public static class EntityUtil
 {
-    public static bool HitDeadLogicMacro(Character owner, string hitActionName, string deadActionName)
+    public static bool StateActionMacro(Character owner, CharacterStateType currentOrder = CharacterStateType.E_Idle)
     {
-        if (GetDeadNotify(owner))
-        {
-            ChangeAction(owner, deadActionName);
-            return true;
-        }
+        string ownerName = owner.GetType().Name;
+        int order = CharacterState.CharacterStateActionOrder.FindIndex((s)=>s == currentOrder);
+        order = order < 0 ? CharacterState.CharacterStateActionOrder.Count : order;
 
-        if (GetDamageNotify(owner))
+        for (int i = 0; i < order; ++i)
         {
-            ChangeAction(owner, hitActionName);
-            return true;
+            CharacterStateType curType = CharacterState.CharacterStateActionOrder[i];
+            if (owner.Status.CurrentStates.Contains(curType))
+            {
+                ChangeAction(owner, ownerName + CharacterState.CharacterStateActionName[curType]);
+            }
         }
 
         return false;
     }
 
-    public static bool DeadLogicMacro(Character owner, string deadActionName)
+    public static bool IsStun(Character owner)
     {
-        if (GetDeadNotify(owner))
-        {
-            ChangeAction(owner, deadActionName);
-            return true;
-        }
-        return false;
+        return owner.Status.CurrentStates.Contains(CharacterStateType.E_Stun);
     }
 
-    public static bool GetDamageNotify(Character owner)
+    public static bool IsHold(Character owner)
     {
-        return owner.GetNotifyEvents().Find((n) => n.Type == CharacterNotifyType.E_Damage) != null;
+        return owner.Status.CurrentStates.Contains(CharacterStateType.E_Hold);
     }
 
-    public static bool GetDeadNotify(Character owner)
+    public static bool IsSilence(Character owner)
     {
-        return owner.GetNotifyEvents().Find((n) => n.Type == CharacterNotifyType.E_Dead) != null;
+        return owner.Status.CurrentStates.Contains(CharacterStateType.E_Silence);
     }
 
     public static void ChangeAction(Character owner, string actionName)
@@ -63,62 +59,15 @@ public static class PlayerUtil
         PlayerStatus.CurrentStatus.CardPowerScale = PlayerStatus.CurrentStatus.BaseCardPowerScale;
     }
 
-    public static void CardInterfaceLogicMacro()
-    {
-        //CardSlotType type;
-        //if(GetCardKeyDown(out type))
-        //{
-        //    if (!InGameInterface.IsShowCard)
-        //    {
-        //        PlayerStatus.CurrentStatus.ShowCard(type);
-        //    }
-        //    else if(InGameInterface.IsShowCard && InGameInterface.ShowSlot == type)
-        //    {
-        //        PlayerStatus.CurrentStatus.UseCard(type);
-        //    }
-        //}
-        //else if(InGameInterface.IsShowCard && Input.GetKeyDown(KeyCode.C))
-        //{
-        //    PlayerStatus.CurrentStatus.HideCard(InGameInterface.ShowSlot);
-        //}
-    }
-
-    public static bool GetCardKeyDown(out CardSlotType type)
-    {
-        //if(Input.GetKeyDown(KeyCode.A))
-        //{
-        //    type = CardSlotType.E_A;
-        //    return true;
-        //}
-        //if (Input.GetKeyDown(KeyCode.S))
-        //{
-        //    type = CardSlotType.E_S;
-        //    return true;
-        //}
-        //if (Input.GetKeyDown(KeyCode.D))
-        //{
-        //    type = CardSlotType.E_D;
-        //    return true;
-        //}
-        //if (Input.GetKeyDown(KeyCode.F))
-        //{
-        //    type = CardSlotType.E_F;
-        //    return true;
-        //}
-
-        type = CardSlotType.E_None;
-        return false;
-    }
-
     public static bool GetAttackInput()
     {
-        return !PlayerStatus.CurrentStatus.IsStun && Input.GetKeyDown(KeyCode.Mouse0) 
+        return Input.GetKeyDown(KeyCode.Mouse0) 
             && !EventSystem.current.IsPointerOverGameObject();
     }
 
     public static bool GetDashInput()
     {
-        return !PlayerStatus.CurrentStatus.IsStun && Input.GetKeyDown(KeyCode.C);
+        return Input.GetKeyDown(KeyCode.Space);
     }
 
     public static Vector3 GetVelocityInput()
@@ -145,7 +94,7 @@ public static class PlayerUtil
             velocity += new Vector3(-1f, 0f, -1f);
         }
 
-        return PlayerStatus.CurrentStatus.IsStun ? Vector3.zero : velocity.normalized;
+        return velocity.normalized;
     }
 }
 
@@ -181,10 +130,7 @@ public static class AnimUtil
 
     public static bool IsLastFrame(Character owner)
     {
-        if (owner.Anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 2f)
-            return false;
-
         return ((owner.Anim.GetCurrentAnimatorStateInfo(0).normalizedTime)
-            + Time.deltaTime / owner.Anim.GetCurrentAnimatorStateInfo(0).length) >= 0.99f;
+            + Time.deltaTime / owner.Anim.GetCurrentAnimatorStateInfo(0).length) >= 0.9f;
     }
 }

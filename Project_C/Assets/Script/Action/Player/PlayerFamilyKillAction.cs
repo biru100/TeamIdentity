@@ -56,7 +56,7 @@ public class PlayerFamilyKillAction : CharacterAction
         < (c2.transform.position - owner.transform.position).magnitude ? -1 : 1);
 
         damage = PlayerUtil.CalculatingCardPowerValue(50f);
-        Owner.AddNotifyEvent(new CharacterNotifyEvent(CharacterNotifyType.E_Invincibility, true));
+        Owner.AddState(new CharacterInvincibilityState(Owner).Init());
     }
 
     public override void UpdateAction()
@@ -79,7 +79,7 @@ public class PlayerFamilyKillAction : CharacterAction
     {
         base.FinishAction();
         PlayerUtil.ConsumeCardPowerUpStatus();
-        Owner.AddNotifyEvent(new CharacterNotifyEvent(CharacterNotifyType.E_Invincibility, false));
+        Owner.DeleteState(CharacterStateType.E_SuperArmor);
     }
 
     public void ReadyToAction()
@@ -120,7 +120,7 @@ public class PlayerFamilyKillAction : CharacterAction
         float zAngle = Quaternion.FromToRotation(Vector3.right, velocity).eulerAngles.z;
 
         IsoParticle.CreateParticle("Sliced_Family", targetCharacters[currentTargetIndex].transform.position, zAngle, false , 0.3f);
-        targetCharacters[currentTargetIndex].AddNotifyEvent(new CharacterNotifyEvent(CharacterNotifyType.E_Damage, damage));
+        targetCharacters[currentTargetIndex].AddState(new CharacterHitState(targetCharacters[currentTargetIndex], damage, 0.1f).Init());
         Owner.NavAgent.Move(targetCharacters[currentTargetIndex].transform.position - Owner.transform.position);
 
         System.Action nextAction;

@@ -24,17 +24,6 @@ public class PlayerStatus : CharacterStatus
         CardPowerScale = BaseCardPowerScale;
         CardPowerSupport = BaseCardPowerSupport;
     }
-
-    public override bool SendStatusNotify(CharacterNotifyEvent notify)
-    {
-        if (notify.Type == CharacterNotifyType.E_Damage)
-        {
-            Owner.ConsumeNotifyEvent(notify);
-            return false;
-        }
-
-        return base.SendStatusNotify(notify);
-    }
 }
 
 public class CharacterStatus
@@ -50,9 +39,10 @@ public class CharacterStatus
     public float Speed { get; set; }
     public float CurrentSpeed { get; set; }
 
-    public float CurrentStunTime { get; set; }
-    public bool IsStun { get; set; }
-    public bool IsInvincibility { get; set; }
+    public List<CharacterStateType> IgnoreStateList { get; set; }
+
+    public CharacterStateType BaseState { get; set; }
+    public List<CharacterStateType> CurrentStates { get; set; }
 
     public CharacterStatus(Character owner)
     {
@@ -70,44 +60,16 @@ public class CharacterStatus
 
         Speed = 1.2f;
         CurrentSpeed = 1.2f;
+
+        CurrentStates = new List<CharacterStateType>();
+        IgnoreStateList = new List<CharacterStateType>();
+        BaseState = CharacterStateType.E_Idle;
     }
 
-    public virtual void UpdateStatus()
+    public void PrepareState()
     {
-        if (IsStun)
-        {
-            CurrentStunTime -= Time.deltaTime;
-            if (CurrentStunTime <= 0f)
-                IsStun = false;
-        }
-    }
-
-    public virtual bool SendStatusNotify(CharacterNotifyEvent notify)
-    {
-        if (IsInvincibility)
-            return false;
-
-        if (notify.Type == CharacterNotifyType.E_Damage && CurrentHp > 0f)
-        {
-            CurrentHp = Mathf.Max(CurrentHp - (float)notify.Data, 0f);
-            if(CurrentHp <= 0f)
-            {
-                Owner.ConsumeNotifyEvent(notify);
-                Owner.AddNotifyEvent(new CharacterNotifyEvent(CharacterNotifyType.E_Dead, null));
-                return false;
-            }
-        }
-
-        else if (notify.Type == CharacterNotifyType.E_Stun)
-        {
-            IsStun = true;
-            CurrentStunTime = (float)notify.Data;
-        }
-        else if (notify.Type == CharacterNotifyType.E_Invincibility)
-        {
-            IsInvincibility = (bool)notify.Data;
-        }
-
-        return true;
+        CurrentStates.Clear();
+        CurrentSpeed = Speed;
+        CurrentDamage = Damage;
     }
 }

@@ -183,7 +183,7 @@ namespace StateBehavior.Node
             {
                 NodeFuncData data = this.data as NodeFuncData;
 
-                MethodInfo method = Type.GetType(data.funcClassType).GetMethod(data.methodName);
+                MethodInfo method = NodeGUIUtility.GetType(data.funcClassType).GetMethod(data.methodName);
                 ParameterInfo[] parameters = method.GetParameters();
 
                 int index = 1;

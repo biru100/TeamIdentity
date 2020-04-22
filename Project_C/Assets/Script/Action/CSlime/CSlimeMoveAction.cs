@@ -21,7 +21,7 @@ public override void UpdateAction()
 {
 base.UpdateAction();
 
-if(NodeUtil.HitDeadLogicMacro(Owner ,"CSlimeHitAction" ,"CSlimeDeadAction"))
+if(NodeUtil.StateActionMacro(Owner))
 {
 }
 

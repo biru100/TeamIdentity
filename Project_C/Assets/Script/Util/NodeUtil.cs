@@ -83,12 +83,12 @@ public static class NodeUtil
 
     public static void TakeDamageToPlayer(float damage)
     {
-        Player.CurrentPlayer.AddNotifyEvent(new CharacterNotifyEvent(CharacterNotifyType.E_Damage, damage));
+        Player.CurrentPlayer.AddState(new CharacterHitState(Player.CurrentPlayer, damage, 0.1f).Init());
     }
 
     public static void TakeDamage(Character target, float damage)
     {
-        target.AddNotifyEvent(new CharacterNotifyEvent(CharacterNotifyType.E_Damage, damage));
+        target.AddState(new CharacterHitState(target, damage, 0.1f).Init());
     }
 
     public static bool PlayerInRange(Character owner, float range)
@@ -154,24 +154,39 @@ public static class NodeUtil
         EntityUtil.ChangeAction(owner, actionName);
     }
 
+    public static bool StateActionMacro(Character owner)
+    {
+        return EntityUtil.StateActionMacro(owner);
+    }
+
+    public static bool StateActionMacroByCurrentOrder(Character owner, int order)
+    {
+        return EntityUtil.StateActionMacro(owner, CharacterState.CharacterStateActionOrder[order]);
+    }
+
+    public static bool IsStun(Character owner)
+    {
+        return EntityUtil.IsStun(owner);
+    }
+
+    public static bool IsHold(Character owner)
+    {
+        return EntityUtil.IsHold(owner);
+    }
+
+    public static bool IsSilence(Character owner)
+    {
+        return owner.Status.CurrentStates.Contains(CharacterStateType.E_Silence);
+    }
+
     public static bool HitDeadLogicMacro(Character owner, string hitActionName, string deadActionName)
     {
-        return EntityUtil.HitDeadLogicMacro(owner, hitActionName, deadActionName);
+        return false;
     }
 
     public static bool DeadLogicMacro(Character owner, string deadActionName)
     {
-        return EntityUtil.DeadLogicMacro(owner, deadActionName);
-    }
-
-    public static bool GetDamageNotify(Character owner)
-    {
-        return EntityUtil.GetDamageNotify(owner);
-    }
-
-    public static bool GetDeadNotify(Character owner)
-    {
-        return EntityUtil.GetDeadNotify(owner);
+        return false;
     }
 
     public static void RotateToVelocity(Character owner, Vector3 velocity)

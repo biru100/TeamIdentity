@@ -1,13 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-
-public enum CardSlotType
-{
-    E_A, E_S, E_D, E_F, E_None
-}
 
 public class CardInterface : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
 {
@@ -23,16 +19,18 @@ public class CardInterface : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     [SerializeField]    protected Text _cardLore;
     [SerializeField]    protected Vector2 _originCardSize;
 
-    public CardSlotType SlotType { get; set; }
     public int HandIndex { get; set; }
     public bool IsHover { get; set; }
     public bool IsDrag { get; set; }
+    public bool IsVisible { get; set; }
     public bool IsUsing { get; set; }
 
     Vector2 _destCardSize;
     Vector2 _targetPosition;
 
     Quaternion _destRotation;
+
+    Character _target;
 
     public Card CardData 
     {
@@ -58,6 +56,8 @@ public class CardInterface : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
         _destCardSize = _originCardSize;
         _destRotation = Quaternion.identity;
+
+        IsVisible = true;
     }
 
     private void Update()
@@ -76,9 +76,12 @@ public class CardInterface : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
                 _destRotation = Quaternion.identity;
             }
 
-        ((RectTransform)transform).anchoredPosition = Vector2.Lerp(((RectTransform)transform).anchoredPosition, _targetPosition, 5f * Time.unscaledDeltaTime);
-            transform.rotation = Quaternion.Slerp(transform.rotation, _destRotation, 5f * Time.unscaledDeltaTime);
-            ((RectTransform)transform).sizeDelta = Vector3.Lerp(((RectTransform)transform).sizeDelta, _destCardSize, 3f * Time.unscaledDeltaTime);
+            if (IsVisible)
+            {
+                ((RectTransform)transform).anchoredPosition = Vector2.Lerp(((RectTransform)transform).anchoredPosition, _targetPosition, 5f * Time.unscaledDeltaTime);
+                transform.rotation = Quaternion.Slerp(transform.rotation, _destRotation, 5f * Time.unscaledDeltaTime);
+                ((RectTransform)transform).sizeDelta = Vector3.Lerp(((RectTransform)transform).sizeDelta, _destCardSize, 3f * Time.unscaledDeltaTime);
+            }
         }
     }
 
@@ -95,11 +98,38 @@ public class CardInterface : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
         if(!RectTransformUtility.RectangleContainsScreenPoint(InGameInterface.Instance.HandField, Input.mousePosition))
         {
-            NodeUtil.ChangeAction(Player.CurrentPlayer, CardData.CardActionName);
-            StartCoroutine(DestroyCard());
-            IsUsing = true;
-            DisableEventSystem();
-            InGameInterface.Instance.UseCard(this);
+            if (CardData.TargetType == CardTargetType.E_NonTarget)
+            {
+                Player.CurrentPlayer.UseCardStack.Add(CardData);
+                StartCoroutine(DestroyCard());
+                IsUsing = true;
+                DisableEventSystem();
+                InGameInterface.Instance.UseCard(this);
+            }
+            else if(CardData.TargetType == CardTargetType.E_Target)
+            {
+                InGameInterface.Instance.ArrowBody.SetActive(false);
+
+                if (_target != null)
+                {
+                    Player.CurrentPlayer.UseCardStack.Add(CardData);
+                    StartCoroutine(DestroyCard());
+                    IsUsing = true;
+                    DisableEventSystem();
+                    InGameInterface.Instance.UseCard(this);
+                }
+                else
+                {
+                    ((RectTransform)transform).anchoredPosition = _targetPosition;
+                    StopAllCoroutines();
+                    _frontSide.material.SetFloat("_DissolveValue", 1f);
+                    IsVisible = true;
+                }
+            }
+            else
+            {
+
+            }
         }
     }
 
@@ -130,6 +160,60 @@ public class CardInterface : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         Vector3 rotationAxis = velocityRotation * Vector3.up;
 
         _destRotation = Quaternion.AngleAxis(eventData.delta.magnitude * 5f, rotationAxis);
+
+        if (CardData.TargetType != CardTargetType.E_NonTarget)
+        {
+            if (RectTransformUtility.RectangleContainsScreenPoint(InGameInterface.Instance.HandField, Input.mousePosition))
+            {
+                if(!IsVisible)
+                    ((RectTransform)transform).anchoredPosition = _targetPosition;
+                StopAllCoroutines();
+                _frontSide.material.SetFloat("_DissolveValue", 1f);
+                IsVisible = true;
+
+                InGameInterface.Instance.ArrowBody.SetActive(false);
+            }
+            else
+            {
+                InGameInterface.Instance.ArrowBody.SetActive(true);
+
+                if (IsVisible)
+                {
+                    StartCoroutine(DestroyCardEffect());
+                }
+
+                Vector3 basePos = InGameInterface.Instance.GetCardLocationInHand(HandIndex);
+                Vector3 target = new Vector3(_targetPosition.x, _targetPosition.y, 0f);
+                InGameInterface.Instance.ArrowBody.transform.localPosition = basePos;
+
+                Vector2 arrowSize = ((RectTransform)InGameInterface.Instance.ArrowBody.transform).sizeDelta;
+                arrowSize.y = (target - basePos).magnitude - 80f;
+                ((RectTransform)InGameInterface.Instance.ArrowBody.transform).sizeDelta = arrowSize;
+
+                Quaternion arrowRotation = Quaternion.FromToRotation(Vector3.up, (target - basePos).normalized);
+                InGameInterface.Instance.ArrowBody.transform.localRotation = arrowRotation;
+
+                if (CardData.TargetType == CardTargetType.E_Target)
+                {
+                    RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+
+                    if (hit.collider != null)
+                    {
+                        _target = hit.collider.GetComponentInParent<Character>();
+                    }
+                    else
+                    {
+                        _target = null;
+                    }
+
+                    InGameInterface.Instance.CollectCircle.SetActive(_target != null);
+                }
+                else
+                {
+
+                }
+            }
+        }
     }
 
     public void DisableEventSystem()
@@ -151,8 +235,9 @@ public class CardInterface : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         _cardLore.text = CardData.GetLore();
     }
 
-    IEnumerator DestroyCard()
+    IEnumerator DestroyCardEffect()
     {
+        IsVisible = false;
         float elapsedTime = 0f;
 
         while(elapsedTime < 0.5f)
@@ -161,7 +246,11 @@ public class CardInterface : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
             elapsedTime += Time.unscaledDeltaTime;
             _frontSide.material.SetFloat("_DissolveValue", 1f - elapsedTime * 2f);
         }
+    }
 
+    IEnumerator DestroyCard()
+    {
+        yield return StartCoroutine(DestroyCardEffect());
         Destroy(gameObject);
     }
 }
