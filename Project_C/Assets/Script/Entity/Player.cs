@@ -7,14 +7,15 @@ public class Player : Character
 {
     public static Player CurrentPlayer { get; protected set; }
 
-    public List<Card> UseCardStack { get; set; }
+    public List<KeyValuePair<Card, CardTarget>> UseCardStack { get; set; }
 
     protected override void Awake()
     {
         base.Awake();
         CurrentPlayer = this;
         Status = new PlayerStatus(this);
-        UseCardStack = new List<Card>();
+        DataManager.LoadData();
+        UseCardStack = new List<KeyValuePair<Card, CardTarget>>();
     }
 
     // Start is called before the first frame update
@@ -44,7 +45,7 @@ public class Player : Character
 
         if (UseCardStack.Count != 0)
         {
-            EntityUtil.ChangeAction(this, UseCardStack[0].CardActionName);
+            EntityUtil.ChangeCardAction(this, UseCardStack[0].Key.CardActionName, UseCardStack[0].Value);
             UseCardStack.RemoveAt(0);
         }
         else

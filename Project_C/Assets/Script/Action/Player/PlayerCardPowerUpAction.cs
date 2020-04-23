@@ -2,9 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerCardPowerUpAction : CharacterAction
+public class PlayerCardPowerUpAction : PlayerCardAction
 {
-    public static PlayerCardPowerUpAction GetInstance() { return new PlayerCardPowerUpAction(); }
+
+    public static PlayerCardPowerUpAction GetInstance(CardTarget target) { return new PlayerCardPowerUpAction(target); }
+
+    public PlayerCardPowerUpAction(CardTarget target) : base(target)
+    {
+    }
 
     public override void StartAction(Character owner)
     {

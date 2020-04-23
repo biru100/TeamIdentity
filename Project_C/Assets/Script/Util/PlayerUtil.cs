@@ -44,6 +44,11 @@ public static class EntityUtil
     {
         owner.CurrentAction = (CharacterAction)Type.GetType(actionName).GetMethod("GetInstance", BindingFlags.Public | BindingFlags.Static).Invoke(null, null);
     }
+
+    public static void ChangeCardAction(Character owner, string actionName, CardTarget target)
+    {
+        owner.CurrentAction = (CharacterAction)Type.GetType(actionName).GetMethod("GetInstance", BindingFlags.Public | BindingFlags.Static).Invoke(null, new object[] { target });
+    }
 }
 
 public static class PlayerUtil

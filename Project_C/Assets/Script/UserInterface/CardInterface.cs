@@ -100,7 +100,7 @@ public class CardInterface : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         {
             if (CardData.TargetType == CardTargetType.E_NonTarget)
             {
-                Player.CurrentPlayer.UseCardStack.Add(CardData);
+                Player.CurrentPlayer.UseCardStack.Add(new KeyValuePair<Card, CardTarget>(CardData, new CardTarget()));
                 StartCoroutine(DestroyCard());
                 IsUsing = true;
                 DisableEventSystem();
@@ -112,7 +112,7 @@ public class CardInterface : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
                 if (_target != null)
                 {
-                    Player.CurrentPlayer.UseCardStack.Add(CardData);
+                    Player.CurrentPlayer.UseCardStack.Add(new KeyValuePair<Card, CardTarget>(CardData, new CardTarget(_target)));
                     StartCoroutine(DestroyCard());
                     IsUsing = true;
                     DisableEventSystem();
@@ -200,6 +200,9 @@ public class CardInterface : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
                     if (hit.collider != null)
                     {
                         _target = hit.collider.GetComponentInParent<Character>();
+
+                        if (_target is Player)
+                            _target = null;
                     }
                     else
                     {

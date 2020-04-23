@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class PlayerFamilyKillAction : CharacterAction
+public class PlayerFamilyKillAction : PlayerCardAction
 {
-    public static PlayerFamilyKillAction GetInstance() { return new PlayerFamilyKillAction(); }
+    public static PlayerFamilyKillAction GetInstance(CardTarget target) { return new PlayerFamilyKillAction(target); }
 
     List<Character> targetCharacters;
     float damage;
@@ -14,6 +14,10 @@ public class PlayerFamilyKillAction : CharacterAction
 
     //0 - pre skill, 1 - on skill, 2 - post skill
     int StateOrder = 0;
+
+    public PlayerFamilyKillAction(CardTarget target) : base(target)
+    {
+    }
 
     public override void StartAction(Character owner)
     {
@@ -24,34 +28,7 @@ public class PlayerFamilyKillAction : CharacterAction
 
         Character[] enemys = Object.FindObjectsOfType<Character>();
 
-        Character target = null;
-        float shortDistance = 99999f;
-
-        foreach (var e in enemys)
-        {
-            if (e == Owner) continue;
-
-            float angle = Mathf.Acos(Vector3.Dot((e.transform.position - Owner.transform.position).normalized, Owner.transform.forward))
-                * Mathf.Rad2Deg;
-
-            float distance = (Owner.transform.position - e.transform.position).magnitude;
-            if (distance <= Isometric.IsometricTileSize.x * 1.8f &&
-                angle < 80f)
-            {
-                if(distance < shortDistance)
-                {
-                    target = e;
-                    shortDistance = distance;
-                }
-            }
-        }
-
-        if(target == null)
-        {
-            return;
-        }
-
-        targetCharacters = enemys.ToList().FindAll((c) => c.GetType() == target.GetType());
+        targetCharacters = enemys.ToList().FindAll((c) => c.GetType() == Target.Target.GetType());
         targetCharacters.Sort((c1, c2) => (c1.transform.position - owner.transform.position).magnitude 
         < (c2.transform.position - owner.transform.position).magnitude ? -1 : 1);
 

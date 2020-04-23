@@ -2,9 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerPowerAttackAction : CharacterAction
+public class PlayerPowerAttackAction : PlayerCardAction
 {
-    public static PlayerPowerAttackAction GetInstance() { return new PlayerPowerAttackAction(); }
+    public static PlayerPowerAttackAction GetInstance(CardTarget target) { return new PlayerPowerAttackAction(target); }
+
+    public PlayerPowerAttackAction(CardTarget target) : base(target)
+    {
+    }
 
     public override void StartAction(Character owner)
     {
