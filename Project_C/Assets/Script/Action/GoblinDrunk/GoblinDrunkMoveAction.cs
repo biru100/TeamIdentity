@@ -5,10 +5,10 @@ using UnityEngine;
 
 
 
-public class GoblinStealerMoveAction : CharacterAction
+public class GoblinDrunkMoveAction : CharacterAction
 {
 
-public static GoblinStealerMoveAction GetInstance() { return new GoblinStealerMoveAction(); }
+public static GoblinDrunkMoveAction GetInstance() { return new GoblinDrunkMoveAction(); }
 
 public override void StartAction(Character owner)
 {
@@ -32,7 +32,7 @@ NodeUtil.RotationAnim(Owner ,"run");
 
 if(NodeUtil.PlayerInRange(Owner ,1f))
 {
-NodeUtil.ChangeAction(Owner ,"GoblinStealerAttackAction");
+NodeUtil.ChangeAction(Owner ,"GoblinDrunkAttackAction");
 }
 
 else
