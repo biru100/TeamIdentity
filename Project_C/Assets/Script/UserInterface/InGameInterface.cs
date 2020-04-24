@@ -67,6 +67,11 @@ public class Deck
         }
     }
 
+    public int DeckCount()
+    {
+        return DeckCards.Count;
+    }
+
     public void Destroy()
     {
         _instance = null;
@@ -78,6 +83,7 @@ public class InGameInterface : UIBase<InGameInterface>
     protected List<CardInterface> HandCards;
 
     [SerializeField] protected GameObject _deckImg;
+    [SerializeField] protected Text _deckCount;
 
     [SerializeField] protected RectTransform _handField;
     [SerializeField] protected GameObject _arrowBody;
@@ -100,6 +106,8 @@ public class InGameInterface : UIBase<InGameInterface>
     {
         Time.timeScale = Mathf.Lerp(Time.timeScale, IsMouseOver || IsCardDrag ? 0.05f : 1f, 0.05f);
         IsMouseOver = false;
+        _deckCount.text = Deck.Instance.DeckCount().ToString();
+        _deckImg.SetActive(Deck.Instance.DeckCount() != 0);
     }
 
     public void DrawCard()

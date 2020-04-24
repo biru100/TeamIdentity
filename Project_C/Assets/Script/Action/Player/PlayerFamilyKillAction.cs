@@ -56,7 +56,7 @@ public class PlayerFamilyKillAction : PlayerCardAction
     {
         base.FinishAction();
         PlayerUtil.ConsumeCardPowerUpStatus();
-        Owner.DeleteState(CharacterStateType.E_SuperArmor);
+        Owner.DeleteState(CharacterStateType.E_Invincibility);
     }
 
     public void ReadyToAction()

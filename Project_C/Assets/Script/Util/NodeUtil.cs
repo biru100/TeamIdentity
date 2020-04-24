@@ -125,12 +125,14 @@ public static class NodeUtil
 
     public static void DrawCard()
     {
-        InGameInterface.Instance.DrawCard();
+        if(!PlayerStatus.CurrentStatus.CurrentStates.Contains(CharacterStateType.E_Invincibility))
+            InGameInterface.Instance.DrawCard();
     }
 
     public static void BurnCard()
     {
-        InGameInterface.Instance.DestroyCard();
+        if (!PlayerStatus.CurrentStatus.CurrentStates.Contains(CharacterStateType.E_Invincibility))
+            InGameInterface.Instance.DestroyCard();
     }
 
     public static bool PlayerInRange(Character owner, float range)
