@@ -48,6 +48,11 @@ public static class NodeUtil
         return owner.NavAgent.isStopped;
     }
 
+    public static Vector3 GetNavMoveDirection(Character owner)
+    {
+        return owner.NavAgent.velocity;
+    }
+
     public static void AvoidFormPlayer(Character owner)
     {
         Quaternion avoidDir = Quaternion.LookRotation(Player.CurrentPlayer.transform.position - owner.transform.position);

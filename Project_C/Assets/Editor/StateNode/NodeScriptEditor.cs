@@ -31,7 +31,8 @@ public class NodeScriptEditor : Editor
         if (GUILayout.Button("Compile Code"))
         {
             StateCompiler.CompileNodeScript(script);
-            CompilationPipeline.RequestScriptCompilation();
+            AssetDatabase.Refresh();
+            //CompilationPipeline.RequestScriptCompilation();
         }
 
         if (GUILayout.Button("Hot Compile Code(VisualStudio User Use Only)"))

@@ -13,8 +13,8 @@ public static SlimeAttackAction GetInstance() { return new SlimeAttackAction(); 
 public override void StartAction(Character owner)
 {
 base.StartAction(owner);
-TimelineEvents.Add(new TimeLineEvent(0.7f, TimeLine_4));
-NodeUtil.PlayAnim(Owner ,"idle");
+TimelineEvents.Add(new TimeLineEvent(0.01f, TimeLine_4));
+NodeUtil.PlayAnim(Owner ,"attack");
 }
 
 public override void UpdateAction()

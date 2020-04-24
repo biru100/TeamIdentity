@@ -30,7 +30,7 @@ else
 NodeUtil.LookPlayer(Owner);
 NodeUtil.RotationAnim(Owner ,"run");
 
-if(NodeUtil.PlayerInRange(Owner ,0.7f))
+if(NodeUtil.PlayerInRange(Owner ,1.2f))
 {
 NodeUtil.ChangeAction(Owner ,"SlimeAttackAction");
 }
