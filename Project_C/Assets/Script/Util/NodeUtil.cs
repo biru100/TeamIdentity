@@ -91,6 +91,21 @@ public static class NodeUtil
         target.AddState(new CharacterHitState(target, damage, 0.1f).Init());
     }
 
+    public static float GetDamage(Character owner)
+    {
+        return owner.Status.CurrentDamage;
+    }
+
+    public static void DrawCard()
+    {
+        InGameInterface.Instance.DrawCard();
+    }
+
+    public static void BurnCard()
+    {
+        InGameInterface.Instance.DestroyCard();
+    }
+
     public static bool PlayerInRange(Character owner, float range)
     {
         Player player = Player.CurrentPlayer;
@@ -162,6 +177,11 @@ public static class NodeUtil
     public static bool StateActionMacroByCurrentOrder(Character owner, int order)
     {
         return EntityUtil.StateActionMacro(owner, CharacterState.CharacterStateActionOrder[order]);
+    }
+
+    public static bool StateFinishActionMacro(Character owner, int order)
+    {
+        return EntityUtil.StateFinishActionMacro(owner, CharacterState.CharacterStateActionOrder[order]);
     }
 
     public static bool IsStun(Character owner)

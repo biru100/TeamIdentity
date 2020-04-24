@@ -30,7 +30,7 @@ public class CardInterface : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     Quaternion _destRotation;
 
-    Character _target;
+    TargetData _target;
 
     public Card CardData 
     {
@@ -56,6 +56,8 @@ public class CardInterface : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
         _destCardSize = _originCardSize;
         _destRotation = Quaternion.identity;
+
+        _target = new TargetData();
 
         IsVisible = true;
     }
@@ -100,19 +102,20 @@ public class CardInterface : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         {
             if (CardData.TargetType == CardTargetType.E_NonTarget)
             {
-                Player.CurrentPlayer.UseCardStack.Add(new KeyValuePair<Card, CardTarget>(CardData, new CardTarget()));
+                Player.CurrentPlayer.UseCardStack.Add(new UseCardData(CardData, _target));
                 StartCoroutine(DestroyCard());
                 IsUsing = true;
                 DisableEventSystem();
                 InGameInterface.Instance.UseCard(this);
             }
+            //target
             else if(CardData.TargetType == CardTargetType.E_Target)
             {
                 InGameInterface.Instance.ArrowBody.SetActive(false);
 
-                if (_target != null)
+                if (_target.Target != null)
                 {
-                    Player.CurrentPlayer.UseCardStack.Add(new KeyValuePair<Card, CardTarget>(CardData, new CardTarget(_target)));
+                    Player.CurrentPlayer.UseCardStack.Add(new UseCardData(CardData, _target));
                     StartCoroutine(DestroyCard());
                     IsUsing = true;
                     DisableEventSystem();
@@ -126,9 +129,15 @@ public class CardInterface : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
                     IsVisible = true;
                 }
             }
+            //point
             else
             {
-
+                InGameInterface.Instance.ArrowBody.SetActive(false);
+                Player.CurrentPlayer.UseCardStack.Add(new UseCardData(CardData, _target));
+                StartCoroutine(DestroyCard());
+                IsUsing = true;
+                DisableEventSystem();
+                InGameInterface.Instance.UseCard(this);
             }
         }
     }
@@ -199,9 +208,9 @@ public class CardInterface : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
                     if (hit.collider != null)
                     {
-                        _target = hit.collider.GetComponentInParent<Character>();
+                        _target.SetTarget(hit.collider.GetComponentInParent<Character>());
 
-                        if (_target is Player)
+                        if (_target.Target is Player)
                             _target = null;
                     }
                     else
@@ -213,7 +222,8 @@ public class CardInterface : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
                 }
                 else
                 {
-
+                    //Isometric.GetIsometicBasePositionByWorldRay(Camera.main.ScreenToWorldPoint(Input.mousePosition),
+                    //    Camera.main.transform.forward);
                 }
             }
         }

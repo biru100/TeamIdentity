@@ -5,7 +5,7 @@ using System.Linq;
 
 public class PlayerFamilyKillAction : PlayerCardAction
 {
-    public static PlayerFamilyKillAction GetInstance(CardTarget target) { return new PlayerFamilyKillAction(target); }
+    public static PlayerFamilyKillAction GetInstance(TargetData target) { return new PlayerFamilyKillAction(target); }
 
     List<Character> targetCharacters;
     float damage;
@@ -15,7 +15,7 @@ public class PlayerFamilyKillAction : PlayerCardAction
     //0 - pre skill, 1 - on skill, 2 - post skill
     int StateOrder = 0;
 
-    public PlayerFamilyKillAction(CardTarget target) : base(target)
+    public PlayerFamilyKillAction(TargetData target) : base(target)
     {
     }
 
