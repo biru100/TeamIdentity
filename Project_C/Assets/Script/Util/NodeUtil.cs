@@ -43,30 +43,52 @@ public static class NodeUtil
         UnityEngine.Object.Destroy(target.gameObject);
     }
 
+    public static bool IsGoalDestination(Character owner)
+    {
+        return owner.NavAgent.isStopped;
+    }
+
     public static void AvoidFormPlayer(Character owner)
     {
-        //Quaternion avoidDir = Quaternion.LookRotation(Player.CurrentPlayer.transform.position - owner.transform.position);
-        //NavMeshHit hit;
-        //if(NavMesh.Raycast(owner.transform.position, 
-        //    owner.transform.position + avoidDir * -Vector3.forward * 3f * Isometric.IsometricTileSize.x, 
-        //    out hit, 0))
-        //{
-        //    if(NavMesh.Raycast(owner.transform.position,
-        //    owner.transform.position + avoidDir * Quaternion.Euler(0f, 60f, 0f) * -Vector3.forward * 3f * Isometric.IsometricTileSize.x,
-        //    out hit, 0))
-        //    {
-        //        if (NavMesh.Raycast(owner.transform.position,
-        //            owner.transform.position + avoidDir * Quaternion.Euler(0f, 60f, 0f) * -Vector3.forward * 3f * Isometric.IsometricTileSize.x,
-        //            out hit, 0))
-        //        {
-
-        //        }
-        //    }
-        //}
-        //else
-        //{
-        //    NavMesh.SamplePosition(
-        //}    
+        Quaternion avoidDir = Quaternion.LookRotation(Player.CurrentPlayer.transform.position - owner.transform.position);
+        NavMeshHit hit;
+        if(NavMesh.Raycast(owner.transform.position, 
+            owner.transform.position + avoidDir * -Vector3.forward * 3f * Isometric.IsometricTileSize.x, 
+            out hit, 0))
+        {
+            if(NavMesh.Raycast(owner.transform.position,
+            owner.transform.position + avoidDir * Quaternion.Euler(0f, 60f, 0f) * -Vector3.forward * 3f * Isometric.IsometricTileSize.x,
+            out hit, 0))
+            {
+                if (NavMesh.Raycast(owner.transform.position,
+                    owner.transform.position + avoidDir * Quaternion.Euler(0f, 60f, 0f) * -Vector3.forward * 3f * Isometric.IsometricTileSize.x,
+                    out hit, 0))
+                {
+                    owner.NavAgent.SetDestination(hit.position);
+                }
+                else
+                {
+                    if (NavMesh.SamplePosition(owner.transform.position + avoidDir * Quaternion.Euler(0f, 60f, 0f) * -Vector3.forward * 12f * Isometric.IsometricTileSize.x, out hit, 12f * Isometric.IsometricTileSize.x, 0))
+                    {
+                        owner.NavAgent.SetDestination(hit.position);
+                    }
+                }
+            }
+            else
+            {
+                if (NavMesh.SamplePosition(owner.transform.position + avoidDir * Quaternion.Euler(0f, 60f, 0f) * -Vector3.forward * 12f * Isometric.IsometricTileSize.x, out hit, 12f * Isometric.IsometricTileSize.x, 0))
+                {
+                    owner.NavAgent.SetDestination(hit.position);
+                }
+            }
+        }
+        else
+        {
+            if(NavMesh.SamplePosition(owner.transform.position + avoidDir * -Vector3.forward * 12f * Isometric.IsometricTileSize.x, out hit, 10f * Isometric.IsometricTileSize.x, 0))
+            {
+                owner.NavAgent.SetDestination(hit.position);
+            }
+        }    
     }
 
     public static void LookPlayer(Character owner)
