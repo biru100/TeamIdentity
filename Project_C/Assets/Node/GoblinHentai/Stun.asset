@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4de99b1b8a0c2084cb1e4bdc4d987b3f, type: 3}
   m_Name: Stun
   m_EditorClassIdentifier: 
-  userName: CSlime
+  userName: GoblinHentai
   stateName: Stun
   dataJson: '{"nodeDatas":[{"GUID":"2be320dc-fa50-46c5-8280-13d26699d0b1","rect":{"serializedVersion":"2","x":51.0,"y":-81.0,"width":180.0,"height":60.0},"methodName":"Start","returnType":"Character","nodeType":5,"points":["6bf28fad-b946-4323-a888-092692ffb86b","d4c33500-189b-44b6-8433-dc0eefd5a43c"]},{"GUID":"2ce943fa-3c63-425f-8160-564f637e99b4","rect":{"serializedVersion":"2","x":55.0,"y":141.0,"width":180.0,"height":60.0},"methodName":"Update","returnType":"Character","nodeType":5,"points":["17eebed0-ad4d-462d-9eab-fe76f1600307","8ccb4ff1-d589-4f29-a6ee-f1c9c212c73d"]},{"GUID":"623ac253-5b59-4860-9194-00c36cbaba69","rect":{"serializedVersion":"2","x":458.0,"y":141.0,"width":180.0,"height":100.0},"methodName":"IF","returnType":"True
     Logic, False Logic","nodeType":3,"points":["6204f9ff-e404-4ba1-98ec-2d438db84b1e","49fc2efc-ce01-4675-beef-cfdf9f9d91d8","06b45b77-d730-441a-84a3-df54017e0cc8","021320f2-adbe-4762-b902-a1926cb7c5ab"]},{"GUID":"1bd34b1e-a9a9-4781-b4e0-f1327a6b1cf9","rect":{"serializedVersion":"2","x":769.0,"y":221.0,"width":180.0,"height":100.0},"methodName":"IF","returnType":"True
