@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4de99b1b8a0c2084cb1e4bdc4d987b3f, type: 3}
-  m_Name: Hold
+  m_Name: Hold 1
   m_EditorClassIdentifier: 
   userName: CSlime
   stateName: Hold
