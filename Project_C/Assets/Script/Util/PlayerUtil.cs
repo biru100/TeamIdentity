@@ -29,7 +29,7 @@ public static class EntityUtil
     {
         string ownerName = owner.GetType().Name;
 
-        if (owner.Status.CurrentStates.Contains(currentOrder))
+        if (!owner.Status.CurrentStates.Contains(currentOrder))
         {
             ChangeAction(owner, ownerName + "IdleAction");
             return true;
