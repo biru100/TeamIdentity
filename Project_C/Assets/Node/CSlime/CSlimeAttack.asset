@@ -22,8 +22,8 @@ MonoBehaviour:
     - GUID: 75e42c7f-73cc-4748-b336-480a944126de
       rect:
         serializedVersion: 2
-        x: 120
-        y: 27
+        x: 185
+        y: -61
         width: 180
         height: 60
       methodName: Start
@@ -35,8 +35,8 @@ MonoBehaviour:
     - GUID: 7b067d3b-c6da-4d65-8412-9a517f82f77e
       rect:
         serializedVersion: 2
-        x: 121
-        y: 217
+        x: 186
+        y: 129
         width: 180
         height: 60
       methodName: Update
@@ -48,8 +48,8 @@ MonoBehaviour:
     - GUID: 5adf3281-07a4-470b-8238-862917c9d160
       rect:
         serializedVersion: 2
-        x: 448
-        y: 221
+        x: 513
+        y: 133
         width: 180
         height: 100
       methodName: IF
@@ -63,8 +63,8 @@ MonoBehaviour:
     - GUID: bc0e587b-ca0d-4fb8-bd32-4b26e31d981f
       rect:
         serializedVersion: 2
-        x: 820
-        y: 252
+        x: 885
+        y: 164
         width: 180
         height: 100
       methodName: IF
@@ -78,8 +78,8 @@ MonoBehaviour:
     - GUID: 51a4da1e-4c04-4907-b097-df04a1312e87
       rect:
         serializedVersion: 2
-        x: 133
-        y: 606
+        x: 198
+        y: 518
         width: 180
         height: 100
       methodName: TimeLine
@@ -93,8 +93,8 @@ MonoBehaviour:
     - GUID: cb68ff15-11cd-4cf6-9f85-40b07b3d3e44
       rect:
         serializedVersion: 2
-        x: 411
-        y: 29
+        x: 476
+        y: -59
         width: 180
         height: 140
       methodName: PlayAnim
@@ -109,8 +109,8 @@ MonoBehaviour:
     - GUID: 3bf0884f-02d3-4d12-ba53-6bd18cc099c9
       rect:
         serializedVersion: 2
-        x: 289
-        y: 352
+        x: 354
+        y: 264
         width: 180
         height: 100
       methodName: StateActionMacro
@@ -123,8 +123,8 @@ MonoBehaviour:
     - GUID: 80e1cfe4-a40f-4895-8656-70bf1480816c
       rect:
         serializedVersion: 2
-        x: 621
-        y: 362
+        x: 686
+        y: 274
         width: 180
         height: 100
       methodName: IsLastFrame
@@ -137,8 +137,8 @@ MonoBehaviour:
     - GUID: 4520c9e8-fa57-4884-98a4-10c9fe0a959e
       rect:
         serializedVersion: 2
-        x: 464
-        y: 603
+        x: 529
+        y: 515
         width: 180
         height: 100
       methodName: TakeDamageToPlayer
@@ -152,8 +152,8 @@ MonoBehaviour:
     - GUID: be1a9000-b81d-4104-8090-962a4f0fda64
       rect:
         serializedVersion: 2
-        x: 1094
-        y: 372
+        x: 1159
+        y: 284
         width: 180
         height: 140
       methodName: ChangeAction
@@ -169,8 +169,8 @@ MonoBehaviour:
     - GUID: abd8c48a-3ce1-4dbc-b531-e743e6b91dd6
       rect:
         serializedVersion: 2
-        x: 1087
-        y: 379.5
+        x: 1152
+        y: 291.5
         width: 15
         height: 15
       index: 0
@@ -184,8 +184,8 @@ MonoBehaviour:
     - GUID: 49a1f2a4-9f17-4793-8499-a902b9bdb570
       rect:
         serializedVersion: 2
-        x: 457
-        y: 650.5
+        x: 522
+        y: 562.5
         width: 15
         height: 15
       index: 1
@@ -198,8 +198,8 @@ MonoBehaviour:
     - GUID: 83034e1d-8e87-4b12-ad39-d66eb6571655
       rect:
         serializedVersion: 2
-        x: 305
-        y: 613.5
+        x: 370
+        y: 525.5
         width: 15
         height: 15
       index: 0
@@ -213,8 +213,8 @@ MonoBehaviour:
     - GUID: fd3e55a9-12db-46f6-972f-3c1b9fb32883
       rect:
         serializedVersion: 2
-        x: 813
-        y: 259.5
+        x: 878
+        y: 171.5
         width: 15
         height: 15
       index: 0
@@ -228,8 +228,8 @@ MonoBehaviour:
     - GUID: a23f8277-93ab-45d0-96e2-f39026089444
       rect:
         serializedVersion: 2
-        x: 404
-        y: 36.5
+        x: 469
+        y: -51.5
         width: 15
         height: 15
       index: 0
@@ -243,8 +243,8 @@ MonoBehaviour:
     - GUID: 9c96b3db-1a24-46e5-b27f-c0dda91cb3d5
       rect:
         serializedVersion: 2
-        x: 292
-        y: 74.5
+        x: 357
+        y: -13.5
         width: 15
         height: 15
       index: 1
@@ -258,8 +258,8 @@ MonoBehaviour:
     - GUID: 67ddf35e-4d9f-4361-8478-ebb068228907
       rect:
         serializedVersion: 2
-        x: 292
-        y: 34.5
+        x: 357
+        y: -53.5
         width: 15
         height: 15
       index: 0
@@ -273,8 +273,8 @@ MonoBehaviour:
     - GUID: e166c06c-8091-4d0c-8f8e-dc1f690801a5
       rect:
         serializedVersion: 2
-        x: 404
-        y: 116.5
+        x: 469
+        y: 28.5
         width: 15
         height: 15
       index: 2
@@ -287,8 +287,8 @@ MonoBehaviour:
     - GUID: e71e3fc1-343b-4beb-81d9-f6b5b00abb90
       rect:
         serializedVersion: 2
-        x: 404
-        y: 76.5
+        x: 469
+        y: -11.5
         width: 15
         height: 15
       index: 1
@@ -302,8 +302,8 @@ MonoBehaviour:
     - GUID: 2bb3effd-bd34-4ac1-957e-31ab0d00ddd6
       rect:
         serializedVersion: 2
-        x: 583
-        y: 36.5
+        x: 648
+        y: -51.5
         width: 15
         height: 15
       index: 0
@@ -316,8 +316,8 @@ MonoBehaviour:
     - GUID: e4708966-207c-40a7-8d7c-c6fbfa83cad1
       rect:
         serializedVersion: 2
-        x: 293
-        y: 224.5
+        x: 358
+        y: 136.5
         width: 15
         height: 15
       index: 0
@@ -331,8 +331,8 @@ MonoBehaviour:
     - GUID: 15fbe6f5-cb81-4a8e-b48a-dca45a6ee649
       rect:
         serializedVersion: 2
-        x: 293
-        y: 264.5
+        x: 358
+        y: 176.5
         width: 15
         height: 15
       index: 1
@@ -348,8 +348,8 @@ MonoBehaviour:
     - GUID: be07e76b-7b92-4390-879b-435f2cdd9790
       rect:
         serializedVersion: 2
-        x: 441
-        y: 228.5
+        x: 506
+        y: 140.5
         width: 15
         height: 15
       index: 0
@@ -363,8 +363,8 @@ MonoBehaviour:
     - GUID: 48552297-3851-4e19-b67d-c83587792704
       rect:
         serializedVersion: 2
-        x: 441
-        y: 268.5
+        x: 506
+        y: 180.5
         width: 15
         height: 15
       index: 1
@@ -378,8 +378,8 @@ MonoBehaviour:
     - GUID: b5a40a26-8e94-470d-8dd6-9b421a631143
       rect:
         serializedVersion: 2
-        x: 620
-        y: 228.5
+        x: 685
+        y: 140.5
         width: 15
         height: 15
       index: 0
@@ -392,8 +392,8 @@ MonoBehaviour:
     - GUID: 95aa9a9a-9fe0-4276-b05a-40c6cc9b9624
       rect:
         serializedVersion: 2
-        x: 620
-        y: 268.5
+        x: 685
+        y: 180.5
         width: 15
         height: 15
       index: 1
@@ -407,8 +407,8 @@ MonoBehaviour:
     - GUID: 77b744a5-5b35-4b5c-9303-1336509a0489
       rect:
         serializedVersion: 2
-        x: 282
-        y: 399.5
+        x: 347
+        y: 311.5
         width: 15
         height: 15
       index: 1
@@ -422,8 +422,8 @@ MonoBehaviour:
     - GUID: d33d9545-192c-400b-a9ff-ce748eaea0d5
       rect:
         serializedVersion: 2
-        x: 461
-        y: 399.5
+        x: 526
+        y: 311.5
         width: 15
         height: 15
       index: 1
@@ -437,8 +437,8 @@ MonoBehaviour:
     - GUID: cf35c2af-9893-4904-b7cf-4adb92ed8e3a
       rect:
         serializedVersion: 2
-        x: 1087
-        y: 459.5
+        x: 1152
+        y: 371.5
         width: 15
         height: 15
       index: 2
@@ -451,8 +451,8 @@ MonoBehaviour:
     - GUID: 9cdadaa9-02b8-4257-8ad6-24df610bac2a
       rect:
         serializedVersion: 2
-        x: 1087
-        y: 419.5
+        x: 1152
+        y: 331.5
         width: 15
         height: 15
       index: 1
@@ -466,8 +466,8 @@ MonoBehaviour:
     - GUID: 6200028a-8a89-4ca3-b687-5ac62f8378d0
       rect:
         serializedVersion: 2
-        x: 1266
-        y: 379.5
+        x: 1331
+        y: 291.5
         width: 15
         height: 15
       index: 0
@@ -480,8 +480,8 @@ MonoBehaviour:
     - GUID: 239ce138-ef46-4b6b-ad18-0194131bad55
       rect:
         serializedVersion: 2
-        x: 614
-        y: 409.5
+        x: 679
+        y: 321.5
         width: 15
         height: 15
       index: 1
@@ -495,8 +495,8 @@ MonoBehaviour:
     - GUID: 5afde552-4686-4ace-ab26-afc86f0783d2
       rect:
         serializedVersion: 2
-        x: 793
-        y: 409.5
+        x: 858
+        y: 321.5
         width: 15
         height: 15
       index: 1
@@ -510,8 +510,8 @@ MonoBehaviour:
     - GUID: 06796b24-5abe-42b7-aaeb-3154f9c7d32b
       rect:
         serializedVersion: 2
-        x: 126
-        y: 653.5
+        x: 191
+        y: 565.5
         width: 15
         height: 15
       index: 1
@@ -524,8 +524,8 @@ MonoBehaviour:
     - GUID: 01a35f4f-e11f-4b22-b726-01ec0243a4d8
       rect:
         serializedVersion: 2
-        x: 305
-        y: 653.5
+        x: 370
+        y: 565.5
         width: 15
         height: 15
       index: 1
@@ -538,8 +538,8 @@ MonoBehaviour:
     - GUID: a5faf51f-e348-49f9-9716-7a5a41703a95
       rect:
         serializedVersion: 2
-        x: 992
-        y: 299.5
+        x: 1057
+        y: 211.5
         width: 15
         height: 15
       index: 1
@@ -552,8 +552,8 @@ MonoBehaviour:
     - GUID: bfad273e-910c-4f78-abd8-44724ecbcd95
       rect:
         serializedVersion: 2
-        x: 992
-        y: 259.5
+        x: 1057
+        y: 171.5
         width: 15
         height: 15
       index: 0
@@ -567,8 +567,8 @@ MonoBehaviour:
     - GUID: 38da913f-cac1-4161-8aa7-6b734c1ed419
       rect:
         serializedVersion: 2
-        x: 813
-        y: 299.5
+        x: 878
+        y: 211.5
         width: 15
         height: 15
       index: 1
@@ -582,8 +582,8 @@ MonoBehaviour:
     - GUID: 191bbbe1-a69c-421d-b2db-75babcf99fed
       rect:
         serializedVersion: 2
-        x: 636
-        y: 610.5
+        x: 701
+        y: 522.5
         width: 15
         height: 15
       index: 0
@@ -596,8 +596,8 @@ MonoBehaviour:
     - GUID: 85e29da7-9331-4ef6-b3be-dd1066716072
       rect:
         serializedVersion: 2
-        x: 457
-        y: 610.5
+        x: 522
+        y: 522.5
         width: 15
         height: 15
       index: 0
