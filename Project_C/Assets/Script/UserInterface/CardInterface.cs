@@ -211,14 +211,14 @@ public class CardInterface : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
                         _target.SetTarget(hit.collider.GetComponentInParent<Character>());
 
                         if (_target.Target is Player)
-                            _target = null;
+                            _target.SetTarget(null);
                     }
                     else
                     {
-                        _target = null;
+                        _target.SetTarget(null);
                     }
 
-                    InGameInterface.Instance.CollectCircle.SetActive(_target != null);
+                    InGameInterface.Instance.CollectCircle.SetActive(_target.Target != null);
                 }
                 else
                 {

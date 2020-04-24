@@ -26,7 +26,7 @@ public class Player : Character
         base.Awake();
         CurrentPlayer = this;
         Status = new PlayerStatus(this);
-        DataManager.LoadData();
+        //DataManager.LoadData();
         UseCardStack = new List<UseCardData>();
     }
 

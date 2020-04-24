@@ -13,6 +13,7 @@ public static GoblinStoreHitAction GetInstance() { return new GoblinStoreHitActi
 public override void StartAction(Character owner)
 {
 base.StartAction(owner);
+TimelineEvents.Add(new TimeLineEvent(0.01f, TimeLine_4));
 NodeUtil.LookPlayer(Owner);
 NodeUtil.PlayAnim(Owner ,"hit");
 }
@@ -30,7 +31,7 @@ else
 
 if(NodeUtil.IsLastFrame(Owner))
 {
-NodeUtil.ChangeAction(Owner ,"GoblinHentaiIdleAction");
+NodeUtil.ChangeAction(Owner ,"GoblinStoreIdleAction");
 }
 
 else
@@ -42,5 +43,10 @@ else
 public override void FinishAction()
 {
 base.FinishAction();
+}
+
+void TimeLine_4()
+{
+NodeUtil.DrawCard();
 }
 }
