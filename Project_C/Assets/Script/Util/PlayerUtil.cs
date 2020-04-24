@@ -25,6 +25,19 @@ public static class EntityUtil
         return false;
     }
 
+    public static bool StateFinishActionMacro(Character owner, CharacterStateType currentOrder)
+    {
+        string ownerName = owner.GetType().Name;
+
+        if (owner.Status.CurrentStates.Contains(currentOrder))
+        {
+            ChangeAction(owner, ownerName + "IdleAction");
+            return true;
+        }
+
+        return false;
+    }
+
     public static bool IsStun(Character owner)
     {
         return owner.Status.CurrentStates.Contains(CharacterStateType.E_Stun);
@@ -45,7 +58,7 @@ public static class EntityUtil
         owner.CurrentAction = (CharacterAction)Type.GetType(actionName).GetMethod("GetInstance", BindingFlags.Public | BindingFlags.Static).Invoke(null, null);
     }
 
-    public static void ChangeCardAction(Character owner, string actionName, CardTarget target)
+    public static void ChangeCardAction(Character owner, string actionName, TargetData target)
     {
         owner.CurrentAction = (CharacterAction)Type.GetType(actionName).GetMethod("GetInstance", BindingFlags.Public | BindingFlags.Static).Invoke(null, new object[] { target });
     }

@@ -5,9 +5,9 @@ using UnityEngine;
 public class PlayerCardPowerUpAction : PlayerCardAction
 {
 
-    public static PlayerCardPowerUpAction GetInstance(CardTarget target) { return new PlayerCardPowerUpAction(target); }
+    public static PlayerCardPowerUpAction GetInstance(TargetData target) { return new PlayerCardPowerUpAction(target); }
 
-    public PlayerCardPowerUpAction(CardTarget target) : base(target)
+    public PlayerCardPowerUpAction(TargetData target) : base(target)
     {
     }
 
@@ -23,7 +23,7 @@ public class PlayerCardPowerUpAction : PlayerCardAction
     {
         base.UpdateAction();
 
-        if (EntityUtil.StateActionMacro(Owner))
+        if (EntityUtil.StateActionMacro(Owner, CharacterStateType.E_Hit))
         {
             return;
         }

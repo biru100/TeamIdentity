@@ -3,11 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+public class UseCardData
+{
+    public Card card;
+    public TargetData target;
+
+    public UseCardData(Card card, TargetData target)
+    {
+        this.card = card;
+        this.target = target;
+    }
+}
+
 public class Player : Character
 {
     public static Player CurrentPlayer { get; protected set; }
 
-    public List<KeyValuePair<Card, CardTarget>> UseCardStack { get; set; }
+    public List<UseCardData> UseCardStack { get; set; }
 
     protected override void Awake()
     {
@@ -15,7 +27,7 @@ public class Player : Character
         CurrentPlayer = this;
         Status = new PlayerStatus(this);
         DataManager.LoadData();
-        UseCardStack = new List<KeyValuePair<Card, CardTarget>>();
+        UseCardStack = new List<UseCardData>();
     }
 
     // Start is called before the first frame update
@@ -45,7 +57,7 @@ public class Player : Character
 
         if (UseCardStack.Count != 0)
         {
-            EntityUtil.ChangeCardAction(this, UseCardStack[0].Key.CardActionName, UseCardStack[0].Value);
+            EntityUtil.ChangeCardAction(this, UseCardStack[0].card.CardActionName, UseCardStack[0].target);
             UseCardStack.RemoveAt(0);
         }
         else

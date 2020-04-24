@@ -123,6 +123,14 @@ public class InGameInterface : UIBase<InGameInterface>
         }
     }
 
+    public void DestroyCard()
+    {
+        if (Deck.Instance.DispenseOneCard(out Card dispencedCard))
+        {
+
+        }
+    }
+
     public void UseCard(CardInterface card)
     {
         HandCards.Remove(card);
