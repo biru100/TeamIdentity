@@ -1,0 +1,10 @@
+301	강타	범위 내 적에게 _ 의 데미지를 줍니다.	Resources/Sprites/card_power_atk	0	PlayerPowerAttackAction	80	0	
+302	종족 말살	같은 방에 있는 동일한 유닛에게 _ 의 데미지를 줍니다.	Resources/Sprites/card_family_kill	0	PlayerFamilyKillAction	50	0	
+303	근력 강화	카드 주문력을 _ 강화합니다.	Resources/Sprites/card_atk_up	0	PlayerCardPowerUpAction	100	0	
+304	공격 강화	캐릭터의 기본 공격력을 _ 초 동안 _ 강화합니다.		0		60	20	
+305	이동 속도	캐릭터의 이동 속도를 _ 초 동안 _  증가 시킵니다.		0		5	0.3	
+306	침묵	몬스터 하나를 침묵 시킵니다.		0		5	0	
+307	슬라임 변이	몬스터 하나를 슬라임으로 변이 시킵니다.		0		0	0	
+308	슬로우	몬스터 하나의 이동속도를 _ 초 동안 _ 감소 시킵니다.		0		5	0.3	
+309	드로우	카드를 _ 장 드로우 합니다.		0		3	0	
+310	지면 강타	범위 내 적에게 _ 의 데미지를 줍니다.	0	60	

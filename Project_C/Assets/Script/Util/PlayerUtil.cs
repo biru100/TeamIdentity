@@ -18,7 +18,9 @@ public static class EntityUtil
             CharacterStateType curType = CharacterState.CharacterStateActionOrder[i];
             if (owner.Status.CurrentStates.Contains(curType))
             {
-                ChangeAction(owner, ownerName + CharacterState.CharacterStateActionName[curType]);
+                if(CharacterState.IsCharacterStatePlayingAction[curType])
+                    ChangeAction(owner, ownerName + CharacterState.CharacterStateActionName[curType]);
+                return true;
             }
         }
 
@@ -36,6 +38,11 @@ public static class EntityUtil
         }
 
         return false;
+    }
+
+    public static bool IsActivateAbility(Character owner, CharacterAbilityType wantToAbility)
+    {
+        return owner.Status.CurrentAbility.Contains(wantToAbility);
     }
 
     public static bool IsStun(Character owner)

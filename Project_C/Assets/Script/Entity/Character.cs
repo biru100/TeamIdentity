@@ -13,6 +13,7 @@ public class Character : MonoBehaviour
     public NavMeshAgent NavAgent { get; protected set; }
     public CharacterStatus Status { get; protected set; }
 
+    public List<CharacterAbility> AbilityStack { get; protected set; }
     public List<CharacterState> StateStack { get; protected set; }
 
     protected List<CharacterState> DeleteStateList { get; set; }
@@ -35,6 +36,7 @@ public class Character : MonoBehaviour
         Status = new CharacterStatus(this);
         StateStack = new List<CharacterState>();
         DeleteStateList = new List<CharacterState>();
+        AbilityStack = new List<CharacterAbility>();
         RenderTrasform = GetComponentInChildren<RenderTransform>();
         Anim = GetComponentInChildren<Animator>();
         NavAgent = GetComponent<NavMeshAgent>();
@@ -46,11 +48,14 @@ public class Character : MonoBehaviour
         for (int i = 0; i < StateStack.Count; ++i)
             StateStack[i].UpdateState();
 
+        Status.PrepareAbility();
+        for (int i = 0; i < AbilityStack.Count; ++i)
+            AbilityStack[i].UpdateAbility();
+
         foreach (var deletedState in DeleteStateList)
             StateStack.Remove(deletedState);
 
         CurrentAction?.UpdateAction();
-
     }
 
     public virtual bool AddState(CharacterState state, bool isUnique = false)

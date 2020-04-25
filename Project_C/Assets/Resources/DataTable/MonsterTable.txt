@@ -1,0 +1,9 @@
+501	슬라임	10	30	0.7	0	이 몬스터는 사망 시 작은 슬라임 _마리로 분열합니다.	E_Spawn	E_None	E_None	E_None	E_None	E_None	2		
+501	작은 슬라임	5	15	0.7	0	이 몬스터는 아무런 효과도 가지고 있지 않습니다.	E_None	E_None	E_None	E_None	E_None	E_None			
+															
+															
+															
+															
+															
+															
+															

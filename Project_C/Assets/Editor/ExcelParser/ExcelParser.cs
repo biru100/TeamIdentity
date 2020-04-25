@@ -47,10 +47,138 @@ public class ExcelParser : EditorWindow
             {
                 ISheet sheet = workBook.GetSheetAt(i);
 
-                MakeSheetData(file, sheet);
+                if (sheet.SheetName.Contains("Enum"))
+                    MakeEnumData(file, sheet);
+                else
+                    MakeSheetData(file, sheet);
             } 
         }
     }
+
+    private static void MakeEnumData(FileInfo info, ISheet sheet)
+    {
+        StringBuilder sb = new StringBuilder();
+
+        IRow row;
+
+        Dictionary<string, List<string>> enumClassDict = new Dictionary<string, List<string>>();
+
+        string str = string.Empty;
+
+        sb.Append(pre_enum_script);
+
+        string lastName = string.Empty;
+        for (int i = 0; i <= sheet.LastRowNum; i++)
+        {
+            row = sheet.GetRow(i);
+
+            if (row == null)
+                continue;
+
+            if (row.GetCell(0) == null)
+                continue;
+
+            //사랑합니다 닷넷 4.x!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+            var enumName = row.GetCell(0).StringCellValue;
+            if (lastName.Equals(enumName) == false && enumClassDict.ContainsKey(lastName))
+            {
+                enumClassDict[lastName].Add(enum_define_close);
+            }
+            if (!enumClassDict.TryGetValue(enumName, out var list))
+            {
+                list = new List<string>();
+                enumClassDict.Add(enumName, list);
+                list.Add(string.Format(enum_define_format, enumName));
+                list.Add(enum_define_open);
+            }
+
+
+            List<string> enumElement = new List<string>();
+            foreach (ICell cell in row)
+            {
+                str = string.Empty;
+
+                switch (cell.CellType)
+                {
+                    case CellType.String:
+                        str = cell.StringCellValue;
+                        break;
+
+                    case CellType.Numeric:
+                        if (HSSFDateUtil.IsCellDateFormatted(cell))
+                            str = cell.DateCellValue.ToString();
+                        else
+                            str = cell.NumericCellValue.ToString();
+                        break;
+
+                    case CellType.Formula:
+                        switch (cell.CachedFormulaResultType) // =a1+b2 ..
+                        {
+                            case CellType.String:
+                                str = cell.StringCellValue;
+                                break;
+                            case CellType.Numeric:
+                                str = cell.NumericCellValue.ToString();
+                                break;
+                            default:
+                                Debug.LogError(string.Format("[Parser]Invaild Type Exception : Cell type is {0}", cell.CachedFormulaResultType));
+                                break;
+                        }
+                        break;
+
+                    case CellType.Blank:
+                        break;
+
+                    default:
+                        Debug.LogError(string.Format("[Parser]Out of case Exception : Cell type is {0}", cell.CellType));
+                        break;
+                }
+
+                enumElement.Add(str);
+            }
+
+            enumClassDict[enumName].Add(string.Format(enum_define_element, enumElement[1], enumElement[2], enumElement.Count > 3 ? enumElement[3] : string.Empty));
+
+            lastName = enumName;
+        }
+
+
+        foreach (var kvp in enumClassDict)
+        {
+            var e = kvp.Value.GetEnumerator();
+            while (e.MoveNext())
+            {
+                sb.Append(e.Current);
+            }
+        }
+
+        sb.Append(enum_define_close);
+
+        //sb.Append(post_enum_script);
+
+        string path = Application.dataPath + "/Script/Tables/";
+
+        DirectoryInfo di = new DirectoryInfo(path);
+
+        if (!di.Exists)
+            di.Create();
+
+        File.WriteAllText(path + sheet.SheetName + ".cs", sb.ToString());
+    }
+
+    private const string pre_enum_script =
+@"//이 코드는 엑셀 파서에 의해 자동 생성됨. 
+using System;
+
+
+";
+
+    private const string enum_define_format = " public enum {0}";
+    private const string enum_define_open = "\n {\n";
+    private const string enum_define_element = "    {0} = {1} , // {2} \n";
+    private const string enum_define_close = "  }\n";
+    private const string post_enum_script = @"}";
 
     private static void MakeSheetData(FileInfo info, ISheet sheet)
     {
