@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public enum CharacterStateType
 {
@@ -14,8 +15,6 @@ public enum CharacterStateType
     E_Slow, // 슬로우
     E_Hit, // 피격
     E_SuperArmor, // 피격 무시
-    E_PreventMovement, // 이동 불가 능력
-    E_PreventAttack, //공격 불가 능력
     E_Dead
 }
 
@@ -35,22 +34,49 @@ public class CharacterMosterBaseState : CharacterState
 
 public class CharacterTauntState : CharacterState
 {
+    public Dictionary<Character, CharacterTauntInvincibilityState> _buffCharacters;
+
     //방 한테 몬스터 정보 불러옴 - 도발을 제외한 몬스터에게 도발무적 상태를 제공 
     public CharacterTauntState(Character owner, float lifeTime = -1)
         : base(CharacterStateType.E_Taunt, owner, lifeTime)
     {
-
-    }
+        _buffCharacters = new Dictionary<Character, CharacterTauntInvincibilityState>();
+    }   
 
     public override bool UpdateState()
     {
-        bool retVal = base.UpdateState();
-        if (retVal == false)
+        ElapsedTime += Time.deltaTime;
+        if (StateLifeTime > 0f && ElapsedTime >= StateLifeTime)
+        {
+            Owner.DeleteState(this);
             return false;
+        }
 
         Status.CurrentStates.Add(CharacterStateType.E_Taunt);
         return true;
     }
+
+    void GiveTauntInvincibility()
+    {
+        List<Character> characters = Object.FindObjectsOfType<Character>()?.ToList();
+        if (characters == null || characters.Count == 0)
+            return;
+
+        foreach(var character in characters)
+        {
+            if (character is Player)
+                continue;
+
+            if(!_buffCharacters.ContainsKey(character))
+            {
+                CharacterTauntInvincibilityState invState = new CharacterTauntInvincibilityState(character);
+                character.AddState(invState.Init());
+                _buffCharacters.Add(character, invState);
+            }
+
+        }
+    }
+
 }
 
 public class CharacterTauntInvincibilityState : CharacterState
