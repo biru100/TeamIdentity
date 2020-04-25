@@ -37,6 +37,9 @@ public class CharacterSilenceState : CharacterState
         || s != CharacterStateType.E_Dead
         || s != CharacterStateType.E_Silence);
 
+        Status.CurrentSpeed = Status.Speed;
+        Status.CurrentDamage = Status.Damage;
+
         return true;
     }
 }
@@ -109,23 +112,53 @@ public class CharacterDecreaseDamageState : CharacterState
     }
 }
 
+public class CharacterIncreaseSpeedState : CharacterState
+{
+    public float IncreaseSpeed { get; set; }
+
+    public CharacterIncreaseSpeedState(Character owner, float increaseSpeed, float lifeTime = -1)
+        : base(CharacterStateType.E_IncreaseDamage, owner, lifeTime)
+    {
+        IncreaseSpeed = increaseSpeed;
+    }
+
+    public override bool UpdateState()
+    {
+        bool retVal = base.UpdateState();
+        if (retVal == false)
+            return false;
+
+        Status.CurrentDamage += IncreaseSpeed;
+
+        return true;
+    }
+}
+
+public class CharacterSlowState : CharacterState
+{
+    public float DecreaseSpeed { get; set; }
+
+    public CharacterSlowState(Character owner, float decreaseSpeed, float lifeTime = -1)
+        : base(CharacterStateType.E_IncreaseDamage, owner, lifeTime)
+    {
+        DecreaseSpeed = decreaseSpeed;
+    }
+
+    public override bool UpdateState()
+    {
+        bool retVal = base.UpdateState();
+        if (retVal == false)
+            return false;
+
+        Status.CurrentDamage -= DecreaseSpeed;
+
+        return true;
+    }
+}
+
 
 public class CharacterState
 {
-    public static readonly Dictionary<CharacterStateType, Func<Character, float, CharacterState>> CharacterStateBuilderSet = new Dictionary<CharacterStateType, Func<Character, float, CharacterState>>()
-    {
-        {CharacterStateType.E_Idle,              (c, t)=> new CharacterState(CharacterStateType.E_Idle, c, t).Init()},
-        {CharacterStateType.E_TauntInvincibility,(c, t)=> new CharacterState(CharacterStateType.E_TauntInvincibility, c, t).Init()},
-        {CharacterStateType.E_Invincibility,     (c, t)=> new CharacterState(CharacterStateType.E_Invincibility, c, t).Init()},
-        {CharacterStateType.E_Silence,           (c, t)=> new CharacterSilenceState( c, t).Init()},
-        {CharacterStateType.E_Hold,              (c, t)=> new CharacterState(CharacterStateType.E_Hold, c, t).Init()},
-        {CharacterStateType.E_Stun,              (c, t)=> new CharacterState(CharacterStateType.E_Stun, c, t).Init()},
-        {CharacterStateType.E_Slow,              (c, t)=> new CharacterState(CharacterStateType.E_Slow, c, t).Init()},
-        {CharacterStateType.E_Hit,               (c, t)=> new CharacterHitState(c, t).Init()},
-        {CharacterStateType.E_SuperArmor,        (c, t)=> new CharacterState(CharacterStateType.E_SuperArmor, c, t).Init()},
-        {CharacterStateType.E_Dead,              (c, t)=> new CharacterState(CharacterStateType.E_Dead, c, t).Init()}
-    };
-
     public static readonly List<CharacterStateType> CharacterStateActionOrder = new List<CharacterStateType>()
     {
         CharacterStateType.E_TauntInvincibility,
