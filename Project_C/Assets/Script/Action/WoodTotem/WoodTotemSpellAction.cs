@@ -43,7 +43,7 @@ public class WoodTotemSpellAction : CharacterAction
         isFinish = true;
         if ((Player.CurrentPlayer.transform.position - position).magnitude < 1.2 * Isometric.IsometricTileSize.x)
         {
-            Player.CurrentPlayer.AddState(new CharacterHoldState(Player.CurrentPlayer, 1f));
+            Player.CurrentPlayer.AddState(new CharacterState(CharacterStateType.E_Hold, Player.CurrentPlayer, 1f));
             Player.CurrentPlayer.AddState(new CharacterHitState(Player.CurrentPlayer, 20f, 0.1f));
         }
 

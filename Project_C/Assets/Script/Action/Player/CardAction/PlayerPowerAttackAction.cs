@@ -15,7 +15,7 @@ public class PlayerPowerAttackAction : PlayerCardAction
         base.StartAction(owner);
         AnimUtil.PlayAnim(owner, "power_atk");
         TimelineEvents.Add(new TimeLineEvent(0.22f, SendDamage));
-        Owner.AddState(new CharacterSuperArmorState(Owner).Init());
+        Owner.AddState(new CharacterState(CharacterStateType.E_SuperArmor, Owner).Init());
     }
 
     public override void UpdateAction()

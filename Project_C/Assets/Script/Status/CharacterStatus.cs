@@ -43,6 +43,7 @@ public class CharacterStatus
 
     public CharacterStateType BaseState { get; set; }
     public List<CharacterStateType> CurrentStates { get; set; }
+    public List<CharacterAbilityType> CurrentAbility { get; set; }
 
     public CharacterStatus(Character owner)
     {
@@ -62,6 +63,7 @@ public class CharacterStatus
         CurrentSpeed = 1.2f;
 
         CurrentStates = new List<CharacterStateType>();
+        CurrentAbility = new List<CharacterAbilityType>();
         IgnoreStateList = new List<CharacterStateType>();
         BaseState = CharacterStateType.E_Idle;
     }
@@ -71,5 +73,10 @@ public class CharacterStatus
         CurrentStates.Clear();
         CurrentSpeed = Speed;
         CurrentDamage = Damage;
+    }
+
+    public void PrepareAbility()
+    {
+        CurrentAbility.Clear();
     }
 }

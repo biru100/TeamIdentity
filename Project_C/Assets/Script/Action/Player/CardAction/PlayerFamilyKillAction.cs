@@ -33,7 +33,7 @@ public class PlayerFamilyKillAction : PlayerCardAction
         < (c2.transform.position - owner.transform.position).magnitude ? -1 : 1);
 
         damage = PlayerUtil.CalculatingCardPowerValue(50f);
-        Owner.AddState(new CharacterInvincibilityState(Owner).Init());
+        Owner.AddState(new CharacterState(CharacterStateType.E_Invincibility, Owner).Init());
     }
 
     public override void UpdateAction()

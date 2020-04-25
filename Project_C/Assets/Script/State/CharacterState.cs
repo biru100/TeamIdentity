@@ -1,121 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;
+using System;
 
-public enum CharacterStateType
-{
-    E_Idle, // 기본상태
-    E_Taunt, // 도발
-    E_TauntInvincibility, // 도발 무적
-    E_Invincibility, // 무적
-    E_Silence, // 침묵
-    E_Hold, // 속박
-    E_Stun, // 기절
-    E_Slow, // 슬로우
-    E_Hit, // 피격
-    E_SuperArmor, // 피격 무시
-    E_Dead
-}
-
-public class CharacterMosterBaseState : CharacterState
-{
-    public CharacterMosterBaseState(CharacterStateType type, Character owner) 
-        : base(type, owner)
-    {
-    }
-
-    public override bool UpdateState()
-    {
-        Status.CurrentStates.Add(StateType);
-        return true;
-    }
-}
-
-public class CharacterTauntState : CharacterState
-{
-    public Dictionary<Character, CharacterTauntInvincibilityState> _buffCharacters;
-
-    //방 한테 몬스터 정보 불러옴 - 도발을 제외한 몬스터에게 도발무적 상태를 제공 
-    public CharacterTauntState(Character owner, float lifeTime = -1)
-        : base(CharacterStateType.E_Taunt, owner, lifeTime)
-    {
-        _buffCharacters = new Dictionary<Character, CharacterTauntInvincibilityState>();
-    }   
-
-    public override bool UpdateState()
-    {
-        ElapsedTime += Time.deltaTime;
-        if (StateLifeTime > 0f && ElapsedTime >= StateLifeTime)
-        {
-            Owner.DeleteState(this);
-            return false;
-        }
-
-        Status.CurrentStates.Add(CharacterStateType.E_Taunt);
-        return true;
-    }
-
-    void GiveTauntInvincibility()
-    {
-        List<Character> characters = Object.FindObjectsOfType<Character>()?.ToList();
-        if (characters == null || characters.Count == 0)
-            return;
-
-        foreach(var character in characters)
-        {
-            if (character is Player)
-                continue;
-
-            if(!_buffCharacters.ContainsKey(character))
-            {
-                CharacterTauntInvincibilityState invState = new CharacterTauntInvincibilityState(character);
-                character.AddState(invState.Init());
-                _buffCharacters.Add(character, invState);
-            }
-
-        }
-    }
-
-}
-
-public class CharacterTauntInvincibilityState : CharacterState
-{
-    public CharacterTauntInvincibilityState(Character owner, float lifeTime = -1) 
-        : base(CharacterStateType.E_TauntInvincibility, owner, lifeTime)
-    {
-
-    }
-
-    public override bool UpdateState()
-    {
-        bool retVal = base.UpdateState();
-        if (retVal == false)
-            return false;
-
-        Status.CurrentStates.Add(CharacterStateType.E_TauntInvincibility);
-        return true;
-    }
-}
-
-public class CharacterInvincibilityState : CharacterState
-{
-    public CharacterInvincibilityState(Character owner, float lifeTime = -1)
-        : base(CharacterStateType.E_Invincibility, owner, lifeTime)
-    {
-
-    }
-
-    public override bool UpdateState()
-    {
-        bool retVal = base.UpdateState();
-        if (retVal == false)
-            return false;
-
-        Status.CurrentStates.Add(CharacterStateType.E_Invincibility);
-        return true;
-    }
-}
+//public enum CharacterStateType
+//{
+//    E_Idle, // 기본상태
+//    E_TauntInvincibility, // 도발 무적
+//    E_Invincibility, // 무적
+//    E_Silence, // 침묵
+//    E_Hold, // 속박
+//    E_Stun, // 기절
+//    E_Slow, // 슬로우
+//    E_Hit, // 피격
+//    E_SuperArmor, // 피격 무시
+//    E_Dead
+//}
 
 public class CharacterSilenceState : CharacterState
 {
@@ -134,48 +34,8 @@ public class CharacterSilenceState : CharacterState
         Status.CurrentStates.RemoveAll((s) => s != CharacterStateType.E_TauntInvincibility 
         || s != CharacterStateType.E_Stun
         || s != CharacterStateType.E_Hold
-        || s != CharacterStateType.E_Dead);
-        Status.CurrentStates.Add(CharacterStateType.E_Silence);
-
-        return true;
-    }
-}
-
-public class CharacterHoldState : CharacterState
-{
-    public CharacterHoldState(Character owner, float lifeTime = -1)
-        : base(CharacterStateType.E_Hold, owner, lifeTime)
-    {
-
-    }
-
-    public override bool UpdateState()
-    {
-        bool retVal = base.UpdateState();
-        if (retVal == false)
-            return false;
-
-        Status.CurrentStates.Add(CharacterStateType.E_Hold);
-
-        return true;
-    }
-}
-
-public class CharacterStunState : CharacterState
-{
-    public CharacterStunState(Character owner, float lifeTime = -1)
-        : base(CharacterStateType.E_Stun, owner, lifeTime)
-    { 
-
-    }
-
-    public override bool UpdateState()
-    {
-        bool retVal = base.UpdateState();
-        if (retVal == false)
-            return false;
-
-        Status.CurrentStates.Add(CharacterStateType.E_Stun);
+        || s != CharacterStateType.E_Dead
+        || s != CharacterStateType.E_Silence);
 
         return true;
     }
@@ -200,9 +60,20 @@ public class CharacterHitState : CharacterState
         if(Status.CurrentHp <= 0f)
         {
             Status.CurrentHp = 0f;
-            Owner.AddState(new CharacterDeadState(Owner).Init());
+            Owner.AddState(new CharacterState(CharacterStateType.E_Dead, Owner).Init());
         }
         return this;
+    }
+}
+
+public class CharacterIncreaseDamageState : CharacterState
+{
+    public float IncreaseDamage { get; set; }
+
+    public CharacterIncreaseDamageState(Character owner, float increaseDamage, float lifeTime = -1)
+        : base(CharacterStateType.E_IncreaseDamage, owner, lifeTime)
+    {
+        IncreaseDamage = increaseDamage;
     }
 
     public override bool UpdateState()
@@ -211,55 +82,70 @@ public class CharacterHitState : CharacterState
         if (retVal == false)
             return false;
 
-        if (Status.CurrentStates.FindIndex((s)=> s == CharacterStateType.E_Stun 
-            || s == CharacterStateType.E_Hold
-            || s == CharacterStateType.E_Dead
-            || s == CharacterStateType.E_SuperArmor
-            || s == CharacterStateType.E_TauntInvincibility
-            || s == CharacterStateType.E_Invincibility) < 0)
-            Status.CurrentStates.Add(CharacterStateType.E_Hit);
+        Status.CurrentDamage += IncreaseDamage;
 
         return true;
     }
 }
-
-public class CharacterDeadState : CharacterState
+public class CharacterDecreaseDamageState : CharacterState
 {
-    public CharacterDeadState(Character owner) : base(CharacterStateType.E_Dead, owner)
-    {
+    public float IncreaseDamage { get; set; }
 
+    public CharacterDecreaseDamageState(Character owner, float increaseDamage, float lifeTime = -1)
+        : base(CharacterStateType.E_IncreaseDamage, owner, lifeTime)
+    {
+        IncreaseDamage = increaseDamage;
     }
 
     public override bool UpdateState()
     {
-        Status.CurrentStates.Clear();
-        Status.CurrentStates.Add(CharacterStateType.E_Dead);
+        bool retVal = base.UpdateState();
+        if (retVal == false)
+            return false;
+
+        Status.CurrentDamage += IncreaseDamage;
+
         return true;
     }
 }
 
-public class CharacterSuperArmorState : CharacterState
-{
-    public CharacterSuperArmorState(Character owner) : base(CharacterStateType.E_SuperArmor, owner)
-    {
-        
-    }
-
-    public override bool UpdateState()
-    {
-        Status.CurrentStates.Add(CharacterStateType.E_SuperArmor);
-        return true;
-    }
-}
 
 public class CharacterState
 {
+    public static readonly Dictionary<CharacterStateType, Func<Character, float, CharacterState>> CharacterStateBuilderSet = new Dictionary<CharacterStateType, Func<Character, float, CharacterState>>()
+    {
+        {CharacterStateType.E_Idle,              (c, t)=> new CharacterState(CharacterStateType.E_Idle, c, t).Init()},
+        {CharacterStateType.E_TauntInvincibility,(c, t)=> new CharacterState(CharacterStateType.E_TauntInvincibility, c, t).Init()},
+        {CharacterStateType.E_Invincibility,     (c, t)=> new CharacterState(CharacterStateType.E_Invincibility, c, t).Init()},
+        {CharacterStateType.E_Silence,           (c, t)=> new CharacterSilenceState( c, t).Init()},
+        {CharacterStateType.E_Hold,              (c, t)=> new CharacterState(CharacterStateType.E_Hold, c, t).Init()},
+        {CharacterStateType.E_Stun,              (c, t)=> new CharacterState(CharacterStateType.E_Stun, c, t).Init()},
+        {CharacterStateType.E_Slow,              (c, t)=> new CharacterState(CharacterStateType.E_Slow, c, t).Init()},
+        {CharacterStateType.E_Hit,               (c, t)=> new CharacterHitState(c, t).Init()},
+        {CharacterStateType.E_SuperArmor,        (c, t)=> new CharacterState(CharacterStateType.E_SuperArmor, c, t).Init()},
+        {CharacterStateType.E_Dead,              (c, t)=> new CharacterState(CharacterStateType.E_Dead, c, t).Init()}
+    };
+
     public static readonly List<CharacterStateType> CharacterStateActionOrder = new List<CharacterStateType>()
     {
+        CharacterStateType.E_TauntInvincibility,
+        CharacterStateType.E_Invincibility,
         CharacterStateType.E_Dead,
         CharacterStateType.E_Stun,
         CharacterStateType.E_Hold,
+        CharacterStateType.E_SuperArmor,
         CharacterStateType.E_Hit
+    };
+
+    public static readonly Dictionary<CharacterStateType, bool> IsCharacterStatePlayingAction = new Dictionary<CharacterStateType, bool>()
+    {
+        { CharacterStateType.E_TauntInvincibility, false },
+        { CharacterStateType.E_Invincibility, false },
+        { CharacterStateType.E_Dead, true },
+        { CharacterStateType.E_Stun, true },
+        { CharacterStateType.E_Hold, true },
+        { CharacterStateType.E_SuperArmor, false },
+        { CharacterStateType.E_Hit, true }
     };
 
     public static readonly Dictionary<CharacterStateType, string> CharacterStateActionName = new Dictionary<CharacterStateType, string>()
@@ -275,7 +161,6 @@ public class CharacterState
     public CharacterStatus Status { get; protected set; }
     public float StateLifeTime { get; protected set; }
     protected float ElapsedTime { get; set; }
-    public int StateActionOrder { get; protected set; }
 
     public CharacterState(CharacterStateType type, Character owner, float lifeTime = -1f)
     {
@@ -299,6 +184,7 @@ public class CharacterState
             Owner.DeleteState(this);
             return false;
         }
+        Status.CurrentStates.Add(CharacterStateType.E_Dead);
         return true;
     }
 
