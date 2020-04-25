@@ -20,14 +20,14 @@ public override void UpdateAction()
 {
 base.UpdateAction();
 
-if(NodeUtil.StateActionMacroByCurrentOrder(Owner ,2))
+if(NodeUtil.StateActionMacroByCurrentOrder(Owner ,4))
 {
 }
 
 else
 {
 
-if(NodeUtil.StateFinishActionMacro(Owner ,2))
+if(NodeUtil.StateFinishActionMacro(Owner ,4))
 {
 }
 

@@ -7,7 +7,7 @@ public class PlayerFamilyKillAction : PlayerCardAction
 {
     public static PlayerFamilyKillAction GetInstance(TargetData target) { return new PlayerFamilyKillAction(target); }
 
-    List<Character> targetCharacters;
+    List<Monster> targetCharacters;
     float damage;
 
     int currentTargetIndex;
@@ -24,11 +24,11 @@ public class PlayerFamilyKillAction : PlayerCardAction
         base.StartAction(owner);
         AnimUtil.PlayAnim(owner, "effect0");
 
-        targetCharacters = new List<Character>();
+        targetCharacters = new List<Monster>();
 
-        Character[] enemys = Object.FindObjectsOfType<Character>();
+        Monster[] enemys = Object.FindObjectsOfType<Monster>();
 
-        targetCharacters = enemys.ToList().FindAll((c) => c.GetType() == Target.Target.GetType());
+        targetCharacters = enemys.ToList().FindAll((c) => c.SystemName == (Target.Target as Monster).SystemName);
         targetCharacters.Sort((c1, c2) => (c1.transform.position - owner.transform.position).magnitude 
         < (c2.transform.position - owner.transform.position).magnitude ? -1 : 1);
 

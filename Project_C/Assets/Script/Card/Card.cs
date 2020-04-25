@@ -2,11 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Text;
-
-public enum CardTargetType
-{
-    E_NonTarget, E_Target, E_Range
-}
+using System.Linq;
 
 public class Card
 {
@@ -23,55 +19,34 @@ public class Card
 
     public CardTargetType TargetType { get; protected set; }
 
+    public CardTable Data { get; protected set; }
+
+    //temp
     public Card(int i)
     {
-        if (i == 0)
-        {
-            CardName = "Power Attack";
-            CardLoreFormat = "범위내 적에게 _ 만큼의 데미지를 준다.";
-            CardStatus = new List<float>() { 80f };
+        CardTable data = DataManager.GetDatas<CardTable>()[i];
+        Data = data;
+        CardName = data._krName;
+        CardLoreFormat = data._Lore;
+        CardStatus = data._Parameter.ToList();
+        CardActionName = data._FSM;
+        TargetType = data._TargetType;
 
-            CardActionName = "PlayerPowerAttackAction";
-
-            FrontSprite = ResourceManager.GetResource<Sprite>("Sprites/card_power_atk");
-            BackSprite = ResourceManager.GetResource<Sprite>("Sprites/card_sample_back");
-            TargetType = CardTargetType.E_NonTarget;
-        }
-        else if (i == 1)
-        {
-            CardName = "Power Up";
-            CardLoreFormat = "카드 주문력을 _ 올려준다.";
-            CardStatus = new List<float>() { 50f };
-
-            CardActionName = "PlayerCardPowerUpAction";
-
-            FrontSprite = ResourceManager.GetResource<Sprite>("Sprites/card_atk_up");
-            BackSprite = ResourceManager.GetResource<Sprite>("Sprites/card_sample_back");
-            TargetType = CardTargetType.E_NonTarget;
-        }
-        else if (i == 2)
-        {
-            CardName = "Family Kill";
-            CardLoreFormat = "같은 방에 있는 동일한 유닛에게 _ 만큼의 데미지를 준다.";
-            CardStatus = new List<float>() { 50f };
-
-            CardActionName = "PlayerFamilyKillAction";
-
-            FrontSprite = ResourceManager.GetResource<Sprite>("Sprites/card_family_kill");
-            BackSprite = ResourceManager.GetResource<Sprite>("Sprites/card_sample_back");
-            TargetType = CardTargetType.E_Target;
-        }
+        FrontSprite = ResourceManager.GetResource<Sprite>(data._ImagePath);
+        BackSprite = ResourceManager.GetResource<Sprite>("Sprites/card_sample_back");
     }
 
-    public Card(string name, string loreFormat, List<float> status,
-        Sprite front, Sprite back)
+    public Card(CardTable data)
     {
-        CardName = name;
-        CardLoreFormat = loreFormat;
-        CardStatus = status;
+        Data = data;
+        CardName = data._krName;
+        CardLoreFormat = data._Lore;
+        CardStatus = data._Parameter.ToList();
+        CardActionName = data._FSM;
+        TargetType = data._TargetType;
 
-        FrontSprite = front;
-        BackSprite = back;
+        FrontSprite = ResourceManager.GetResource<Sprite>(data._ImagePath);
+        BackSprite = ResourceManager.GetResource<Sprite>("Sprites/card_sample_back");
     }
 
     public string GetLore()

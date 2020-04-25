@@ -56,14 +56,16 @@ public class CharacterHitState : CharacterState
 
     public override CharacterState Init()
     {
-        if (Status.CurrentStates.Contains(CharacterStateType.E_TauntInvincibility) || Status.CurrentStates.Contains(CharacterStateType.E_Invincibility))
+        if (Status.CurrentStates.Contains(CharacterStateType.E_Dead) 
+            || Status.CurrentStates.Contains(CharacterStateType.E_TauntInvincibility) 
+            || Status.CurrentStates.Contains(CharacterStateType.E_Invincibility))
             return this;
 
         Status.CurrentHp -= Damage;
         if(Status.CurrentHp <= 0f)
         {
             Status.CurrentHp = 0f;
-            Owner.AddState(new CharacterState(CharacterStateType.E_Dead, Owner).Init());
+            Owner.AddState(new CharacterState(CharacterStateType.E_Dead, Owner).Init(), true);
         }
         return this;
     }
@@ -217,7 +219,7 @@ public class CharacterState
             Owner.DeleteState(this);
             return false;
         }
-        Status.CurrentStates.Add(CharacterStateType.E_Dead);
+        Status.CurrentStates.Add(StateType);
         return true;
     }
 

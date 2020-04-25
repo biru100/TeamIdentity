@@ -79,9 +79,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1733917069441335322}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 484cfa15381a4ac46b7fd538ec22f678, type: 3}
+  m_Script: {fileID: 11500000, guid: c3f56dfb3f6b18942a4f321c5a78c8a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _systemName: GoblinStore
 --- !u!1 &3816121814293771836
 GameObject:
   m_ObjectHideFlags: 0

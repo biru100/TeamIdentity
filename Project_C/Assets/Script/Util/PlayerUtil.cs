@@ -9,7 +9,7 @@ public static class EntityUtil
 {
     public static bool StateActionMacro(Character owner, CharacterStateType currentOrder = CharacterStateType.E_Idle)
     {
-        string ownerName = owner.GetType().Name;
+        string ownerName = owner is Player ? owner.GetType().Name : ((Monster)owner).SystemName;
         int order = CharacterState.CharacterStateActionOrder.FindIndex((s)=>s == currentOrder);
         order = order < 0 ? CharacterState.CharacterStateActionOrder.Count : order;
 
@@ -18,9 +18,13 @@ public static class EntityUtil
             CharacterStateType curType = CharacterState.CharacterStateActionOrder[i];
             if (owner.Status.CurrentStates.Contains(curType))
             {
-                if(CharacterState.IsCharacterStatePlayingAction[curType])
+                if (CharacterState.IsCharacterStatePlayingAction[curType])
+                {
                     ChangeAction(owner, ownerName + CharacterState.CharacterStateActionName[curType]);
-                return true;
+                    return true;
+                }
+                else
+                    return false;
             }
         }
 
@@ -29,7 +33,7 @@ public static class EntityUtil
 
     public static bool StateFinishActionMacro(Character owner, CharacterStateType currentOrder)
     {
-        string ownerName = owner.GetType().Name;
+        string ownerName = owner is Player ? owner.GetType().Name : ((Monster)owner).SystemName;
 
         if (!owner.Status.CurrentStates.Contains(currentOrder))
         {

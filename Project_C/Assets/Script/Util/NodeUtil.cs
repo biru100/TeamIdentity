@@ -123,6 +123,11 @@ public static class NodeUtil
         return owner.Status.CurrentDamage;
     }
 
+    public static float GetMosterParameter(Character owner, int index)
+    {
+        return (owner as Monster).Data._Parameter[index];
+    }
+
     public static void DrawCard()
     {
         if(!PlayerStatus.CurrentStatus.CurrentStates.Contains(CharacterStateType.E_Invincibility))

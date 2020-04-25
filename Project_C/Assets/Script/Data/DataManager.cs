@@ -10,7 +10,13 @@ public class DataManager : BehaviorSingleton<DataManager>
 {
     Dictionary<Type, Dictionary<int, object>> AllDatas { get; set; }
 
-    public static void LoadData()
+    protected override void Init()
+    {
+        base.Init();
+        LoadData();
+    }
+
+    protected static void LoadData()
     {
         Instance.AllDatas = new Dictionary<Type, Dictionary<int, object>>();
         TextAsset[] assets = Resources.LoadAll<TextAsset>("DataTable/");

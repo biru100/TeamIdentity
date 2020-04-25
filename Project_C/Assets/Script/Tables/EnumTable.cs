@@ -20,6 +20,7 @@ using System;
   }
  public enum CharacterAbilityType
  {
+    E_None = 0 , //  
     E_IncreaseDamage = 201 , //  
     E_DecreaseDamage = 202 , //  
     E_IncreaseSpeed = 203 , //  
@@ -35,4 +36,10 @@ using System;
     E_NonMove = 213 , //  
     E_GiveDraw = 214 , //  
     E_CardBreak = 215 , //  
+  }
+ public enum CardTargetType
+ {
+    E_NonTarget = 0 , //  
+    E_Target = 1 , //  
+    E_Point = 2 , //  
   }

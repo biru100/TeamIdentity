@@ -56,7 +56,9 @@ public class Character : MonoBehaviour
             StateStack.Remove(deletedState);
 
         CurrentAction?.UpdateAction();
-    }
+
+        NavAgent.speed = Status.CurrentSpeed;
+}
 
     public virtual bool AddState(CharacterState state, bool isUnique = false)
     {

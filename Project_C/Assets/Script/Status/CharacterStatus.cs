@@ -68,6 +68,21 @@ public class CharacterStatus
         BaseState = CharacterStateType.E_Idle;
     }
 
+    public void InitStatus(MonsterTable table)
+    {
+        Damage = table._Damage;
+        CurrentDamage = Damage;
+
+        Armor = table._Armor;
+        CurrentArmor = Armor;
+
+        Hp = table._Hp;
+        CurrentHp = Hp;
+
+        Speed = table._Speed;
+        CurrentSpeed = Speed;
+    }
+
     public void PrepareState()
     {
         CurrentStates.Clear();

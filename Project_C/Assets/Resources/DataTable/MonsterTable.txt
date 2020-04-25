@@ -1,9 +1,7 @@
-501	슬라임	10	30	0.7	0	이 몬스터는 사망 시 작은 슬라임 _마리로 분열합니다.	E_Spawn	E_None	E_None	E_None	E_None	E_None	2		
-501	작은 슬라임	5	15	0.7	0	이 몬스터는 아무런 효과도 가지고 있지 않습니다.	E_None	E_None	E_None	E_None	E_None	E_None			
-															
-															
-															
-															
-															
-															
-															
+501	Slime	슬라임	5	30	0.7	0	이 몬스터는 사망 시 작은 슬라임 _마리로 분열합니다.	E_Spawn	E_None	E_None	E_None	E_None	E_None	2	0	
+502	CSlime	작은 슬라임	1	15	0.7	0	이 몬스터는 아무런 효과도 가지고 있지 않습니다.	E_None	E_None	E_None	E_None	E_None	E_None	0	0	
+503	WoodTotem	덩굴정령	1	100	0	0	a	E_GiveHold	E_None	E_None	E_None	E_None	E_None	0	0	
+504	GoblinStealer	고블린 약탈자	2	50	1	0	a	E_CardBreak	E_None	E_None	E_None	E_None	E_None	0	0	
+505	GoblinStore	고블린 보부상	0	300	1	0	a	E_GiveDraw	E_None	E_None	E_None	E_None	E_None	0	0	
+506	GoblinHentai	변태고블린	5	200	1	0	a	E_GiveDraw	E_None	E_None	E_None	E_None	E_None	0	0	
+507	GoblinDrunk	고블린 취객	5	150	1	0	a	E_Spawn	E_None	E_None	E_None	E_None	E_None	0	0	

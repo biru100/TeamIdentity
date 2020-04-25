@@ -5,11 +5,12 @@ using System.IO;
 public class MonsterTable { 
    public int _Index;
    public string _Name;
-   public int _Damage;
-   public int _Hp;
-   public int _Speed;
-   public int _Armor;
-   public string _Monstertext;
+   public string _krName;
+   public float _Damage;
+   public float _Hp;
+   public float _Speed;
+   public float _Armor;
+   public string _Lore;
    public CharacterAbilityType[] _Abilities = new CharacterAbilityType[6];
    public float[] _Parameter = new float[2];
    public static MonsterTable Load(string[] parts) {
@@ -17,11 +18,12 @@ public class MonsterTable {
        MonsterTable p = new MonsterTable();
        p._Index = int.Parse(parts[i++]);
        p._Name = parts[i++];
-       p._Damage = int.Parse(parts[i++]);
-       p._Hp = int.Parse(parts[i++]);
-       p._Speed = int.Parse(parts[i++]);
-       p._Armor = int.Parse(parts[i++]);
-       p._Monstertext = parts[i++];
+       p._krName = parts[i++];
+       p._Damage = float.Parse(parts[i++]);
+       p._Hp = float.Parse(parts[i++]);
+       p._Speed = float.Parse(parts[i++]);
+       p._Armor = float.Parse(parts[i++]);
+       p._Lore = parts[i++];
        p._Abilities[0] = (CharacterAbilityType)System.Enum.Parse(typeof(CharacterAbilityType),parts[i++]);
        p._Abilities[1] = (CharacterAbilityType)System.Enum.Parse(typeof(CharacterAbilityType),parts[i++]);
        p._Abilities[2] = (CharacterAbilityType)System.Enum.Parse(typeof(CharacterAbilityType),parts[i++]);

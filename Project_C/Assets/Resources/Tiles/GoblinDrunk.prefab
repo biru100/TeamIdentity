@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1733917069441335323}
   - component: {fileID: 5715847190844324880}
   - component: {fileID: 1670504127013103769}
-  - component: {fileID: 4935112289485510983}
+  - component: {fileID: 4912180953284700526}
   m_Layer: 0
   m_Name: GoblinDrunk
   m_TagString: Untagged
@@ -70,7 +70,7 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 1
---- !u!114 &4935112289485510983
+--- !u!114 &4912180953284700526
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -79,9 +79,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1733917069441335322}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58755b4b73076ba459a7cc56bc3eae16, type: 3}
+  m_Script: {fileID: 11500000, guid: c3f56dfb3f6b18942a4f321c5a78c8a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _systemName: GoblinDrunk
 --- !u!1 &3816121814293771836
 GameObject:
   m_ObjectHideFlags: 0

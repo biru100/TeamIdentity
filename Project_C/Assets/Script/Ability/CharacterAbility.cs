@@ -84,6 +84,7 @@ public class CharacterAbility
 {
     public static readonly Dictionary<CharacterAbilityType, Func<Character, CharacterAbility>> CharacterAbilityBuilderSet = new Dictionary<CharacterAbilityType, Func<Character, CharacterAbility>>()
     {
+        { CharacterAbilityType.E_None, (c)=>null},
         { CharacterAbilityType.E_IncreaseDamage, (c)=>new CharacterAbility(CharacterAbilityType.E_IncreaseDamage, c)},
         { CharacterAbilityType.E_DecreaseDamage, (c)=>new CharacterAbility(CharacterAbilityType.E_DecreaseDamage, c)},
         { CharacterAbilityType.E_IncreaseSpeed, (c)=>new CharacterAbility(CharacterAbilityType.E_IncreaseSpeed, c)},

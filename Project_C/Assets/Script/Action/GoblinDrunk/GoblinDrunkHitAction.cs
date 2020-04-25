@@ -22,7 +22,7 @@ public override void UpdateAction()
 {
 base.UpdateAction();
 
-if(NodeUtil.StateActionMacroByCurrentOrder(Owner ,3))
+if(NodeUtil.StateActionMacroByCurrentOrder(Owner ,6))
 {
 }
 

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1733917069441335323}
   - component: {fileID: 5715847190844324880}
   - component: {fileID: 1670504127013103769}
-  - component: {fileID: 1784940684003118478}
+  - component: {fileID: 7458251872052375176}
   m_Layer: 0
   m_Name: GoblinHentai
   m_TagString: Untagged
@@ -65,12 +65,12 @@ NavMeshAgent:
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
-  m_AutoRepath: 1
+  m_AutoRepath: 0
   m_Height: 0.4808326
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 1
---- !u!114 &1784940684003118478
+--- !u!114 &7458251872052375176
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -79,9 +79,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1733917069441335322}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b911c113738d3d4c927f191cda52f49, type: 3}
+  m_Script: {fileID: 11500000, guid: c3f56dfb3f6b18942a4f321c5a78c8a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _systemName: GoblinHentai
 --- !u!1 &3816121814293771836
 GameObject:
   m_ObjectHideFlags: 0

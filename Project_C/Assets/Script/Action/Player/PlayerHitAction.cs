@@ -19,7 +19,7 @@ public class PlayerHitAction : CharacterAction
     {
         base.UpdateAction();
 
-        if (NodeUtil.StateActionMacroByCurrentOrder(Owner, 3))
+        if (NodeUtil.StateActionMacroByCurrentOrder(Owner, 6))
             return;
 
         if(NodeUtil.IsLastFrame(Owner))
