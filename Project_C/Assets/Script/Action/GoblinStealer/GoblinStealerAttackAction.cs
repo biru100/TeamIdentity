@@ -13,8 +13,9 @@ public static GoblinStealerAttackAction GetInstance() { return new GoblinStealer
 public override void StartAction(Character owner)
 {
 base.StartAction(owner);
-TimelineEvents.Add(new TimeLineEvent(0.01f, TimeLine_4));
+TimelineEvents.Add(new TimeLineEvent(0.5f, TimeLine_4));
 NodeUtil.PlayAnim(Owner ,"attack");
+NodeUtil.MoveToPlayer(Owner);
 }
 
 public override void UpdateAction()
@@ -46,11 +47,19 @@ base.FinishAction();
 
 void TimeLine_4()
 {
+
+if(NodeUtil.PlayerInSight(Owner ,1f ,50f))
+{
 NodeUtil.TakeDamageToPlayer(10f);
 
 if(NodeUtil.IsActivateAbility(Owner ,215))
 {
 NodeUtil.BurnCard();
+}
+
+else
+{
+}
 }
 
 else

@@ -30,7 +30,7 @@ else
 NodeUtil.LookPlayer(Owner);
 NodeUtil.RotationAnim(Owner ,"run");
 
-if(NodeUtil.PlayerInRange(Owner ,1f))
+if(NodeUtil.PlayerInRange(Owner ,1.5f))
 {
 NodeUtil.ChangeAction(Owner ,"GoblinStealerAttackAction");
 }
