@@ -59,6 +59,9 @@ public class CharacterTauntAbility : CharacterAbility
             if (character is Player)
                 continue;
 
+            if (character == Owner)
+                continue;
+
             if (!_buffCharacters.ContainsKey(character))
             {
                 CharacterState invState = new CharacterState(CharacterStateType.E_TauntInvincibility, character);
@@ -76,6 +79,12 @@ public class CharacterTauntAbility : CharacterAbility
         }
 
         _buffCharacters.Clear();
+    }
+
+    public override void ClearAbility()
+    {
+        base.ClearAbility();
+        RemoveTauntInvincibility();
     }
 
 }
@@ -123,6 +132,11 @@ public class CharacterAbility
         }
 
         return false;
+    }
+
+    public virtual void ClearAbility()
+    {
+
     }
 }
 

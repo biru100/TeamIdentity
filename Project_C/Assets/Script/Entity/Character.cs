@@ -46,9 +46,6 @@ public class Character : MonoBehaviour
         _abilityDisplays = new List<AbilityDisplay>();
         _stateDisplays = new List<StateDisplay>();
 
-        if(!(this is Player))
-            _hpDisplay = HPDisplay.CreateHPDisplay();
-
         RenderTrasform = GetComponentInChildren<RenderTransform>();
         Anim = GetComponentInChildren<Animator>();
         NavAgent = GetComponent<NavMeshAgent>();
@@ -56,6 +53,9 @@ public class Character : MonoBehaviour
 
     protected virtual void Update()
     {
+        if (_hpDisplay == null && !(this is Player))
+            _hpDisplay = HPDisplay.CreateHPDisplay();
+
         Status.PrepareState();
         for (int i = 0; i < StateStack.Count; ++i)
             StateStack[i].UpdateState();
@@ -158,6 +158,13 @@ public class Character : MonoBehaviour
 
     protected virtual void OnDestroy()
     {
+        foreach(var abilityStack in AbilityStack)
+        {
+            abilityStack?.ClearAbility();
+        }
+
+        AbilityStack.Clear();
+
         foreach(var ability in _abilityDisplays)
         {
             if (ability != null)
