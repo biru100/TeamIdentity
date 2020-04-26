@@ -47,8 +47,11 @@ public class CardInterface : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         }
     }
 
+    public Canvas CardCanvas { get; set; }
+
     private void Awake()
     {
+        CardCanvas = GetComponent<Canvas>();
         Material instanceMat = Instantiate(_frontSide.material);
         _frontSide.material = instanceMat;
         _backSide.material = instanceMat;
@@ -67,6 +70,13 @@ public class CardInterface : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         if (!IsUsing)
         {
             if(IsHover)
+                CardCanvas.sortingOrder = 19;
+            else if(IsDrag)
+                CardCanvas.sortingOrder = 20;
+            else
+                CardCanvas.sortingOrder = HandIndex + 2;
+
+            if (IsHover)
                 InGameInterface.Instance.MouseOverCard();
 
             ((RectTransform)transform).sizeDelta = Vector3.Lerp(((RectTransform)transform).sizeDelta, _destCardSize,
