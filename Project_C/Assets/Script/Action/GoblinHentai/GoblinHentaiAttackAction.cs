@@ -47,6 +47,14 @@ base.FinishAction();
 void TimeLine_4()
 {
 NodeUtil.TakeDamageToPlayer(10f);
+
+if(NodeUtil.IsActivateAbility(Owner ,214))
+{
 NodeUtil.DrawCard();
+}
+
+else
+{
+}
 }
 }

@@ -47,6 +47,14 @@ base.FinishAction();
 void TimeLine_4()
 {
 NodeUtil.TakeDamageToPlayer(10f);
+
+if(NodeUtil.IsActivateAbility(Owner ,215))
+{
 NodeUtil.BurnCard();
+}
+
+else
+{
+}
 }
 }
