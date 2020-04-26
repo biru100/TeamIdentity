@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerCardPowerUpAction : PlayerCardAction
+public class PlayerPowerUpAction : PlayerCardAction
 {
+    public static PlayerPowerUpAction GetInstance(CardTable dataTable, TargetData target) { return new PlayerPowerUpAction(dataTable, target); }
 
-    public static PlayerCardPowerUpAction GetInstance(CardTable dataTable, TargetData target) { return new PlayerCardPowerUpAction(dataTable, target); }
-
-    public PlayerCardPowerUpAction(CardTable dataTable, TargetData target) : base(dataTable, target)
+    public PlayerPowerUpAction(CardTable dataTable, TargetData target) : base(dataTable, target)
     {
+
     }
 
     public override void StartAction(Character owner)
@@ -43,6 +43,6 @@ public class PlayerCardPowerUpAction : PlayerCardAction
 
     public void AddBuff()
     {
-        PlayerStatus.CurrentStatus.CardPowerSupport += (int)DataTable._Parameter[0];
+        Owner.AddState(new CharacterIncreaseDamageState(Owner, DataTable._Parameter[1], DataTable._Parameter[0]));
     }
 }

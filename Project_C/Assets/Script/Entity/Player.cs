@@ -36,7 +36,7 @@ public class Player : Character
 
         for(int i = 0; i < 30; ++i)
         {
-            Deck.Instance.AddCard(new Card(Random.Range(0, 3)));
+            Deck.Instance.AddCard(new Card(Random.Range(0, 6)));
         }
 
         InGameInterface.Instance.DrawCard();
@@ -56,15 +56,16 @@ public class Player : Character
 
         if (UseCardStack.Count != 0)
         {
-            EntityUtil.ChangeCardAction(this, UseCardStack[0].card.CardActionName, UseCardStack[0].target);
+            EntityUtil.ChangeCardAction(this, UseCardStack[0].card.CardActionName, UseCardStack[0].card.Data, UseCardStack[0].target);
             UseCardStack.RemoveAt(0);
         }
         else
             CurrentAction?.UpdateAction();
     }
 
-    protected void OnDestroy()
+    protected override void OnDestroy()
     {
+        base.OnDestroy();
         if (CurrentPlayer == this)
             CurrentPlayer = null;
     }

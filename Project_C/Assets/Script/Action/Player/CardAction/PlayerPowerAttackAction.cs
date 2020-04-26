@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PlayerPowerAttackAction : PlayerCardAction
 {
-    public static PlayerPowerAttackAction GetInstance(TargetData target) { return new PlayerPowerAttackAction(target); }
+    public static PlayerPowerAttackAction GetInstance(CardTable dataTable, TargetData target) { return new PlayerPowerAttackAction(dataTable, target); }
 
-    public PlayerPowerAttackAction(TargetData target) : base(target)
+    public PlayerPowerAttackAction(CardTable dataTable, TargetData target) : base(dataTable, target)
     {
     }
 
@@ -22,7 +22,7 @@ public class PlayerPowerAttackAction : PlayerCardAction
     {
         base.UpdateAction();
 
-        if (EntityUtil.StateActionMacro(Owner, CharacterStateType.E_Hit))
+        if (EntityUtil.StateActionMacro(Owner, CharacterStateType.E_Hold))
         {
             return;
         }
@@ -46,7 +46,7 @@ public class PlayerPowerAttackAction : PlayerCardAction
     {
 
         Character[] enemys = Object.FindObjectsOfType<Character>();
-        float damage = PlayerUtil.CalculatingCardPowerValue(80f);
+        float damage = PlayerUtil.CalculatingCardPowerValue(DataTable._Parameter[0]);
 
         if (enemys == null)
             return;

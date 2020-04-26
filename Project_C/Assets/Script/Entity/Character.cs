@@ -19,6 +19,9 @@ public class Character : MonoBehaviour
     protected List<CharacterState> DeleteStateList { get; set; }
     protected CharacterAction _currentAction;
 
+    protected List<AbilityDisplay> _abilityDisplays;
+    protected List<StateDisplay> _stateDisplays;
+
 
     public CharacterAction CurrentAction {
         get => _currentAction;
@@ -37,6 +40,10 @@ public class Character : MonoBehaviour
         StateStack = new List<CharacterState>();
         DeleteStateList = new List<CharacterState>();
         AbilityStack = new List<CharacterAbility>();
+
+        _abilityDisplays = new List<AbilityDisplay>();
+        _stateDisplays = new List<StateDisplay>();
+
         RenderTrasform = GetComponentInChildren<RenderTransform>();
         Anim = GetComponentInChildren<Animator>();
         NavAgent = GetComponent<NavMeshAgent>();
@@ -58,7 +65,52 @@ public class Character : MonoBehaviour
         CurrentAction?.UpdateAction();
 
         NavAgent.speed = Status.CurrentSpeed;
-}
+
+        while(_abilityDisplays.Count < Status.CurrentAbility.Count)
+        {
+            _abilityDisplays.Add(AbilityDisplay.CreateAbilityDisplay());
+        }
+
+        while (_stateDisplays.Count < Status.CurrentStates.Count)
+        {
+            _stateDisplays.Add(StateDisplay.CreateStateDisplay());
+        }
+
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(CanvasHelper.Main.transform as RectTransform, 
+            RectTransformUtility.WorldToScreenPoint(Camera.main, RenderTrasform.transform.position + Vector3.up * 0.3f), 
+            CanvasHelper.Main.worldCamera, 
+            out Vector2 displayCenterPosition);
+
+        for (int i = 0; i < _abilityDisplays.Count; ++i)
+        {
+            if(i < Status.CurrentAbility.Count)
+            {
+                _abilityDisplays[i].gameObject.SetActive(true);
+                (_abilityDisplays[i].transform as RectTransform).anchoredPosition = displayCenterPosition
+                    + Vector2.right * (i - (Status.CurrentAbility.Count - 1) * 0.5f) * 60f;
+                _abilityDisplays[i].Data = DataManager.GetData<AbilityTable>((int)Status.CurrentAbility[i]);
+            }
+            else
+            {
+                _abilityDisplays[i].gameObject.SetActive(false);
+            }
+        }
+
+        for (int i = 0; i < _stateDisplays.Count; ++i)
+        {
+            if (i < Status.CurrentStates.Count)
+            {
+                _stateDisplays[i].gameObject.SetActive(true);
+                (_stateDisplays[i].transform as RectTransform).anchoredPosition = displayCenterPosition
+                    + Vector2.right * (i - (Status.CurrentStates.Count - 1) * 0.5f) * 60f + Vector2.up * 50f;
+                _stateDisplays[i].Data = DataManager.GetData<StateTable>((int)Status.CurrentStates[i]);
+            }
+            else
+            {
+                _stateDisplays[i].gameObject.SetActive(false);
+            }
+        }
+    }
 
     public virtual bool AddState(CharacterState state, bool isUnique = false)
     {
@@ -94,5 +146,20 @@ public class Character : MonoBehaviour
     public virtual void DeleteState(CharacterStateType type)
     {
         DeleteStateList.Add(StateStack.FindLast((s)=>s.StateType == type));
+    }
+
+    protected virtual void OnDestroy()
+    {
+        foreach(var ability in _abilityDisplays)
+        {
+            if (ability != null)
+                Destroy(ability.gameObject);
+        }
+
+        foreach (var state in _stateDisplays)
+        {
+            if (state != null)
+                Destroy(state.gameObject);
+        }
     }
 }

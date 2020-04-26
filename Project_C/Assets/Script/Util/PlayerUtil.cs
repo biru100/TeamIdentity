@@ -69,9 +69,9 @@ public static class EntityUtil
         owner.CurrentAction = (CharacterAction)Type.GetType(actionName).GetMethod("GetInstance", BindingFlags.Public | BindingFlags.Static).Invoke(null, null);
     }
 
-    public static void ChangeCardAction(Character owner, string actionName, TargetData target)
+    public static void ChangeCardAction(Character owner, string actionName, CardTable data, TargetData target)
     {
-        owner.CurrentAction = (CharacterAction)Type.GetType(actionName).GetMethod("GetInstance", BindingFlags.Public | BindingFlags.Static).Invoke(null, new object[] { target });
+        owner.CurrentAction = (CharacterAction)Type.GetType(actionName).GetMethod("GetInstance", BindingFlags.Public | BindingFlags.Static).Invoke(null, new object[] { data, target });
     }
 }
 

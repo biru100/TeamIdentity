@@ -14,8 +14,8 @@ public class PlayerStatus : CharacterStatus
 
     public PlayerStatus(Character owner) : base(owner)
     {
-        Hp = 100f;
-        CurrentHp = 100f;
+        Hp = 10000f;
+        CurrentHp = 10000f;
 
         CurrentStatus = this;
 

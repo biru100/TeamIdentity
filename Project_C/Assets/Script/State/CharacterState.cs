@@ -32,10 +32,10 @@ public class CharacterSilenceState : CharacterState
             return false;
 
         Status.CurrentStates.RemoveAll((s) => s != CharacterStateType.E_TauntInvincibility 
-        || s != CharacterStateType.E_Stun
-        || s != CharacterStateType.E_Hold
-        || s != CharacterStateType.E_Dead
-        || s != CharacterStateType.E_Silence);
+        && s != CharacterStateType.E_Stun
+        && s != CharacterStateType.E_Hold
+        && s != CharacterStateType.E_Dead
+        && s != CharacterStateType.E_Silence);
 
         Status.CurrentSpeed = Status.Speed;
         Status.CurrentDamage = Status.Damage;
@@ -97,7 +97,7 @@ public class CharacterDecreaseDamageState : CharacterState
     public float IncreaseDamage { get; set; }
 
     public CharacterDecreaseDamageState(Character owner, float increaseDamage, float lifeTime = -1)
-        : base(CharacterStateType.E_IncreaseDamage, owner, lifeTime)
+        : base(CharacterStateType.E_DecreaseDamage, owner, lifeTime)
     {
         IncreaseDamage = increaseDamage;
     }
@@ -119,7 +119,7 @@ public class CharacterIncreaseSpeedState : CharacterState
     public float IncreaseSpeed { get; set; }
 
     public CharacterIncreaseSpeedState(Character owner, float increaseSpeed, float lifeTime = -1)
-        : base(CharacterStateType.E_IncreaseDamage, owner, lifeTime)
+        : base(CharacterStateType.E_IncreaseSpeed, owner, lifeTime)
     {
         IncreaseSpeed = increaseSpeed;
     }
@@ -141,7 +141,7 @@ public class CharacterSlowState : CharacterState
     public float DecreaseSpeed { get; set; }
 
     public CharacterSlowState(Character owner, float decreaseSpeed, float lifeTime = -1)
-        : base(CharacterStateType.E_IncreaseDamage, owner, lifeTime)
+        : base(CharacterStateType.E_Slow, owner, lifeTime)
     {
         DecreaseSpeed = decreaseSpeed;
     }

@@ -26,10 +26,12 @@ public class TargetData
 
 public class PlayerCardAction : CharacterAction
 {
+    public CardTable DataTable { get; set; }
     public TargetData Target { get; set; }
 
-    public PlayerCardAction(TargetData target)
+    public PlayerCardAction(CardTable dataTable, TargetData target)
     {
+        DataTable = dataTable;
         Target = target;
     }
 }

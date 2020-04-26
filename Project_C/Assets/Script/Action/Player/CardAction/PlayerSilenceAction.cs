@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerCardPowerUpAction : PlayerCardAction
+public class PlayerSilenceAction : PlayerCardAction
 {
+    public static PlayerSilenceAction GetInstance(CardTable dataTable, TargetData target) { return new PlayerSilenceAction(dataTable, target); }
 
-    public static PlayerCardPowerUpAction GetInstance(CardTable dataTable, TargetData target) { return new PlayerCardPowerUpAction(dataTable, target); }
-
-    public PlayerCardPowerUpAction(CardTable dataTable, TargetData target) : base(dataTable, target)
+    public PlayerSilenceAction(CardTable dataTable, TargetData target) : base(dataTable, target)
     {
     }
 
@@ -16,7 +15,7 @@ public class PlayerCardPowerUpAction : PlayerCardAction
         base.StartAction(owner);
         owner.transform.rotation = Quaternion.Euler(0f, 135f, 0f);
         AnimUtil.PlayAnim(owner, "buff");
-        TimelineEvents.Add(new TimeLineEvent(0.1f, AddBuff));
+        TimelineEvents.Add(new TimeLineEvent(0.1f, CallSilence));
     }
 
     public override void UpdateAction()
@@ -41,8 +40,8 @@ public class PlayerCardPowerUpAction : PlayerCardAction
         base.FinishAction();
     }
 
-    public void AddBuff()
+    public void CallSilence()
     {
-        PlayerStatus.CurrentStatus.CardPowerSupport += (int)DataTable._Parameter[0];
+        Target.Target.AddState(new CharacterSilenceState(Target.Target, DataTable._Parameter[0]));
     }
 }
