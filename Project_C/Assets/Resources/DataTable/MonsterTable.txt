@@ -5,3 +5,4 @@
 505	GoblinStore	고블린 보부상	0	300	1	0	a	E_GiveDraw	E_None	E_None	E_None	E_None	E_None	0	0	
 506	GoblinHentai	변태고블린	5	200	1	0	a	E_GiveDraw	E_None	E_None	E_None	E_None	E_None	0	0	
 507	GoblinDrunk	고블린 취객	5	150	1	0	a	E_Spawn	E_None	E_None	E_None	E_None	E_None	0	0	
+508	GuardianStone	수호석상	0	300	0	0	a	E_Taunt	E_None	E_None	E_None	E_None	E_None	0	0	
