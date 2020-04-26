@@ -91,6 +91,7 @@ public class CardInterface : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     {
         InGameInterface.Instance.IsCardDrag = true;
         IsDrag = true;
+        _destCardSize = _originCardSize;
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -162,7 +163,8 @@ public class CardInterface : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     {
         Vector3 deltaVector3 = new Vector3(eventData.delta.x, eventData.delta.y);
 
-        _targetPosition += eventData.delta * 1f / transform.lossyScale ;
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(CanvasHelper.Main.transform as RectTransform, Input.mousePosition, CanvasHelper.Main.worldCamera, out Vector2 mousePosition);
+        _targetPosition = mousePosition;
 
         Quaternion velocityRotation = Quaternion.LookRotation(deltaVector3);
 
@@ -196,7 +198,7 @@ public class CardInterface : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
                 InGameInterface.Instance.ArrowBody.transform.localPosition = basePos;
 
                 Vector2 arrowSize = ((RectTransform)InGameInterface.Instance.ArrowBody.transform).sizeDelta;
-                arrowSize.y = (target - basePos).magnitude - 80f;
+                arrowSize.y = (target - basePos).magnitude - 100f;
                 ((RectTransform)InGameInterface.Instance.ArrowBody.transform).sizeDelta = arrowSize;
 
                 Quaternion arrowRotation = Quaternion.FromToRotation(Vector3.up, (target - basePos).normalized);
