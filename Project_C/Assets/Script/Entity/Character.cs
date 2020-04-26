@@ -22,6 +22,8 @@ public class Character : MonoBehaviour
     protected List<AbilityDisplay> _abilityDisplays;
     protected List<StateDisplay> _stateDisplays;
 
+    protected HPDisplay _hpDisplay;
+
 
     public CharacterAction CurrentAction {
         get => _currentAction;
@@ -43,6 +45,9 @@ public class Character : MonoBehaviour
 
         _abilityDisplays = new List<AbilityDisplay>();
         _stateDisplays = new List<StateDisplay>();
+
+        if(!(this is Player))
+            _hpDisplay = HPDisplay.CreateHPDisplay();
 
         RenderTrasform = GetComponentInChildren<RenderTransform>();
         Anim = GetComponentInChildren<Animator>();
@@ -80,6 +85,9 @@ public class Character : MonoBehaviour
             RectTransformUtility.WorldToScreenPoint(Camera.main, RenderTrasform.transform.position + Vector3.up * 0.3f), 
             CanvasHelper.Main.worldCamera, 
             out Vector2 displayCenterPosition);
+
+        (_hpDisplay.transform as RectTransform).anchoredPosition = displayCenterPosition - Vector2.up * 40f;
+        _hpDisplay.SetHPAmount(Status.CurrentHp / Status.Hp);
 
         for (int i = 0; i < _abilityDisplays.Count; ++i)
         {
@@ -161,5 +169,8 @@ public class Character : MonoBehaviour
             if (state != null)
                 Destroy(state.gameObject);
         }
+
+        if (_hpDisplay != null)
+            Destroy(_hpDisplay.gameObject);
     }
 }
