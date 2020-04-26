@@ -32,6 +32,11 @@ public static class NodeUtil
         return owner.NavAgent.isStopped;
     }
 
+    public static bool IsActivateAbility(Character owner, int wantToAbilityIndex)
+    {
+        return EntityUtil.IsActivateAbility(owner, (CharacterAbilityType)wantToAbilityIndex);
+    }
+
     public static void StopMovement(Character owner)
     {
         owner.NavAgent.isStopped = true;
