@@ -36,7 +36,7 @@ public class PlayerMoveAction : CharacterAction
         }
 
         Owner.transform.rotation = Quaternion.LookRotation(velocity, Vector3.up);
-        Owner.NavAgent.Move(velocity * 1.1f * Time.deltaTime);
+        Owner.NavAgent.Move(velocity * Owner.Status.CurrentSpeed * Time.deltaTime);
 
         AnimUtil.RotationAnim(Owner, "run");
     }

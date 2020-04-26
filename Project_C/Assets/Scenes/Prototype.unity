@@ -269,7 +269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f53eb3c4b5524694a87e2f8b3b891930, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mapDataName: test2
+  _mapDataName: test3
 --- !u!114 &317845812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -695,6 +695,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 411037656}
     m_Modifications:
+    - target: {fileID: 1032059589, guid: 30e88b0365b0cd545814e316b42e69fa, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 1032059589, guid: 30e88b0365b0cd545814e316b42e69fa, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1356.7
+      objectReference: {fileID: 0}
     - target: {fileID: 2430738957612830614, guid: 30e88b0365b0cd545814e316b42e69fa,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -29,6 +29,11 @@ public class WoodTotemSpellAction : CharacterAction
         {
             return;
         }
+
+        if (!EntityUtil.IsActivateAbility(Owner, CharacterAbilityType.E_GiveHold))
+        {
+            Owner.CurrentAction = WoodTotemIdleAction.GetInstance();
+        }
     }
 
     public override void FinishAction()

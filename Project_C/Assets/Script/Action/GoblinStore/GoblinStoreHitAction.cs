@@ -47,6 +47,14 @@ base.FinishAction();
 
 void TimeLine_4()
 {
+
+if(NodeUtil.IsActivateAbility(Owner ,214))
+{
 NodeUtil.DrawCard();
+}
+
+else
+{
+}
 }
 }

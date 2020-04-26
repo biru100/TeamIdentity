@@ -153,7 +153,7 @@ public class InGameInterface : UIBase<InGameInterface>
     {
         float half = (HandCards.Count - 1) * 0.5f;
 
-        return new Vector3((index - half) * 250f, -380f, 0f);
+        return new Vector3((index - half) * 140f, -450f, 0f);
     }
     
     public void MouseOverCard()

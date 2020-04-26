@@ -13,7 +13,7 @@ public static GoblinDrunkAttackAction GetInstance() { return new GoblinDrunkAtta
 public override void StartAction(Character owner)
 {
 base.StartAction(owner);
-TimelineEvents.Add(new TimeLineEvent(0.01f, TimeLine_4));
+TimelineEvents.Add(new TimeLineEvent(0.5f, TimeLine_4));
 NodeUtil.PlayAnim(Owner ,"attack");
 }
 
@@ -46,6 +46,14 @@ base.FinishAction();
 
 void TimeLine_4()
 {
+
+if(NodeUtil.PlayerInSight(Owner ,1f ,70f))
+{
 NodeUtil.TakeDamageToPlayer(10f);
+}
+
+else
+{
+}
 }
 }
