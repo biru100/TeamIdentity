@@ -25,6 +25,7 @@ public class CardInterface : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public bool IsVisible { get; set; }
     public bool IsUsing { get; set; }
 
+    int _originFontSize;
     Vector2 _destCardSize;
     Vector2 _targetPosition;
 
@@ -42,6 +43,7 @@ public class CardInterface : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
                 _frontSide.sprite = value.FrontSprite;
                 _backSide.sprite = value.BackSprite;
                 _cardLore.text = value.GetLore();
+                _originFontSize = _cardLore.fontSize;
             }
             _cardData = value;
         }
@@ -69,24 +71,34 @@ public class CardInterface : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     {
         if (!IsUsing)
         {
-            if(IsHover)
+            if (IsHover && !IsDrag)
+            {
                 CardCanvas.sortingOrder = 19;
-            else if(IsDrag)
+                _targetPosition = InGameInterface.Instance.GetCardLocationInHand(HandIndex) + Vector3.up * 100f;
+                _destRotation = Quaternion.identity;
+
+                _destCardSize = _originCardSize * 1.5f;
+                ((RectTransform)transform).sizeDelta = _destCardSize;
+            }
+            else if (IsDrag)
+            {
                 CardCanvas.sortingOrder = 20;
+                _destCardSize = _originCardSize;
+            }
             else
+            {
                 CardCanvas.sortingOrder = HandIndex + 2;
+                _targetPosition = InGameInterface.Instance.GetCardLocationInHand(HandIndex);
+                _destRotation = Quaternion.identity;
+                _destCardSize = _originCardSize;
+            }
 
             if (IsHover)
                 InGameInterface.Instance.MouseOverCard();
 
             ((RectTransform)transform).sizeDelta = Vector3.Lerp(((RectTransform)transform).sizeDelta, _destCardSize,
                 3f * Time.unscaledDeltaTime);
-
-            if (!IsDrag)
-            {
-                _targetPosition = InGameInterface.Instance.GetCardLocationInHand(HandIndex);
-                _destRotation = Quaternion.identity;
-            }
+            _cardLore.fontSize = (int)((((RectTransform)transform).sizeDelta.x / _originCardSize.x) * _originFontSize);
 
             if (IsVisible)
             {
@@ -156,17 +168,11 @@ public class CardInterface : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public void OnPointerEnter(PointerEventData eventData)
     {
         IsHover = true;
-
-        if (!IsDrag)
-            _destCardSize = _originCardSize * 1.5f;
-        else
-            _destCardSize = _originCardSize;
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         IsHover = false;
-        _destCardSize = _originCardSize;
     }
 
     public void OnDrag(PointerEventData eventData)

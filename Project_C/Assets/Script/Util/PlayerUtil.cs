@@ -90,8 +90,8 @@ public static class PlayerUtil
 
     public static bool GetAttackInput()
     {
-        return Input.GetKeyDown(KeyCode.Space);
-            //&& !EventSystem.current.IsPointerOverGameObject();
+        return Input.GetKeyDown(KeyCode.Mouse0)
+            && !EventSystem.current.IsPointerOverGameObject();
     }
 
     public static bool GetDashInput()
