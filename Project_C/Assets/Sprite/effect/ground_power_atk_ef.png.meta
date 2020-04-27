@@ -1,0 +1,991 @@
+fileFormatVersion: 2
+guid: da2ad5dec4e0d79438ec482be32a2487
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1234545512795232583
+    second: ground_power_atk_ef_0
+  - first:
+      213: 5022776034240795899
+    second: ground_power_atk_ef_1
+  - first:
+      213: 7100736365569590933
+    second: ground_power_atk_ef_2
+  - first:
+      213: -2904000316881404581
+    second: ground_power_atk_ef_3
+  - first:
+      213: -1798612786925040910
+    second: ground_power_atk_ef_4
+  - first:
+      213: 7769782489399506186
+    second: ground_power_atk_ef_5
+  - first:
+      213: -2516945165566318857
+    second: ground_power_atk_ef_6
+  - first:
+      213: -3358926307935749492
+    second: ground_power_atk_ef_7
+  - first:
+      213: 5112333645371668581
+    second: ground_power_atk_ef_8
+  - first:
+      213: 1936526888047334703
+    second: ground_power_atk_ef_9
+  - first:
+      213: 842379197523649620
+    second: ground_power_atk_ef_10
+  - first:
+      213: 2945078714428488635
+    second: ground_power_atk_ef_11
+  - first:
+      213: 4521730193302477966
+    second: ground_power_atk_ef_12
+  - first:
+      213: 6899164358028763028
+    second: ground_power_atk_ef_13
+  - first:
+      213: -2305709785093185910
+    second: ground_power_atk_ef_14
+  - first:
+      213: -3620183126934029956
+    second: ground_power_atk_ef_15
+  - first:
+      213: 7657023602707395553
+    second: ground_power_atk_ef_16
+  - first:
+      213: -210696888781736773
+    second: ground_power_atk_ef_17
+  - first:
+      213: 1660442255362789635
+    second: ground_power_atk_ef_18
+  - first:
+      213: -4736533400677251193
+    second: ground_power_atk_ef_19
+  - first:
+      213: 2169518392575448244
+    second: ground_power_atk_ef_20
+  - first:
+      213: -1186017879895659612
+    second: ground_power_atk_ef_21
+  - first:
+      213: 8921869061786922525
+    second: ground_power_atk_ef_22
+  - first:
+      213: -3196583393691787014
+    second: ground_power_atk_ef_23
+  - first:
+      213: 2268158490579385119
+    second: ground_power_atk_ef_24
+  - first:
+      213: -290660852937255772
+    second: ground_power_atk_ef_25
+  - first:
+      213: -1226787420353297246
+    second: ground_power_atk_ef_26
+  - first:
+      213: -3465295071617675621
+    second: ground_power_atk_ef_27
+  - first:
+      213: 5705864985180762315
+    second: ground_power_atk_ef_28
+  - first:
+      213: 6061734410551714989
+    second: ground_power_atk_ef_29
+  - first:
+      213: 2546376089785606491
+    second: ground_power_atk_ef_30
+  - first:
+      213: 7075006099260230563
+    second: ground_power_atk_ef_31
+  - first:
+      213: 6934091883507340262
+    second: ground_power_atk_ef_0
+  - first:
+      213: 4762195023941670933
+    second: ground_power_atk_ef_1
+  - first:
+      213: -6602102045021351165
+    second: ground_power_atk_ef_2
+  - first:
+      213: -2524663061562056628
+    second: ground_power_atk_ef_3
+  - first:
+      213: 2114814030041592333
+    second: ground_power_atk_ef_4
+  - first:
+      213: -3442470124487087499
+    second: ground_power_atk_ef_5
+  - first:
+      213: 1574998826632156931
+    second: ground_power_atk_ef_6
+  - first:
+      213: -8013282313939361310
+    second: ground_power_atk_ef_7
+  - first:
+      213: 1715321118240241557
+    second: ground_power_atk_ef_8
+  - first:
+      213: 8304274696677081101
+    second: ground_power_atk_ef_9
+  - first:
+      213: 5732117498677000846
+    second: ground_power_atk_ef_10
+  - first:
+      213: 8893177046143605046
+    second: ground_power_atk_ef_11
+  - first:
+      213: 7849441407699373773
+    second: ground_power_atk_ef_12
+  - first:
+      213: -2263563786835923109
+    second: ground_power_atk_ef_13
+  - first:
+      213: 7152535263100234500
+    second: ground_power_atk_ef_14
+  - first:
+      213: -7055820094081089707
+    second: ground_power_atk_ef_15
+  - first:
+      213: -3772532454004314362
+    second: ground_power_atk_ef_16
+  - first:
+      213: 7883305441903270770
+    second: ground_power_atk_ef_17
+  - first:
+      213: 3785358063397910904
+    second: ground_power_atk_ef_18
+  - first:
+      213: -221676107579850277
+    second: ground_power_atk_ef_19
+  - first:
+      213: -4663110677807065890
+    second: ground_power_atk_ef_20
+  - first:
+      213: 2494721554202667116
+    second: ground_power_atk_ef_21
+  - first:
+      213: 142510253113814563
+    second: ground_power_atk_ef_22
+  - first:
+      213: 4270033029523695421
+    second: ground_power_atk_ef_23
+  - first:
+      213: -3008825997947915244
+    second: ground_power_atk_ef_24
+  - first:
+      213: -4417984477833873770
+    second: ground_power_atk_ef_25
+  - first:
+      213: 5456983957901975111
+    second: ground_power_atk_ef_26
+  - first:
+      213: 4515513484651214856
+    second: ground_power_atk_ef_27
+  - first:
+      213: 5873930218411090061
+    second: ground_power_atk_ef_28
+  - first:
+      213: 5933375516556430070
+    second: ground_power_atk_ef_29
+  - first:
+      213: 8367237586884950631
+    second: ground_power_atk_ef_30
+  - first:
+      213: -8701524917682283071
+    second: ground_power_atk_ef_31
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ground_power_atk_ef_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 736
+        width: 288
+        height: 184
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e3df5464d7da3060800000000000000
+      internalID: 6934091883507340262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground_power_atk_ef_1
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 736
+        width: 288
+        height: 184
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5181d21a427b61240800000000000000
+      internalID: 4762195023941670933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground_power_atk_ef_2
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 736
+        width: 288
+        height: 184
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3035f936b2f9064a0800000000000000
+      internalID: -6602102045021351165
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground_power_atk_ef_3
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 736
+        width: 288
+        height: 184
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c402b0e525896fcd0800000000000000
+      internalID: -2524663061562056628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground_power_atk_ef_4
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 736
+        width: 288
+        height: 184
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0234a2d724595d10800000000000000
+      internalID: 2114814030041592333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground_power_atk_ef_5
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 736
+        width: 288
+        height: 184
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57a6d0829a3e930d0800000000000000
+      internalID: -3442470124487087499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground_power_atk_ef_6
+      rect:
+        serializedVersion: 2
+        x: 1728
+        y: 736
+        width: 288
+        height: 184
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 307111f86158bd510800000000000000
+      internalID: 1574998826632156931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground_power_atk_ef_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 552
+        width: 288
+        height: 184
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e169b0113a1bc090800000000000000
+      internalID: -8013282313939361310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground_power_atk_ef_8
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 552
+        width: 288
+        height: 184
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5977f68087b0ec710800000000000000
+      internalID: 1715321118240241557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground_power_atk_ef_9
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 552
+        width: 288
+        height: 184
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d00c3b4b6d5be3370800000000000000
+      internalID: 8304274696677081101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground_power_atk_ef_10
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 552
+        width: 288
+        height: 184
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8a7177be729c8f40800000000000000
+      internalID: 5732117498677000846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground_power_atk_ef_11
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 552
+        width: 288
+        height: 184
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6391c08c769ea6b70800000000000000
+      internalID: 8893177046143605046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground_power_atk_ef_12
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 552
+        width: 288
+        height: 184
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dcec9274f51deec60800000000000000
+      internalID: 7849441407699373773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground_power_atk_ef_13
+      rect:
+        serializedVersion: 2
+        x: 1728
+        y: 552
+        width: 288
+        height: 184
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5fe43f8ab43690e0800000000000000
+      internalID: -2263563786835923109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground_power_atk_ef_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 368
+        width: 288
+        height: 184
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40b6b801de8e24360800000000000000
+      internalID: 7152535263100234500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground_power_atk_ef_15
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 368
+        width: 288
+        height: 184
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55fbb3df101b41e90800000000000000
+      internalID: -7055820094081089707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground_power_atk_ef_16
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 368
+        width: 288
+        height: 184
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60fa07788b545abc0800000000000000
+      internalID: -3772532454004314362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground_power_atk_ef_17
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 368
+        width: 288
+        height: 184
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27b5c882880276d60800000000000000
+      internalID: 7883305441903270770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground_power_atk_ef_18
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 368
+        width: 288
+        height: 184
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8793e7c5a1b488430800000000000000
+      internalID: 3785358063397910904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground_power_atk_ef_19
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 368
+        width: 288
+        height: 184
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd1038031c27cecf0800000000000000
+      internalID: -221676107579850277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground_power_atk_ef_20
+      rect:
+        serializedVersion: 2
+        x: 1728
+        y: 368
+        width: 288
+        height: 184
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed49af47b8d494fb0800000000000000
+      internalID: -4663110677807065890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground_power_atk_ef_21
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 184
+        width: 288
+        height: 184
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c68a2c339080f9220800000000000000
+      internalID: 2494721554202667116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground_power_atk_ef_22
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 184
+        width: 288
+        height: 184
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32e23b5f15c4af100800000000000000
+      internalID: 142510253113814563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground_power_atk_ef_23
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 184
+        width: 288
+        height: 184
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d37e1ffaa64324b30800000000000000
+      internalID: 4270033029523695421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground_power_atk_ef_24
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 184
+        width: 288
+        height: 184
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 414ba5142b08e36d0800000000000000
+      internalID: -3008825997947915244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground_power_atk_ef_25
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 184
+        width: 288
+        height: 184
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 696b58f568a20b2c0800000000000000
+      internalID: -4417984477833873770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground_power_atk_ef_26
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 184
+        width: 288
+        height: 184
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74e90c35ff91bbb40800000000000000
+      internalID: 5456983957901975111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground_power_atk_ef_27
+      rect:
+        serializedVersion: 2
+        x: 1728
+        y: 184
+        width: 288
+        height: 184
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8083f1f07935aae30800000000000000
+      internalID: 4515513484651214856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground_power_atk_ef_28
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 288
+        height: 184
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8063d78964648150800000000000000
+      internalID: 5873930218411090061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground_power_atk_ef_29
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 0
+        width: 288
+        height: 184
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6fa885f8895975250800000000000000
+      internalID: 5933375516556430070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground_power_atk_ef_30
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 0
+        width: 288
+        height: 184
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76af295f0466e1470800000000000000
+      internalID: 8367237586884950631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground_power_atk_ef_31
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 0
+        width: 288
+        height: 184
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1cd5655a039fd3780800000000000000
+      internalID: -8701524917682283071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

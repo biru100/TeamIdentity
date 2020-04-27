@@ -1,6 +1,75 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1102 &-8225683168344607094
+--- !u!1102 &-9120973978886041163
+AnimatorState:
+  serializedVersion: 5
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: effect_ground_power_atk_270
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: 3a498dd2a864e704a8a9d75ad7439c8d, type: 2}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
+--- !u!1107 &-8223687338837858403
+AnimatorStateMachine:
+  serializedVersion: 5
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Base Layer
+  m_ChildStates:
+  - serializedVersion: 1
+    m_State: {fileID: 1819628402958083668}
+    m_Position: {x: 322.265, y: 117.68877, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: -1968983070769942710}
+    m_Position: {x: 332.265, y: 127.68877, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: -3745097717125023269}
+    m_Position: {x: 342.265, y: 137.68877, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: -5272068718474944601}
+    m_Position: {x: 352.265, y: 147.68877, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 7003111815054680383}
+    m_Position: {x: 362.265, y: 157.68877, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 9049385993149993591}
+    m_Position: {x: 372.265, y: 167.68877, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: -9120973978886041163}
+    m_Position: {x: 382.265, y: 177.68877, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: -7855662442279309149}
+    m_Position: {x: 392.265, y: 187.68877, z: 0}
+  m_ChildStateMachines: []
+  m_AnyStateTransitions: []
+  m_EntryTransitions: []
+  m_StateMachineTransitions: {}
+  m_StateMachineBehaviours: []
+  m_AnyStatePosition: {x: 50, y: 20, z: 0}
+  m_EntryPosition: {x: 50, y: 120, z: 0}
+  m_ExitPosition: {x: 800, y: 120, z: 0}
+  m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
+  m_DefaultState: {fileID: 1819628402958083668}
+--- !u!1102 &-7855662442279309149
 AnimatorState:
   serializedVersion: 5
   m_ObjectHideFlags: 1
@@ -26,76 +95,7 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
---- !u!1107 &-8223687338837858403
-AnimatorStateMachine:
-  serializedVersion: 5
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Base Layer
-  m_ChildStates:
-  - serializedVersion: 1
-    m_State: {fileID: 6775081167718400811}
-    m_Position: {x: 440, y: 40, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: 6469956497642295443}
-    m_Position: {x: 472.78888, y: 64.74577, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: -7137413862893206079}
-    m_Position: {x: 482.78888, y: 74.74577, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: -6631027736063618296}
-    m_Position: {x: 492.78888, y: 84.74577, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: 3493554391607762253}
-    m_Position: {x: 502.78888, y: 94.74577, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: -2797863058651931563}
-    m_Position: {x: 512.7889, y: 104.74577, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: -825086852870699375}
-    m_Position: {x: 522.7889, y: 114.74577, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: -8225683168344607094}
-    m_Position: {x: 532.7889, y: 124.74577, z: 0}
-  m_ChildStateMachines: []
-  m_AnyStateTransitions: []
-  m_EntryTransitions: []
-  m_StateMachineTransitions: {}
-  m_StateMachineBehaviours: []
-  m_AnyStatePosition: {x: 50, y: 20, z: 0}
-  m_EntryPosition: {x: 50, y: 120, z: 0}
-  m_ExitPosition: {x: 800, y: 120, z: 0}
-  m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
-  m_DefaultState: {fileID: 6775081167718400811}
---- !u!1102 &-7137413862893206079
-AnimatorState:
-  serializedVersion: 5
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: effect_ground_power_atk_90
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: c1b9ae12fe293a84ea773b85d1a38b46, type: 2}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
-  m_TimeParameter: 
---- !u!1102 &-6631027736063618296
+--- !u!1102 &-5272068718474944601
 AnimatorState:
   serializedVersion: 5
   m_ObjectHideFlags: 1
@@ -121,14 +121,14 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
---- !u!1102 &-2797863058651931563
+--- !u!1102 &-3745097717125023269
 AnimatorState:
   serializedVersion: 5
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: effect_ground_power_atk_225
+  m_Name: effect_ground_power_atk_90
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -141,20 +141,20 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 35be9bb6c17407543b24ca9b4a3b57dd, type: 2}
+  m_Motion: {fileID: 7400000, guid: c1b9ae12fe293a84ea773b85d1a38b46, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
---- !u!1102 &-825086852870699375
+--- !u!1102 &-1968983070769942710
 AnimatorState:
   serializedVersion: 5
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: effect_ground_power_atk_270
+  m_Name: effect_ground_power_atk_45
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -167,7 +167,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 3a498dd2a864e704a8a9d75ad7439c8d, type: 2}
+  m_Motion: {fileID: 7400000, guid: 80410a074ae058f46aefd03ce44eaeee, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -195,7 +195,33 @@ AnimatorController:
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
---- !u!1102 &3493554391607762253
+--- !u!1102 &1819628402958083668
+AnimatorState:
+  serializedVersion: 5
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: effect_ground_power_atk_0
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: 56364d0d93ae5b444becf6bf95d94b63, type: 2}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
+--- !u!1102 &7003111815054680383
 AnimatorState:
   serializedVersion: 5
   m_ObjectHideFlags: 1
@@ -221,14 +247,14 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
---- !u!1102 &6469956497642295443
+--- !u!1102 &9049385993149993591
 AnimatorState:
   serializedVersion: 5
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: effect_ground_power_atk_45
+  m_Name: effect_ground_power_atk_225
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -241,33 +267,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 80410a074ae058f46aefd03ce44eaeee, type: 2}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
-  m_TimeParameter: 
---- !u!1102 &6775081167718400811
-AnimatorState:
-  serializedVersion: 5
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: effect_ground_power_atk_0
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 56364d0d93ae5b444becf6bf95d94b63, type: 2}
+  m_Motion: {fileID: 7400000, guid: 35be9bb6c17407543b24ca9b4a3b57dd, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
