@@ -46,6 +46,7 @@ public class PlayerCallTransitionAction : PlayerCardAction
         if (Target.Target != null)
         {
             Vector3 pos = Target.Target.transform.position;
+            Target.Target.CurrentAction?.FinishAction();
             GameObject.Destroy(Target.Target.gameObject);
             NodeUtil.CreateEntity("Slime", pos);
         }
