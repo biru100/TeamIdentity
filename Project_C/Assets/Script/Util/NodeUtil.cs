@@ -135,7 +135,7 @@ public static class NodeUtil
 
     public static void DrawCard()
     {
-        if(!PlayerStatus.CurrentStatus.CurrentStates.Contains(CharacterStateType.E_Invincibility))
+        if (!PlayerStatus.CurrentStatus.CurrentStates.Contains(CharacterStateType.E_Invincibility))
             InGameInterface.Instance.DrawCard();
     }
 

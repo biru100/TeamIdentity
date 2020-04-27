@@ -33,12 +33,14 @@ public class Player : Character
     void Start()
     {
         CurrentAction = PlayerIdleAction.GetInstance();
-
+        int count = DataManager.GetDatas<CardTable>().Count;
         for(int i = 0; i < 30; ++i)
         {
-            Deck.Instance.AddCard(new Card(Random.Range(0, 6)));
+            Deck.Instance.AddCard(new Card(Random.Range(0, count)));
         }
 
+        InGameInterface.Instance.DrawCard();
+        InGameInterface.Instance.DrawCard();
         InGameInterface.Instance.DrawCard();
         InGameInterface.Instance.DrawCard();
         InGameInterface.Instance.DrawCard();

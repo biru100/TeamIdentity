@@ -4,7 +4,7 @@
 304	PowerUp	공격 강화	E_NonTarget	캐릭터의 기본 공격력을 _ 초 동안 _ 강화합니다.	Sprites/Card/card_player_atk_up	0	PlayerPowerUpAction	60	20	
 305	IncreaseSpeed	이동속도 증가	E_NonTarget	캐릭터의 이동 속도를 _ 초 동안 _  증가 시킵니다.	Sprites/Card/card_player_speed_up	0	PlayerIncreaseSpeedAction	5	0.3	
 306	Silence	침묵	E_Target	몬스터 하나를 침묵 시킵니다.	Sprites/Card/card_silence	0	PlayerSilenceAction	5	0	
-307	Transition	슬라임 변이	E_Target	몬스터 하나를 슬라임으로 변이 시킵니다.	Sprites/Card/card_change_slime	0	a	0	0	
-308	Slow	슬로우	E_NonTarget	몬스터 하나의 이동속도를 _ 초 동안 _ 감소 시킵니다.	Sprites/Card/card_slow	0	a	5	0.3	
-309	DrawCard	드로우	E_NonTarget	카드를 _ 장 드로우 합니다.	Sprites/Card/card_draw	0	a	3	0	
-310	LandAttack	지면 강타	E_NonTarget	범위 내 적에게 _ 의 데미지를 줍니다.	Sprites/Card/card_earthquake_atk	0	a	60	0	
+307	Transition	슬라임 변이	E_Target	몬스터 하나를 슬라임으로 변이 시킵니다.	Sprites/Card/card_change_slime	0	PlayerCallTransitionAction	0	0	
+308	Slow	슬로우	E_Target	몬스터 하나의 이동속도를 _ 초 동안 _ 감소 시킵니다.	Sprites/Card/card_slow	0	PlayerCallSlowAction	5	0.3	
+309	DrawCard	드로우	E_NonTarget	카드를 _ 장 드로우 합니다.	Sprites/Card/card_draw	0	PlayerDrawCardAction	3	0	
+310	LandAttack	지면 강타	E_NonTarget	범위 내 적에게 _ 의 데미지를 줍니다.	Sprites/Card/card_earthquake_atk	0	PlayerGroundPowerAttackAction	200	0	

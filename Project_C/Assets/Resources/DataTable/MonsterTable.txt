@@ -1,8 +1,9 @@
 501	Slime	슬라임	5	30	0.7	0	이 몬스터는 사망 시 작은 슬라임 _마리로 분열합니다.	E_Spawn	E_None	E_None	E_None	E_None	E_None	2	0	
 502	CSlime	작은 슬라임	1	15	0.7	0	이 몬스터는 아무런 효과도 가지고 있지 않습니다.	E_None	E_None	E_None	E_None	E_None	E_None	0	0	
-503	WoodTotem	덩굴정령	1	100	0	0	a	E_GiveHold	E_None	E_None	E_None	E_None	E_None	0	0	
-504	GoblinStealer	고블린 약탈자	2	50	1	0	a	E_CardBreak	E_None	E_None	E_None	E_None	E_None	0	0	
-505	GoblinStore	고블린 보부상	0	300	1	0	a	E_GiveDraw	E_None	E_None	E_None	E_None	E_None	0	0	
-506	GoblinHentai	변태고블린	5	200	1	0	a	E_GiveDraw	E_None	E_None	E_None	E_None	E_None	0	0	
-507	GoblinDrunk	고블린 취객	5	150	1	0	a	E_Spawn	E_None	E_None	E_None	E_None	E_None	0	0	
-508	GuardianStone	수호석상	0	300	0	0	a	E_Taunt	E_None	E_None	E_None	E_None	E_None	0	0	
+503	WoodTotem	덩굴정령	1	100	0	0	이 몬스터는 적을 _초간 속박하는 공격을 합니다.	E_GiveHold	E_None	E_None	E_None	E_None	E_None	1.5	0	
+504	GoblinStealer	고블린 약탈자	2	50	1	0	이 몬스터는 적의 패를 _장 파괴합니다.	E_CardBreak	E_None	E_None	E_None	E_None	E_None	1	0	
+505	GoblinStore	고블린 보부상	0	300	1	0	이 몬스터는 적에게 공격 당하면 _장 만큼 드로우 합니다.	E_GiveDraw	E_None	E_None	E_None	E_None	E_None	1	0	
+506	GoblinHentai	변태고블린	5	200	1	0	이 몬스터는 적에게 공격이 성공하면 _장 만큼 드로우 합니다.	E_GiveDraw	E_None	E_None	E_None	E_None	E_None	1	0	
+507	GoblinDrunk	고블린 취객	5	150	1	0	이 몬스터는 적에게 공격 당하면 고블린 취객을 _마리 소환합니다.	E_Spawn	E_None	E_None	E_None	E_None	E_None	1	0	
+508	GuardianStone	수호석상	0	300	0	0	이 몬스터는 자신을 제외한 맵에 있는 모든 몬스터에게 도발 상태를 부여합니다.	E_Taunt	E_None	E_None	E_None	E_None	E_None	0	0	
+509	GoblinFirst	고블린 선봉대	20	200	0.5	0	이 몬스터는 맵에 있는 모든 몬스터에게 _초간 무적 상태를 부여합니다.	E_GiveInvincibility	E_None	E_None	E_None	E_None	E_None	1	0	

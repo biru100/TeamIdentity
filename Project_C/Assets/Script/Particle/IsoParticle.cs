@@ -41,6 +41,11 @@ public class IsoParticle : MonoBehaviour
     protected float _angle = 0f;
     protected float _currentLifeTime = 0f;
 
+    public void RotationAnim(string animName, Quaternion rotation)
+    {
+        Anim.Play(animName + "_" + AnimUtil.GetRenderAngle(rotation));
+    }
+
     protected virtual void Awake()
     {
         RenderChild = GetComponentInChildren<RenderTransform>();
