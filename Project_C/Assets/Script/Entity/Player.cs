@@ -36,7 +36,7 @@ public class Player : Character
         int count = DataManager.GetDatas<CardTable>().Count;
         for(int i = 0; i < 30; ++i)
         {
-            Deck.Instance.AddCard(new Card(Random.Range(count - 1, count)));
+            Deck.Instance.AddCard(new Card(Random.Range(0, count)));
         }
 
         InGameInterface.Instance.DrawCard();
