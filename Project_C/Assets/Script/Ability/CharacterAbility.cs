@@ -62,11 +62,17 @@ public class CharacterTauntAbility : CharacterAbility
             if (character == Owner)
                 continue;
 
-            if (!_buffCharacters.ContainsKey(character))
+            if (character.Status.CurrentAbility.Contains(CharacterAbilityType.E_Taunt))
+                continue;
+
+            if (character.FindState(CharacterStateType.E_TauntInvincibility).Count == 0)
             {
-                CharacterState invState = new CharacterState(CharacterStateType.E_TauntInvincibility, character);
-                character.AddState(invState.Init());
-                _buffCharacters.Add(character, invState);
+                if (!_buffCharacters.ContainsKey(character))
+                {
+                    CharacterState invState = new CharacterState(CharacterStateType.E_TauntInvincibility, character);
+                    character.AddState(invState.Init(), true);
+                    _buffCharacters.Add(character, invState);
+                }
             }
         }
     }

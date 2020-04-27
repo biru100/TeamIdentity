@@ -130,7 +130,7 @@ public class CharacterIncreaseSpeedState : CharacterState
         if (retVal == false)
             return false;
 
-        Status.CurrentDamage += IncreaseSpeed;
+        Status.CurrentSpeed += IncreaseSpeed;
 
         return true;
     }
@@ -152,7 +152,7 @@ public class CharacterSlowState : CharacterState
         if (retVal == false)
             return false;
 
-        Status.CurrentDamage -= DecreaseSpeed;
+        Status.CurrentSpeed -= DecreaseSpeed;
 
         return true;
     }
