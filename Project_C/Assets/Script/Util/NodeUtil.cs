@@ -123,6 +123,14 @@ public static class NodeUtil
         target.AddState(new CharacterHitState(target, damage, 0.1f).Init());
     }
 
+    public static void TakeDamageBoth(List<Character> target, float damage)
+    {
+        foreach (var c in target)
+        {
+            c.AddState(new CharacterHitState(c, damage, 0.1f).Init());
+        }
+    }
+
     public static float GetDamage(Character owner)
     {
         return owner.Status.CurrentDamage;
@@ -131,6 +139,23 @@ public static class NodeUtil
     public static float GetMosterParameter(Character owner, int index)
     {
         return (owner as Monster).Data._Parameter[index];
+    }
+
+    public static List<Character> GetCharactersInRange(Character owner, bool containPlayer, bool ignoreMine, float length)
+    {
+        Character[] enemys = GameObject.FindObjectsOfType<Character>();
+        return enemys.Where((c) =>
+        {
+            if (!containPlayer && c is Player)
+                return false;
+            if (ignoreMine && c == owner)
+                return false;
+
+            if((owner.transform.position - c.transform.position).magnitude < length * Isometric.IsometricGridSize)
+                return true;
+
+            return false;
+        }).ToList();
     }
 
     public static void DrawCard()
@@ -143,6 +168,45 @@ public static class NodeUtil
     {
         if (!PlayerStatus.CurrentStatus.CurrentStates.Contains(CharacterStateType.E_Invincibility))
             InGameInterface.Instance.DestroyCard();
+    }
+
+    public static void GiveStun(Character target, float time)
+    {
+        target.AddState(new CharacterState(CharacterStateType.E_Stun, target, time).Init());
+    }
+
+    public static void GiveStunBoth(List<Character> target, float time)
+    {
+        foreach (var c in target)
+        {
+            c.AddState(new CharacterState(CharacterStateType.E_Stun, c, time).Init());
+        }
+    }
+
+    public static void GiveHold(Character target, float time)
+    {
+        target.AddState(new CharacterState(CharacterStateType.E_Hold, target, time).Init());
+    }
+
+    public static void GiveHoldBoth(List<Character> target, float time)
+    {
+        foreach (var c in target)
+        {
+            c.AddState(new CharacterState(CharacterStateType.E_Hold, c, time).Init());
+        }
+    }
+
+    public static void GiveSilence(Character target, float time)
+    {
+        target.AddState(new CharacterSilenceState(target, time).Init());
+    }
+
+    public static void GiveSilenceBoth(List<Character> target, float time)
+    {
+        foreach (var c in target)
+        {
+            c.AddState(new CharacterSilenceState(c, time).Init());
+        }
     }
 
     public static bool PlayerInRange(Character owner, float range)

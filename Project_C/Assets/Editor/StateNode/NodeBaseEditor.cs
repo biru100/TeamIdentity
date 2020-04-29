@@ -40,6 +40,9 @@ namespace StateBehavior.Node
         private Vector2 offset;
         private Vector2 drag;
 
+        private NodeListGUI nodeFunctionMenu;
+        public bool IsVisibleNodeMenu;
+
         [MenuItem("Window/Node Base Editor")]
         private static void OpenWindow()
         {
@@ -63,6 +66,9 @@ namespace StateBehavior.Node
 
             DrawConnectionLine(Event.current);
             DrawSaveButton();
+
+            if (IsVisibleNodeMenu)
+                nodeFunctionMenu.Draw();
 
             ProcessNodeEvents(Event.current);
             ProcessEvents(Event.current);
@@ -185,9 +191,17 @@ namespace StateBehavior.Node
             switch (e.type)
             {
                 case EventType.MouseDown:
-                    if (e.button == 1)
+                    if (e.button == 2)
                     {
-                        ProcessContextMenu(e.mousePosition);
+                        if (nodeFunctionMenu == null)
+                            nodeFunctionMenu = new NodeListGUI();
+                        nodeFunctionMenu.mousePosition = e.mousePosition;
+                        IsVisibleNodeMenu = true;
+                    }
+                    else if(e.button == 0)
+                    {
+                        if (IsVisibleNodeMenu)
+                            IsVisibleNodeMenu = false;
                     }
                     break;
                 case EventType.MouseDrag:
@@ -213,26 +227,7 @@ namespace StateBehavior.Node
             GUI.changed = true;
         }
 
-        private void ProcessContextMenu(Vector2 mousePosition)
-        {
-            GenericMenu genericMenu = new GenericMenu();
-
-            genericMenu.AddItem(new GUIContent("Start"), false, () => OnClickAddNode(mousePosition, NodeType.Event, "Start"));
-            genericMenu.AddItem(new GUIContent("Update"), false, () => OnClickAddNode(mousePosition, NodeType.Event, "Update"));
-            genericMenu.AddItem(new GUIContent("Finish"), false, () => OnClickAddNode(mousePosition, NodeType.Event, "Finish"));
-            genericMenu.AddItem(new GUIContent("TimeLine"), false, () => OnClickAddNode(mousePosition, NodeType.TimeLine, "TimeLine"));
-            genericMenu.AddItem(new GUIContent("IF"), false, () => OnClickAddNode(mousePosition, NodeType.Condition, "IF"));
-            genericMenu.AddItem(new GUIContent("For"), false, () => OnClickAddNode(mousePosition, NodeType.For, "For"));
-
-            MethodInfo[] methods = typeof(NodeUtil).GetMethods();
-            foreach(var method in methods)
-            {
-                genericMenu.AddItem(new GUIContent(method.Name), false, () => OnClickAddNode(mousePosition, typeof(NodeUtil), method));
-            }
-            genericMenu.ShowAsContext();
-        }
-
-        private void OnClickAddNode(Vector2 mousePosition, Type cls, MethodInfo method)
+        public void OnClickAddNode(Vector2 mousePosition, Type cls, MethodInfo method)
         {
             if (nodes == null)
             {
@@ -242,7 +237,7 @@ namespace StateBehavior.Node
             CreateNodeInRuntime(new NodeFuncData(cls.FullName, mousePosition, method.Name, method.ReturnType.Name, NodeType.Func));
         }
 
-        private void OnClickAddNode(Vector2 mousePosition, NodeType nodeType, string nodeName)
+        public void OnClickAddNode(Vector2 mousePosition, NodeType nodeType, string nodeName)
         {
             if (nodes == null)
             {

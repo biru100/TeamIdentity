@@ -202,7 +202,7 @@ namespace StateBehavior.Node
 
                 if(!method.IsStatic)
                 {
-                    AddPoint(new NodePointData(index++, data.GUID, ConnectionPointType.Parameter, data.funcClassType, "Owner"));
+                    AddPoint(new NodePointData(index++, data.GUID, ConnectionPointType.Parameter, data.funcClassType, "This"));
                 }
 
                 foreach (var parameter in parameters)
