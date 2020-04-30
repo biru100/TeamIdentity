@@ -147,7 +147,17 @@ public class StateCompiler
 
             targetFunctionBlock.CommandLines.Add(parent.code);
         }
-        //add for
+        else if(parent.funcNodeData.nodeType == NodeType.Constructor)
+        {
+            targetFunctionBlock.CommandLines.Add(new KeywordCode() { keyword = new Variable() { Var = "new"}, code = parent.code });
+
+            if (currentFlow.connections.Count == 0)
+                return;
+
+            NodeCode nextCode = guidMap.GetCode(guidMap.GetData<NodePointData>(
+                guidMap.GetData<NodeConnectionData>(currentFlow.connections[0]).inGUID).nodeGUID);
+            CompileFunction(nextCode, targetFunctionBlock);
+        }
         else
         {
             targetFunctionBlock.CommandLines.Add(new CodeLine() { code = parent.code });
@@ -293,34 +303,109 @@ public class NodeCode
 
         NodeFuncData funcNodeData = this.funcNodeData as NodeFuncData;
         Type methodClassType = NodeGUIUtility.GetType(funcNodeData.funcClassType);
-        MethodInfo method = methodClassType.GetMethod(funcNodeData.methodName);
-
-        AccessCode access = new AccessCode();
-
         List<NodePointData> parameterPoint = GetPointData(ConnectionPointType.Parameter);
 
-        if (method.IsStatic)
+        List<Type> methodParameters = new List<Type>();
+        foreach (var point in funcNodeData.parameters)
         {
-            access.ownerObject = new Variable() { Var = methodClassType.Name };
-            func.Access = access;
+            methodParameters.Add(NodeGUIUtility.GetType(point));
+        }
+
+        MethodBase method;
+        if (funcNodeData.nodeType == NodeType.Constructor)
+        {
+            method = methodClassType.GetConstructor(methodParameters.ToArray());
+
+            KeywordCode keyCode = new KeywordCode() { keyword = new Variable() { Var = "new"},
+                code = new Variable() { Var = funcNodeData.funcClassType} };
+
+            foreach (var param in parameterPoint)
+            {
+                AddMapping(param.GUID, (c) => ((ParameterBlock)((FunctionCall)code).Parameter).Parameters.Add(c));
+            }
+
+            func.Access = keyCode;
+            func.Parameter = new ParameterBlock();
+
+            code = func;
+        }
+        else if(funcNodeData.nodeType == NodeType.Property)
+        {
+            method = methodParameters.Count != 0 ? 
+                methodClassType.GetMethod(funcNodeData.methodName, methodParameters.ToArray()) :
+                methodClassType.GetMethod(funcNodeData.methodName);
+
+            AccessCode access = new AccessCode();
+
+            if (method.IsStatic)
+            {
+                access.ownerObject = new Variable() { Var = methodClassType.Name };
+                func.Access = access;
+            }
+            else
+            {
+                NodePointData ownerPoint = parameterPoint.Find((p) => p.parameterType == funcNodeData.funcClassType);
+                AddMapping(ownerPoint.GUID, (c) =>
+                {
+                    if(code is OperatorBlock)
+                    {
+                        ((AccessCode)((OperatorBlock)code).A).ownerObject = c;
+                    }
+                    else
+                    {
+                        ((AccessCode)code).ownerObject = c;
+                    }
+                });
+                parameterPoint.Remove(ownerPoint);
+            }
+
+            foreach (var param in parameterPoint)
+            {
+                AddMapping(param.GUID, (c) =>
+                {
+                    OperatorBlock oper = new OperatorBlock();
+                    oper.Operator = "=";
+                    oper.A = code;
+                    oper.B = c;
+                    code = oper;
+                });
+            }
+
+            access.member = new Variable() { Var = method.Name.Split('_')[1] };
+            code = access;
         }
         else
         {
-            NodePointData ownerPoint = parameterPoint.Find((p) => p.parameterType == funcNodeData.funcClassType);
-            AddMapping(ownerPoint.GUID, (c) => ((AccessCode)((FunctionCall)code).Access).ownerObject = c);
-            parameterPoint.Remove(ownerPoint);
+            method = methodParameters.Count != 0 ?
+                methodClassType.GetMethod(funcNodeData.methodName, methodParameters.ToArray()) :
+                methodClassType.GetMethod(funcNodeData.methodName);
+
+            AccessCode access = new AccessCode();
+
+            if (method.IsStatic)
+            {
+                access.ownerObject = new Variable() { Var = methodClassType.Name };
+                func.Access = access;
+            }
+            else
+            {
+                NodePointData ownerPoint = parameterPoint.Find((p) => p.parameterType == funcNodeData.funcClassType);
+                AddMapping(ownerPoint.GUID, (c) => ((AccessCode)((FunctionCall)code).Access).ownerObject = c);
+                parameterPoint.Remove(ownerPoint);
+            }
+
+            foreach (var param in parameterPoint)
+            {
+                AddMapping(param.GUID, (c) => ((ParameterBlock)((FunctionCall)code).Parameter).Parameters.Add(c));
+            }
+
+            access.member = new Variable() { Var = method.Name };
+            func.Access = access;
+            func.Parameter = new ParameterBlock();
+        
+            code = func;
         }
-
-        foreach (var param in parameterPoint)
-        {
-            AddMapping(param.GUID, (c) => ((ParameterBlock)((FunctionCall)code).Parameter).Parameters.Add(c));
-        }
-
-        access.member = new Variable() { Var = method.Name };
-        func.Access = access;
-        func.Parameter = new ParameterBlock();
-
-        code = func;
+        
     }
 
     public void AttachParameter()
@@ -553,6 +638,17 @@ public class AccessCode : ICodeBase
     public string ToCodeText()
     {
         return ownerObject?.ToCodeText() + "." + member?.ToCodeText();
+    }
+}
+
+public class KeywordCode : ICodeBase
+{
+    public ICodeBase keyword;
+    public ICodeBase code;
+
+    public string ToCodeText()
+    {
+        return keyword?.ToCodeText() + " " + code?.ToCodeText();
     }
 }
 

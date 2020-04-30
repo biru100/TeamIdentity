@@ -25,6 +25,7 @@ namespace StateBehavior.Node
         public string returnType;
         public NodeType nodeType;
 
+        public List<string> parameters = new List<string>();
         public List<string> points = new List<string>();
 
         public NodeData(Vector2 position, string methodName, string returnType, NodeType nodeType) : base()
@@ -33,6 +34,15 @@ namespace StateBehavior.Node
             this.methodName = methodName;
             this.returnType = returnType;
             this.nodeType = nodeType;
+        }
+
+        public NodeData(Vector2 position, string methodName, string returnType, NodeType nodeType, List<string> paramemters) : base()
+        {
+            this.rect.position = position;
+            this.methodName = methodName;
+            this.returnType = returnType;
+            this.nodeType = nodeType;
+            this.parameters = paramemters;
         }
 
         public virtual void CopyData(NodeData other)
@@ -54,9 +64,12 @@ namespace StateBehavior.Node
             : base(position, methodName, returnType, nodeType)
         {
             this.funcClassType = funcClassType;
-            this.methodName = methodName;
-            this.returnType = returnType;
-            this.nodeType = nodeType;
+        }
+
+        public NodeFuncData(string funcClassType, Vector2 position, string methodName, string returnType, NodeType nodeType, List<string> constructorParams) 
+            : base(position, methodName, returnType, nodeType, constructorParams)
+        {
+            this.funcClassType = funcClassType;
         }
 
         public override void CopyData(NodeData other)

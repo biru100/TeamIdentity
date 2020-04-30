@@ -191,7 +191,7 @@ namespace StateBehavior.Node
             switch (e.type)
             {
                 case EventType.MouseDown:
-                    if (e.button == 2)
+                    if (e.button == 1)
                     {
                         if (nodeFunctionMenu == null)
                             nodeFunctionMenu = new NodeListGUI();
@@ -227,6 +227,24 @@ namespace StateBehavior.Node
             GUI.changed = true;
         }
 
+        public void OnClickAddNode(Vector2 mousePosition, Type cls, ConstructorInfo method)
+        {
+            if (nodes == null)
+            {
+                nodes = new List<NodeGUI>();
+            }
+
+            ParameterInfo[] param = method.GetParameters();
+            List<string> parameterList = new List<string>();
+            foreach(var p in param)
+            {
+                parameterList.Add(p.ParameterType.FullName);
+            }
+
+
+            CreateNodeInRuntime(new NodeFuncData(cls.FullName, mousePosition, cls.Name, cls.Name, NodeType.Constructor, parameterList));
+        }
+
         public void OnClickAddNode(Vector2 mousePosition, Type cls, MethodInfo method)
         {
             if (nodes == null)
@@ -234,7 +252,14 @@ namespace StateBehavior.Node
                 nodes = new List<NodeGUI>();
             }
 
-            CreateNodeInRuntime(new NodeFuncData(cls.FullName, mousePosition, method.Name, method.ReturnType.Name, NodeType.Func));
+            ParameterInfo[] param = method.GetParameters();
+            List<string> parameterList = new List<string>();
+            foreach (var p in param)
+            {
+                parameterList.Add(p.ParameterType.FullName);
+            }
+
+            CreateNodeInRuntime(new NodeFuncData(cls.FullName, mousePosition, method.Name, method.ReturnType.Name, NodeType.Func, parameterList));
         }
 
         public void OnClickAddNode(Vector2 mousePosition, NodeType nodeType, string nodeName)
@@ -477,26 +502,40 @@ namespace StateBehavior.Node
         public static GUIStyle OutputPort { get { return new GUIStyle(EditorStyles.label) { alignment = TextAnchor.UpperRight }; } }
         public class Styles
         {
-            public GUIStyle inputPort, nodeHeader, nodeStyle, selectedNodeStyle;
+            public GUIStyle node, highlightNode, parameterPort, returnPort, flowInPort, flowOutPort, nodeHeader, nodeElement, inputField;
 
             public Styles()
             {
 
-                nodeStyle = new GUIStyle();
-                nodeStyle.normal.background = EditorGUIUtility.Load("builtin skins/darkskin/images/node1.png") as Texture2D;
-                nodeStyle.border = new RectOffset(12, 12, 12, 12);
+                node = new GUIStyle();
+                node.normal.background = Resources.Load<Texture2D>("node");
+                node.border = new RectOffset(12, 12, 12, 12);
 
-                selectedNodeStyle = new GUIStyle();
-                selectedNodeStyle.normal.background = EditorGUIUtility.Load("builtin skins/darkskin/images/node1 on.png") as Texture2D;
-                selectedNodeStyle.border = new RectOffset(12, 12, 12, 12);
+                highlightNode = new GUIStyle();
+                highlightNode.normal.background = Resources.Load<Texture2D>("h_node");
+                highlightNode.border = new RectOffset(12, 12, 12, 12);
 
-                GUIStyle baseStyle = new GUIStyle("Label");
-                baseStyle.fixedHeight = 20f;
+                parameterPort = new GUIStyle();
+                parameterPort.normal.background = Resources.Load<Texture2D>("inDot");
 
-                inputPort = new GUIStyle();
-                inputPort.alignment = TextAnchor.MiddleLeft;
-                inputPort.padding.left = 10;
-                inputPort.fontSize = 15;
+                returnPort = new GUIStyle();
+                returnPort.normal.background = Resources.Load<Texture2D>("outDot");
+
+                flowInPort = new GUIStyle();
+                flowInPort.normal.background = Resources.Load<Texture2D>("inFlow");
+
+                flowOutPort = new GUIStyle();
+                flowOutPort.normal.background = Resources.Load<Texture2D>("outFlow");
+
+                inputField = new GUIStyle(GUI.skin.textField);
+                inputField.contentOffset = new Vector2(18f, 0f);
+
+                nodeElement = new GUIStyle();
+                nodeElement.alignment = TextAnchor.MiddleLeft;
+                nodeElement.fontStyle = FontStyle.Bold;
+                nodeElement.normal.textColor = Color.white;
+                nodeElement.fontSize = 12;
+                nodeElement.contentOffset = new Vector2(18f, 0f);
 
                 nodeHeader = new GUIStyle();
                 nodeHeader.alignment = TextAnchor.MiddleCenter;

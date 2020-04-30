@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEditor;
 using System;
 using System.Reflection;
+using System.Linq;
 
 namespace StateBehavior.Node
 {
@@ -12,6 +13,8 @@ namespace StateBehavior.Node
     {
         Logic, // 로직 커넥션이 있어야함
         Func, // 리턴함수,
+        Constructor, //생성자
+        Property, //프로퍼티
         Variable,
         Condition,
         For,
@@ -80,11 +83,11 @@ namespace StateBehavior.Node
             GUILayout.BeginArea(data.rect);
             if (isSelected)
             {
-                GUILayout.BeginVertical(NodeGUIResources.styles.selectedNodeStyle);
+                GUILayout.BeginVertical(NodeGUIResources.styles.highlightNode);
             }
             else
             {
-                GUILayout.BeginVertical(NodeGUIResources.styles.nodeStyle);
+                GUILayout.BeginVertical(NodeGUIResources.styles.node);
             }
 
             GUILayout.Label(data.methodName, NodeGUIResources.styles.nodeHeader, GUILayout.Height(20));
@@ -119,7 +122,7 @@ namespace StateBehavior.Node
             {
                 maxIndex = points[i].data.pointType == ConnectionPointType.Parameter && maxIndex < points[i].data.index ? points[i].data.index : maxIndex;
             }
-            data.rect.height = Mathf.Max(60f, maxIndex * 40f + 60f);
+            data.rect.height = Mathf.Max(60f, maxIndex * 45f + 60f);
         }
 
         public bool ProcessEvents(Event e)
@@ -183,31 +186,61 @@ namespace StateBehavior.Node
             {
                 NodeFuncData data = this.data as NodeFuncData;
 
-                MethodInfo method = NodeGUIUtility.GetType(data.funcClassType).GetMethod(data.methodName);
-                ParameterInfo[] parameters = method.GetParameters();
-
-                int index = 1;
-
-                if (method.ReturnParameter.ParameterType == typeof(void))
+                List<Type> methodParameters = new List<Type>();
+                foreach (var point in data.parameters)
                 {
-                    AddPoint(new NodePointData(0, data.GUID, ConnectionPointType.In, typeof(void).FullName, "Logic", null));
-                    AddPoint(new NodePointData(0, data.GUID, ConnectionPointType.Out, typeof(void).FullName, "Logic", null));
-                    data.nodeType = NodeType.Logic;
+                    methodParameters.Add(NodeGUIUtility.GetType(point));
+                }
+
+                if (data.nodeType == NodeType.Constructor)
+                {
+
+                    ConstructorInfo method = NodeGUIUtility.GetType(data.funcClassType).GetConstructor(methodParameters.ToArray());
+                    ParameterInfo[] parameters = method.GetParameters();
+
+                    AddPoint(new NodePointData(1, data.GUID, ConnectionPointType.Return, data.funcClassType, "instance"));
+
+                    int index = 1;
+
+                    foreach (var parameter in parameters)
+                    {
+                        AddPoint(new NodePointData(index++, data.GUID, ConnectionPointType.Parameter, parameter.ParameterType.FullName, parameter.Name));
+                    }
                 }
                 else
                 {
-                    AddPoint(new NodePointData(1, data.GUID, ConnectionPointType.Return, method.ReturnParameter.ParameterType.FullName, method.ReturnParameter.Name));
-                    data.nodeType = NodeType.Func;
-                }
+                    Type classType = NodeGUIUtility.GetType(data.funcClassType);
+                    MethodInfo method = classType.GetMethod(data.methodName, methodParameters.ToArray());
+                    ParameterInfo[] parameters = method.GetParameters();
 
-                if(!method.IsStatic)
-                {
-                    AddPoint(new NodePointData(index++, data.GUID, ConnectionPointType.Parameter, data.funcClassType, "This"));
-                }
+                    int index = 1;
 
-                foreach (var parameter in parameters)
-                {
-                    AddPoint(new NodePointData(index++, data.GUID, ConnectionPointType.Parameter, parameter.ParameterType.FullName, parameter.Name));
+                    if (method.ReturnParameter.ParameterType == typeof(void))
+                    {
+                        AddPoint(new NodePointData(0, data.GUID, ConnectionPointType.In, typeof(void).FullName, "Logic", null));
+                        AddPoint(new NodePointData(0, data.GUID, ConnectionPointType.Out, typeof(void).FullName, "Logic", null));
+                        data.nodeType = NodeType.Logic;
+                    }
+                    else
+                    {
+                        AddPoint(new NodePointData(1, data.GUID, ConnectionPointType.Return, method.ReturnParameter.ParameterType.FullName, method.ReturnParameter.Name));
+                        data.nodeType = NodeType.Func;
+                    }
+
+                    if (!method.IsStatic)
+                    {
+                        AddPoint(new NodePointData(index++, data.GUID, ConnectionPointType.Parameter, data.funcClassType, "This"));
+                    }
+
+                    foreach (var parameter in parameters)
+                    {
+                        AddPoint(new NodePointData(index++, data.GUID, ConnectionPointType.Parameter, parameter.ParameterType.FullName, parameter.Name));
+                    }
+
+                    if(data.methodName.Contains("get_") || data.methodName.Contains("set_"))
+                    {
+                        data.nodeType = NodeType.Property;
+                    }
                 }
             }
             else

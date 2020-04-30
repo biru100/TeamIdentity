@@ -29,18 +29,30 @@ namespace StateBehavior.Node
             switch (data.pointType)
             {
                 case ConnectionPointType.In:
+                    data.rect.x = node.rect.x - data.rect.width + 8f;
+                    if (GUI.Button(data.rect, "",NodeGUIResources.styles.flowInPort))
+                    {
+                        NodeBaseEditor.Current.OnClickPoint(this);
+                    }
+                    break;
                 case ConnectionPointType.Parameter:
                     data.rect.x = node.rect.x - data.rect.width + 8f;
-                    if (GUI.Button(data.rect, NodeGUIResources.dot))
+                    if (GUI.Button(data.rect, "", NodeGUIResources.styles.parameterPort))
                     {
                         NodeBaseEditor.Current.OnClickPoint(this);
                     }
                     break;
 
                 case ConnectionPointType.Out:
+                    data.rect.x = node.rect.x + node.rect.width - 8f;
+                    if (GUI.Button(data.rect, "", NodeGUIResources.styles.flowOutPort))
+                    {
+                        NodeBaseEditor.Current.OnClickPoint(this);
+                    }
+                    break;
                 case ConnectionPointType.Return:
                     data.rect.x = node.rect.x + node.rect.width - 8f;
-                    if (GUI.Button(data.rect, NodeGUIResources.dotOuter))
+                    if (GUI.Button(data.rect, "", NodeGUIResources.styles.returnPort))
                     {
                         NodeBaseEditor.Current.OnClickPoint(this);
                     }

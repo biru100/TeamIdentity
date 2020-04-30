@@ -23,6 +23,9 @@ namespace StateBehavior.Node
 
         public Vector2 scrollPos;
 
+        protected string lastText;
+        protected List<Type> cachedList;
+
         public NodeListGUI()
         {
             rect = new Rect(Vector2.zero, new Vector2(350f, 4000f));
@@ -37,6 +40,7 @@ namespace StateBehavior.Node
             {
                 allTypes.AddRange(assem.GetTypes().Where((t) => t.IsPublic));
             }
+            lastText = "";
         }
 
         public void Draw()
@@ -47,7 +51,7 @@ namespace StateBehavior.Node
 
             if (SubMenuType.Length == 0 && CurrentType == null && text.Length == 0)
             {
-                text = EditorGUILayout.TextField(text, GUILayout.Height(20));
+                text = GUILayout.TextField("", GUILayout.Height(20));
                 if(GUILayout.Button("FSM Base Function", GUILayout.Height(20)))
                 {
                     SubMenuType = "FSM Base Function";
@@ -110,21 +114,24 @@ namespace StateBehavior.Node
             }
             else if (CurrentType == null)
             {
-                text = EditorGUILayout.TextField(text, GUILayout.Height(20));
-                List<Type> findedTypes = allTypes.FindAll((t) => t.Name.IndexOf(text, StringComparison.CurrentCultureIgnoreCase) >= 0);
+                text = GUILayout.TextField(text, GUILayout.Height(20));
+                MakeSearchCache();
+
                 if (GUILayout.Button("<(Back)", GUILayout.Height(20)))
                 {
                     SubMenuType = "";
-                    text = "";
-                    return;
+                    ClearSearchCache();
                 }
 
-                foreach (var type in findedTypes)
+                if (cachedList != null)
                 {
-                    if (GUILayout.Button(type.Name, GUILayout.Height(20)))
+                    foreach (var type in cachedList)
                     {
-                        CurrentType = type;
-                        text = "";
+                        if (GUILayout.Button(type.Name, GUILayout.Height(20)))
+                        {
+                            CurrentType = type;
+                            text = "";
+                        }
                     }
                 }
             }
@@ -133,14 +140,23 @@ namespace StateBehavior.Node
                 if (GUILayout.Button("<(Back)", GUILayout.Height(20)))
                 {
                     SubMenuType = "";
-                    text = "";
+                    ClearSearchCache();
                     CurrentType = null;
                 }
 
                 if (CurrentType != null)
                 {
-
+                    ConstructorInfo[] constructors = CurrentType.GetConstructors().Where((m) => m.IsPublic).ToArray();
                     MethodInfo[] methods = CurrentType.GetMethods().Where((m) => m.IsPublic).ToArray();
+
+                    foreach (var constructor in constructors)
+                    {
+                        if (GUILayout.Button(CurrentType.Name + "/" + constructor.Name, GUILayout.Height(20)))
+                        {
+                            NodeBaseEditor.Current.OnClickAddNode(mousePosition, CurrentType, constructor);
+                            NodeBaseEditor.Current.IsVisibleNodeMenu = false;
+                        }
+                    }
 
                     foreach (var method in methods)
                     {
@@ -156,5 +172,30 @@ namespace StateBehavior.Node
             GUILayout.EndScrollView();
             GUILayout.EndArea();
         }
+
+        protected void ClearSearchCache()
+        {
+            text = "";
+            lastText = "";
+            cachedList = null;
+        }
+
+        protected void MakeSearchCache()
+        {
+            if (!text.Equals(lastText))
+            {
+                if (text.Length < 3)
+                {
+                    cachedList = null;
+                    lastText = text;
+                }
+                else
+                {
+                    cachedList = allTypes.FindAll((t) => t.Name.IndexOf(text, StringComparison.CurrentCultureIgnoreCase) >= 0);
+                    lastText = text;
+                }
+            }
+        }
     }
+
 }

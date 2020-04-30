@@ -67,7 +67,7 @@ namespace StateBehavior.Node
             if (data.connections.Count != 0)
             {
                 DrawParameter(data);
-                return null;
+                return data.cachedValue;
             }
 
             if (typeof(bool).FullName == data.parameterType)
@@ -95,32 +95,32 @@ namespace StateBehavior.Node
 
         public static void DrawParameter(NodePointData data)
         {
-            GUILayout.Label(data.parameterName, NodeGUIResources.styles.inputPort, GUILayout.Height(20));
-            GUILayout.Label("", NodeGUIResources.styles.inputPort, GUILayout.Height(20));
+            GUILayout.Label(data.parameterName, NodeGUIResources.styles.nodeElement, GUILayout.Height(20));
+            GUILayout.Label("", GUILayout.Height(20));
         }
 
         public static string DrawString(NodePointData data)
         {
-            GUILayout.Label(data.parameterName, NodeGUIResources.styles.inputPort, GUILayout.Height(20));
-            return EditorGUILayout.TextField(data.cachedValue, GUILayout.Width(100), GUILayout.Height(17));
+            GUILayout.Label(data.parameterName, NodeGUIResources.styles.nodeElement, GUILayout.Height(20));
+            return EditorGUILayout.TextField(data.cachedValue, NodeGUIResources.styles.inputField, GUILayout.Width(70), GUILayout.Height(17));
         }
 
         public static string DrawInt(NodePointData data)
         {
-            GUILayout.Label(data.parameterName, NodeGUIResources.styles.inputPort, GUILayout.Height(20));
-            return EditorGUILayout.IntField(int.Parse(data.cachedValue), GUILayout.Width(100), GUILayout.Height(17)).ToString();
+            GUILayout.Label(data.parameterName, NodeGUIResources.styles.nodeElement, GUILayout.Height(20));
+            return EditorGUILayout.IntField(int.Parse(data.cachedValue), NodeGUIResources.styles.inputField, GUILayout.Width(70), GUILayout.Height(17)).ToString();
         }
 
         public static string DrawFloat(NodePointData data)
         {
-            GUILayout.Label(data.parameterName, NodeGUIResources.styles.inputPort, GUILayout.Height(20));
-            return EditorGUILayout.FloatField(float.Parse(data.cachedValue), GUILayout.Width(100), GUILayout.Height(17)).ToString();
+            GUILayout.Label(data.parameterName, NodeGUIResources.styles.nodeElement, GUILayout.Height(20));
+            return EditorGUILayout.FloatField(float.Parse(data.cachedValue), NodeGUIResources.styles.inputField, GUILayout.Width(70), GUILayout.Height(17)).ToString();
         }
 
 
         public static string DrawBool(NodePointData data)
         {
-            GUILayout.Label(data.parameterName, NodeGUIResources.styles.inputPort, GUILayout.Height(20));
+            GUILayout.Label(data.parameterName, NodeGUIResources.styles.nodeElement, GUILayout.Height(20));
             if (data.cachedValue == null)
                 data.cachedValue = "False";
             return EditorGUILayout.Toggle(bool.Parse(data.cachedValue), GUILayout.Width(20), GUILayout.Height(20)).ToString();
