@@ -5,23 +5,22 @@ using UnityEngine;
 
 
 
-public class DruidHitAction : CharacterAction
+public class GoblinPriestSkillAction : CharacterAction
 {
 
-public static DruidHitAction GetInstance() { return new DruidHitAction(); }
+public static GoblinPriestSkillAction GetInstance() { return new GoblinPriestSkillAction(); }
 
 public override void StartAction(Character owner)
 {
 base.StartAction(owner);
-NodeUtil.LookPlayer(Owner);
-NodeUtil.PlayAnim(Owner ,"hit");
+NodeUtil.PlayAnim(Owner ,"heal");
 }
 
 public override void UpdateAction()
 {
 base.UpdateAction();
 
-if(NodeUtil.StateActionMacroByCurrentOrder(Owner ,6))
+if(NodeUtil.StateActionMacro(Owner))
 {
 }
 
@@ -30,7 +29,8 @@ else
 
 if(NodeUtil.IsLastFrame(Owner))
 {
-NodeUtil.ChangeAction(Owner ,"DruidIdleAction");
+NodeUtil.TakeDamageBoth(NodeUtil.GetCharactersInRange(Owner ,false ,false ,300f) ,-20f);
+NodeUtil.ChangeAction(Owner ,"GoblinPriestIdleAction");
 }
 
 else

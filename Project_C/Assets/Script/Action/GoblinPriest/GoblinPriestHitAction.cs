@@ -5,10 +5,10 @@ using UnityEngine;
 
 
 
-public class DruidHitAction : CharacterAction
+public class GoblinPriestHitAction : CharacterAction
 {
 
-public static DruidHitAction GetInstance() { return new DruidHitAction(); }
+public static GoblinPriestHitAction GetInstance() { return new GoblinPriestHitAction(); }
 
 public override void StartAction(Character owner)
 {
@@ -30,7 +30,7 @@ else
 
 if(NodeUtil.IsLastFrame(Owner))
 {
-NodeUtil.ChangeAction(Owner ,"DruidIdleAction");
+NodeUtil.ChangeAction(Owner ,"GoblinPriestIdleAction");
 }
 
 else

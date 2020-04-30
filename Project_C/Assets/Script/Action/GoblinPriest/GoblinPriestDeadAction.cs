@@ -5,37 +5,28 @@ using UnityEngine;
 
 
 
-public class DruidHitAction : CharacterAction
+public class GoblinPriestDeadAction : CharacterAction
 {
 
-public static DruidHitAction GetInstance() { return new DruidHitAction(); }
+public static GoblinPriestDeadAction GetInstance() { return new GoblinPriestDeadAction(); }
 
 public override void StartAction(Character owner)
 {
 base.StartAction(owner);
-NodeUtil.LookPlayer(Owner);
-NodeUtil.PlayAnim(Owner ,"hit");
+NodeUtil.PlayAnim(Owner ,"die");
 }
 
 public override void UpdateAction()
 {
 base.UpdateAction();
 
-if(NodeUtil.StateActionMacroByCurrentOrder(Owner ,6))
-{
-}
-
-else
-{
-
 if(NodeUtil.IsLastFrame(Owner))
 {
-NodeUtil.ChangeAction(Owner ,"DruidIdleAction");
+NodeUtil.DestroyEntity(Owner);
 }
 
 else
 {
-}
 }
 }
 

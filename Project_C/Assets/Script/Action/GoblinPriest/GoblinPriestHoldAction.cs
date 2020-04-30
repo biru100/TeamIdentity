@@ -5,32 +5,30 @@ using UnityEngine;
 
 
 
-public class DruidHitAction : CharacterAction
+public class GoblinPriestHoldAction : CharacterAction
 {
 
-public static DruidHitAction GetInstance() { return new DruidHitAction(); }
+public static GoblinPriestHoldAction GetInstance() { return new GoblinPriestHoldAction(); }
 
 public override void StartAction(Character owner)
 {
 base.StartAction(owner);
-NodeUtil.LookPlayer(Owner);
-NodeUtil.PlayAnim(Owner ,"hit");
+NodeUtil.PlayAnim(Owner ,"stun");
 }
 
 public override void UpdateAction()
 {
 base.UpdateAction();
 
-if(NodeUtil.StateActionMacroByCurrentOrder(Owner ,6))
+if(NodeUtil.StateActionMacroByCurrentOrder(Owner ,4))
 {
 }
 
 else
 {
 
-if(NodeUtil.IsLastFrame(Owner))
+if(NodeUtil.StateFinishActionMacro(Owner ,4))
 {
-NodeUtil.ChangeAction(Owner ,"DruidIdleAction");
 }
 
 else

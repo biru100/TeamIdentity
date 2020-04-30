@@ -35,7 +35,11 @@ NodeUtil.ChangeAction(Owner ,"DruidMoveAction");
 else
 {
 }
-}
+            if (Owner.Status.CurrentHp <= Owner.Status.Hp * 0.3)
+            {
+                NodeUtil.ChangeAction(Owner, "DruidSkillAction");
+            }
+        }
 }
 
 public override void FinishAction()

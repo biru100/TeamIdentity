@@ -5,15 +5,15 @@ using UnityEngine;
 
 
 
-public class DruidSkillAction : CharacterAction
+public class GoblinPriestSkillreadyAction : CharacterAction
 {
 
-public static DruidSkillAction GetInstance() { return new DruidSkillAction(); }
+public static GoblinPriestSkillreadyAction GetInstance() { return new GoblinPriestSkillreadyAction(); }
 
 public override void StartAction(Character owner)
 {
 base.StartAction(owner);
-TimelineEvents.Add(new TimeLineEvent(0.5f, TimeLine_2));
+TimelineEvents.Add(new TimeLineEvent(1f, TimeLine_2));
 NodeUtil.PlayAnim(Owner ,"run");
 }
 
@@ -27,6 +27,15 @@ if(NodeUtil.StateActionMacro(Owner))
 
 else
 {
+
+if(NodeUtil.IsActivateAbility(Owner ,210))
+{
+}
+
+else
+{
+NodeUtil.ChangeAction(Owner ,"GoblinPriestIdleAction");
+}
 }
 }
 
@@ -37,7 +46,6 @@ base.FinishAction();
 
 void TimeLine_2()
 {
-NodeUtil.TakeDamageBoth(NodeUtil.GetCharactersInRange(Owner ,false ,false ,5f) ,-20f);
-NodeUtil.ChangeAction(Owner ,"DruidIdlection");
+NodeUtil.ChangeAction(Owner ,"GoblinPriestSkillAction");
 }
 }
