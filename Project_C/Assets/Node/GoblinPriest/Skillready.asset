@@ -1,0 +1,679 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4de99b1b8a0c2084cb1e4bdc4d987b3f, type: 3}
+  m_Name: Skillready
+  m_EditorClassIdentifier: 
+  userName: GoblinPriest
+  stateName: Skillready
+  dataJson: '{"nodeDatas":[{"GUID":"75e42c7f-73cc-4748-b336-480a944126de","rect":{"serializedVersion":"2","x":238.0,"y":114.0,"width":180.0,"height":60.0},"methodName":"Start","returnType":"Character","nodeType":5,"points":["67ddf35e-4d9f-4361-8478-ebb068228907","9c96b3db-1a24-46e5-b27f-c0dda91cb3d5"]},{"GUID":"7b067d3b-c6da-4d65-8412-9a517f82f77e","rect":{"serializedVersion":"2","x":239.0,"y":304.0,"width":180.0,"height":60.0},"methodName":"Update","returnType":"Character","nodeType":5,"points":["e4708966-207c-40a7-8d7c-c6fbfa83cad1","15fbe6f5-cb81-4a8e-b48a-dca45a6ee649"]},{"GUID":"0b41f314-b352-4547-bb23-7f6540592e26","rect":{"serializedVersion":"2","x":245.0,"y":690.0,"width":180.0,"height":100.0},"methodName":"TimeLine","returnType":"Character","nodeType":6,"points":["3a680245-19ee-41ed-8ddc-37d5c2c670fa","7def400d-9fcd-481b-8bbc-f729042e7f96","c52279bc-ee5c-4aed-baf3-45339ca85dfc"]},{"GUID":"833c82a8-5f56-4001-bbe0-0186c855e716","rect":{"serializedVersion":"2","x":715.0,"y":301.0,"width":180.0,"height":100.0},"methodName":"IF","returnType":"True
+    Logic, False Logic","nodeType":3,"points":["fa46a73a-a44d-4ec2-a06f-a62ff4c1474a","1d807067-ae5b-4294-b2a8-1647ae83b4be","30c96c6c-0124-4f6b-a96d-d0e1e45f483b","1f465ffd-4494-40a4-9877-b014767587e1"]},{"GUID":"2fe9e8d9-e53b-4d2f-b60e-7846fb5f4499","rect":{"serializedVersion":"2","x":1111.0,"y":298.0,"width":180.0,"height":100.0},"methodName":"IF","returnType":"True
+    Logic, False Logic","nodeType":3,"points":["321a13cd-d941-4a51-84ea-d282b627b2e9","dc5d77a3-ab5f-4f46-b58c-ff45eda3506d","84a6e016-e697-4eae-8b52-759a5c453ddf","dc6513e6-13f2-4f11-b723-74d3bb2ad0d7"]}],"nodeFuncDatas":[{"GUID":"cb68ff15-11cd-4cf6-9f85-40b07b3d3e44","rect":{"serializedVersion":"2","x":529.0,"y":116.0,"width":180.0,"height":140.0},"methodName":"PlayAnim","returnType":"Void","nodeType":0,"points":["a23f8277-93ab-45d0-96e2-f39026089444","2bb3effd-bd34-4ac1-957e-31ab0d00ddd6","e71e3fc1-343b-4beb-81d9-f6b5b00abb90","e166c06c-8091-4d0c-8f8e-dc1f690801a5"],"funcClassType":"NodeUtil"},{"GUID":"a4defb57-5c40-4840-9299-d7be46132e3e","rect":{"serializedVersion":"2","x":670.0,"y":693.0,"width":180.0,"height":140.0},"methodName":"ChangeAction","returnType":"Void","nodeType":0,"points":["d395377b-efea-4780-9d1c-e8fc409b0bc7","61c2168f-1651-4b91-8aeb-770d5bd1c768","3767a00e-16e7-40b5-8506-20d5a79a65e5","871bde02-df27-480e-9dec-2fdb8d79d6ed"],"funcClassType":"NodeUtil"},{"GUID":"b87544c0-3bb2-4cd2-a69b-00bac697dcd1","rect":{"serializedVersion":"2","x":448.0,"y":415.0,"width":180.0,"height":100.0},"methodName":"StateActionMacro","returnType":"Boolean","nodeType":1,"points":["6522d912-bc01-45ac-96d1-12f6eff01091","71b1c3e6-aefc-4167-8a19-feabd55bae64"],"funcClassType":"NodeUtil"},{"GUID":"60f559bd-c9b6-4d72-ad87-d3047f26a10c","rect":{"serializedVersion":"2","x":929.0,"y":430.0,"width":180.0,"height":140.0},"methodName":"IsActivateAbility","returnType":"Boolean","nodeType":1,"points":["df1f171c-cbaf-4db0-b726-a88b7eb14e7d","3d593923-c9b3-4e2d-a1cd-cb5274b92dcc","8d64542b-23fa-4d6d-b3af-dfdba73926b9"],"funcClassType":"NodeUtil"},{"GUID":"e45286ab-6803-4419-a65a-4e53d82a7f90","rect":{"serializedVersion":"2","x":1390.0,"y":361.0,"width":180.0,"height":140.0},"methodName":"ChangeAction","returnType":"Void","nodeType":0,"points":["da2efa15-94ee-4b47-bb5d-9e680be97aad","d5fdeea5-f82a-4da8-8bc3-7fda4bffc705","4655a2f7-33c0-4077-8a7b-03142d6c9b40","0f7eef40-e3f2-4107-a197-68add9a9135f"],"funcClassType":"NodeUtil"}],"nodePointDatas":[{"GUID":"a23f8277-93ab-45d0-96e2-f39026089444","rect":{"serializedVersion":"2","x":522.0,"y":123.5,"width":15.0,"height":15.0},"index":0,"nodeGUID":"cb68ff15-11cd-4cf6-9f85-40b07b3d3e44","pointType":0,"parameterType":"System.Void","parameterName":"Logic","cachedValue":"","connections":["df031004-2fd5-4639-a969-f24c8b2c32ae"]},{"GUID":"9c96b3db-1a24-46e5-b27f-c0dda91cb3d5","rect":{"serializedVersion":"2","x":410.0,"y":161.5,"width":15.0,"height":15.0},"index":1,"nodeGUID":"75e42c7f-73cc-4748-b336-480a944126de","pointType":3,"parameterType":"Character","parameterName":"Owner","cachedValue":"null","connections":["a3075c8a-116c-4408-a5f7-2ba7662bfaa5"]},{"GUID":"67ddf35e-4d9f-4361-8478-ebb068228907","rect":{"serializedVersion":"2","x":410.0,"y":121.5,"width":15.0,"height":15.0},"index":0,"nodeGUID":"75e42c7f-73cc-4748-b336-480a944126de","pointType":2,"parameterType":"System.Void","parameterName":"Logic","cachedValue":"null","connections":["df031004-2fd5-4639-a969-f24c8b2c32ae"]},{"GUID":"e166c06c-8091-4d0c-8f8e-dc1f690801a5","rect":{"serializedVersion":"2","x":522.0,"y":203.5,"width":15.0,"height":15.0},"index":2,"nodeGUID":"cb68ff15-11cd-4cf6-9f85-40b07b3d3e44","pointType":1,"parameterType":"System.String","parameterName":"animationName","cachedValue":"run","connections":[]},{"GUID":"e71e3fc1-343b-4beb-81d9-f6b5b00abb90","rect":{"serializedVersion":"2","x":522.0,"y":163.5,"width":15.0,"height":15.0},"index":1,"nodeGUID":"cb68ff15-11cd-4cf6-9f85-40b07b3d3e44","pointType":1,"parameterType":"Character","parameterName":"owner","cachedValue":"","connections":["a3075c8a-116c-4408-a5f7-2ba7662bfaa5"]},{"GUID":"2bb3effd-bd34-4ac1-957e-31ab0d00ddd6","rect":{"serializedVersion":"2","x":701.0,"y":123.5,"width":15.0,"height":15.0},"index":0,"nodeGUID":"cb68ff15-11cd-4cf6-9f85-40b07b3d3e44","pointType":2,"parameterType":"System.Void","parameterName":"Logic","cachedValue":"null","connections":[]},{"GUID":"e4708966-207c-40a7-8d7c-c6fbfa83cad1","rect":{"serializedVersion":"2","x":411.0,"y":311.5,"width":15.0,"height":15.0},"index":0,"nodeGUID":"7b067d3b-c6da-4d65-8412-9a517f82f77e","pointType":2,"parameterType":"System.Void","parameterName":"Logic","cachedValue":"null","connections":["4d28b22c-3510-4ac7-981d-df58428aaf4b"]},{"GUID":"15fbe6f5-cb81-4a8e-b48a-dca45a6ee649","rect":{"serializedVersion":"2","x":411.0,"y":351.5,"width":15.0,"height":15.0},"index":1,"nodeGUID":"7b067d3b-c6da-4d65-8412-9a517f82f77e","pointType":3,"parameterType":"Character","parameterName":"Owner","cachedValue":"null","connections":["9c463f7c-eab0-4ce6-b034-43ee84eb4d60","bed00192-e83c-4ef8-8ec0-50638c60370a","d9b9c75f-3a54-4bb1-97fd-a3f8c85546f6"]},{"GUID":"871bde02-df27-480e-9dec-2fdb8d79d6ed","rect":{"serializedVersion":"2","x":663.0,"y":780.5,"width":15.0,"height":15.0},"index":2,"nodeGUID":"a4defb57-5c40-4840-9299-d7be46132e3e","pointType":1,"parameterType":"System.String","parameterName":"actionName","cachedValue":"GoblinPriestSkillAction","connections":[]},{"GUID":"3767a00e-16e7-40b5-8506-20d5a79a65e5","rect":{"serializedVersion":"2","x":663.0,"y":740.5,"width":15.0,"height":15.0},"index":1,"nodeGUID":"a4defb57-5c40-4840-9299-d7be46132e3e","pointType":1,"parameterType":"Character","parameterName":"owner","cachedValue":"","connections":["01030018-bc91-467a-be63-acf88caa61a2"]},{"GUID":"61c2168f-1651-4b91-8aeb-770d5bd1c768","rect":{"serializedVersion":"2","x":842.0,"y":700.5,"width":15.0,"height":15.0},"index":0,"nodeGUID":"a4defb57-5c40-4840-9299-d7be46132e3e","pointType":2,"parameterType":"System.Void","parameterName":"Logic","cachedValue":"null","connections":[]},{"GUID":"d395377b-efea-4780-9d1c-e8fc409b0bc7","rect":{"serializedVersion":"2","x":663.0,"y":700.5,"width":15.0,"height":15.0},"index":0,"nodeGUID":"a4defb57-5c40-4840-9299-d7be46132e3e","pointType":0,"parameterType":"System.Void","parameterName":"Logic","cachedValue":"","connections":["ab565f50-2f46-4199-86aa-2d63c205fcfc"]},{"GUID":"3a680245-19ee-41ed-8ddc-37d5c2c670fa","rect":{"serializedVersion":"2","x":417.0,"y":697.5,"width":15.0,"height":15.0},"index":0,"nodeGUID":"0b41f314-b352-4547-bb23-7f6540592e26","pointType":2,"parameterType":"System.Void","parameterName":"Logic","cachedValue":"null","connections":["ab565f50-2f46-4199-86aa-2d63c205fcfc"]},{"GUID":"7def400d-9fcd-481b-8bbc-f729042e7f96","rect":{"serializedVersion":"2","x":417.0,"y":737.5,"width":15.0,"height":15.0},"index":1,"nodeGUID":"0b41f314-b352-4547-bb23-7f6540592e26","pointType":3,"parameterType":"Character","parameterName":"Owner","cachedValue":"null","connections":["01030018-bc91-467a-be63-acf88caa61a2"]},{"GUID":"c52279bc-ee5c-4aed-baf3-45339ca85dfc","rect":{"serializedVersion":"2","x":238.0,"y":737.5,"width":15.0,"height":15.0},"index":1,"nodeGUID":"0b41f314-b352-4547-bb23-7f6540592e26","pointType":1,"parameterType":"System.Single","parameterName":"Time","cachedValue":"1","connections":[]},{"GUID":"fa46a73a-a44d-4ec2-a06f-a62ff4c1474a","rect":{"serializedVersion":"2","x":708.0,"y":308.5,"width":15.0,"height":15.0},"index":0,"nodeGUID":"833c82a8-5f56-4001-bbe0-0186c855e716","pointType":0,"parameterType":"System.Void","parameterName":"Logic","cachedValue":"","connections":["4d28b22c-3510-4ac7-981d-df58428aaf4b"]},{"GUID":"30c96c6c-0124-4f6b-a96d-d0e1e45f483b","rect":{"serializedVersion":"2","x":887.0,"y":308.5,"width":15.0,"height":15.0},"index":0,"nodeGUID":"833c82a8-5f56-4001-bbe0-0186c855e716","pointType":2,"parameterType":"System.Void","parameterName":"Logic","cachedValue":"null","connections":[]},{"GUID":"1f465ffd-4494-40a4-9877-b014767587e1","rect":{"serializedVersion":"2","x":887.0,"y":348.5,"width":15.0,"height":15.0},"index":1,"nodeGUID":"833c82a8-5f56-4001-bbe0-0186c855e716","pointType":2,"parameterType":"System.Void","parameterName":"Logic","cachedValue":"null","connections":["8b0feeef-a438-42ef-b9f0-dad5815e31b5"]},{"GUID":"6522d912-bc01-45ac-96d1-12f6eff01091","rect":{"serializedVersion":"2","x":620.0,"y":462.5,"width":15.0,"height":15.0},"index":1,"nodeGUID":"b87544c0-3bb2-4cd2-a69b-00bac697dcd1","pointType":3,"parameterType":"System.Boolean","parameterName":"","cachedValue":"False","connections":["b6c57141-6093-494d-99d5-d4fafe82fb5c"]},{"GUID":"71b1c3e6-aefc-4167-8a19-feabd55bae64","rect":{"serializedVersion":"2","x":441.0,"y":462.5,"width":15.0,"height":15.0},"index":1,"nodeGUID":"b87544c0-3bb2-4cd2-a69b-00bac697dcd1","pointType":1,"parameterType":"Character","parameterName":"owner","cachedValue":"","connections":["9c463f7c-eab0-4ce6-b034-43ee84eb4d60"]},{"GUID":"1d807067-ae5b-4294-b2a8-1647ae83b4be","rect":{"serializedVersion":"2","x":708.0,"y":348.5,"width":15.0,"height":15.0},"index":1,"nodeGUID":"833c82a8-5f56-4001-bbe0-0186c855e716","pointType":1,"parameterType":"System.Boolean","parameterName":"Condition","cachedValue":"","connections":["b6c57141-6093-494d-99d5-d4fafe82fb5c"]},{"GUID":"321a13cd-d941-4a51-84ea-d282b627b2e9","rect":{"serializedVersion":"2","x":1104.0,"y":305.5,"width":15.0,"height":15.0},"index":0,"nodeGUID":"2fe9e8d9-e53b-4d2f-b60e-7846fb5f4499","pointType":0,"parameterType":"System.Void","parameterName":"Logic","cachedValue":"","connections":["8b0feeef-a438-42ef-b9f0-dad5815e31b5"]},{"GUID":"dc5d77a3-ab5f-4f46-b58c-ff45eda3506d","rect":{"serializedVersion":"2","x":1104.0,"y":345.5,"width":15.0,"height":15.0},"index":1,"nodeGUID":"2fe9e8d9-e53b-4d2f-b60e-7846fb5f4499","pointType":1,"parameterType":"System.Boolean","parameterName":"Condition","cachedValue":"","connections":["f9a6b0d9-cc08-4aba-b8a1-452f78fd5961"]},{"GUID":"84a6e016-e697-4eae-8b52-759a5c453ddf","rect":{"serializedVersion":"2","x":1283.0,"y":305.5,"width":15.0,"height":15.0},"index":0,"nodeGUID":"2fe9e8d9-e53b-4d2f-b60e-7846fb5f4499","pointType":2,"parameterType":"System.Void","parameterName":"Logic","cachedValue":"null","connections":[]},{"GUID":"dc6513e6-13f2-4f11-b723-74d3bb2ad0d7","rect":{"serializedVersion":"2","x":1283.0,"y":345.5,"width":15.0,"height":15.0},"index":1,"nodeGUID":"2fe9e8d9-e53b-4d2f-b60e-7846fb5f4499","pointType":2,"parameterType":"System.Void","parameterName":"Logic","cachedValue":"null","connections":["3733557b-6833-4e77-b64e-8f276276cfa7"]},{"GUID":"8d64542b-23fa-4d6d-b3af-dfdba73926b9","rect":{"serializedVersion":"2","x":922.0,"y":517.5,"width":15.0,"height":15.0},"index":2,"nodeGUID":"60f559bd-c9b6-4d72-ad87-d3047f26a10c","pointType":1,"parameterType":"System.Int32","parameterName":"wantToAbilityIndex","cachedValue":"210","connections":[]},{"GUID":"3d593923-c9b3-4e2d-a1cd-cb5274b92dcc","rect":{"serializedVersion":"2","x":922.0,"y":477.5,"width":15.0,"height":15.0},"index":1,"nodeGUID":"60f559bd-c9b6-4d72-ad87-d3047f26a10c","pointType":1,"parameterType":"Character","parameterName":"owner","cachedValue":"","connections":["bed00192-e83c-4ef8-8ec0-50638c60370a"]},{"GUID":"df1f171c-cbaf-4db0-b726-a88b7eb14e7d","rect":{"serializedVersion":"2","x":1101.0,"y":477.5,"width":15.0,"height":15.0},"index":1,"nodeGUID":"60f559bd-c9b6-4d72-ad87-d3047f26a10c","pointType":3,"parameterType":"System.Boolean","parameterName":"","cachedValue":"False","connections":["f9a6b0d9-cc08-4aba-b8a1-452f78fd5961"]},{"GUID":"da2efa15-94ee-4b47-bb5d-9e680be97aad","rect":{"serializedVersion":"2","x":1383.0,"y":368.5,"width":15.0,"height":15.0},"index":0,"nodeGUID":"e45286ab-6803-4419-a65a-4e53d82a7f90","pointType":0,"parameterType":"System.Void","parameterName":"Logic","cachedValue":"","connections":["3733557b-6833-4e77-b64e-8f276276cfa7"]},{"GUID":"d5fdeea5-f82a-4da8-8bc3-7fda4bffc705","rect":{"serializedVersion":"2","x":1562.0,"y":368.5,"width":15.0,"height":15.0},"index":0,"nodeGUID":"e45286ab-6803-4419-a65a-4e53d82a7f90","pointType":2,"parameterType":"System.Void","parameterName":"Logic","cachedValue":"null","connections":[]},{"GUID":"4655a2f7-33c0-4077-8a7b-03142d6c9b40","rect":{"serializedVersion":"2","x":1383.0,"y":408.5,"width":15.0,"height":15.0},"index":1,"nodeGUID":"e45286ab-6803-4419-a65a-4e53d82a7f90","pointType":1,"parameterType":"Character","parameterName":"owner","cachedValue":"","connections":["d9b9c75f-3a54-4bb1-97fd-a3f8c85546f6"]},{"GUID":"0f7eef40-e3f2-4107-a197-68add9a9135f","rect":{"serializedVersion":"2","x":1383.0,"y":448.5,"width":15.0,"height":15.0},"index":2,"nodeGUID":"e45286ab-6803-4419-a65a-4e53d82a7f90","pointType":1,"parameterType":"System.String","parameterName":"actionName","cachedValue":"GoblinPriestIdleAction","connections":[]}],"nodeConnectionDatas":[{"GUID":"a3075c8a-116c-4408-a5f7-2ba7662bfaa5","inGUID":"e71e3fc1-343b-4beb-81d9-f6b5b00abb90","outGUID":"9c96b3db-1a24-46e5-b27f-c0dda91cb3d5"},{"GUID":"df031004-2fd5-4639-a969-f24c8b2c32ae","inGUID":"a23f8277-93ab-45d0-96e2-f39026089444","outGUID":"67ddf35e-4d9f-4361-8478-ebb068228907"},{"GUID":"9c463f7c-eab0-4ce6-b034-43ee84eb4d60","inGUID":"71b1c3e6-aefc-4167-8a19-feabd55bae64","outGUID":"15fbe6f5-cb81-4a8e-b48a-dca45a6ee649"},{"GUID":"b6c57141-6093-494d-99d5-d4fafe82fb5c","inGUID":"1d807067-ae5b-4294-b2a8-1647ae83b4be","outGUID":"6522d912-bc01-45ac-96d1-12f6eff01091"},{"GUID":"4d28b22c-3510-4ac7-981d-df58428aaf4b","inGUID":"fa46a73a-a44d-4ec2-a06f-a62ff4c1474a","outGUID":"e4708966-207c-40a7-8d7c-c6fbfa83cad1"},{"GUID":"8b0feeef-a438-42ef-b9f0-dad5815e31b5","inGUID":"321a13cd-d941-4a51-84ea-d282b627b2e9","outGUID":"1f465ffd-4494-40a4-9877-b014767587e1"},{"GUID":"01030018-bc91-467a-be63-acf88caa61a2","inGUID":"3767a00e-16e7-40b5-8506-20d5a79a65e5","outGUID":"7def400d-9fcd-481b-8bbc-f729042e7f96"},{"GUID":"ab565f50-2f46-4199-86aa-2d63c205fcfc","inGUID":"d395377b-efea-4780-9d1c-e8fc409b0bc7","outGUID":"3a680245-19ee-41ed-8ddc-37d5c2c670fa"},{"GUID":"f9a6b0d9-cc08-4aba-b8a1-452f78fd5961","inGUID":"dc5d77a3-ab5f-4f46-b58c-ff45eda3506d","outGUID":"df1f171c-cbaf-4db0-b726-a88b7eb14e7d"},{"GUID":"bed00192-e83c-4ef8-8ec0-50638c60370a","inGUID":"3d593923-c9b3-4e2d-a1cd-cb5274b92dcc","outGUID":"15fbe6f5-cb81-4a8e-b48a-dca45a6ee649"},{"GUID":"3733557b-6833-4e77-b64e-8f276276cfa7","inGUID":"da2efa15-94ee-4b47-bb5d-9e680be97aad","outGUID":"dc6513e6-13f2-4f11-b723-74d3bb2ad0d7"},{"GUID":"d9b9c75f-3a54-4bb1-97fd-a3f8c85546f6","inGUID":"4655a2f7-33c0-4077-8a7b-03142d6c9b40","outGUID":"15fbe6f5-cb81-4a8e-b48a-dca45a6ee649"}]}'
+  serializableNodeData:
+    nodeDatas:
+    - GUID: 75e42c7f-73cc-4748-b336-480a944126de
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 114
+        width: 180
+        height: 60
+      methodName: Start
+      returnType: Character
+      nodeType: 5
+      points:
+      - 67ddf35e-4d9f-4361-8478-ebb068228907
+      - 9c96b3db-1a24-46e5-b27f-c0dda91cb3d5
+    - GUID: 7b067d3b-c6da-4d65-8412-9a517f82f77e
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 304
+        width: 180
+        height: 60
+      methodName: Update
+      returnType: Character
+      nodeType: 5
+      points:
+      - e4708966-207c-40a7-8d7c-c6fbfa83cad1
+      - 15fbe6f5-cb81-4a8e-b48a-dca45a6ee649
+    - GUID: 0b41f314-b352-4547-bb23-7f6540592e26
+      rect:
+        serializedVersion: 2
+        x: 245
+        y: 690
+        width: 180
+        height: 100
+      methodName: TimeLine
+      returnType: Character
+      nodeType: 6
+      points:
+      - 3a680245-19ee-41ed-8ddc-37d5c2c670fa
+      - 7def400d-9fcd-481b-8bbc-f729042e7f96
+      - c52279bc-ee5c-4aed-baf3-45339ca85dfc
+    - GUID: 833c82a8-5f56-4001-bbe0-0186c855e716
+      rect:
+        serializedVersion: 2
+        x: 715
+        y: 301
+        width: 180
+        height: 100
+      methodName: IF
+      returnType: True Logic, False Logic
+      nodeType: 3
+      points:
+      - fa46a73a-a44d-4ec2-a06f-a62ff4c1474a
+      - 1d807067-ae5b-4294-b2a8-1647ae83b4be
+      - 30c96c6c-0124-4f6b-a96d-d0e1e45f483b
+      - 1f465ffd-4494-40a4-9877-b014767587e1
+    - GUID: 2fe9e8d9-e53b-4d2f-b60e-7846fb5f4499
+      rect:
+        serializedVersion: 2
+        x: 1111
+        y: 298
+        width: 180
+        height: 100
+      methodName: IF
+      returnType: True Logic, False Logic
+      nodeType: 3
+      points:
+      - 321a13cd-d941-4a51-84ea-d282b627b2e9
+      - dc5d77a3-ab5f-4f46-b58c-ff45eda3506d
+      - 84a6e016-e697-4eae-8b52-759a5c453ddf
+      - dc6513e6-13f2-4f11-b723-74d3bb2ad0d7
+    nodeFuncDatas:
+    - GUID: cb68ff15-11cd-4cf6-9f85-40b07b3d3e44
+      rect:
+        serializedVersion: 2
+        x: 529
+        y: 116
+        width: 180
+        height: 140
+      methodName: PlayAnim
+      returnType: Void
+      nodeType: 0
+      points:
+      - a23f8277-93ab-45d0-96e2-f39026089444
+      - 2bb3effd-bd34-4ac1-957e-31ab0d00ddd6
+      - e71e3fc1-343b-4beb-81d9-f6b5b00abb90
+      - e166c06c-8091-4d0c-8f8e-dc1f690801a5
+      funcClassType: NodeUtil
+    - GUID: a4defb57-5c40-4840-9299-d7be46132e3e
+      rect:
+        serializedVersion: 2
+        x: 670
+        y: 693
+        width: 180
+        height: 140
+      methodName: ChangeAction
+      returnType: Void
+      nodeType: 0
+      points:
+      - d395377b-efea-4780-9d1c-e8fc409b0bc7
+      - 61c2168f-1651-4b91-8aeb-770d5bd1c768
+      - 3767a00e-16e7-40b5-8506-20d5a79a65e5
+      - 871bde02-df27-480e-9dec-2fdb8d79d6ed
+      funcClassType: NodeUtil
+    - GUID: b87544c0-3bb2-4cd2-a69b-00bac697dcd1
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 415
+        width: 180
+        height: 100
+      methodName: StateActionMacro
+      returnType: Boolean
+      nodeType: 1
+      points:
+      - 6522d912-bc01-45ac-96d1-12f6eff01091
+      - 71b1c3e6-aefc-4167-8a19-feabd55bae64
+      funcClassType: NodeUtil
+    - GUID: 60f559bd-c9b6-4d72-ad87-d3047f26a10c
+      rect:
+        serializedVersion: 2
+        x: 929
+        y: 430
+        width: 180
+        height: 140
+      methodName: IsActivateAbility
+      returnType: Boolean
+      nodeType: 1
+      points:
+      - df1f171c-cbaf-4db0-b726-a88b7eb14e7d
+      - 3d593923-c9b3-4e2d-a1cd-cb5274b92dcc
+      - 8d64542b-23fa-4d6d-b3af-dfdba73926b9
+      funcClassType: NodeUtil
+    - GUID: e45286ab-6803-4419-a65a-4e53d82a7f90
+      rect:
+        serializedVersion: 2
+        x: 1390
+        y: 361
+        width: 180
+        height: 140
+      methodName: ChangeAction
+      returnType: Void
+      nodeType: 0
+      points:
+      - da2efa15-94ee-4b47-bb5d-9e680be97aad
+      - d5fdeea5-f82a-4da8-8bc3-7fda4bffc705
+      - 4655a2f7-33c0-4077-8a7b-03142d6c9b40
+      - 0f7eef40-e3f2-4107-a197-68add9a9135f
+      funcClassType: NodeUtil
+    nodePointDatas:
+    - GUID: a23f8277-93ab-45d0-96e2-f39026089444
+      rect:
+        serializedVersion: 2
+        x: 522
+        y: 123.5
+        width: 15
+        height: 15
+      index: 0
+      nodeGUID: cb68ff15-11cd-4cf6-9f85-40b07b3d3e44
+      pointType: 0
+      parameterType: System.Void
+      parameterName: Logic
+      cachedValue: 
+      connections:
+      - df031004-2fd5-4639-a969-f24c8b2c32ae
+    - GUID: 9c96b3db-1a24-46e5-b27f-c0dda91cb3d5
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 161.5
+        width: 15
+        height: 15
+      index: 1
+      nodeGUID: 75e42c7f-73cc-4748-b336-480a944126de
+      pointType: 3
+      parameterType: Character
+      parameterName: Owner
+      cachedValue: null
+      connections:
+      - a3075c8a-116c-4408-a5f7-2ba7662bfaa5
+    - GUID: 67ddf35e-4d9f-4361-8478-ebb068228907
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 121.5
+        width: 15
+        height: 15
+      index: 0
+      nodeGUID: 75e42c7f-73cc-4748-b336-480a944126de
+      pointType: 2
+      parameterType: System.Void
+      parameterName: Logic
+      cachedValue: null
+      connections:
+      - df031004-2fd5-4639-a969-f24c8b2c32ae
+    - GUID: e166c06c-8091-4d0c-8f8e-dc1f690801a5
+      rect:
+        serializedVersion: 2
+        x: 522
+        y: 203.5
+        width: 15
+        height: 15
+      index: 2
+      nodeGUID: cb68ff15-11cd-4cf6-9f85-40b07b3d3e44
+      pointType: 1
+      parameterType: System.String
+      parameterName: animationName
+      cachedValue: run
+      connections: []
+    - GUID: e71e3fc1-343b-4beb-81d9-f6b5b00abb90
+      rect:
+        serializedVersion: 2
+        x: 522
+        y: 163.5
+        width: 15
+        height: 15
+      index: 1
+      nodeGUID: cb68ff15-11cd-4cf6-9f85-40b07b3d3e44
+      pointType: 1
+      parameterType: Character
+      parameterName: owner
+      cachedValue: 
+      connections:
+      - a3075c8a-116c-4408-a5f7-2ba7662bfaa5
+    - GUID: 2bb3effd-bd34-4ac1-957e-31ab0d00ddd6
+      rect:
+        serializedVersion: 2
+        x: 701
+        y: 123.5
+        width: 15
+        height: 15
+      index: 0
+      nodeGUID: cb68ff15-11cd-4cf6-9f85-40b07b3d3e44
+      pointType: 2
+      parameterType: System.Void
+      parameterName: Logic
+      cachedValue: null
+      connections: []
+    - GUID: e4708966-207c-40a7-8d7c-c6fbfa83cad1
+      rect:
+        serializedVersion: 2
+        x: 411
+        y: 311.5
+        width: 15
+        height: 15
+      index: 0
+      nodeGUID: 7b067d3b-c6da-4d65-8412-9a517f82f77e
+      pointType: 2
+      parameterType: System.Void
+      parameterName: Logic
+      cachedValue: null
+      connections:
+      - 4d28b22c-3510-4ac7-981d-df58428aaf4b
+    - GUID: 15fbe6f5-cb81-4a8e-b48a-dca45a6ee649
+      rect:
+        serializedVersion: 2
+        x: 411
+        y: 351.5
+        width: 15
+        height: 15
+      index: 1
+      nodeGUID: 7b067d3b-c6da-4d65-8412-9a517f82f77e
+      pointType: 3
+      parameterType: Character
+      parameterName: Owner
+      cachedValue: null
+      connections:
+      - 9c463f7c-eab0-4ce6-b034-43ee84eb4d60
+      - bed00192-e83c-4ef8-8ec0-50638c60370a
+      - d9b9c75f-3a54-4bb1-97fd-a3f8c85546f6
+    - GUID: 871bde02-df27-480e-9dec-2fdb8d79d6ed
+      rect:
+        serializedVersion: 2
+        x: 663
+        y: 780.5
+        width: 15
+        height: 15
+      index: 2
+      nodeGUID: a4defb57-5c40-4840-9299-d7be46132e3e
+      pointType: 1
+      parameterType: System.String
+      parameterName: actionName
+      cachedValue: GoblinPriestSkillAction
+      connections: []
+    - GUID: 3767a00e-16e7-40b5-8506-20d5a79a65e5
+      rect:
+        serializedVersion: 2
+        x: 663
+        y: 740.5
+        width: 15
+        height: 15
+      index: 1
+      nodeGUID: a4defb57-5c40-4840-9299-d7be46132e3e
+      pointType: 1
+      parameterType: Character
+      parameterName: owner
+      cachedValue: 
+      connections:
+      - 01030018-bc91-467a-be63-acf88caa61a2
+    - GUID: 61c2168f-1651-4b91-8aeb-770d5bd1c768
+      rect:
+        serializedVersion: 2
+        x: 842
+        y: 700.5
+        width: 15
+        height: 15
+      index: 0
+      nodeGUID: a4defb57-5c40-4840-9299-d7be46132e3e
+      pointType: 2
+      parameterType: System.Void
+      parameterName: Logic
+      cachedValue: null
+      connections: []
+    - GUID: d395377b-efea-4780-9d1c-e8fc409b0bc7
+      rect:
+        serializedVersion: 2
+        x: 663
+        y: 700.5
+        width: 15
+        height: 15
+      index: 0
+      nodeGUID: a4defb57-5c40-4840-9299-d7be46132e3e
+      pointType: 0
+      parameterType: System.Void
+      parameterName: Logic
+      cachedValue: 
+      connections:
+      - ab565f50-2f46-4199-86aa-2d63c205fcfc
+    - GUID: 3a680245-19ee-41ed-8ddc-37d5c2c670fa
+      rect:
+        serializedVersion: 2
+        x: 417
+        y: 697.5
+        width: 15
+        height: 15
+      index: 0
+      nodeGUID: 0b41f314-b352-4547-bb23-7f6540592e26
+      pointType: 2
+      parameterType: System.Void
+      parameterName: Logic
+      cachedValue: null
+      connections:
+      - ab565f50-2f46-4199-86aa-2d63c205fcfc
+    - GUID: 7def400d-9fcd-481b-8bbc-f729042e7f96
+      rect:
+        serializedVersion: 2
+        x: 417
+        y: 737.5
+        width: 15
+        height: 15
+      index: 1
+      nodeGUID: 0b41f314-b352-4547-bb23-7f6540592e26
+      pointType: 3
+      parameterType: Character
+      parameterName: Owner
+      cachedValue: null
+      connections:
+      - 01030018-bc91-467a-be63-acf88caa61a2
+    - GUID: c52279bc-ee5c-4aed-baf3-45339ca85dfc
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 737.5
+        width: 15
+        height: 15
+      index: 1
+      nodeGUID: 0b41f314-b352-4547-bb23-7f6540592e26
+      pointType: 1
+      parameterType: System.Single
+      parameterName: Time
+      cachedValue: 1
+      connections: []
+    - GUID: fa46a73a-a44d-4ec2-a06f-a62ff4c1474a
+      rect:
+        serializedVersion: 2
+        x: 708
+        y: 308.5
+        width: 15
+        height: 15
+      index: 0
+      nodeGUID: 833c82a8-5f56-4001-bbe0-0186c855e716
+      pointType: 0
+      parameterType: System.Void
+      parameterName: Logic
+      cachedValue: 
+      connections:
+      - 4d28b22c-3510-4ac7-981d-df58428aaf4b
+    - GUID: 30c96c6c-0124-4f6b-a96d-d0e1e45f483b
+      rect:
+        serializedVersion: 2
+        x: 887
+        y: 308.5
+        width: 15
+        height: 15
+      index: 0
+      nodeGUID: 833c82a8-5f56-4001-bbe0-0186c855e716
+      pointType: 2
+      parameterType: System.Void
+      parameterName: Logic
+      cachedValue: null
+      connections: []
+    - GUID: 1f465ffd-4494-40a4-9877-b014767587e1
+      rect:
+        serializedVersion: 2
+        x: 887
+        y: 348.5
+        width: 15
+        height: 15
+      index: 1
+      nodeGUID: 833c82a8-5f56-4001-bbe0-0186c855e716
+      pointType: 2
+      parameterType: System.Void
+      parameterName: Logic
+      cachedValue: null
+      connections:
+      - 8b0feeef-a438-42ef-b9f0-dad5815e31b5
+    - GUID: 6522d912-bc01-45ac-96d1-12f6eff01091
+      rect:
+        serializedVersion: 2
+        x: 620
+        y: 462.5
+        width: 15
+        height: 15
+      index: 1
+      nodeGUID: b87544c0-3bb2-4cd2-a69b-00bac697dcd1
+      pointType: 3
+      parameterType: System.Boolean
+      parameterName: 
+      cachedValue: False
+      connections:
+      - b6c57141-6093-494d-99d5-d4fafe82fb5c
+    - GUID: 71b1c3e6-aefc-4167-8a19-feabd55bae64
+      rect:
+        serializedVersion: 2
+        x: 441
+        y: 462.5
+        width: 15
+        height: 15
+      index: 1
+      nodeGUID: b87544c0-3bb2-4cd2-a69b-00bac697dcd1
+      pointType: 1
+      parameterType: Character
+      parameterName: owner
+      cachedValue: 
+      connections:
+      - 9c463f7c-eab0-4ce6-b034-43ee84eb4d60
+    - GUID: 1d807067-ae5b-4294-b2a8-1647ae83b4be
+      rect:
+        serializedVersion: 2
+        x: 708
+        y: 348.5
+        width: 15
+        height: 15
+      index: 1
+      nodeGUID: 833c82a8-5f56-4001-bbe0-0186c855e716
+      pointType: 1
+      parameterType: System.Boolean
+      parameterName: Condition
+      cachedValue: 
+      connections:
+      - b6c57141-6093-494d-99d5-d4fafe82fb5c
+    - GUID: 321a13cd-d941-4a51-84ea-d282b627b2e9
+      rect:
+        serializedVersion: 2
+        x: 1104
+        y: 305.5
+        width: 15
+        height: 15
+      index: 0
+      nodeGUID: 2fe9e8d9-e53b-4d2f-b60e-7846fb5f4499
+      pointType: 0
+      parameterType: System.Void
+      parameterName: Logic
+      cachedValue: 
+      connections:
+      - 8b0feeef-a438-42ef-b9f0-dad5815e31b5
+    - GUID: dc5d77a3-ab5f-4f46-b58c-ff45eda3506d
+      rect:
+        serializedVersion: 2
+        x: 1104
+        y: 345.5
+        width: 15
+        height: 15
+      index: 1
+      nodeGUID: 2fe9e8d9-e53b-4d2f-b60e-7846fb5f4499
+      pointType: 1
+      parameterType: System.Boolean
+      parameterName: Condition
+      cachedValue: 
+      connections:
+      - f9a6b0d9-cc08-4aba-b8a1-452f78fd5961
+    - GUID: 84a6e016-e697-4eae-8b52-759a5c453ddf
+      rect:
+        serializedVersion: 2
+        x: 1283
+        y: 305.5
+        width: 15
+        height: 15
+      index: 0
+      nodeGUID: 2fe9e8d9-e53b-4d2f-b60e-7846fb5f4499
+      pointType: 2
+      parameterType: System.Void
+      parameterName: Logic
+      cachedValue: null
+      connections: []
+    - GUID: dc6513e6-13f2-4f11-b723-74d3bb2ad0d7
+      rect:
+        serializedVersion: 2
+        x: 1283
+        y: 345.5
+        width: 15
+        height: 15
+      index: 1
+      nodeGUID: 2fe9e8d9-e53b-4d2f-b60e-7846fb5f4499
+      pointType: 2
+      parameterType: System.Void
+      parameterName: Logic
+      cachedValue: null
+      connections:
+      - 3733557b-6833-4e77-b64e-8f276276cfa7
+    - GUID: 8d64542b-23fa-4d6d-b3af-dfdba73926b9
+      rect:
+        serializedVersion: 2
+        x: 922
+        y: 517.5
+        width: 15
+        height: 15
+      index: 2
+      nodeGUID: 60f559bd-c9b6-4d72-ad87-d3047f26a10c
+      pointType: 1
+      parameterType: System.Int32
+      parameterName: wantToAbilityIndex
+      cachedValue: 210
+      connections: []
+    - GUID: 3d593923-c9b3-4e2d-a1cd-cb5274b92dcc
+      rect:
+        serializedVersion: 2
+        x: 922
+        y: 477.5
+        width: 15
+        height: 15
+      index: 1
+      nodeGUID: 60f559bd-c9b6-4d72-ad87-d3047f26a10c
+      pointType: 1
+      parameterType: Character
+      parameterName: owner
+      cachedValue: 
+      connections:
+      - bed00192-e83c-4ef8-8ec0-50638c60370a
+    - GUID: df1f171c-cbaf-4db0-b726-a88b7eb14e7d
+      rect:
+        serializedVersion: 2
+        x: 1101
+        y: 477.5
+        width: 15
+        height: 15
+      index: 1
+      nodeGUID: 60f559bd-c9b6-4d72-ad87-d3047f26a10c
+      pointType: 3
+      parameterType: System.Boolean
+      parameterName: 
+      cachedValue: False
+      connections:
+      - f9a6b0d9-cc08-4aba-b8a1-452f78fd5961
+    - GUID: da2efa15-94ee-4b47-bb5d-9e680be97aad
+      rect:
+        serializedVersion: 2
+        x: 1383
+        y: 368.5
+        width: 15
+        height: 15
+      index: 0
+      nodeGUID: e45286ab-6803-4419-a65a-4e53d82a7f90
+      pointType: 0
+      parameterType: System.Void
+      parameterName: Logic
+      cachedValue: 
+      connections:
+      - 3733557b-6833-4e77-b64e-8f276276cfa7
+    - GUID: d5fdeea5-f82a-4da8-8bc3-7fda4bffc705
+      rect:
+        serializedVersion: 2
+        x: 1562
+        y: 368.5
+        width: 15
+        height: 15
+      index: 0
+      nodeGUID: e45286ab-6803-4419-a65a-4e53d82a7f90
+      pointType: 2
+      parameterType: System.Void
+      parameterName: Logic
+      cachedValue: null
+      connections: []
+    - GUID: 4655a2f7-33c0-4077-8a7b-03142d6c9b40
+      rect:
+        serializedVersion: 2
+        x: 1383
+        y: 408.5
+        width: 15
+        height: 15
+      index: 1
+      nodeGUID: e45286ab-6803-4419-a65a-4e53d82a7f90
+      pointType: 1
+      parameterType: Character
+      parameterName: owner
+      cachedValue: 
+      connections:
+      - d9b9c75f-3a54-4bb1-97fd-a3f8c85546f6
+    - GUID: 0f7eef40-e3f2-4107-a197-68add9a9135f
+      rect:
+        serializedVersion: 2
+        x: 1383
+        y: 448.5
+        width: 15
+        height: 15
+      index: 2
+      nodeGUID: e45286ab-6803-4419-a65a-4e53d82a7f90
+      pointType: 1
+      parameterType: System.String
+      parameterName: actionName
+      cachedValue: GoblinPriestIdleAction
+      connections: []
+    nodeConnectionDatas:
+    - GUID: a3075c8a-116c-4408-a5f7-2ba7662bfaa5
+      inGUID: e71e3fc1-343b-4beb-81d9-f6b5b00abb90
+      outGUID: 9c96b3db-1a24-46e5-b27f-c0dda91cb3d5
+    - GUID: df031004-2fd5-4639-a969-f24c8b2c32ae
+      inGUID: a23f8277-93ab-45d0-96e2-f39026089444
+      outGUID: 67ddf35e-4d9f-4361-8478-ebb068228907
+    - GUID: 9c463f7c-eab0-4ce6-b034-43ee84eb4d60
+      inGUID: 71b1c3e6-aefc-4167-8a19-feabd55bae64
+      outGUID: 15fbe6f5-cb81-4a8e-b48a-dca45a6ee649
+    - GUID: b6c57141-6093-494d-99d5-d4fafe82fb5c
+      inGUID: 1d807067-ae5b-4294-b2a8-1647ae83b4be
+      outGUID: 6522d912-bc01-45ac-96d1-12f6eff01091
+    - GUID: 4d28b22c-3510-4ac7-981d-df58428aaf4b
+      inGUID: fa46a73a-a44d-4ec2-a06f-a62ff4c1474a
+      outGUID: e4708966-207c-40a7-8d7c-c6fbfa83cad1
+    - GUID: 8b0feeef-a438-42ef-b9f0-dad5815e31b5
+      inGUID: 321a13cd-d941-4a51-84ea-d282b627b2e9
+      outGUID: 1f465ffd-4494-40a4-9877-b014767587e1
+    - GUID: 01030018-bc91-467a-be63-acf88caa61a2
+      inGUID: 3767a00e-16e7-40b5-8506-20d5a79a65e5
+      outGUID: 7def400d-9fcd-481b-8bbc-f729042e7f96
+    - GUID: ab565f50-2f46-4199-86aa-2d63c205fcfc
+      inGUID: d395377b-efea-4780-9d1c-e8fc409b0bc7
+      outGUID: 3a680245-19ee-41ed-8ddc-37d5c2c670fa
+    - GUID: f9a6b0d9-cc08-4aba-b8a1-452f78fd5961
+      inGUID: dc5d77a3-ab5f-4f46-b58c-ff45eda3506d
+      outGUID: df1f171c-cbaf-4db0-b726-a88b7eb14e7d
+    - GUID: bed00192-e83c-4ef8-8ec0-50638c60370a
+      inGUID: 3d593923-c9b3-4e2d-a1cd-cb5274b92dcc
+      outGUID: 15fbe6f5-cb81-4a8e-b48a-dca45a6ee649
+    - GUID: 3733557b-6833-4e77-b64e-8f276276cfa7
+      inGUID: da2efa15-94ee-4b47-bb5d-9e680be97aad
+      outGUID: dc6513e6-13f2-4f11-b723-74d3bb2ad0d7
+    - GUID: d9b9c75f-3a54-4bb1-97fd-a3f8c85546f6
+      inGUID: 4655a2f7-33c0-4077-8a7b-03142d6c9b40
+      outGUID: 15fbe6f5-cb81-4a8e-b48a-dca45a6ee649
