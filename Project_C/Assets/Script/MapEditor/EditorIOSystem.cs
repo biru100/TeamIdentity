@@ -10,6 +10,13 @@ using UnityEngine.UI;
 //    E_LOAD
 //}
 
+[System.Serializable]
+public class RoomWayToggleSet
+{
+    public MapWay way;
+    public Toggle toggle;
+}
+
 public class EditorIOSystem : MonoBehaviour
 {
     //public EditorIOInterface currentInterface = EditorIOInterface.E_IDLE;
@@ -18,6 +25,7 @@ public class EditorIOSystem : MonoBehaviour
     public InputField saveMapTheme;
     public InputField saveMapDifficulty;
     public InputField saveMapWeight;
+    public List<RoomWayToggleSet> DoorToggle;
 
     private void Start()
     {
@@ -44,6 +52,13 @@ public class EditorIOSystem : MonoBehaviour
     {
         IsometricTileMap tileMap = FindObjectOfType<IsometricTileMap>();
 
+        int way = 0;
+
+        foreach(var set in DoorToggle)
+        {
+            way |= set.toggle.isOn ? (int)set.way : 0;
+        }
+
         TileMapData data = new TileMapData()
         {
             mapName = saveMapName.text,
@@ -52,7 +67,8 @@ public class EditorIOSystem : MonoBehaviour
             mapMin = tileMap.min,
             mapMax = tileMap.max,
             mapDifficulty = int.Parse(saveMapDifficulty.text),
-            mapData = tileMap.ToJson()
+            mapData = tileMap.ToJson(),
+            mapWay = way
         };
 
         File.WriteAllText(Application.dataPath + "/Resources/Map/" + data.mapName + ".txt", JsonUtility.ToJson(data));
@@ -65,6 +81,11 @@ public class EditorIOSystem : MonoBehaviour
         saveMapTheme.text = data.mapTheme;
         saveMapWeight.text = data.mapWeight.ToString();
         saveMapDifficulty.text = data.mapDifficulty.ToString();
+
+        foreach (var set in DoorToggle)
+        {
+            set.toggle.isOn = (data.mapWay & (int)set.way) != 0;
+        }
 
         IsometricTileMap tileMap = FindObjectOfType<IsometricTileMap>();
         tileMap.FromJson(data.mapData);

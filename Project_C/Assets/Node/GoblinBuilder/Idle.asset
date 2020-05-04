@@ -28,6 +28,7 @@ MonoBehaviour:
       methodName: Start
       returnType: Character
       nodeType: 5
+      parameters: []
       points:
       - 67ddf35e-4d9f-4361-8478-ebb068228907
       - 9c96b3db-1a24-46e5-b27f-c0dda91cb3d5
@@ -41,6 +42,7 @@ MonoBehaviour:
       methodName: Update
       returnType: Character
       nodeType: 5
+      parameters: []
       points:
       - e4708966-207c-40a7-8d7c-c6fbfa83cad1
       - 15fbe6f5-cb81-4a8e-b48a-dca45a6ee649
@@ -54,6 +56,7 @@ MonoBehaviour:
       methodName: IF
       returnType: True Logic, False Logic
       nodeType: 3
+      parameters: []
       points:
       - be07e76b-7b92-4390-879b-435f2cdd9790
       - 48552297-3851-4e19-b67d-c83587792704
@@ -70,6 +73,7 @@ MonoBehaviour:
       methodName: StateActionMacro
       returnType: Boolean
       nodeType: 1
+      parameters: []
       points:
       - 8cf2a0f0-2b18-4cb2-8598-4df2d063ba51
       - bbeb32c4-0c7f-4fee-968d-3345924e9249
@@ -84,6 +88,7 @@ MonoBehaviour:
       methodName: PlayAnimOneSide
       returnType: Void
       nodeType: 0
+      parameters: []
       points:
       - 09e34395-75ac-4b7b-b39e-d56f9d9d113b
       - 7e847a06-1aac-47de-918c-8a258579f7eb

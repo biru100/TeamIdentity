@@ -234,7 +234,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 317845810}
-  - component: {fileID: 317845812}
   - component: {fileID: 317845811}
   m_Layer: 0
   m_Name: GameObject
@@ -266,20 +265,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 317845809}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f53eb3c4b5524694a87e2f8b3b891930, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _mapDataName: design map1
---- !u!114 &317845812
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 317845809}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cdde41ea27f922041afb9e88172489ec, type: 3}
+  m_Script: {fileID: 11500000, guid: b9ea0c00e32d4b846831c05b8f408e6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &411037652

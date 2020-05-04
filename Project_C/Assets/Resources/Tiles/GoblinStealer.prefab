@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5715847190844324880}
   - component: {fileID: 1670504127013103769}
   - component: {fileID: 4158397250033814579}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GoblinStealer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 4582701969613466801}
   - component: {fileID: 5529772523035914740}
   - component: {fileID: 5674038696201601408}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: cha_idle_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}

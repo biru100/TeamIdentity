@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using System.Threading;
 
 public class DynamicNavigation : BehaviorSingleton<DynamicNavigation>
 {
@@ -15,24 +16,26 @@ public class DynamicNavigation : BehaviorSingleton<DynamicNavigation>
     public LayerMask LayerMask { get { return m_LayerMask; } set { m_LayerMask = value; } }
     public int AgentTypeID { get { return m_AgentTypeID; } set { m_AgentTypeID = value; } }
 
-    NavMeshDataInstance NavMeshData { get; set; }
+    public NavMeshDataInstance NavMeshInstance { get; protected set; }
 
-    public void BuildNavigation()
+    public NavMeshData BuildNavigation(Transform root)
     {
-        var data = NavMeshBuilder.BuildNavMeshData(NavMesh.GetSettingsByID(m_AgentTypeID), GetSource(), 
+        return NavMeshBuilder.BuildNavMeshData(NavMesh.GetSettingsByID(m_AgentTypeID), GetSource(root), 
             new Bounds(Vector3.zero, Vector3.one * 100000f), Vector3.zero, Quaternion.identity);
-
-        if (NavMeshData.valid)
-            NavMeshData.Remove();
-
-        NavMeshData = NavMesh.AddNavMeshData(data);
     }
 
-    List<NavMeshBuildSource> GetSource()
+    public void SetNavMeshData(NavMeshData data)
     {
+        if (NavMeshInstance.valid)
+            NavMeshInstance.Remove();
 
+        NavMeshInstance = NavMesh.AddNavMeshData(data);
+    }
+
+    List<NavMeshBuildSource> GetSource(Transform root)
+    {
         var sources = new List<NavMeshBuildSource>();
-        NavMeshBuilder.CollectSources(null, LayerMask, UseGeometry, 0, new List<NavMeshBuildMarkup>(), sources);
+        NavMeshBuilder.CollectSources(root, LayerMask, UseGeometry, 0, new List<NavMeshBuildMarkup>(), sources);
 
         sources.RemoveAll((x) => (x.component != null && x.component.gameObject.GetComponent<NavMeshAgent>() != null));
 

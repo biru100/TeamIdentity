@@ -29,6 +29,7 @@ MonoBehaviour:
       methodName: Start
       returnType: Character
       nodeType: 5
+      parameters: []
       points:
       - 67ddf35e-4d9f-4361-8478-ebb068228907
       - 9c96b3db-1a24-46e5-b27f-c0dda91cb3d5
@@ -42,6 +43,7 @@ MonoBehaviour:
       methodName: Update
       returnType: Character
       nodeType: 5
+      parameters: []
       points:
       - e4708966-207c-40a7-8d7c-c6fbfa83cad1
       - 15fbe6f5-cb81-4a8e-b48a-dca45a6ee649
@@ -55,6 +57,7 @@ MonoBehaviour:
       methodName: IF
       returnType: True Logic, False Logic
       nodeType: 3
+      parameters: []
       points:
       - be07e76b-7b92-4390-879b-435f2cdd9790
       - 48552297-3851-4e19-b67d-c83587792704
@@ -70,6 +73,7 @@ MonoBehaviour:
       methodName: IF
       returnType: True Logic, False Logic
       nodeType: 3
+      parameters: []
       points:
       - 1ca6ed2c-de1c-4ae3-b98f-7a85830ade3b
       - a996c5d6-43a2-467f-8eb3-ad6a2f9eda59
@@ -86,6 +90,7 @@ MonoBehaviour:
       methodName: PlayAnim
       returnType: Void
       nodeType: 0
+      parameters: []
       points:
       - a23f8277-93ab-45d0-96e2-f39026089444
       - 2bb3effd-bd34-4ac1-957e-31ab0d00ddd6
@@ -102,6 +107,7 @@ MonoBehaviour:
       methodName: StateActionMacro
       returnType: Boolean
       nodeType: 1
+      parameters: []
       points:
       - c1b45e8a-40d4-4216-8422-5fd190bee0d1
       - 3072ed2a-4e38-4fec-abfb-f5d09393c0dd
@@ -116,6 +122,7 @@ MonoBehaviour:
       methodName: PlayerInRange
       returnType: Boolean
       nodeType: 1
+      parameters: []
       points:
       - 23c31e3d-a780-4bfb-8330-b1adfb14c85c
       - 40f4c6f4-0f52-4535-9949-3360d30c3e64
@@ -131,6 +138,7 @@ MonoBehaviour:
       methodName: ChangeAction
       returnType: Void
       nodeType: 0
+      parameters: []
       points:
       - d395377b-efea-4780-9d1c-e8fc409b0bc7
       - 61c2168f-1651-4b91-8aeb-770d5bd1c768

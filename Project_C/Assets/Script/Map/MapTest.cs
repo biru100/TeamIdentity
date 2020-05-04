@@ -14,7 +14,7 @@ public class MapTest : MonoBehaviour
         string jsonData = ResourceManager.GetResource<TextAsset>("Map/" + _mapDataName).text;
         TileMapData data = JsonUtility.FromJson<TileMapData>(jsonData);
         GetComponent<IsometricTileMap>().FromJson(data.mapData, true);
-        DynamicNavigation.Instance.BuildNavigation();
+        DynamicNavigation.Instance.SetNavMeshData(DynamicNavigation.Instance.BuildNavigation(null));
     }
 
     // Update is called once per frame

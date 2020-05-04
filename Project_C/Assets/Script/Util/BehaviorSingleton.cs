@@ -7,6 +7,8 @@ public abstract class BehaviorSingleton<SingletonClass> : MonoBehaviour
 {
     protected static SingletonClass _instance;
 
+    protected bool _isInit = false;
+
     public static SingletonClass Instance
     {
         get
@@ -17,7 +19,7 @@ public abstract class BehaviorSingleton<SingletonClass> : MonoBehaviour
                 if (instance == null)
                 {
                     instance = new GameObject(typeof(SingletonClass).Name).AddComponent<SingletonClass>();
-                    instance.Init();
+                    if(!instance._isInit) instance.Init();
                 }
 
                 _instance = instance;
@@ -27,8 +29,8 @@ public abstract class BehaviorSingleton<SingletonClass> : MonoBehaviour
     }
 
     protected virtual void Init()
-    { 
-
+    {
+        _isInit = true;
     }
 
     protected virtual void Awake()
@@ -36,7 +38,7 @@ public abstract class BehaviorSingleton<SingletonClass> : MonoBehaviour
         if (_instance == null || _instance == this)
         {
             _instance = (SingletonClass)this;
-            Init();
+            if (!_isInit) Init();
             DontDestroyOnLoad(gameObject);
         }
         else if (_instance != this)

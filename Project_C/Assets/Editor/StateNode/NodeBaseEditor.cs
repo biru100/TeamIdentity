@@ -528,7 +528,6 @@ namespace StateBehavior.Node
                 flowOutPort.normal.background = Resources.Load<Texture2D>("outFlow");
 
                 inputField = new GUIStyle(GUI.skin.textField);
-                inputField.contentOffset = new Vector2(18f, 0f);
 
                 nodeElement = new GUIStyle();
                 nodeElement.alignment = TextAnchor.MiddleLeft;

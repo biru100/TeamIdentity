@@ -23,9 +23,16 @@ public class NodeScriptEditor : Editor
         EditorGUILayout.LabelField("StateName");
         script.stateName = EditorGUILayout.TextField(script.stateName);
 
-        EditorGUILayout.LabelField("");
-        EditorGUILayout.LabelField("");
+        EditorGUILayout.LabelField("SerializableNodeData");
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("serializableNodeData"));
 
+        EditorGUILayout.LabelField("DataJson");
+        script.dataJson = EditorGUILayout.TextField(script.dataJson);
+
+
+        EditorGUILayout.LabelField("");
+        EditorGUILayout.LabelField("");
+        serializedObject.ApplyModifiedProperties();
         EditorUtility.SetDirty(script);
 
         if (GUILayout.Button("Compile Code"))

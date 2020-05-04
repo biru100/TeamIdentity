@@ -9,6 +9,8 @@ public class Character : MonoBehaviour
 {
     public RenderTransform RenderTrasform { get; protected set; }
 
+    public Room OwnerRoom { get; set; }
+
     public Animator Anim { get; protected set; }
     public NavMeshAgent NavAgent { get; protected set; }
     public CharacterStatus Status { get; protected set; }

@@ -13,13 +13,13 @@ namespace StateBehavior.Node
     {
         Logic, // 로직 커넥션이 있어야함
         Func, // 리턴함수,
-        Constructor, //생성자
-        Property, //프로퍼티
         Variable,
         Condition,
         For,
         Event,
-        TimeLine
+        TimeLine,
+        Constructor, //생성자
+        Property //프로퍼티
     }
 
     [Serializable]
