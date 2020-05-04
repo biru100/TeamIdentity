@@ -275,6 +275,18 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
     buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -294,7 +306,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 800
+        y: 1600
         width: 160
         height: 160
       alignment: 0
@@ -315,7 +327,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 160
-        y: 800
+        y: 1600
         width: 160
         height: 160
       alignment: 0
@@ -336,7 +348,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 320
-        y: 800
+        y: 1600
         width: 160
         height: 160
       alignment: 0
@@ -357,7 +369,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 480
-        y: 800
+        y: 1600
         width: 160
         height: 160
       alignment: 0
@@ -378,7 +390,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 640
-        y: 800
+        y: 1600
         width: 160
         height: 160
       alignment: 0
@@ -399,7 +411,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 800
-        y: 800
+        y: 1600
         width: 160
         height: 160
       alignment: 0
@@ -419,8 +431,8 @@ TextureImporter:
       name: cha_atk_6
       rect:
         serializedVersion: 2
-        x: 960
-        y: 800
+        x: 0
+        y: 1440
         width: 160
         height: 160
       alignment: 0
@@ -440,8 +452,8 @@ TextureImporter:
       name: cha_atk_7
       rect:
         serializedVersion: 2
-        x: 1120
-        y: 800
+        x: 160
+        y: 1440
         width: 160
         height: 160
       alignment: 0
@@ -461,8 +473,8 @@ TextureImporter:
       name: cha_atk_8
       rect:
         serializedVersion: 2
-        x: 1280
-        y: 800
+        x: 320
+        y: 1440
         width: 160
         height: 160
       alignment: 0
@@ -482,8 +494,8 @@ TextureImporter:
       name: cha_atk_9
       rect:
         serializedVersion: 2
-        x: 1440
-        y: 800
+        x: 480
+        y: 1440
         width: 160
         height: 160
       alignment: 0
@@ -503,8 +515,8 @@ TextureImporter:
       name: cha_atk_10
       rect:
         serializedVersion: 2
-        x: 1600
-        y: 800
+        x: 640
+        y: 1440
         width: 160
         height: 160
       alignment: 0
@@ -524,8 +536,8 @@ TextureImporter:
       name: cha_atk_11
       rect:
         serializedVersion: 2
-        x: 1760
-        y: 800
+        x: 800
+        y: 1440
         width: 160
         height: 160
       alignment: 0
@@ -546,7 +558,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 640
+        y: 1280
         width: 160
         height: 160
       alignment: 0
@@ -567,7 +579,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 160
-        y: 640
+        y: 1280
         width: 160
         height: 160
       alignment: 0
@@ -588,7 +600,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 320
-        y: 640
+        y: 1280
         width: 160
         height: 160
       alignment: 0
@@ -609,7 +621,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 480
-        y: 640
+        y: 1280
         width: 160
         height: 160
       alignment: 0
@@ -630,7 +642,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 640
-        y: 640
+        y: 1280
         width: 160
         height: 160
       alignment: 0
@@ -651,7 +663,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 800
-        y: 640
+        y: 1280
         width: 160
         height: 160
       alignment: 0
@@ -671,8 +683,8 @@ TextureImporter:
       name: cha_atk_18
       rect:
         serializedVersion: 2
-        x: 960
-        y: 640
+        x: 0
+        y: 1120
         width: 160
         height: 160
       alignment: 0
@@ -692,8 +704,8 @@ TextureImporter:
       name: cha_atk_19
       rect:
         serializedVersion: 2
-        x: 1120
-        y: 640
+        x: 160
+        y: 1120
         width: 160
         height: 160
       alignment: 0
@@ -713,8 +725,8 @@ TextureImporter:
       name: cha_atk_20
       rect:
         serializedVersion: 2
-        x: 1280
-        y: 640
+        x: 320
+        y: 1120
         width: 160
         height: 160
       alignment: 0
@@ -734,8 +746,8 @@ TextureImporter:
       name: cha_atk_21
       rect:
         serializedVersion: 2
-        x: 1440
-        y: 640
+        x: 480
+        y: 1120
         width: 160
         height: 160
       alignment: 0
@@ -755,8 +767,8 @@ TextureImporter:
       name: cha_atk_22
       rect:
         serializedVersion: 2
-        x: 1600
-        y: 640
+        x: 640
+        y: 1120
         width: 160
         height: 160
       alignment: 0
@@ -776,8 +788,8 @@ TextureImporter:
       name: cha_atk_23
       rect:
         serializedVersion: 2
-        x: 1760
-        y: 640
+        x: 800
+        y: 1120
         width: 160
         height: 160
       alignment: 0
@@ -798,7 +810,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 480
+        y: 960
         width: 160
         height: 160
       alignment: 0
@@ -819,7 +831,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 160
-        y: 480
+        y: 960
         width: 160
         height: 160
       alignment: 0
@@ -840,7 +852,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 320
-        y: 480
+        y: 960
         width: 160
         height: 160
       alignment: 0
@@ -861,7 +873,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 480
-        y: 480
+        y: 960
         width: 160
         height: 160
       alignment: 0
@@ -882,7 +894,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 640
-        y: 480
+        y: 960
         width: 160
         height: 160
       alignment: 0
@@ -903,7 +915,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 800
-        y: 480
+        y: 960
         width: 160
         height: 160
       alignment: 0
@@ -923,8 +935,8 @@ TextureImporter:
       name: cha_atk_30
       rect:
         serializedVersion: 2
-        x: 960
-        y: 480
+        x: 0
+        y: 800
         width: 160
         height: 160
       alignment: 0
@@ -944,8 +956,8 @@ TextureImporter:
       name: cha_atk_31
       rect:
         serializedVersion: 2
-        x: 1120
-        y: 480
+        x: 160
+        y: 800
         width: 160
         height: 160
       alignment: 0
@@ -965,8 +977,8 @@ TextureImporter:
       name: cha_atk_32
       rect:
         serializedVersion: 2
-        x: 1280
-        y: 480
+        x: 320
+        y: 800
         width: 160
         height: 160
       alignment: 0
@@ -986,8 +998,8 @@ TextureImporter:
       name: cha_atk_33
       rect:
         serializedVersion: 2
-        x: 1440
-        y: 480
+        x: 480
+        y: 800
         width: 160
         height: 160
       alignment: 0
@@ -1007,8 +1019,8 @@ TextureImporter:
       name: cha_atk_34
       rect:
         serializedVersion: 2
-        x: 1600
-        y: 480
+        x: 640
+        y: 800
         width: 160
         height: 160
       alignment: 0
@@ -1028,8 +1040,8 @@ TextureImporter:
       name: cha_atk_35
       rect:
         serializedVersion: 2
-        x: 1760
-        y: 480
+        x: 800
+        y: 800
         width: 160
         height: 160
       alignment: 0
@@ -1050,7 +1062,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 320
+        y: 640
         width: 160
         height: 160
       alignment: 0
@@ -1071,7 +1083,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 160
-        y: 320
+        y: 640
         width: 160
         height: 160
       alignment: 0
@@ -1092,7 +1104,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 320
-        y: 320
+        y: 640
         width: 160
         height: 160
       alignment: 0
@@ -1113,7 +1125,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 480
-        y: 320
+        y: 640
         width: 160
         height: 160
       alignment: 0
@@ -1134,7 +1146,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 640
-        y: 320
+        y: 640
         width: 160
         height: 160
       alignment: 0
@@ -1155,7 +1167,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 800
-        y: 320
+        y: 640
         width: 160
         height: 160
       alignment: 0
@@ -1175,8 +1187,8 @@ TextureImporter:
       name: cha_atk_42
       rect:
         serializedVersion: 2
-        x: 960
-        y: 320
+        x: 0
+        y: 480
         width: 160
         height: 160
       alignment: 0
@@ -1196,8 +1208,8 @@ TextureImporter:
       name: cha_atk_43
       rect:
         serializedVersion: 2
-        x: 1120
-        y: 320
+        x: 160
+        y: 480
         width: 160
         height: 160
       alignment: 0
@@ -1217,8 +1229,8 @@ TextureImporter:
       name: cha_atk_44
       rect:
         serializedVersion: 2
-        x: 1280
-        y: 320
+        x: 320
+        y: 480
         width: 160
         height: 160
       alignment: 0
@@ -1238,8 +1250,8 @@ TextureImporter:
       name: cha_atk_45
       rect:
         serializedVersion: 2
-        x: 1440
-        y: 320
+        x: 480
+        y: 480
         width: 160
         height: 160
       alignment: 0
@@ -1259,8 +1271,8 @@ TextureImporter:
       name: cha_atk_46
       rect:
         serializedVersion: 2
-        x: 1600
-        y: 320
+        x: 640
+        y: 480
         width: 160
         height: 160
       alignment: 0
@@ -1280,8 +1292,8 @@ TextureImporter:
       name: cha_atk_47
       rect:
         serializedVersion: 2
-        x: 1760
-        y: 320
+        x: 800
+        y: 480
         width: 160
         height: 160
       alignment: 0
@@ -1302,7 +1314,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 160
+        y: 320
         width: 160
         height: 160
       alignment: 0
@@ -1323,7 +1335,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 160
-        y: 160
+        y: 320
         width: 160
         height: 160
       alignment: 0
@@ -1344,7 +1356,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 320
-        y: 160
+        y: 320
         width: 160
         height: 160
       alignment: 0
@@ -1365,7 +1377,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 480
-        y: 160
+        y: 320
         width: 160
         height: 160
       alignment: 0
@@ -1386,7 +1398,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 640
-        y: 160
+        y: 320
         width: 160
         height: 160
       alignment: 0
@@ -1407,7 +1419,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 800
-        y: 160
+        y: 320
         width: 160
         height: 160
       alignment: 0
@@ -1427,7 +1439,7 @@ TextureImporter:
       name: cha_atk_54
       rect:
         serializedVersion: 2
-        x: 960
+        x: 0
         y: 160
         width: 160
         height: 160
@@ -1448,7 +1460,7 @@ TextureImporter:
       name: cha_atk_55
       rect:
         serializedVersion: 2
-        x: 1120
+        x: 160
         y: 160
         width: 160
         height: 160
@@ -1469,7 +1481,7 @@ TextureImporter:
       name: cha_atk_56
       rect:
         serializedVersion: 2
-        x: 1280
+        x: 320
         y: 160
         width: 160
         height: 160
@@ -1490,7 +1502,7 @@ TextureImporter:
       name: cha_atk_57
       rect:
         serializedVersion: 2
-        x: 1440
+        x: 480
         y: 160
         width: 160
         height: 160
@@ -1511,7 +1523,7 @@ TextureImporter:
       name: cha_atk_58
       rect:
         serializedVersion: 2
-        x: 1600
+        x: 640
         y: 160
         width: 160
         height: 160
@@ -1532,7 +1544,7 @@ TextureImporter:
       name: cha_atk_59
       rect:
         serializedVersion: 2
-        x: 1760
+        x: 800
         y: 160
         width: 160
         height: 160
