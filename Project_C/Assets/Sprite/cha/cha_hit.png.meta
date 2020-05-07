@@ -50,6 +50,30 @@ TextureImporter:
   - first:
       213: 7903257500246833204
     second: cha_hit_15
+  - first:
+      213: 9138730377020787999
+    second: cha_hit_16
+  - first:
+      213: -6750711764751335311
+    second: cha_hit_17
+  - first:
+      213: -8517621953265605786
+    second: cha_hit_18
+  - first:
+      213: 3814108390724866020
+    second: cha_hit_19
+  - first:
+      213: -3157854984817234333
+    second: cha_hit_20
+  - first:
+      213: 5829017949349092215
+    second: cha_hit_21
+  - first:
+      213: 292499101509890711
+    second: cha_hit_22
+  - first:
+      213: -6453099867085793644
+    second: cha_hit_23
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -79,7 +103,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: -1
     aniso: -1
     mipBias: -100
     wrapU: 1
@@ -162,7 +186,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 320
+        y: 480
         width: 160
         height: 160
       alignment: 0
@@ -183,7 +207,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 160
-        y: 320
+        y: 480
         width: 160
         height: 160
       alignment: 0
@@ -204,7 +228,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 320
-        y: 320
+        y: 480
         width: 160
         height: 160
       alignment: 0
@@ -225,7 +249,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 480
-        y: 320
+        y: 480
         width: 160
         height: 160
       alignment: 0
@@ -246,7 +270,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 640
-        y: 320
+        y: 480
         width: 160
         height: 160
       alignment: 0
@@ -267,7 +291,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 800
-        y: 320
+        y: 480
         width: 160
         height: 160
       alignment: 0
@@ -288,7 +312,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 160
+        y: 320
         width: 160
         height: 160
       alignment: 0
@@ -309,7 +333,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 160
-        y: 160
+        y: 320
         width: 160
         height: 160
       alignment: 0
@@ -330,7 +354,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 320
-        y: 160
+        y: 320
         width: 160
         height: 160
       alignment: 0
@@ -351,7 +375,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 480
-        y: 160
+        y: 320
         width: 160
         height: 160
       alignment: 0
@@ -372,7 +396,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 640
-        y: 160
+        y: 320
         width: 160
         height: 160
       alignment: 0
@@ -393,7 +417,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 800
-        y: 160
+        y: 320
         width: 160
         height: 160
       alignment: 0
@@ -414,7 +438,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 160
         width: 160
         height: 160
       alignment: 0
@@ -435,7 +459,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 160
-        y: 0
+        y: 160
         width: 160
         height: 160
       alignment: 0
@@ -456,7 +480,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 320
-        y: 0
+        y: 160
         width: 160
         height: 160
       alignment: 0
@@ -477,7 +501,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 480
-        y: 0
+        y: 160
         width: 160
         height: 160
       alignment: 0
@@ -489,6 +513,174 @@ TextureImporter:
       bones: []
       spriteID: 43877aeb2d20ead60800000000000000
       internalID: 7903257500246833204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cha_hit_16
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 160
+        width: 160
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1d456cdbda43de70800000000000000
+      internalID: 9138730377020787999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cha_hit_17
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 160
+        width: 160
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17042f0ba67a052a0800000000000000
+      internalID: -6750711764751335311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cha_hit_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 160
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 663e88836f35bc980800000000000000
+      internalID: -8517621953265605786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cha_hit_19
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 160
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ef0ef39f5f6ee430800000000000000
+      internalID: 3814108390724866020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cha_hit_20
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 160
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36ea5c15f9b0d24d0800000000000000
+      internalID: -3157854984817234333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cha_hit_21
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 0
+        width: 160
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77b145401f4d4e050800000000000000
+      internalID: 5829017949349092215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cha_hit_22
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 0
+        width: 160
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7923e92126a2f0400800000000000000
+      internalID: 292499101509890711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cha_hit_23
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 0
+        width: 160
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4961b326cdbf176a0800000000000000
+      internalID: -6453099867085793644
       vertices: []
       indices: 
       edges: []
