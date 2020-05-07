@@ -18,8 +18,12 @@ public class CameraHolder : MonoBehaviour
 
         RenderTransform target = Player.CurrentPlayer.RenderTrasform;
 
+        Vector3 target2DPos = Isometric.IsometricToWorldRotation * target.transform.parent.position
+            + target.imageOffset;
+
+
         float z = transform.position.z;
-        Vector3 targetPos = target.transform.position;
+        Vector3 targetPos = target2DPos;
         targetPos.z = z;
 
         transform.position = Vector3.Lerp(transform.position, targetPos, 4f * Time.deltaTime);
