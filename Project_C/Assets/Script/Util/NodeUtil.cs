@@ -62,43 +62,51 @@ public static class NodeUtil
     {
         Quaternion avoidDir = Quaternion.LookRotation(Player.CurrentPlayer.transform.position - owner.transform.position);
         NavMeshHit hit;
-        if(NavMesh.Raycast(owner.transform.position, 
-            owner.transform.position + avoidDir * -Vector3.forward * 3f * Isometric.IsometricTileSize.x, 
+
+        float distance = (Player.CurrentPlayer.transform.position - owner.transform.position).magnitude;
+
+        if (distance > 3f)
+            return;
+
+        Vector3 currentTarget = owner.transform.position + avoidDir * -Vector3.forward * (3f - distance) * Isometric.IsometricTileSize.x;
+
+        if (NavMesh.Raycast(owner.transform.position, 
+            currentTarget, 
             out hit, 0))
         {
-            if(NavMesh.Raycast(owner.transform.position,
-            owner.transform.position + avoidDir * Quaternion.Euler(0f, 60f, 0f) * -Vector3.forward * 3f * Isometric.IsometricTileSize.x,
+            currentTarget = owner.transform.position + avoidDir * Quaternion.Euler(0f, 60f, 0f) * -Vector3.forward * (3f - distance) * Isometric.IsometricTileSize.x;
+            if (NavMesh.Raycast(owner.transform.position,
+            currentTarget,
             out hit, 0))
             {
+                currentTarget = owner.transform.position + avoidDir * Quaternion.Euler(0f, 120f, 0f) * -Vector3.forward * (3f - distance) * Isometric.IsometricTileSize.x;
                 if (NavMesh.Raycast(owner.transform.position,
-                    owner.transform.position + avoidDir * Quaternion.Euler(0f, 60f, 0f) * -Vector3.forward * 3f * Isometric.IsometricTileSize.x,
+                    currentTarget,
                     out hit, 0))
                 {
                     owner.NavAgent.SetDestination(hit.position);
                 }
                 else
                 {
-                    if (NavMesh.SamplePosition(owner.transform.position + avoidDir * Quaternion.Euler(0f, 60f, 0f) * -Vector3.forward * 12f * Isometric.IsometricTileSize.x, out hit, 12f * Isometric.IsometricTileSize.x, 0))
-                    {
-                        owner.NavAgent.SetDestination(hit.position);
-                    }
+                    owner.NavAgent.SetDestination(currentTarget);
                 }
             }
             else
             {
-                if (NavMesh.SamplePosition(owner.transform.position + avoidDir * Quaternion.Euler(0f, 60f, 0f) * -Vector3.forward * 12f * Isometric.IsometricTileSize.x, out hit, 12f * Isometric.IsometricTileSize.x, 0))
-                {
-                    owner.NavAgent.SetDestination(hit.position);
-                }
+                owner.NavAgent.SetDestination(currentTarget);
             }
         }
         else
         {
-            if(NavMesh.SamplePosition(owner.transform.position + avoidDir * -Vector3.forward * 12f * Isometric.IsometricTileSize.x, out hit, 10f * Isometric.IsometricTileSize.x, 0))
-            {
-                owner.NavAgent.SetDestination(hit.position);
-            }
+            owner.NavAgent.SetDestination(currentTarget);
         }    
+    }
+
+    public static void ShootProjectile(Character owner, string projectileName, Vector3 direction, float speed)
+    {
+        IsoProjectile projectile = IsoProjectile.CreateProjectile(projectileName, owner.transform.position + owner.transform.forward * Isometric.IsometricGridSize,
+            direction, speed, 2f);
+        projectile.Damage = owner.Status.CurrentDamage;
     }
 
     public static void LookPlayer(Character owner)
@@ -109,8 +117,10 @@ public static class NodeUtil
 
     public static Character CreateEntity(string name, Vector3 position)
     {
-        return UnityEngine.Object.Instantiate(ResourceManager.GetResource<GameObject>("Tiles/" + name), position,
+        Character character = UnityEngine.Object.Instantiate(ResourceManager.GetResource<GameObject>("Tiles/" + name), position,
             Quaternion.Euler(0f, 135f, 0f)).GetComponent<Character>();
+        RoomManager.Instance.CurrentRoom.RoomAllEntitys.Add(character);
+        return character;
     }
 
     public static void TakeDamageToPlayer(float damage)

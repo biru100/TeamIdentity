@@ -19,7 +19,7 @@ public class IsoProjectile : MonoBehaviour
     {
         GameObject projectile = ResourceManager.GetResource<GameObject>("Projectiles/" + projectileName);
 
-        if (projectile == null || projectile.GetComponent<IsoParticle>() == null)
+        if (projectile == null || projectile.GetComponent<IsoProjectile>() == null)
         {
             return null;
         }
@@ -38,8 +38,12 @@ public class IsoProjectile : MonoBehaviour
     public float LifeTime { get; set; }
     public float Speed { get; set; }
     public float Damage { get; set; }
-    public ProjectileHitObjectType HitObjectType { get; set; }
+    
     public Action<Vector3, GameObject> HitAction { get; set; }
+
+    public ProjectileHitObjectType HitObjectType;
+
+    float elapsedTime = 0f;
 
     // Start is called before the first frame update
     protected virtual void Awake()
@@ -51,6 +55,9 @@ public class IsoProjectile : MonoBehaviour
 
     protected virtual void Update()
     {
+        elapsedTime += Time.deltaTime;
+
+        transform.forward = Direction;
         Vector3 rotatedDir = Isometric.IsometricToWorldRotation * Direction;
         rotatedDir.z = 0f;
         rotatedDir.Normalize();
@@ -59,18 +66,23 @@ public class IsoProjectile : MonoBehaviour
         RenderChild.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
 
         Body.MovePosition(transform.position + Direction * Speed * Isometric.IsometricGridSize * Time.deltaTime);
+
+        if(LifeTime > 0 && elapsedTime > LifeTime)
+        {
+            Destroy(gameObject);
+        }
     }
 
-    protected virtual void OnCollisionEnter(Collision collision)
+    protected virtual void OnTriggerEnter(Collider collider)
     {
-        Monster monster = collision.gameObject.GetComponent<Monster>();
+        Monster monster = collider.gameObject.GetComponent<Monster>();
 
-        if (Player.CurrentPlayer != null && collision.gameObject == Player.CurrentPlayer.gameObject)
+        if (Player.CurrentPlayer != null && collider.gameObject == Player.CurrentPlayer.gameObject)
         {
             if (HitObjectType != ProjectileHitObjectType.E_Monster)
             {
                 Player.CurrentPlayer.AddState(new CharacterHitState(Player.CurrentPlayer, Damage, 0.1f).Init());
-                if(Damage > 0f) HitAction?.Invoke(collision.contacts[0].point, collision.gameObject);
+                if(Damage > 0f) HitAction?.Invoke(transform.position, collider.gameObject);
                 Destroy(gameObject);
                 return;
             }
@@ -80,7 +92,7 @@ public class IsoProjectile : MonoBehaviour
             if (HitObjectType != ProjectileHitObjectType.E_Player)
             {
                 monster.AddState(new CharacterHitState(monster, Damage, 0.1f).Init());
-                if (Damage > 0f) HitAction?.Invoke(collision.contacts[0].point, collision.gameObject);
+                if (Damage > 0f) HitAction?.Invoke(transform.position, collider.gameObject);
                 Destroy(gameObject);
                 return;
             }
@@ -89,7 +101,7 @@ public class IsoProjectile : MonoBehaviour
         {
             if (HitObjectType == ProjectileHitObjectType.E_All)
             {
-                HitAction?.Invoke(collision.contacts[0].point, collision.gameObject);
+                HitAction?.Invoke(transform.position, collider.gameObject);
             }
 
             Destroy(gameObject);

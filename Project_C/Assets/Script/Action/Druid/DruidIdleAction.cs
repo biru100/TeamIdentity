@@ -27,7 +27,7 @@ if(NodeUtil.StateActionMacro(Owner))
 else
 {
 
-if(NodeUtil.PlayerInRange(Owner ,7f))
+if(NodeUtil.PlayerInRange(Owner ,10f))
 {
 NodeUtil.ChangeAction(Owner ,"DruidMoveAction");
 }
@@ -35,11 +35,7 @@ NodeUtil.ChangeAction(Owner ,"DruidMoveAction");
 else
 {
 }
-            if (Owner.Status.CurrentHp <= Owner.Status.Hp * 0.3)
-            {
-                NodeUtil.ChangeAction(Owner, "DruidSkillAction");
-            }
-        }
+}
 }
 
 public override void FinishAction()

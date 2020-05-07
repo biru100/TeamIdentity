@@ -28,6 +28,9 @@ public class Door : MonoBehaviour
 
     public void Update()
     {
+        if (OwnerRoom == null)
+            return;
+
         if(OwnerRoom.RoomAllEntitys.Count == 0)
         {
             Obstacle.enabled = false;

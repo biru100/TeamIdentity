@@ -13,7 +13,7 @@ public static DruidAttackAction GetInstance() { return new DruidAttackAction(); 
 public override void StartAction(Character owner)
 {
 base.StartAction(owner);
-TimelineEvents.Add(new TimeLineEvent(0.5f, TimeLine_4));
+TimelineEvents.Add(new TimeLineEvent(0.1f, TimeLine_4));
 NodeUtil.PlayAnim(Owner ,"attack");
 }
 
@@ -47,13 +47,6 @@ base.FinishAction();
 
 void TimeLine_4()
 {
-
-if(false)
-{
-}
-
-else
-{
-}
+NodeUtil.ShootProjectile(Owner ,"Bullet" ,NodeUtil.VectorMinus(Player.CurrentPlayer.transform.position ,Owner.transform.position).normalized ,12f);
 }
 }

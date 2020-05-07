@@ -115,6 +115,10 @@ public class IsometricTileMap : MonoBehaviour
             GameObject instance = Instantiate(go, isoPos, Quaternion.identity, _tileMapPivotObject.transform);
             if(instance.GetComponent<Character>())
                 instance.GetComponent<Character>().enabled = activateLogic;
+
+            if (instance.GetComponent<Room>())
+                instance.GetComponent<Room>().enabled = activateLogic;
+
             _tileMap.Add(index, instance);
         }
     }
