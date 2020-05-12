@@ -100,6 +100,8 @@ public class InGameInterface : UIBase<InGameInterface>
     {
         base.Awake();
         HandCards = new List<CardInterface>();
+
+        StartCoroutine(UpdateCardInterface());
     }
 
     private void Update()
@@ -110,23 +112,26 @@ public class InGameInterface : UIBase<InGameInterface>
         _deckImg.SetActive(Deck.Instance.DeckCount() != 0);
     }
 
-    public void DrawCard()
+    public void DrawCard(int DrawCount)
     {
-        if (Deck.Instance.DispenseOneCard(out Card dispencedCard))
+        for (int i = 0; i < DrawCount; ++i)
         {
-            CardInterface ci = CardInterface.CreateCard();
-            ci.CardData = dispencedCard;
+            if (Deck.Instance.DispenseOneCard(out Card dispencedCard))
+            {
+                CardInterface ci = CardInterface.CreateCard();
+                ci.CardData = dispencedCard;
             
-            if(HandCards.Count == 10)
-            {
-                //draw burnCard ani
-                Destroy(ci.gameObject);
-            }
-            else
-            {
-                HandCards.Add(ci);
-                ci.HandIndex = HandCards.Count - 1;
-                //draw card ani
+                if(HandCards.Count == 10)
+                {
+                    //draw burnCard ani
+                    Destroy(ci.gameObject);
+                }
+                else
+                {
+                    HandCards.Add(ci);
+                    ci.HandIndex = HandCards.Count - 1;
+                    //draw card ani
+                }
             }
         }
     }
@@ -136,6 +141,19 @@ public class InGameInterface : UIBase<InGameInterface>
         if (Deck.Instance.DispenseOneCard(out Card dispencedCard))
         {
 
+        }
+    }
+
+    IEnumerator UpdateCardInterface()
+    {
+        while(true)
+        {
+            yield return new WaitForSeconds(0.5f);
+            for (int i = 0; i < HandCards.Count; ++i)
+            {
+                HandCards[i].UpdateLore();
+                HandCards[i].HandIndex = i;
+            }
         }
     }
 

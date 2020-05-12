@@ -11,7 +11,9 @@ public class CardTable {
    public string _ImagePath;
    public int _Cost;
    public string _FSM;
+   public int _ParameterCount;
    public float[] _Parameter = new float[2];
+   public bool[] _IsVariable = new bool[2];
    public static CardTable Load(string[] parts) {
        int i = 0;
        CardTable p = new CardTable();
@@ -23,8 +25,11 @@ public class CardTable {
        p._ImagePath = parts[i++];
        p._Cost = int.Parse(parts[i++]);
        p._FSM = parts[i++];
+       p._ParameterCount = int.Parse(parts[i++]);
        p._Parameter[0] = float.Parse(parts[i++]);
        p._Parameter[1] = float.Parse(parts[i++]);
+       p._IsVariable[0] = bool.Parse(parts[i++]);
+       p._IsVariable[1] = bool.Parse(parts[i++]);
 
     return p;
     }

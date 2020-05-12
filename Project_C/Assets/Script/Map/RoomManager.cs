@@ -189,16 +189,26 @@ public class RoomManager : BehaviorSingleton<RoomManager>
         }
 
         AllRoom = madeRooms;
-
-        CurrentRoom = AllRoom[0].RoomInstance;
-        CurrentRoom.SetActiveMap(true);
     }
 
     public void CreatePlayer()
     {
         Player player = Instantiate(ResourceManager.GetResource<GameObject>("Tiles/Player")).GetComponent<Player>();
+        ChangeRoom(AllRoom[0].RoomInstance);
         player.transform.position = CurrentRoom.transform.position;
     }
+    public void ChangeRoom(Room room)
+    {
+        CurrentRoom?.SetActiveMap(false);
+        CurrentRoom = room;
+        CurrentRoom.SetActiveMap(true);
+
+        PlayerStatus.CurrentStatus.CurrentManaCost = room.SupportCostCount;
+        InGameInterface.Instance.DrawCard(room.SupportDrawCount);
+        room.SupportCostCount = 0;
+        room.SupportDrawCount = 0;
+    }
+
 
     public void ChangeRoom(MapWay way)
     {
@@ -206,9 +216,7 @@ public class RoomManager : BehaviorSingleton<RoomManager>
 
         if (rc != null)
         {
-            CurrentRoom.SetActiveMap(false);
-            CurrentRoom = rc.RoomInstance;
-            CurrentRoom.SetActiveMap(true);
+            ChangeRoom(rc.RoomInstance);
         }
     }
 }

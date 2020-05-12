@@ -43,8 +43,6 @@ public class PlayerDrawCardAction : PlayerCardAction
 
     public void AddBuff()
     {
-        InGameInterface.Instance.DrawCard();
-        InGameInterface.Instance.DrawCard();
-        InGameInterface.Instance.DrawCard();
+        InGameInterface.Instance.DrawCard(3);
     }
 }

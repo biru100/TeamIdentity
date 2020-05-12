@@ -1,4 +1,8 @@
-﻿Shader "Sprites/DepthSprite"
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "Sprites/DepthSprite"
 {
 	Properties
 	{
@@ -22,8 +26,8 @@
 				"CanUseSpriteAtlas" = "True"
 			}
 
-			Cull Off
-			Lighting Off
+			Cull Back
+			Lighting On
 			ZWrite On
 			ZTest On
 			Blend One OneMinusSrcAlpha
@@ -61,6 +65,7 @@
 				float _ZTileLength;
 				float _SpriteYSize;
 
+
 				v2f vert(appdata_t IN)
 				{
 					v2f OUT;
@@ -75,6 +80,7 @@
 					#ifdef PIXELSNAP_ON
 					OUT.vertex = UnityPixelSnap(OUT.vertex);
 					#endif
+
 
 					return OUT;
 				}
@@ -99,6 +105,9 @@
 					clip(ceil(c.a) * 2 - 1);
 					return c;
 				}
+
+
+
 			ENDCG
 			}
 		}

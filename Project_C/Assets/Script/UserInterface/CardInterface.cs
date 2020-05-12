@@ -19,6 +19,11 @@ public class CardInterface : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     [SerializeField]    protected Text _cardLore;
     [SerializeField]    protected Vector2 _originCardSize;
 
+    public Image BackSide { get => _backSide; }
+    public Image FrontSide { get => _frontSide; }
+    public Text CardLore { get => _cardLore; }
+    public Vector2 OriginCardSize { get => _originCardSize; }
+
     public int HandIndex { get; set; }
     public bool IsHover { get; set; }
     public bool IsDrag { get; set; }
@@ -42,7 +47,7 @@ public class CardInterface : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
             {
                 _frontSide.sprite = value.FrontSprite;
                 _backSide.sprite = value.BackSprite;
-                _cardLore.text = value.GetLore();
+                _cardLore.text = value.GetLore(PlayerStatus.CurrentStatus);
                 _originFontSize = _cardLore.fontSize;
             }
             _cardData = value;
@@ -123,8 +128,9 @@ public class CardInterface : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
         if(!RectTransformUtility.RectangleContainsScreenPoint(InGameInterface.Instance.HandField, Input.mousePosition))
         {
-            if (CardData.TargetType == CardTargetType.E_NonTarget)
+            if (CardData.Cost <= PlayerStatus.CurrentStatus.CurrentManaCost && CardData.TargetType == CardTargetType.E_NonTarget)
             {
+                PlayerStatus.CurrentStatus.CurrentManaCost -= CardData.Cost;
                 Player.CurrentPlayer.UseCardStack.Add(new UseCardData(CardData, _target));
                 StartCoroutine(DestroyCard());
                 IsUsing = true;
@@ -136,8 +142,9 @@ public class CardInterface : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
             {
                 InGameInterface.Instance.ArrowBody.SetActive(false);
 
-                if (_target.Target != null)
+                if (CardData.Cost <= PlayerStatus.CurrentStatus.CurrentManaCost && _target.Target != null)
                 {
+                    PlayerStatus.CurrentStatus.CurrentManaCost -= CardData.Cost;
                     Player.CurrentPlayer.UseCardStack.Add(new UseCardData(CardData, _target));
                     StartCoroutine(DestroyCard());
                     IsUsing = true;
@@ -153,8 +160,9 @@ public class CardInterface : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
                 }
             }
             //point
-            else
+            else if(CardData.Cost <= PlayerStatus.CurrentStatus.CurrentManaCost)
             {
+                PlayerStatus.CurrentStatus.CurrentManaCost -= CardData.Cost;
                 InGameInterface.Instance.ArrowBody.SetActive(false);
                 Player.CurrentPlayer.UseCardStack.Add(new UseCardData(CardData, _target));
                 StartCoroutine(DestroyCard());
@@ -263,7 +271,7 @@ public class CardInterface : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     public void UpdateLore()
     {
-        _cardLore.text = CardData.GetLore();
+        _cardLore.text = CardData.GetLore(PlayerStatus.CurrentStatus);
     }
 
     IEnumerator DestroyCardEffect()
