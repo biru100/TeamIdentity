@@ -20,12 +20,23 @@ public class CardInterface : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     [SerializeField]    protected Vector2 _originCardSize;
     int _originFontSize;
 
+    public Animator Anim { get; set; }
     public Image BackSide { get => _backSide; }
     public Image FrontSide { get => _frontSide; }
     public Text CardLore { get => _cardLore; }
     public Vector2 OriginCardSize { get => _originCardSize; }
     public int OriginFontSize { get => _originFontSize; }
     public int HandIndex { get; set; }
+
+    [SerializeField] protected float _dissolveValue = 1f;
+    public float DissolveValue { get => _dissolveValue;
+        set
+        {
+            _dissolveValue = value;
+            _frontSide.material.SetFloat("_DissolveValue", Mathf.Clamp01(_dissolveValue));
+        }
+    }
+
 
 
     public Card CardData 
@@ -61,6 +72,7 @@ public class CardInterface : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     private void Awake()
     {
+        Anim = GetComponent<Animator>();
         CardCanvas = GetComponent<Canvas>();
         Material instanceMat = Instantiate(_frontSide.material);
         _frontSide.material = instanceMat;
@@ -70,7 +82,6 @@ public class CardInterface : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     void Start()
     {
-        CurrentAction = HandCardAction.GetInstance();
     }
 
     private void Update()

@@ -29,7 +29,6 @@ public class UIBase<SingletonClass> : MonoBehaviour where SingletonClass : UIBas
         if (_instance == null || _instance == this)
         {
             _instance = (SingletonClass)this;
-            DontDestroyOnLoad(gameObject);
         }
         else if (_instance != this)
         {

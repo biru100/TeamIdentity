@@ -40,7 +40,7 @@ public class Card
         TargetType = data._TargetType;
 
         FrontSprite = ResourceManager.GetResource<Sprite>(data._ImagePath);
-        BackSprite = ResourceManager.GetResource<Sprite>("Sprites/card_sample_back");
+        BackSprite = ResourceManager.GetResource<Sprite>("Sprites/Card/card_sample_back");
     }
 
     public Card(CardTable data)

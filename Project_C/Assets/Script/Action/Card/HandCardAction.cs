@@ -186,6 +186,7 @@ public class HandCardAction : CardInterfaceAction
     public override void Start(CardInterface owner)
     {
         base.Start(owner);
+        owner.Anim.enabled = false;
         IsVisible = true;
 
         _destCardSize = Owner.OriginCardSize;
@@ -201,7 +202,7 @@ public class HandCardAction : CardInterfaceAction
         if(IsUseEffect)
         {
             _elapsedTime += Time.unscaledDeltaTime;
-            Owner.FrontSide.material.SetFloat("_DissolveValue", Mathf.Max(1f - _elapsedTime * 2f, 0f));
+            Owner.DissolveValue = 1f - _elapsedTime * 2f;
         }
 
         if (!IsUsing)

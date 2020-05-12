@@ -12,14 +12,15 @@ public class UsedCardAction : CardInterfaceAction
     public override void Start(CardInterface owner)
     {
         base.Start(owner);
-        _startFloat = Owner.FrontSide.material.GetFloat("_DissolveValue");
+        owner.Anim.enabled = false;
+        _startFloat = Owner.DissolveValue;
     }
 
     public override void Update()
     {
         base.Update();
         _elapsedTime += Time.unscaledDeltaTime;
-        Owner.FrontSide.material.SetFloat("_DissolveValue", Mathf.Max(_startFloat - _elapsedTime * 2f, 0f));
+        Owner.DissolveValue = _startFloat - _elapsedTime * 2f;
         if(_startFloat - _elapsedTime * 2f <= 0f)
             GameObject.Destroy(Owner.gameObject);
     }

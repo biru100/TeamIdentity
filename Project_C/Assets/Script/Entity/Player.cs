@@ -38,8 +38,6 @@ public class Player : Character
     void Start()
     {
         CurrentAction = PlayerIdleAction.GetInstance();
-
-        //InGameInterface.Instance.DrawCard(6);
     }
 
     protected override void Update()

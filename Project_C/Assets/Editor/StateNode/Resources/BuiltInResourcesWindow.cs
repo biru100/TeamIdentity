@@ -216,7 +216,7 @@ public class BuiltInResourcesWindow : EditorWindow
 	void CopyText( string pText )
 	{
 		TextEditor editor = new TextEditor();
-		editor.content = new GUIContent(pText);
+		//editor.content = new GUIContent(pText);
 		editor.SelectAll();
 		editor.Copy();
 	}

@@ -130,7 +130,11 @@ public static class AnimUtil
 {
     public static int GetRenderAngle(Quaternion rotation)
     {
-        return (int)(Mathf.Round(rotation.eulerAngles.y / 45f) * 45f);
+        int angle = Mathf.RoundToInt(rotation.eulerAngles.y / 45f) * 45;
+        if (angle == 360)
+            angle = 0;
+
+        return angle;
     }
 
     public static void PlayAnim(Character owner, string animationName)

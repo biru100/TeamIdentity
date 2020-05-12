@@ -61,12 +61,22 @@ public class CharacterHitState : CharacterState
             || Status.CurrentStates.Contains(CharacterStateType.E_Invincibility))
             return this;
 
-        Status.CurrentHp -= Damage;
-        if(Status.CurrentHp <= 0f)
+        if (Status.CurrentArmor <= Damage)
         {
-            Status.CurrentHp = 0f;
-            Owner.AddState(new CharacterState(CharacterStateType.E_Dead, Owner).Init(), true);
+            Damage -= Status.CurrentArmor;
+            Status.CurrentArmor = 0f;
+            Status.CurrentHp -= Damage;
+            if (Status.CurrentHp <= 0f)
+            {
+                Status.CurrentHp = 0f;
+                Owner.AddState(new CharacterState(CharacterStateType.E_Dead, Owner).Init(), true);
+            }
         }
+        else
+        {
+            Status.CurrentArmor -= Damage;
+        }
+
         return this;
     }
 }
