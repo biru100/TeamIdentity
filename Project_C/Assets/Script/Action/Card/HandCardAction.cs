@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class CardBaseAction : CardInterfaceAction
+public class HandCardAction : CardInterfaceAction
 {
+    public static HandCardAction GetInstance() { return new HandCardAction(); }
+
     public bool IsHover { get; set; }
     public bool IsDrag { get; set; }
     public bool IsVisible { get; set; }
     public bool IsUsing { get; set; }
     public bool IsUseEffect { get; set; }
 
-    int _originFontSize;
     Vector2 _destCardSize;
     Vector2 _targetPosition;
 
@@ -49,8 +50,7 @@ public class CardBaseAction : CardInterfaceAction
             {
                 if (!IsVisible)
                     ((RectTransform)Owner.transform).anchoredPosition = _targetPosition;
-                StopAllCoroutines();
-                Owner.FrontSide.material.SetFloat("_DissolveValue", 1f);
+                SetUseEffect(false);
                 IsVisible = true;
 
                 InGameInterface.Instance.ArrowBody.SetActive(false);
@@ -61,10 +61,10 @@ public class CardBaseAction : CardInterfaceAction
 
                 if (IsVisible)
                 {
-                    StartCoroutine(DestroyCardEffect());
+                    SetUseEffect(true);
                 }
 
-                Vector3 basePos = InGameInterface.Instance.GetCardLocationInHand(HandIndex);
+                Vector3 basePos = InGameInterface.Instance.GetCardLocationInHand(Owner.HandIndex);
                 Vector3 target = new Vector3(_targetPosition.x, _targetPosition.y, 0f);
                 InGameInterface.Instance.ArrowBody.transform.localPosition = basePos;
 
@@ -116,7 +116,8 @@ public class CardBaseAction : CardInterfaceAction
                 Player.CurrentPlayer.UseCardStack.Add(new UseCardData(Owner.CardData, _target));
                 IsUsing = true;
                 InGameInterface.Instance.UseCard(Owner);
-                StartCoroutine(DestroyCard());
+                Owner.CurrentAction = UsedCardAction.GetInstance();
+                return;
             }
             //target
             else if (Owner.CardData.TargetType == CardTargetType.E_Target)
@@ -129,13 +130,13 @@ public class CardBaseAction : CardInterfaceAction
                     Player.CurrentPlayer.UseCardStack.Add(new UseCardData(Owner.CardData, _target));
                     IsUsing = true;
                     InGameInterface.Instance.UseCard(Owner);
-                    StartCoroutine(DestroyCard());
+                    Owner.CurrentAction = UsedCardAction.GetInstance();
+                    return;
                 }
                 else
                 {
                     ((RectTransform)Owner.transform).anchoredPosition = _targetPosition;
-                    StopAllCoroutines();
-                    Owner.FrontSide.material.SetFloat("_DissolveValue", 1f);
+                    SetUseEffect(false);
                     IsVisible = true;
                 }
             }
@@ -147,7 +148,8 @@ public class CardBaseAction : CardInterfaceAction
                 Player.CurrentPlayer.UseCardStack.Add(new UseCardData(Owner.CardData, _target));
                 IsUsing = true;
                 InGameInterface.Instance.UseCard(Owner);
-                StartCoroutine(DestroyCard());
+                Owner.CurrentAction = UsedCardAction.GetInstance();
+                return;
             }
         }
     }
@@ -168,11 +170,13 @@ public class CardBaseAction : CardInterfaceAction
         {
             if(isEnable == true)
             {
+                IsVisible = false;
                 _elapsedTime = 0f;
                 IsUseEffect = true;
             }
             else
             {
+                IsVisible = true;
                 IsUseEffect = false;
                 Owner.FrontSide.material.SetFloat("_DissolveValue", 1f);
             }
@@ -182,11 +186,23 @@ public class CardBaseAction : CardInterfaceAction
     public override void Start(CardInterface owner)
     {
         base.Start(owner);
+        IsVisible = true;
+
+        _destCardSize = Owner.OriginCardSize;
+        _destRotation = Quaternion.identity;
+
+        _target = new TargetData();
     }
 
     public override void Update()
     {
         base.Update();
+
+        if(IsUseEffect)
+        {
+            _elapsedTime += Time.unscaledDeltaTime;
+            Owner.FrontSide.material.SetFloat("_DissolveValue", Mathf.Max(1f - _elapsedTime * 2f, 0f));
+        }
 
         if (!IsUsing)
         {
@@ -217,7 +233,7 @@ public class CardBaseAction : CardInterfaceAction
 
             ((RectTransform)Owner.transform).sizeDelta = Vector3.Lerp(((RectTransform)Owner.transform).sizeDelta, _destCardSize,
                 3f * Time.unscaledDeltaTime);
-            Owner.CardLore.fontSize = (int)((((RectTransform)Owner.transform).sizeDelta.x / Owner.OriginCardSize.x) * _originFontSize);
+            Owner.CardLore.fontSize = (int)((((RectTransform)Owner.transform).sizeDelta.x / Owner.OriginCardSize.x) * Owner.OriginFontSize);
 
             if (IsVisible)
             {
