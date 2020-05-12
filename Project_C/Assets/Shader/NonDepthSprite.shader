@@ -19,8 +19,8 @@
 				"CanUseSpriteAtlas" = "True"
 			}
 
-			Cull Off
-			Lighting Off
+			Cull Back
+			Lighting On
 			ZWrite On
 			ZTest On
 			Blend One OneMinusSrcAlpha
@@ -54,6 +54,7 @@
 				float _AlphaSplitEnabled;
 				float4 _SpriteRect;
 
+
 				v2f vert(appdata_t IN)
 				{
 					v2f OUT;
@@ -85,7 +86,7 @@
 					fixed4 c = SampleSpriteTexture(IN.texcoord) * IN.color;
 					c.rgb *= c.a;
 					clip(ceil(c.a) * 2 - 1);
-					return c;
+					return c ;
 				}
 			ENDCG
 			}

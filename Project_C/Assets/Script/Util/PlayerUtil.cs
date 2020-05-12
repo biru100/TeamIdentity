@@ -79,13 +79,12 @@ public static class PlayerUtil
 {
     public static float CalculatingCardPowerValue(float basePower)
     {
-        return (basePower + PlayerStatus.CurrentStatus.CardPowerSupport) * PlayerStatus.CurrentStatus.CardPowerScale;
+        return (basePower + PlayerStatus.CurrentStatus.CardPowerSupport);
     }
 
     public static void ConsumeCardPowerUpStatus()
     {
         PlayerStatus.CurrentStatus.CardPowerSupport = PlayerStatus.CurrentStatus.BaseCardPowerSupport;
-        PlayerStatus.CurrentStatus.CardPowerScale = PlayerStatus.CurrentStatus.BaseCardPowerScale;
     }
 
     public static bool GetAttackInput()

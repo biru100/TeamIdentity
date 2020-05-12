@@ -12,6 +12,9 @@ public class Room : MonoBehaviour
     public NavMeshData NavData { get; protected set; }
     public TileMapData MapData { get; protected set; }
 
+    public int SupportDrawCount { get; set; }
+    public int SupportCostCount { get; set; }
+
     public static Room CreateRoom(string roomName, Vector2Int index)
     {
 
@@ -25,6 +28,8 @@ public class Room : MonoBehaviour
         room.RoomWays = new List<MapWay>();
 
         room.MapData = data;
+        room.SupportDrawCount = data.mapDraw;
+        room.SupportCostCount = data.mapCost;
 
         foreach (var pair in data.mapData.data)
         {

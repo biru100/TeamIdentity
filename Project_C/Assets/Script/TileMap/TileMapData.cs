@@ -24,4 +24,6 @@ public class TileMapData
     [SerializeField] public Vector3Int mapMax = Vector3Int.zero;
     [SerializeField] public TileData mapData;
     [SerializeField] public int mapWay = 0;
+    [SerializeField] public int mapDraw = 0;
+    [SerializeField] public int mapCost = 0;
 }

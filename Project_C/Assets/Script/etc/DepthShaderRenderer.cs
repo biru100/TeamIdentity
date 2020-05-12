@@ -29,6 +29,9 @@ public class DepthShaderRenderer : MonoBehaviour
         if(_renderer == null)
             _renderer = GetComponent<SpriteRenderer>();
 
+        _renderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
+        _renderer.receiveShadows = true;
+
         _renderer.GetPropertyBlock(_propBlock);
         Vector4 spriteRectData = new Vector4(_renderer.sprite.rect.x, _renderer.sprite.rect.y, _renderer.sprite.rect.width, _renderer.sprite.rect.height);
         //Debug.Log(spriteRectData);
