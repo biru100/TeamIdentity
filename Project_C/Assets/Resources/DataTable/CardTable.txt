@@ -8,13 +8,12 @@
 308	Slow	슬로우	E_Target	몬스터 하나의 이동속도를 _ 초 동안 _ 감소 시킵니다.	Sprites/Card/card_slow	1	PlayerCallSlowAction	2	5	0.3	False	False	
 309	DrawCard	드로우	E_NonTarget	카드를 _ 장 드로우 합니다.	Sprites/Card/card_draw	3	PlayerDrawCardAction	1	3	0	False	False	
 310	LandAttack	지면 강타	E_NonTarget	범위 내 적에게 _ 의 데미지를 줍니다.	Sprites/Card/card_earthquake_atk	5	PlayerGroundPowerAttackAction	1	200	0	True	False	
-311	BackStep	백스탭	E_NonTarget	플레이어의 모든 행동을 취소하고 뒤로 회피합니다.	Sprites/Card/card_earthquake_atk	0		1	3	0	False	False	
-312	Heal	회복	E_NonTarget	플레이어의 체력을 _ 회복합니다.	Sprites/Card/card_earthquake_atk	0		1	50	0	False	False	
-313	Thunter	낙뢰	E_Point	선택한 범위 내의 적에게 _의 데미지를 주고, _초 동안 스턴시킵니다.	Sprites/Card/card_earthquake_atk	0		2	100	3	False	False	
-314	EverybodySlime	슬라임 너무좋아	E_NonTarget	범위 내의 적을 모두 슬라임으로 변이 시킵니다.	Sprites/Card/card_earthquake_atk	0		0	0	0	False	False	
-315	CardUseAttack	발악	E_Target	선택한 적에게 _ 의 데미지를 이번 맵에서 카드를 사용한 개수만큼 줍니다.	Sprites/Card/card_earthquake_atk	0		1	50	0	False	False	
-316	Counter	카운터	E_NonTarget	_ 초간 무적을 얻습니다. 무적상태가 끝나면 범위 내의 적에게 공격받은 데미지 만큼 데미지를 줍니다.	Sprites/Card/card_earthquake_atk	0		1	3	0	False	False	
-317	ShuildAttack	방패 타격	E_NonTarget	범위 내의 적에게 현재 방어도 만큼의 데미지를 줍니다.	Sprites/Card/card_earthquake_atk	0		0	0	0	False	False	
-318	Assassin	암살	E_Target	선택한 적에게 이동하여 _의 데미지를 줍니다.	Sprites/Card/card_earthquake_atk	0		1	100	0	False	False	
-319	ShuildUp	수비	E_NonTarget	_의 방어도를 얻습니다.	Sprites/Card/card_earthquake_atk	0		1	30	0	False	False	
-320	Storm	폭풍	E_NonTarget	무작위 범위에 _의 데미지를 주는 번개를 _회 소환합니다.	Sprites/Card/card_earthquake_atk	0		1	150	0	False	False	
+311	Heal	회복	E_NonTarget	플레이어의 체력을 _ 회복합니다.	Sprites/Card/card_heal	2	PlayerHealAction	1	50	0	False	False	
+312	Thunter	낙뢰	E_Point	선택한 범위 내의 적에게 _의 데미지를 주고, _초 동안 스턴시킵니다.	Sprites/Card/card_thunter	3	PlayerThunterAction	2	100	3	True	False	
+313	EverybodySlime	슬라임 너무좋아	E_NonTarget	범위 내의 적을 모두 슬라임으로 변이 시킵니다.	Sprites/Card/card_everybody_slime	4	PlayerEverybodySlimeAction	0	0	0	False	False	
+314	CardUseAttack	발악	E_Target	선택한 적에게 _ 의 데미지를 이번 맵에서 카드를 사용한 개수만큼 줍니다.	Sprites/Card/card_card_card_use_attack	2		1	50	0	True	False	
+315	Counter	카운터	E_NonTarget	_ 초간 무적을 얻습니다. 무적상태가 끝나면 범위 내의 적에게 공격받은 데미지 만큼 데미지를 줍니다.	Sprites/Card/card_card_counter	4		1	3	0	False	False	
+316	ShuildAttack	방패 타격	E_NonTarget	범위 내의 적에게 현재 방어도 만큼의 데미지를 줍니다.	Sprites/Card/card_shuild_attack	2	PlayerShuildAttackAction	0	0	0	False	False	
+317	Assassin	암살	E_Target	선택한 적에게 이동하여 _의 데미지를 줍니다.	Sprites/Card/card_assassin	3	PlayerAssassinAction	1	100	0	True	False	
+318	ShuildUp	수비	E_NonTarget	_의 방어도를 얻습니다.	Sprites/Card/card_shuild_up	2	PlayerShuildUpAction	1	30	0	False	False	
+319	Storm	폭풍	E_NonTarget	무작위 범위에 _의 데미지를 주는 번개를 _회 소환합니다.	Sprites/Card/card_storm	0		2	150	3	True	False	
