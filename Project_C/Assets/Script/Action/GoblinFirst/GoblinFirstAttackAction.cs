@@ -5,18 +5,16 @@ using UnityEngine;
 
 
 
-public class GoblinStealerAttackAction : CharacterAction
+public class GoblinFirstAttackAction : CharacterAction
 {
 
-    public static GoblinStealerAttackAction GetInstance() { return new GoblinStealerAttackAction(); }
+    public static GoblinFirstAttackAction GetInstance() { return new GoblinFirstAttackAction(); }
 
     public override void StartAction(Character owner)
     {
         base.StartAction(owner);
-        TimelineEvents.Add(new TimeLineEvent(0.5f, TimeLine_4));
+        TimelineEvents.Add(new TimeLineEvent(0.1f, TimeLine_4));
         NodeUtil.PlayAnim(Owner, "attack");
-        NodeUtil.MoveToPlayer(Owner);
-        Owner.AddState(new CharacterIncreaseSpeedState(Owner, 200f, 0.1f));
     }
 
     public override void UpdateAction()
@@ -32,7 +30,7 @@ public class GoblinStealerAttackAction : CharacterAction
 
             if (NodeUtil.IsLastFrame(Owner))
             {
-                NodeUtil.ChangeAction(Owner, "GoblinStealerIdleAction");
+                NodeUtil.ChangeAction(Owner, "GoblinFirstIdleAction");
             }
 
             else
@@ -49,24 +47,24 @@ public class GoblinStealerAttackAction : CharacterAction
     void TimeLine_4()
     {
 
-        if (NodeUtil.PlayerInSight(Owner, 1f, 50f))
+        if (NodeUtil.PlayerInSight(Owner, 2f, 65f))
         {
-            NodeUtil.TakeDamageToPlayer(10f);
+            NodeUtil.TakeDamageToPlayer(20f);
 
-            if (NodeUtil.IsActivateAbility(Owner, 215))
+            if (NodeUtil.IsActivateAbility(Owner, 208))
             {
-                NodeUtil.BurnCard();
+                foreach (var e in NodeUtil.GetCharactersInRange(Owner, false, true, 30f))
+                {
+                    e.AddState(new CharacterState(CharacterStateType.E_Invincibility, e, NodeUtil.GetMosterParameter(Owner, 0)).Init());
+                }
+
             }
 
-            if (NodeUtil.IsActivateAbility(Owner, 207))
-            {
-                NodeUtil.GiveSilence(Player.CurrentPlayer, 2f);
-            }
             else
             {
-
             }
         }
+
         else
         {
         }
