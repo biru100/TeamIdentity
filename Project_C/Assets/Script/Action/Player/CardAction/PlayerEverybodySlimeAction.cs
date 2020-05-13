@@ -27,8 +27,6 @@ public class PlayerEverybodySlimeAction : PlayerCardAction
             return;
         }
 
-        Owner.NavAgent.Move(Owner.transform.forward * Isometric.IsometricTileSize.x * 0.5f * Time.deltaTime);
-
         if (AnimUtil.IsLastFrame(Owner))
         {
             Owner.CurrentAction = PlayerIdleAction.GetInstance();
@@ -46,25 +44,34 @@ public class PlayerEverybodySlimeAction : PlayerCardAction
     {
 
         Character[] enemys = Object.FindObjectsOfType<Character>();
-        
+
         if (enemys == null)
             return;
 
-        foreach(var e in enemys)
+        foreach (var e in enemys)
         {
             if (e == Owner) continue;
-            float angle = Mathf.Acos(Vector3.Dot((e.transform.position - Owner.transform.position).normalized, Owner.transform.forward))
-                * Mathf.Rad2Deg;
-            if ((Owner.transform.position - e.transform.position).magnitude <= Isometric.IsometricTileSize.x * 4f)
+
+            if ((Owner.transform.position - e.transform.position).magnitude <= Isometric.IsometricTileSize.x * 3f)
             {
-                Vector3 pos = e.transform.position;
-                Target.Target.CurrentAction?.FinishAction();
-                GameObject.Destroy(e.gameObject);
-                NodeUtil.CreateEntity("Slime", pos);
+                if (e != null)
+                {
+                    Vector3 pos = e.transform.position;
+                    e.CurrentAction?.FinishAction();
+                    GameObject.Destroy(e.gameObject);
+                    NodeUtil.CreateEntity("Slime", pos);
+                }
+                IsoParticle.CreateParticle("Sliced_Power1", e.transform.position
+                    + new Vector3(0f, Isometric.IsometricTileSize.y * 0.5f, 0f), 0f);
             }
         }
 
         PlayerUtil.ConsumeCardPowerUpStatus();
-        }
+    }
+
+    public void Trans()
+    {
+
+    }
 }
 

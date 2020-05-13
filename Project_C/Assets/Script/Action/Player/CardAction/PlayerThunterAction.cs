@@ -14,7 +14,7 @@ public class PlayerThunterAction : PlayerCardAction
     {
         base.StartAction(owner);
         AnimUtil.PlayAnim(owner, "buff");
-        TimelineEvents.Add(new TimeLineEvent(0.5f, SendDamage));
+        TimelineEvents.Add(new TimeLineEvent(0.22f, SendDamage));
         Owner.AddState(new CharacterState(CharacterStateType.E_SuperArmor, Owner).Init());
     }
 
