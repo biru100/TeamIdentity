@@ -787,7 +787,8 @@ MonoBehaviour:
       parameterType: System.Void
       parameterName: Logic
       cachedValue: null
-      connections: []
+      connections:
+      - 360d5e6b-a204-4736-893b-24fe3d90781f
     - GUID: fcc1f344-420e-4f6f-90be-96d6aec282dc
       rect:
         serializedVersion: 2
@@ -1126,7 +1127,8 @@ MonoBehaviour:
       parameterType: System.Void
       parameterName: Logic
       cachedValue: null
-      connections: []
+      connections:
+      - 9404a160-63fa-4dc9-898e-d1dbe1e100d1
     - GUID: bff92080-f8e9-4e7f-a42d-81f7be503e73
       rect:
         serializedVersion: 2

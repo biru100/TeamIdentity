@@ -16,7 +16,7 @@ public class GoblinStealerAttackAction : CharacterAction
         TimelineEvents.Add(new TimeLineEvent(0.5f, TimeLine_4));
         NodeUtil.PlayAnim(Owner, "attack");
         NodeUtil.MoveToPlayer(Owner);
-        Owner.AddState(new CharacterIncreaseSpeedState(Owner, 200f, 0.1f));
+        Owner.AddState(new CharacterIncreaseSpeedState(Owner, 200f, 0.15f));
     }
 
     public override void UpdateAction()
@@ -61,6 +61,8 @@ public class GoblinStealerAttackAction : CharacterAction
             if (NodeUtil.IsActivateAbility(Owner, 207))
             {
                 NodeUtil.GiveSilence(Player.CurrentPlayer, 2f);
+                NodeUtil.PlayAnim(Owner, "run");
+                NodeUtil.AvoidFormPlayer(Owner);
             }
             else
             {
