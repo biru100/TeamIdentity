@@ -117,8 +117,10 @@ public class InGameInterface : UIBase<InGameInterface>
 
     public void DrawCard(int DrawCount)
     {
+        bool alreadyDrawing = DrawCardQueueCount > 0;
         DrawCardQueueCount += DrawCount;
-        CreateDrawCard();
+        if(DrawCardQueueCount > 0 && !alreadyDrawing)
+            CreateDrawCard();
     }
 
     void CreateDrawCard()

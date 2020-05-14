@@ -24,6 +24,8 @@ public class Monster : Character
         }
 
         Status.InitStatus(Data);
+        HUDOffset = Data._HUDOffset;
+        EffectOffset = Data._EffectOffset;
     }
 
     protected void Start()

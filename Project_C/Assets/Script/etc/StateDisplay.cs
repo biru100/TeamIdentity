@@ -15,20 +15,17 @@ public class StateDisplay : MonoBehaviour
         {
             if(_data != value)
             {
+                if (_image == null)
+                    _image = GetComponent<Image>();
                 _image.sprite = ResourceManager.GetResource<Sprite>(value._IconStatePath);
             }
             _data = value;
         }
     }
 
-    public static StateDisplay CreateStateDisplay()
+    public static StateDisplay CreateStateDisplay(Transform parent)
     {
-        StateDisplay display = Instantiate(ResourceManager.GetResource<GameObject>("UI/StateDisplay"), CanvasHelper.Main.transform).GetComponent<StateDisplay>();
+        StateDisplay display = Instantiate(ResourceManager.GetResource<GameObject>("UI/StateDisplay"), parent).GetComponent<StateDisplay>();
         return display;
-    }
-
-    private void Awake()
-    {
-        _image = GetComponent<Image>();
     }
 }

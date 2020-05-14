@@ -10,9 +10,11 @@ public class MonsterTable {
    public float _Hp;
    public float _Speed;
    public float _Armor;
+   public float _EffectOffset;
+   public float _HUDOffset;
    public string _Lore;
    public CharacterAbilityType[] _Abilities = new CharacterAbilityType[6];
-   public float[] _Parameter = new float[2];
+   public float[] _Parameter = new float[4];
    public static MonsterTable Load(string[] parts) {
        int i = 0;
        MonsterTable p = new MonsterTable();
@@ -23,6 +25,8 @@ public class MonsterTable {
        p._Hp = float.Parse(parts[i++]);
        p._Speed = float.Parse(parts[i++]);
        p._Armor = float.Parse(parts[i++]);
+       p._EffectOffset = float.Parse(parts[i++]);
+       p._HUDOffset = float.Parse(parts[i++]);
        p._Lore = parts[i++];
        p._Abilities[0] = (CharacterAbilityType)System.Enum.Parse(typeof(CharacterAbilityType),parts[i++]);
        p._Abilities[1] = (CharacterAbilityType)System.Enum.Parse(typeof(CharacterAbilityType),parts[i++]);
@@ -32,6 +36,8 @@ public class MonsterTable {
        p._Abilities[5] = (CharacterAbilityType)System.Enum.Parse(typeof(CharacterAbilityType),parts[i++]);
        p._Parameter[0] = float.Parse(parts[i++]);
        p._Parameter[1] = float.Parse(parts[i++]);
+       p._Parameter[2] = float.Parse(parts[i++]);
+       p._Parameter[3] = float.Parse(parts[i++]);
 
     return p;
     }
