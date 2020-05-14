@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4de99b1b8a0c2084cb1e4bdc4d987b3f, type: 3}
   m_Name: Move
   m_EditorClassIdentifier: 
-  userName: GoblinHentai
+  userName: GoblinFirst
   stateName: Move
   dataJson: '{"nodeDatas":[{"GUID":"75e42c7f-73cc-4748-b336-480a944126de","rect":{"serializedVersion":"2","x":117.0,"y":15.0,"width":180.0,"height":60.0},"methodName":"Start","returnType":"Character","nodeType":5,"points":["67ddf35e-4d9f-4361-8478-ebb068228907","9c96b3db-1a24-46e5-b27f-c0dda91cb3d5"]},{"GUID":"7b067d3b-c6da-4d65-8412-9a517f82f77e","rect":{"serializedVersion":"2","x":118.0,"y":205.0,"width":180.0,"height":60.0},"methodName":"Update","returnType":"Character","nodeType":5,"points":["e4708966-207c-40a7-8d7c-c6fbfa83cad1","15fbe6f5-cb81-4a8e-b48a-dca45a6ee649"]},{"GUID":"5adf3281-07a4-470b-8238-862917c9d160","rect":{"serializedVersion":"2","x":446.0,"y":195.0,"width":180.0,"height":100.0},"methodName":"IF","returnType":"True
     Logic, False Logic","nodeType":3,"points":["be07e76b-7b92-4390-879b-435f2cdd9790","48552297-3851-4e19-b67d-c83587792704","b5a40a26-8e94-470d-8dd6-9b421a631143","95aa9a9a-9fe0-4276-b05a-40c6cc9b9624"]},{"GUID":"25d03ab8-5fc4-4ba6-9666-8c39cf623af9","rect":{"serializedVersion":"2","x":1198.0,"y":150.0,"width":180.0,"height":100.0},"methodName":"IF","returnType":"True
@@ -29,6 +29,7 @@ MonoBehaviour:
       methodName: Start
       returnType: Character
       nodeType: 5
+      parameters: []
       points:
       - 67ddf35e-4d9f-4361-8478-ebb068228907
       - 9c96b3db-1a24-46e5-b27f-c0dda91cb3d5
@@ -42,6 +43,7 @@ MonoBehaviour:
       methodName: Update
       returnType: Character
       nodeType: 5
+      parameters: []
       points:
       - e4708966-207c-40a7-8d7c-c6fbfa83cad1
       - 15fbe6f5-cb81-4a8e-b48a-dca45a6ee649
@@ -55,6 +57,7 @@ MonoBehaviour:
       methodName: IF
       returnType: True Logic, False Logic
       nodeType: 3
+      parameters: []
       points:
       - be07e76b-7b92-4390-879b-435f2cdd9790
       - 48552297-3851-4e19-b67d-c83587792704
@@ -70,6 +73,7 @@ MonoBehaviour:
       methodName: IF
       returnType: True Logic, False Logic
       nodeType: 3
+      parameters: []
       points:
       - 1ca6ed2c-de1c-4ae3-b98f-7a85830ade3b
       - a996c5d6-43a2-467f-8eb3-ad6a2f9eda59
@@ -85,6 +89,7 @@ MonoBehaviour:
       methodName: Finish
       returnType: Character
       nodeType: 5
+      parameters: []
       points:
       - 2673d0f0-1a72-4138-9650-4b07d1fa636c
       - 697ae967-d611-4599-8044-58782f98baae
@@ -99,6 +104,7 @@ MonoBehaviour:
       methodName: PlayAnim
       returnType: Void
       nodeType: 0
+      parameters: []
       points:
       - a23f8277-93ab-45d0-96e2-f39026089444
       - 2bb3effd-bd34-4ac1-957e-31ab0d00ddd6
@@ -115,6 +121,7 @@ MonoBehaviour:
       methodName: StateActionMacro
       returnType: Boolean
       nodeType: 1
+      parameters: []
       points:
       - 73606844-b246-4fe1-8108-791593d7fe28
       - 11ad0896-a03a-43be-bee6-fc1c7a3be4ca
@@ -129,6 +136,7 @@ MonoBehaviour:
       methodName: PlayerInRange
       returnType: Boolean
       nodeType: 1
+      parameters: []
       points:
       - 23c31e3d-a780-4bfb-8330-b1adfb14c85c
       - 40f4c6f4-0f52-4535-9949-3360d30c3e64
@@ -144,6 +152,7 @@ MonoBehaviour:
       methodName: ChangeAction
       returnType: Void
       nodeType: 0
+      parameters: []
       points:
       - c10552cf-360e-4039-94dc-46e2c2ec3c24
       - b702c6d5-65cb-40fd-95e1-6b066d0fd779
@@ -160,6 +169,7 @@ MonoBehaviour:
       methodName: MoveToPlayer
       returnType: Void
       nodeType: 0
+      parameters: []
       points:
       - 29f359e9-8b83-46ad-badf-4f014a086e92
       - 681fb007-ec6e-43f9-adda-0625c4949f49
@@ -175,6 +185,7 @@ MonoBehaviour:
       methodName: RotationAnim
       returnType: Void
       nodeType: 0
+      parameters: []
       points:
       - b569633a-4499-459c-a4fa-e88535226880
       - 8b25b573-17fb-4241-934f-bcf1acd09acc
@@ -191,6 +202,7 @@ MonoBehaviour:
       methodName: StopMovement
       returnType: Void
       nodeType: 0
+      parameters: []
       points:
       - a7d1d640-ee49-42ac-9f7e-ed924f507506
       - 3fefc4f6-8098-4e92-8739-ad8e7242e5df
@@ -206,6 +218,7 @@ MonoBehaviour:
       methodName: MoveToPlayer
       returnType: Void
       nodeType: 0
+      parameters: []
       points:
       - 4dc12b6b-a010-47dc-9e22-8276bfcd57f9
       - 31d4972b-1053-4396-b964-cea178b66c6e
@@ -221,6 +234,7 @@ MonoBehaviour:
       methodName: LookPlayer
       returnType: Void
       nodeType: 0
+      parameters: []
       points:
       - 5b0268bd-ff0c-4ded-84a6-0bd8036f2582
       - 14a2b76b-5fe2-49fa-aab7-e791f9cf21b1
