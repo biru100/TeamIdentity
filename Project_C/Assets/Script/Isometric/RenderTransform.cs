@@ -21,6 +21,12 @@ public class RenderTransform : MonoBehaviour
         TranslateIsometricToWorldCoordination();
     }
 
+    public Vector3 GetIsometricPosition()
+    {
+        TranslateIsometricToWorldCoordination();
+        return transform.position;
+    }
+
     public void TranslateIsometricToWorldCoordination()
     {
         transform.position = Isometric.IsometricToWorldRotation * transform.parent.position

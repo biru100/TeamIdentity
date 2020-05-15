@@ -28,6 +28,11 @@ public class RoomContainer
     }
 }
 
+public class RoomFactory
+{
+
+}
+
 public class RoomManager : BehaviorSingleton<RoomManager>
 {
     public static readonly Dictionary<MapWay, Vector2Int> WayDirectionSet = new Dictionary<MapWay, Vector2Int>()
@@ -59,8 +64,9 @@ public class RoomManager : BehaviorSingleton<RoomManager>
     protected override void Init()
     {
         base.Init();
-        SamplingMapList("WoodMap");
-        CreateMap();
+        ThemeTable firstTheme = DataManager.GetFirstData<ThemeTable>();
+        SamplingMapList(firstTheme._Name);
+        CreateMap(firstTheme);
     }
 
     public Room CurrentRoom { get; set; }
@@ -99,13 +105,13 @@ public class RoomManager : BehaviorSingleton<RoomManager>
 
     void TransitionRoomFactoryProccess(RoomContainer current)
     {
-        int randomConnectrionCount = Mathf.Min(Random.Range(0, 5 - current.Way.Count), maximumRoom 
+        int randomConnectionCount = Mathf.Min(Random.Range(0, 5 - current.Way.Count), maximumRoom 
             - roomFactoryProccess.Count
             - madeRooms.Count);
 
         List<MapWay> otherList = WayList.Except(current.Way).ToList();
 
-        for (int i = 0; i < randomConnectrionCount; ++i)
+        for (int i = 0; i < randomConnectionCount; ++i)
         {
             int index = Random.Range(0, otherList.Count);
             MapWay currentWay = otherList[index];
@@ -156,7 +162,7 @@ public class RoomManager : BehaviorSingleton<RoomManager>
         current.RoomInstance = Room.CreateRoom(mapList[keys[Random.Range(0, keys.Count)]].mapName, current.RoomIndex);
     }
 
-    void CreateMap()
+    void CreateMap(ThemeTable data)
     {
         roomFactoryProccess = new List<RoomContainer>();
         madeRooms = new List<RoomContainer>();

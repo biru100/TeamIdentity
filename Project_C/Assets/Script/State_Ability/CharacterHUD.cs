@@ -43,12 +43,19 @@ public class CharacterHUD : MonoBehaviour
             _stateDisplays.Add(StateDisplay.CreateStateDisplay(transform));
         }
 
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(CanvasHelper.Main.transform as RectTransform,
-            RectTransformUtility.WorldToScreenPoint(Camera.main, Owner.RenderTrasform.transform.position),
+        if (RectTransformUtility.ScreenPointToLocalPointInRectangle(CanvasHelper.Main.transform as RectTransform,
+            RectTransformUtility.WorldToScreenPoint(Camera.main, Owner.RenderTrasform.GetIsometricPosition()),
             CanvasHelper.Main.worldCamera,
-            out Vector2 displayCenterPosition);
+            out Vector2 displayCenterPosition))
+        {
+            Vector2 lastPos = (transform as RectTransform).anchoredPosition;
+            (transform as RectTransform).anchoredPosition = displayCenterPosition + Vector2.up * Owner.HUDOffset;
 
-        (transform as RectTransform).anchoredPosition = displayCenterPosition + Vector2.up * Owner.HUDOffset;
+            //if((lastPos - displayCenterPosition + Vector2.up * Owner.HUDOffset).magnitude > 1000f)
+            //{
+            //    int a = 0;
+            //}
+        }
 
         SetHPAmount(Owner.Status.CurrentHp / Owner.Status.Hp);
 

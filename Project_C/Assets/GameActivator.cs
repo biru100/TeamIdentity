@@ -19,4 +19,9 @@ public class GameActivator : MonoBehaviour
             MinimapInterface.Instance.gameObject.SetActive(!MinimapInterface.Instance.gameObject.activeSelf);
         }
     }
+
+    public void StopGame()
+    {
+        Application.Quit();
+    }
 }
