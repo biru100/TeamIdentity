@@ -14,6 +14,9 @@ public class CardTable {
    public int _ParameterCount;
    public float[] _Parameter = new float[2];
    public bool[] _IsVariable = new bool[2];
+   public string _CardRangeSprite;
+   public CardRangeType _RangeType;
+   public float[] _RangeParameter = new float[3];
    public static CardTable Load(string[] parts) {
        int i = 0;
        CardTable p = new CardTable();
@@ -30,6 +33,11 @@ public class CardTable {
        p._Parameter[1] = float.Parse(parts[i++]);
        p._IsVariable[0] = bool.Parse(parts[i++]);
        p._IsVariable[1] = bool.Parse(parts[i++]);
+       p._CardRangeSprite = parts[i++];
+       p._RangeType = (CardRangeType)System.Enum.Parse(typeof(CardRangeType),parts[i++]);
+       p._RangeParameter[0] = float.Parse(parts[i++]);
+       p._RangeParameter[1] = float.Parse(parts[i++]);
+       p._RangeParameter[2] = float.Parse(parts[i++]);
 
     return p;
     }

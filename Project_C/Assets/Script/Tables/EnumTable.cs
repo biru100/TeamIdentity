@@ -43,3 +43,9 @@ using System;
     E_Target = 1 , //  
     E_Point = 2 , //  
   }
+ public enum CardRangeType
+ {
+    E_None = 0 , // 파라미터 x 
+    E_PlayerRelativeCircularSector = 1 , // 파라미터 0 : angle, 1 : distance 
+    E_PointCircularSector = 2 , // 파라미터 0 : angle, 1 : distance 
+  }
