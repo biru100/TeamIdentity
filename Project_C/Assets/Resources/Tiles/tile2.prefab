@@ -74,7 +74,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3207232222329823915}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.4175, z: 0.2404163}
+  m_LocalPosition: {x: 0, y: 0.417, z: 0.2404163}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 645318466934733753}
@@ -142,7 +142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86bed7d58ad6e044da0a5e75d8c369eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imageOffset: {x: 0, y: 0.4175, z: 0}
+  imageOffset: {x: 0, y: 0.417, z: 0}
   rotation: {x: 0, y: 0, z: 0, w: 1}
   z_weight: 1
 --- !u!114 &6318100383045352182
@@ -157,7 +157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34768437faac7a646a710d2fc0e197b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Tag: Tile2
+  Tag: tile2
 --- !u!114 &8659442397728919051
 MonoBehaviour:
   m_ObjectHideFlags: 0

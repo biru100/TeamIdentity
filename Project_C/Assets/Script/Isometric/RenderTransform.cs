@@ -32,7 +32,10 @@ public class RenderTransform : MonoBehaviour
         transform.position = Isometric.IsometricToWorldRotation * transform.parent.position
             + imageOffset
             + Vector3.forward * Isometric.IsometricTileSize.z * z_weight * 0.5f;
-        
+
+        //transform.position = new Vector3(transform.position.x
+        //, transform.position.y, transform.position.z);
+
         transform.position = new Vector3(Mathf.Round(transform.position.x * 100f) * 0.01f
         , Mathf.Round(transform.position.y * 100f) * 0.01f, transform.position.z);
 
