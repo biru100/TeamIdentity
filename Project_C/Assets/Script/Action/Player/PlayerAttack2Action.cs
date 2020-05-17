@@ -6,11 +6,16 @@ public class PlayerAttack2Action : CharacterAction
 {
     public static PlayerAttack2Action GetInstance() { return new PlayerAttack2Action(); }
 
+
+    FloatCurve curve;
+
     public override void StartAction(Character owner)
     {
         base.StartAction(owner);
         AnimUtil.PlayAnim(owner, "attack2");
         TimelineEvents.Add(new TimeLineEvent(0.22f, SendDamage));
+
+        curve = FloatCurve.GetCurve("Curves/Attack2MoveCurve");
     }
 
     public override void UpdateAction()
@@ -22,7 +27,8 @@ public class PlayerAttack2Action : CharacterAction
             return;
         }
 
-        Owner.NavAgent.Move(Owner.transform.forward * Isometric.IsometricTileSize.x * 0.5f * Time.deltaTime);
+        Owner.NavAgent.Move(Owner.transform.forward * Isometric.IsometricGridSize * Owner.Status.CurrentSpeed * curve.Evaluate(ElapsedTime) * Time.deltaTime
+    + Owner.transform.forward * Mathf.Clamp01(Vector3.Dot(PlayerUtil.GetVelocityInput(), Owner.transform.forward)) * Isometric.IsometricGridSize * Owner.Status.CurrentSpeed * Time.deltaTime);
 
         if (AnimUtil.IsLastFrame(Owner))
         {
@@ -54,9 +60,12 @@ public class PlayerAttack2Action : CharacterAction
                 angle < 80f)
             {
                 e.AddState(new CharacterHitState(e, Owner.Status.CurrentDamage, 0.1f).Init());
+
+                float zAngle = -1 * AnimUtil.GetRenderAngle(e.transform.rotation) + 45f - 15f;
+
                 IsoParticle.CreateParticle("Sliced1", e.transform.position
                     + new Vector3(0f, Isometric.IsometricTileSize.y * 0.5f, 0f),
-                    angle);
+                    zAngle );
                 IsoParticle.CreateParticle("Sliced2", e.transform.position
                     + new Vector3(0f, Isometric.IsometricTileSize.y * 0.5f, 0f),
                     angle + 90f);
