@@ -15,7 +15,7 @@ public override void StartAction(Character owner)
 base.StartAction(owner);
 TimelineEvents.Add(new TimeLineEvent(0.5f, TimeLine_4));
 NodeUtil.PlayAnim(Owner ,"attack");
-    }
+}
 
 public override void UpdateAction()
 {
@@ -56,14 +56,6 @@ if(NodeUtil.IsActivateAbility(Owner ,214))
 NodeUtil.DrawCard();
 }
 
-if(NodeUtil.IsActivateAbility(Owner ,201))
-            {
-                                Owner.AddState(new CharacterIncreaseDamageState(Owner, NodeUtil.GetMosterParameter(Owner, 1), -1f));
-            }
-if(NodeUtil.IsActivateAbility(Owner, 203))
-            {
-                Owner.AddState(new CharacterIncreaseSpeedState(Owner, NodeUtil.GetMosterParameter(Owner, 2), -1f));
-            }
 else
 {
 }
