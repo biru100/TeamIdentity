@@ -13,10 +13,10 @@ public class GoblinStealerAttackAction : CharacterAction
     public override void StartAction(Character owner)
     {
         base.StartAction(owner);
-        TimelineEvents.Add(new TimeLineEvent(0.5f, TimeLine_4));
+        TimelineEvents.Add(new TimeLineEvent(0.7f, TimeLine_4));
         NodeUtil.PlayAnim(Owner, "attack");
         NodeUtil.MoveToPlayer(Owner);
-        Owner.AddState(new CharacterIncreaseSpeedState(Owner, 200f, 0.15f));
+        Owner.AddState(new CharacterIncreaseSpeedState(Owner, 300f, 0.3f));
     }
 
     public override void UpdateAction()
@@ -32,7 +32,7 @@ public class GoblinStealerAttackAction : CharacterAction
 
             if (NodeUtil.IsLastFrame(Owner))
             {
-                NodeUtil.ChangeAction(Owner, "GoblinStealerIdleAction");
+                NodeUtil.ChangeAction(Owner, "GoblinStealerAvoidAction");
             }
 
             else
@@ -49,21 +49,20 @@ public class GoblinStealerAttackAction : CharacterAction
     void TimeLine_4()
     {
 
-        if (NodeUtil.PlayerInSight(Owner, 1f, 50f))
+        if (NodeUtil.PlayerInSight(Owner, 3f, 40f))
         {
             NodeUtil.TakeDamageToPlayer(10f);
 
             if (NodeUtil.IsActivateAbility(Owner, 215))
             {
+                NodeUtil.GiveSilence(Player.CurrentPlayer, 2f);
                 NodeUtil.BurnCard();
             }
 
-            if (NodeUtil.IsActivateAbility(Owner, 207))
-            {
-                NodeUtil.GiveSilence(Player.CurrentPlayer, 2f);
-                NodeUtil.PlayAnim(Owner, "run");
-                NodeUtil.AvoidFormPlayer(Owner);
-            }
+            //if (NodeUtil.IsActivateAbility(Owner, 207))
+            //{
+            //    NodeUtil.GiveSilence(Player.CurrentPlayer, 2f);
+            //}
             else
             {
 
