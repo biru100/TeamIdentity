@@ -8,38 +8,38 @@ using UnityEngine;
 public class GoblinDrunkIdleAction : CharacterAction
 {
 
-public static GoblinDrunkIdleAction GetInstance() { return new GoblinDrunkIdleAction(); }
+    public static GoblinDrunkIdleAction GetInstance() { return new GoblinDrunkIdleAction(); }
 
-public override void StartAction(Character owner)
-{
-base.StartAction(owner);
-NodeUtil.PlayAnim(Owner ,"idle");
-}
+    public override void StartAction(Character owner)
+    {
+        base.StartAction(owner);
+        NodeUtil.PlayAnim(Owner, "idle");
+    }
 
-public override void UpdateAction()
-{
-base.UpdateAction();
+    public override void UpdateAction()
+    {
+        base.UpdateAction();
 
-if(NodeUtil.StateActionMacro(Owner))
-{
-}
+        if (NodeUtil.StateActionMacro(Owner))
+        {
+        }
 
-else
-{
+        else
+        {
 
-if(NodeUtil.PlayerInRange(Owner ,7f))
-{
-NodeUtil.ChangeAction(Owner ,"GoblinDrunkMoveAction");
-}
+            if (NodeUtil.PlayerInRange(Owner, 7f))
+            {
+                NodeUtil.ChangeAction(Owner, "GoblinDrunkMoveAction");
+            }
 
-else
-{
-}
-}
-}
+            else
+            {
+            }
+        }
+    }
 
-public override void FinishAction()
-{
-base.FinishAction();
-}
+    public override void FinishAction()
+    {
+        base.FinishAction();
+    }
 }

@@ -270,6 +270,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mapDataName: Test
+  _testCost: 100
+  _testDraw: 5
 --- !u!114 &317845812
 MonoBehaviour:
   m_ObjectHideFlags: 0
