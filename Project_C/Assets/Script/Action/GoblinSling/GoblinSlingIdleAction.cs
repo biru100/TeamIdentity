@@ -5,10 +5,10 @@ using UnityEngine;
 
 
 
-public class SlimeIdleAction : CharacterAction
+public class GoblinSlingIdleAction : CharacterAction
 {
 
-    public static SlimeIdleAction GetInstance() { return new SlimeIdleAction(); }
+    public static GoblinSlingIdleAction GetInstance() { return new GoblinSlingIdleAction(); }
 
     public override void StartAction(Character owner)
     {
@@ -29,7 +29,8 @@ public class SlimeIdleAction : CharacterAction
 
             if (NodeUtil.PlayerInRange(Owner, 7f))
             {
-                NodeUtil.ChangeAction(Owner, "SlimeMoveAction");
+                NodeUtil.LookPlayer(Owner);
+                NodeUtil.ChangeAction(Owner, "GoblinSlingMoveAction");
             }
 
             else

@@ -29,6 +29,7 @@ MonoBehaviour:
       methodName: Start
       returnType: Character
       nodeType: 5
+      parameters: []
       points:
       - 3d7c7dcd-34f9-4f25-8b43-ee0f0b7dc29c
       - 878e99c5-8dfb-4433-a764-df3985c965c8
@@ -42,6 +43,7 @@ MonoBehaviour:
       methodName: Update
       returnType: Character
       nodeType: 5
+      parameters: []
       points:
       - c6279fd9-709e-484a-991c-5337a0be28d0
       - 6c52d3a0-9894-4a2c-9e1e-6f8e5f8f2747
@@ -55,6 +57,7 @@ MonoBehaviour:
       methodName: IF
       returnType: True Logic, False Logic
       nodeType: 3
+      parameters: []
       points:
       - 85c22747-1cf3-4f14-82d1-8fc8615a9bae
       - d40fe99e-4acd-4ce5-949d-87f66f3d73a3
@@ -70,6 +73,7 @@ MonoBehaviour:
       methodName: IF
       returnType: True Logic, False Logic
       nodeType: 3
+      parameters: []
       points:
       - bbdc6ced-ea6f-49ee-b491-63a903ab0c0b
       - 09c4aac1-9d87-4836-8855-b16f520d8aa4
@@ -86,6 +90,7 @@ MonoBehaviour:
       methodName: PlayAnim
       returnType: Void
       nodeType: 0
+      parameters: []
       points:
       - 96281259-0eda-41e9-8d13-0710d32e443f
       - 69e7e033-6e40-4af6-94ac-99f50ee32dcc
@@ -102,6 +107,7 @@ MonoBehaviour:
       methodName: IsLastFrame
       returnType: Boolean
       nodeType: 1
+      parameters: []
       points:
       - 221556b4-cc22-4f55-bc9f-41c9315fbe65
       - 7052af63-fb7b-4246-abac-b79d95d048fc
@@ -116,6 +122,7 @@ MonoBehaviour:
       methodName: ChangeAction
       returnType: Void
       nodeType: 0
+      parameters: []
       points:
       - ebfdd4d0-d27a-4c4e-9933-f23d893b6f29
       - 1d65a339-0bd8-4716-9851-3b464fb5341c
@@ -132,6 +139,7 @@ MonoBehaviour:
       methodName: LookPlayer
       returnType: Void
       nodeType: 0
+      parameters: []
       points:
       - 7d800c10-dab6-43f1-b31a-2d04971b70b9
       - 7ca04722-5266-4b2d-a0d1-40188eb09c1f
@@ -147,6 +155,7 @@ MonoBehaviour:
       methodName: StateActionMacroByCurrentOrder
       returnType: Boolean
       nodeType: 1
+      parameters: []
       points:
       - 457b382c-8826-403d-8772-c8a95c989516
       - 7a76a1da-a00e-43fa-a63e-aeee74fc86ce
