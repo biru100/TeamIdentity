@@ -8,12 +8,16 @@ public class PlayerAttack1Action : CharacterAction
 
     bool isAttackCommand;
 
+    FloatCurve curve;
+
     public override void StartAction(Character owner)
     {
         base.StartAction(owner);
         AnimUtil.PlayAnim(owner, "attack1");
         isAttackCommand = false;
         TimelineEvents.Add(new TimeLineEvent(0.22f, SendDamage));
+
+        curve = FloatCurve.GetCurve("Curves/Attack1MoveCurve");
     }
 
     public override void UpdateAction()
@@ -33,7 +37,7 @@ public class PlayerAttack1Action : CharacterAction
                 isAttackCommand = true;
         }
 
-        Owner.NavAgent.Move(Owner.transform.forward * Isometric.IsometricTileSize.x * -0.3f * Time.deltaTime);
+        Owner.NavAgent.Move(Owner.transform.forward * Isometric.IsometricTileSize.x * -1f * Owner.Status.CurrentSpeed * curve.Evaluate(ElapsedTime) * Time.deltaTime);
 
         if (AnimUtil.IsLastFrame(Owner))
         {
@@ -66,12 +70,13 @@ public class PlayerAttack1Action : CharacterAction
                 angle < 30f)
             {
                 e.AddState(new CharacterHitState(e, Owner.Status.CurrentDamage, 0.1f).Init());
+                float zAngle = -1 * AnimUtil.GetRenderAngle(e.transform.rotation) + 45f;
                 IsoParticle.CreateParticle("Sliced1", e.transform.position
                     + new Vector3(0f, Isometric.IsometricTileSize.y * 0.5f, 0f),
-                    angle);
+                    zAngle );
                 IsoParticle.CreateParticle("Sliced2", e.transform.position
                     + new Vector3(0f, Isometric.IsometricTileSize.y * 0.5f, 0f),
-                    angle + 90f);
+                    zAngle + 90f);
             }
         }
     }

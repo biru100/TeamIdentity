@@ -114,6 +114,7 @@ GameObject:
   - component: {fileID: 4582701969613466801}
   - component: {fileID: 5529772523035914740}
   - component: {fileID: 6571800118478190399}
+  - component: {fileID: 1479182996643601336}
   m_Layer: 9
   m_Name: cha_idle_0
   m_TagString: Untagged
@@ -168,7 +169,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4a6f0fa73a683f148953757b85d0c746, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -188,7 +189,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 300
   m_Sprite: {fileID: -3746368943522104918, guid: 65e9025b1049a084490fea71028895e3,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -273,3 +274,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.32, y: 0.32}
   m_EdgeRadius: 0
+--- !u!114 &1479182996643601336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3816121814293771836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e09456f176cd1b340bf0a01905cef67b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

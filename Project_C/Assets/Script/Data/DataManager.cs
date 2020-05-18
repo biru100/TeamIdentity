@@ -51,6 +51,11 @@ public class DataManager : BehaviorSingleton<DataManager>
         return (T)Instance.AllDatas[typeof(T)][index];
     }
 
+    public static T GetFirstData<T>()
+    {
+        return (T)Instance.AllDatas[typeof(T)].First().Value;
+    }
+
     public static List<T> GetDatas<T>()
     {
         return Instance.AllDatas[typeof(T)].Values.Cast<T>().ToList();

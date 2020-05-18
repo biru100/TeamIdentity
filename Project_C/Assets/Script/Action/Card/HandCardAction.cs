@@ -28,6 +28,8 @@ public class HandCardAction : CardInterfaceAction
         InGameInterface.Instance.IsCardDrag = true;
         IsDrag = true;
         _destCardSize = Owner.OriginCardSize;
+
+        CardRangeInterface.SetRangeInterface(Owner.CardData.Data);
     }
 
     public override void OnDrag(PointerEventData eventData)
@@ -53,10 +55,12 @@ public class HandCardAction : CardInterfaceAction
                 SetUseEffect(false);
                 IsVisible = true;
 
+                CardRangeInterface.Instance.IsVisible = false;
                 InGameInterface.Instance.ArrowBody.SetActive(false);
             }
             else
             {
+                CardRangeInterface.Instance.IsVisible = true;
                 InGameInterface.Instance.ArrowBody.SetActive(true);
 
                 if (IsVisible)
@@ -100,6 +104,17 @@ public class HandCardAction : CardInterfaceAction
                 }
             }
         }
+        else
+        {
+            if (RectTransformUtility.RectangleContainsScreenPoint(InGameInterface.Instance.HandField, Input.mousePosition))
+            {
+                CardRangeInterface.Instance.IsVisible = false;
+            }
+            else
+            {
+                CardRangeInterface.Instance.IsVisible = true;
+            }
+        }
     }
 
     public override void OnEndDrag(PointerEventData eventData)
@@ -107,6 +122,7 @@ public class HandCardAction : CardInterfaceAction
         base.OnEndDrag(eventData);
         InGameInterface.Instance.IsCardDrag = false;
         IsDrag = false;
+        CardRangeInterface.Instance.IsVisible = false;
 
         if (!RectTransformUtility.RectangleContainsScreenPoint(InGameInterface.Instance.HandField, Input.mousePosition))
         {
