@@ -8,41 +8,46 @@ using UnityEngine;
 public class SlimeDeadAction : CharacterAction
 {
 
-public static SlimeDeadAction GetInstance() { return new SlimeDeadAction(); }
+    public static SlimeDeadAction GetInstance() { return new SlimeDeadAction(); }
 
-public override void StartAction(Character owner)
-{
-base.StartAction(owner);
-NodeUtil.PlayAnim(Owner ,"die");
-}
+    public override void StartAction(Character owner)
+    {
+        base.StartAction(owner);
+        NodeUtil.PlayAnim(Owner, "die");
+    }
 
-public override void UpdateAction()
-{
-base.UpdateAction();
+    public override void UpdateAction()
+    {
+        base.UpdateAction();
 
-if(NodeUtil.IsLastFrame(Owner))
-{
+        if (NodeUtil.IsLastFrame(Owner))
+        {
 
-if(NodeUtil.IsActivateAbility(Owner ,211))
-{
-NodeUtil.ChangeAction(NodeUtil.CreateEntity("CSlime" ,NodeUtil.VectorAdd(NodeUtil.GetPosition(Owner) ,NodeUtil.CreateVector3(0.04f ,0f ,0.04f))) ,"CSlimeCreate1Action");
-NodeUtil.ChangeAction(NodeUtil.CreateEntity("CSlime" ,NodeUtil.VectorMinus(NodeUtil.GetPosition(Owner) ,NodeUtil.CreateVector3(0.04f ,0f ,0.04f))) ,"CSlimeCreate2Action");
-NodeUtil.DestroyEntity(Owner);
-}
+            if (NodeUtil.IsActivateAbility(Owner, 211))
+            {
 
-else
-{
-NodeUtil.DestroyEntity(Owner);
-}
-}
+                
 
-else
-{
-}
-}
+                NodeUtil.ChangeAction(NodeUtil.CreateEntity("CSlime", NodeUtil.VectorAdd(NodeUtil.GetPosition(Owner), NodeUtil.CreateVector3(0.04f, 0f, 0.04f))), "CSlimeCreate1Action");
+                
+                NodeUtil.ChangeAction(NodeUtil.CreateEntity("CSlime", NodeUtil.VectorMinus(NodeUtil.GetPosition(Owner), NodeUtil.CreateVector3(0.04f, 0f, 0.04f))), "CSlimeCreate2Action");
+                NodeUtil.DestroyEntity(Owner);
+            }
 
-public override void FinishAction()
-{
-base.FinishAction();
-}
+            else
+            {
+                NodeUtil.DestroyEntity(Owner);
+                UnityEngine.Object.Destroy(Owner);
+            }
+        }
+
+        else
+        {
+        }
+    }
+
+    public override void FinishAction()
+    {
+        base.FinishAction();
+    }
 }
