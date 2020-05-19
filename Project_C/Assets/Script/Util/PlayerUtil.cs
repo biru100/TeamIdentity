@@ -130,7 +130,7 @@ public static class AnimUtil
 {
     public static int GetRenderAngle(Quaternion rotation)
     {
-        int angle = Mathf.RoundToInt(rotation.eulerAngles.y / 45f) * 45;
+        int angle = Mathf.RoundToInt(rotation.eulerAngles.y * 45f) / 45;
         if (angle == 360)
             angle = 0;
 

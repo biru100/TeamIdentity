@@ -156,10 +156,20 @@ public class RoomManager : BehaviorSingleton<RoomManager>
 
     void ChooseMapInstance(RoomContainer current)
     {
+        if (current.RoomInstance != null)
+            return;
+
         List<List<MapWay>> keys = mapList.Keys.Where((k) => current.Way.Count == k.Count 
             && k.Intersect(current.Way).Count() == current.Way.Count).ToList();
 
         current.RoomInstance = Room.CreateRoom(mapList[keys[Random.Range(0, keys.Count)]].mapName, current.RoomIndex);
+    }
+
+    void SetMapInstance(RoomContainer current, string mapName)
+    {
+        if (current.RoomInstance != null)
+            return;
+        current.RoomInstance = Room.CreateRoom(mapName, current.RoomIndex);
     }
 
     void CreateMap(ThemeTable data)
@@ -171,6 +181,8 @@ public class RoomManager : BehaviorSingleton<RoomManager>
         //RoomContainer boss = new RoomContainer(new Vector2Int((Random.Range(0, 2) - 1) * Random.Range(rangeX.x, rangeX.y),
         //    (Random.Range(0, 2) - 1) * Random.Range(rangeY.x, rangeY.y)), (int)MapWay.E_BOTTOM);
 
+
+        SetMapInstance(first, DataManager.GetFirstData<ThemeTable>()._StartRoomName);
 
         madeRooms.Add(first);
 
