@@ -37,7 +37,6 @@ public class SlimeDeadAction : CharacterAction
             else
             {
                 NodeUtil.DestroyEntity(Owner);
-                UnityEngine.Object.Destroy(Owner);
             }
         }
 

@@ -35,6 +35,7 @@ public class CharacterSilenceState : CharacterState
         && s != CharacterStateType.E_Stun
         && s != CharacterStateType.E_Hold
         && s != CharacterStateType.E_Dead
+        && s != CharacterStateType.E_Hit
         && s != CharacterStateType.E_Silence);
 
         Status.CurrentSpeed = Status.Speed;

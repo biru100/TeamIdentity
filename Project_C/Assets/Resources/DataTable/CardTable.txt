@@ -9,7 +9,7 @@
 309	DrawCard	드로우	E_NonTarget	카드를 _ 장 드로우 합니다.	Sprites/Card/card_draw	3	PlayerDrawCardAction	1	3	0	False	False	null	E_None	
 310	LandAttack	지면 강타	E_NonTarget	범위 내 적에게 _ 의 데미지를 줍니다.	Sprites/Card/card_earthquake_atk	5	PlayerGroundPowerAttackAction	1	200	0	True	False	Sprites/Range/groundpowerattack_range	E_PlayerRelativeCircularSector	
 311	Heal	회복	E_NonTarget	플레이어의 체력을 _ 회복합니다.	Sprites/Card/card_heal	2	PlayerHealAction	1	50	0	False	False	null	E_None	
-312	Thunter	낙뢰	E_Point	선택한 범위 내의 적에게 _의 데미지를 주고, _초 동안 스턴시킵니다.	Sprites/Card/card_thunter	3	PlayerThunterAction	2	100	3	True	False	Sprites/Range/thunter_range	E_PointCircularSector	
+312	Thunter	낙뢰	E_Point	선택한 범위 내의 적에게 _의 데미지를 주고, _초 동안 스턴시킵니다.	Sprites/Card/card_thunter	3	PlayerThunterAction	2	100	3	True	False	Sprites/Range/thunter_range	E_PointCircle	
 313	EverybodySlime	슬라임 너무좋아	E_NonTarget	범위 내의 적을 모두 슬라임으로 변이 시킵니다.	Sprites/Card/card_everybody_slime	4	PlayerEverybodySlimeAction	0	0	0	False	False	Sprites/Range/everybodyslime_range	E_PlayerRelativeCircle	
 314	CardUseAttack	발악	E_Target	선택한 적에게 _ 의 데미지를 이번 맵에서 카드를 사용한 개수만큼 줍니다.	Sprites/Card/card_card_use_attack	0	PlayerNoneAction	1	50	0	True	False	null	E_None	
 315	Counter	카운터	E_NonTarget	_ 초간 무적을 얻습니다. 무적상태가 끝나면 범위 내의 적에게 공격받은 데미지 만큼 데미지를 줍니다.	Sprites/Card/card_counter	0	PlayerNoneAction	1	3	0	False	False	Sprites/Range/counter_range	E_PlayerRelativeCircle	

@@ -28,7 +28,7 @@ if(NodeUtil.StateActionMacro(Owner))
 else
 {
 
-if(NodeUtil.IsLastFrame(Owner))
+if (NodeUtil.IsLastFrame(Owner))
 {
 NodeUtil.ChangeAction(Owner ,"GoblinDrunkIdleAction");
 }

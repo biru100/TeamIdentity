@@ -40,11 +40,6 @@ public class GoblinStealerMoveAction : CharacterAction
             {
                 NodeUtil.MoveToPlayer(Owner);
             }
-
-            if (NodeUtil.IsLastFrame(Owner))
-            {
-                NodeUtil.ChangeAction(Owner, "GoblinStoreIdleAction");
-            }
         }
     }
 
