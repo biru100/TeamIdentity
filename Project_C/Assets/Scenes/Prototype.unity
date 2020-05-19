@@ -1193,6 +1193,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: InGameInterface
       objectReference: {fileID: 0}
+    - target: {fileID: 2430738958802456137, guid: 30e88b0365b0cd545814e316b42e69fa,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 817
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 30e88b0365b0cd545814e316b42e69fa, type: 3}
 --- !u!224 &2133766808 stripped
