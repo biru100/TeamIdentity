@@ -45,7 +45,9 @@ using System;
   }
  public enum CardRangeType
  {
-    E_None = 0 , // 파라미터 x 
-    E_PlayerRelativeCircularSector = 1 , // 파라미터 0 : angle, 1 : distance 
-    E_PointCircularSector = 2 , // 파라미터 0 : angle, 1 : distance 
+    E_None = 0 , //  
+    E_PlayerRelativeCircularSector = 1 , //  
+    E_PlayerRelativeCircle = 2 , //  
+    E_PointCircularSector = 3 , //  
+    E_PointCircle = 4 , //  
   }

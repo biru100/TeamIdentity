@@ -73,7 +73,11 @@ public class CardRangeInterface : MonoBehaviour
         {
             Renderer.sprite = ResourceManager.GetResource<Sprite>(CardSpriteName + "_" + CurrentAngle);
         }
-        else if(RangeType == CardRangeType.E_PointCircularSector)
+        if (RangeType == CardRangeType.E_PlayerRelativeCircle)
+        {
+            Renderer.sprite = ResourceManager.GetResource<Sprite>(CardSpriteName);
+        }
+        else if(RangeType == CardRangeType.E_PointCircle)
         {
             Renderer.sprite = ResourceManager.GetResource<Sprite>(CardSpriteName);
         }
@@ -95,7 +99,17 @@ public class CardRangeInterface : MonoBehaviour
                     NeedUpdate = false;
                 }
             }
-            else if(RangeType == CardRangeType.E_PointCircularSector)
+            else if(RangeType == CardRangeType.E_PlayerRelativeCircle)
+            {
+                transform.position = Player.CurrentPlayer.transform.position + Vector3.down * Isometric.IsometricGridSize;
+                if (NeedUpdate)
+                {
+                    UpdateSprite();
+                    NeedUpdate = false;
+                }
+
+            }
+            else if(RangeType == CardRangeType.E_PointCircle)
             {
                 transform.position = CurrentPoint + Vector3.down * Isometric.IsometricGridSize;
                 if(NeedUpdate)

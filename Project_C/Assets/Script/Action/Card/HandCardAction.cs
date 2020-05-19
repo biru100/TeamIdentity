@@ -99,8 +99,10 @@ public class HandCardAction : CardInterfaceAction
                 }
                 else
                 {
-                    //Isometric.GetIsometicBasePositionByWorldRay(Camera.main.ScreenToWorldPoint(Input.mousePosition),
-                    //    Camera.main.transform.forward);
+                    Vector3 point = Isometric.GetIsometicBasePositionByWorldRay(Camera.main.ScreenToWorldPoint(Input.mousePosition),
+                        Camera.main.transform.forward);
+                    _target.SetTarget(point);
+                    CardRangeInterface.Instance.CurrentPoint = point;
                 }
             }
         }

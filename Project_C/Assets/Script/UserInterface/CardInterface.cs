@@ -17,6 +17,7 @@ public class CardInterface : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     [SerializeField]    protected Image _backSide;
     [SerializeField]    protected Image _frontSide;
     [SerializeField]    protected Text _cardLore;
+    [SerializeField]    protected Text _cardCost;
     [SerializeField]    protected Vector2 _originCardSize;
     int _originFontSize;
 
@@ -24,6 +25,7 @@ public class CardInterface : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public Image BackSide { get => _backSide; }
     public Image FrontSide { get => _frontSide; }
     public Text CardLore { get => _cardLore; }
+    public Text CardCost { get => _cardCost; }
     public Vector2 OriginCardSize { get => _originCardSize; }
     public int OriginFontSize { get => _originFontSize; }
     public int HandIndex { get; set; }
@@ -49,6 +51,7 @@ public class CardInterface : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
                 _frontSide.sprite = value.FrontSprite;
                 _backSide.sprite = value.BackSprite;
                 _cardLore.text = value.GetLore(PlayerStatus.CurrentStatus);
+                _cardCost.text = value.Cost.ToString();
                 _originFontSize = _cardLore.fontSize;
             }
             _cardData = value;
