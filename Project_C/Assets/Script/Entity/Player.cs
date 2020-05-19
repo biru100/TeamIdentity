@@ -30,7 +30,7 @@ public class Player : Character
 
         for (int i = 0; i < 30; ++i)
         {
-            Deck.Instance.AddCard(new Card(Random.Range(0, 10)));
+            Deck.Instance.AddCard(new Card(Random.Range(0, 18)));
         }
     }
 

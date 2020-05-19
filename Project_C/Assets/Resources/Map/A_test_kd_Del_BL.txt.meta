@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Project_C/Assets/Resources/Map/A_test_kd_Del_BL.txt.meta
 guid: ad12d5ff7bad3d34e82c7bf6ed25a3fb
+=======
+guid: 3878aa765c93c654eba357f163c23864
+>>>>>>> origin/KimIn:Project_C/Assets/Resources/Map/Map000Bottom.txt.meta
 TextScriptImporter:
   externalObjects: {}
   userData: 
