@@ -81,6 +81,7 @@ public class CardInterface : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         _frontSide.material = instanceMat;
         _backSide.material = instanceMat;
         _cardLore.material = instanceMat;
+        _cardCost.material = instanceMat;
     }
 
     void Start()
