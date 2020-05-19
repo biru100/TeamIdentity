@@ -23,6 +23,9 @@ public class GoblinDrunkRunAction : CharacterAction
     {
         base.UpdateAction();
 
+        if (isFinish)
+            return;
+
         if (NodeUtil.StateActionMacro(Owner))
         {
         }
@@ -32,7 +35,6 @@ public class GoblinDrunkRunAction : CharacterAction
             Owner.transform.rotation = Quaternion.LookRotation((Owner.transform.position - Player.CurrentPlayer.transform.position).normalized, Vector3.up);
             NodeUtil.RotationAnim(Owner, "run");
             NodeUtil.AvoidFormPlayer(Owner);
-
         }
     }
 
@@ -42,8 +44,11 @@ public class GoblinDrunkRunAction : CharacterAction
         NodeUtil.StopMovement(Owner);
     }
 
+    bool isFinish = false;
+
     public void StopRun()
     {
         NodeUtil.ChangeAction(Owner, "GoblinDrunkIdleAction");
+        isFinish = true;
     }
 }

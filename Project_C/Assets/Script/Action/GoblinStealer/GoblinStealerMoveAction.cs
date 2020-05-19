@@ -33,6 +33,7 @@ public class GoblinStealerMoveAction : CharacterAction
             if (NodeUtil.PlayerInRange(Owner, 1.5f))
             {
                 NodeUtil.ChangeAction(Owner, "GoblinStealerAttackAction");
+                return;
             }
 
             else
