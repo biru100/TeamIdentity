@@ -31,7 +31,7 @@ else
 
 if(NodeUtil.IsLastFrame(Owner))
 {
-NodeUtil.ChangeAction(Owner ,"GoblinDrunkRunAction");
+NodeUtil.ChangeAction(Owner , "GoblinDrunkAvoidAction");
 }
 
 else

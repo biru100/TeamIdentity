@@ -8,43 +8,47 @@ using UnityEngine;
 public class GoblinStealerAvoidAction : CharacterAction
 {
 
-public static GoblinStealerAvoidAction GetInstance() { return new GoblinStealerAvoidAction(); }
+    public static GoblinStealerAvoidAction GetInstance() { return new GoblinStealerAvoidAction(); }
 
-public override void StartAction(Character owner)
-{
-base.StartAction(owner);
-NodeUtil.PlayAnim(Owner ,"run");
-NodeUtil.MoveToPlayer(Owner);
-}
+    bool IsEnd;
 
-public override void UpdateAction()
-{
-base.UpdateAction();
+    public override void StartAction(Character owner)
+    {
+        base.StartAction(owner);
+        NodeUtil.PlayAnim(Owner, "run");
+        TimelineEvents.Add(new TimeLineEvent(3f, End));
+    }
 
-if(NodeUtil.StateActionMacro(Owner))
-{
-}
+    public override void UpdateAction()
+    {
+        base.UpdateAction();
 
-else
-{
-NodeUtil.AvoidFormPlayer(Owner);
-NodeUtil.RotationAnim(Owner ,"run");
+        if (NodeUtil.StateActionMacro(Owner))
+        {
+        }
 
-if(NodeUtil.PlayerInRange(Owner ,3f))
-{
-NodeUtil.AvoidFormPlayer(Owner);
-}
+        else
+        {
+            NodeUtil.AvoidFormPlayer(Owner);
+            NodeUtil.RotationAnim(Owner, "run");
 
-else
-{
-NodeUtil.ChangeAction(Owner , "GoblinStealerIdleAction");
-}
-}
-}
+            if (!NodeUtil.PlayerInRange(Owner, 3f) || IsEnd)
+            {
+                NodeUtil.ChangeAction(Owner, "GoblinStealerIdleAction");
+            }
 
-public override void FinishAction()
-{
-base.FinishAction();
-NodeUtil.StopMovement(Owner);
-}
+        }
+    }
+
+
+    public override void FinishAction()
+    {
+        base.FinishAction();
+        NodeUtil.StopMovement(Owner);
+    }
+
+    void End()
+    {
+        IsEnd = true;
+    }
 }

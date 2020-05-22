@@ -10,18 +10,21 @@ public class GoblinStealerAttackAction : CharacterAction
 
     public static GoblinStealerAttackAction GetInstance() { return new GoblinStealerAttackAction(); }
 
+    Vector3 PlayerPosition;
+
     public override void StartAction(Character owner)
     {
         base.StartAction(owner);
-        TimelineEvents.Add(new TimeLineEvent(0.7f, TimeLine_4));
         NodeUtil.PlayAnim(Owner, "attack");
-        NodeUtil.MoveToPlayer(Owner);
-        Owner.AddState(new CharacterIncreaseSpeedState(Owner, 300f, 0.3f));
+        PlayerPosition = Player.CurrentPlayer.transform.position ;
+        TimelineEvents.Add(new TimeLineEvent(0.5f, TimeLine_4));
+
     }
 
     public override void UpdateAction()
     {
         base.UpdateAction();
+        
 
         if (NodeUtil.StateActionMacro(Owner))
         {
@@ -29,10 +32,14 @@ public class GoblinStealerAttackAction : CharacterAction
 
         else
         {
+            Owner.Status.CurrentSpeed = 20f;
 
             if (NodeUtil.IsLastFrame(Owner))
             {
+                Owner.Status.CurrentSpeed = Owner.Status.Speed;
+                NodeUtil.StopMovement(Owner);
                 NodeUtil.ChangeAction(Owner, "GoblinStealerAvoidAction");
+                return;
             }
 
             else
@@ -48,8 +55,8 @@ public class GoblinStealerAttackAction : CharacterAction
 
     void TimeLine_4()
     {
-
-        if (NodeUtil.PlayerInSight(Owner, 3f, 40f))
+        Owner.NavAgent.destination = PlayerPosition;
+        if (NodeUtil.PlayerInSight(Owner, 3f, 15f))
         {
             NodeUtil.TakeDamageToPlayer(10f);
 

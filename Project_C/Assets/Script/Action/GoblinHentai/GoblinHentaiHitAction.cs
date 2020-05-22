@@ -8,39 +8,42 @@ using UnityEngine;
 public class GoblinHentaiHitAction : CharacterAction
 {
 
-public static GoblinHentaiHitAction GetInstance() { return new GoblinHentaiHitAction(); }
+    public static GoblinHentaiHitAction GetInstance() { return new GoblinHentaiHitAction(); }
 
-public override void StartAction(Character owner)
-{
-base.StartAction(owner);
-NodeUtil.LookPlayer(Owner);
-NodeUtil.PlayAnim(Owner ,"hit");
-}
+    //히트 스타트 액션
+    public override void StartAction(Character owner)
+    {
+        base.StartAction(owner);
+        NodeUtil.LookPlayer(Owner); 
+        NodeUtil.PlayAnim(Owner, "hit");
+    }
 
-public override void UpdateAction()
-{
-base.UpdateAction();
+    //히트 업데이트 액션
+    public override void UpdateAction()
+    {
+        base.UpdateAction();
 
-if(NodeUtil.StateActionMacroByCurrentOrder(Owner ,6))
-{
-}
+        if (NodeUtil.StateActionMacroByCurrentOrder(Owner, 6))
+        {
+        }
 
-else
-{
+        else
+        {
 
-if(NodeUtil.IsLastFrame(Owner))
-{
-NodeUtil.ChangeAction(Owner ,"GoblinHentaiIdleAction");
-}
+            if (NodeUtil.IsLastFrame(Owner))
+            {
+                NodeUtil.ChangeAction(Owner, "GoblinHentaiIdleAction");
+            }
 
-else
-{
-}
-}
-}
+            else
+            {
+            }
+        }
+    }
 
-public override void FinishAction()
-{
-base.FinishAction();
-}
+    // 히트 피니시 액션
+    public override void FinishAction()
+    {
+        base.FinishAction();
+    }
 }

@@ -5,10 +5,10 @@ using UnityEngine;
 
 
 
-public class GoblinDrunkRunAction : CharacterAction
+public class GoblinDrunkAvoidAction : CharacterAction
 {
 
-    public static GoblinDrunkRunAction GetInstance() { return new GoblinDrunkRunAction(); }
+    public static GoblinDrunkAvoidAction GetInstance() { return new GoblinDrunkAvoidAction(); }
 
     public override void StartAction(Character owner)
     {

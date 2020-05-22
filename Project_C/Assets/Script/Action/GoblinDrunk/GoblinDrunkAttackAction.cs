@@ -8,52 +8,53 @@ using UnityEngine;
 public class GoblinDrunkAttackAction : CharacterAction
 {
 
-public static GoblinDrunkAttackAction GetInstance() { return new GoblinDrunkAttackAction(); }
+    public static GoblinDrunkAttackAction GetInstance() { return new GoblinDrunkAttackAction(); }
 
-public override void StartAction(Character owner)
-{
-base.StartAction(owner);
-TimelineEvents.Add(new TimeLineEvent(1f, TimeLine_4));
-NodeUtil.PlayAnim(Owner ,"attack");
-}
+    public override void StartAction(Character owner)
+    {
+        base.StartAction(owner);
+        TimelineEvents.Add(new TimeLineEvent(1f, TimeLine_4));
+        NodeUtil.PlayAnim(Owner, "attack");
+    }
 
-public override void UpdateAction()
-{
-base.UpdateAction();
+    public override void UpdateAction()
+    {
+        base.UpdateAction();
 
-if(NodeUtil.StateActionMacro(Owner))
-{
-}
+        if (NodeUtil.StateActionMacro(Owner))
+        {
+        }
 
-else
-{
+        else
+        {
 
-if (NodeUtil.IsLastFrame(Owner))
-{
-NodeUtil.ChangeAction(Owner ,"GoblinDrunkIdleAction");
-}
+            if (NodeUtil.IsLastFrame(Owner))
+            {
+                
+                NodeUtil.ChangeAction(Owner, "GoblinDrunkIdleAction");
 
-else
-{
-}
-}
-}
+            }
+            else
+            {
+            }
+        }
+    }
 
-public override void FinishAction()
-{
-base.FinishAction();
-}
+    public override void FinishAction()
+    {
+        base.FinishAction();
+    }
 
-void TimeLine_4()
-{
+    void TimeLine_4()
+    {
 
-if(NodeUtil.PlayerInSight(Owner ,1f ,70f))
-{
-NodeUtil.TakeDamageToPlayer(10f);
-}
+        if (NodeUtil.PlayerInSight(Owner, 1f, 70f))
+        {
+            NodeUtil.TakeDamageToPlayer(10f);
+        }
 
-else
-{
-}
-}
+        else
+        {
+        }
+    }
 }
