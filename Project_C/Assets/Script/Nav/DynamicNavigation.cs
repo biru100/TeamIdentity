@@ -41,4 +41,11 @@ public class DynamicNavigation : BehaviorSingleton<DynamicNavigation>
 
         return sources;
     }
+
+    protected override void OnDestroy()
+    {
+        base.OnDestroy();
+        NavMesh.RemoveNavMeshData(NavMeshInstance);
+        NavMeshInstance.Remove();
+    }
 }

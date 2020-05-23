@@ -28,7 +28,7 @@ public class Player : Character
         Status = new PlayerStatus(this);
         UseCardStack = new List<UseCardData>();
 
-        for (int i = 0; i < 30; ++i)
+        for (int i = 0; i < 100; ++i)
         {
             Deck.Instance.AddCard(new Card(Random.Range(0, 18)));
         }

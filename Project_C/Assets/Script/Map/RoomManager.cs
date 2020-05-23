@@ -18,7 +18,7 @@ public class RoomContainer
 
     public bool GetWayDestinationIndex(MapWay way, out Vector2Int index)
     {
-        if(Way.Contains(way))
+        if (Way.Contains(way))
         {
             index = RoomIndex + RoomManager.WayDirectionSet[way];
             return true;
@@ -26,11 +26,6 @@ public class RoomContainer
         index = Vector2Int.zero;
         return false;
     }
-}
-
-public class RoomFactory
-{
-
 }
 
 public class RoomManager : BehaviorSingleton<RoomManager>
@@ -65,149 +60,11 @@ public class RoomManager : BehaviorSingleton<RoomManager>
     {
         base.Init();
         ThemeTable firstTheme = DataManager.GetFirstData<ThemeTable>();
-        SamplingMapList(firstTheme._Name);
-        CreateMap(firstTheme);
+        AllRoom = new RogueRoomFactory().CreateMap(firstTheme);
     }
 
     public Room CurrentRoom { get; set; }
     public List<RoomContainer> AllRoom { get; protected set; }
-
-    Dictionary<List<MapWay>, TileMapData> mapList;
-
-    List<RoomContainer> roomFactoryProccess;
-    List<RoomContainer> madeRooms;
-    int maximumRoom = 50;
-
-    void SamplingMapList(string mapThema)
-    {
-        mapList = new Dictionary<List<MapWay>, TileMapData>();
-        TextAsset[] mapTxtDatas = Resources.LoadAll<TextAsset>("Map");
-
-        foreach(var txt in mapTxtDatas)
-        {
-            TileMapData mapData = JsonUtility.FromJson<TileMapData>(txt.text);
-            if(mapData.mapTheme == mapThema)
-            {
-                List<MapWay> ways = new List<MapWay>();
-
-                foreach(var way in WayList)
-                {
-                    if((mapData.mapWay & (int)way) != 0)
-                    {
-                        ways.Add(way);
-                    }
-                }
-
-                mapList.Add(ways, mapData);
-            }
-        }
-    }
-
-    void TransitionRoomFactoryProccess(RoomContainer current)
-    {
-        int randomConnectionCount = Mathf.Min(Random.Range(0, 5 - current.Way.Count), maximumRoom 
-            - roomFactoryProccess.Count
-            - madeRooms.Count);
-
-        List<MapWay> otherList = WayList.Except(current.Way).ToList();
-
-        for (int i = 0; i < randomConnectionCount; ++i)
-        {
-            int index = Random.Range(0, otherList.Count);
-            MapWay currentWay = otherList[index];
-
-            if(ConnectNearRoom(current, currentWay))
-                current.Way.Add(otherList[index]);
-
-            otherList.RemoveAt(index);
-        }
-
-        madeRooms.Add(current);
-    }
-
-    bool ConnectNearRoom(RoomContainer current, MapWay currentWay)
-    {
-        Vector2Int wayDirIndex = current.RoomIndex + WayDirectionSet[currentWay];
-
-        RoomContainer container = madeRooms.Find((r) => r.RoomIndex == wayDirIndex);
-
-        if (container == null)
-        {
-            container = roomFactoryProccess.Find((r) => r.RoomIndex == wayDirIndex);
-
-            if (container == null)
-            {
-                roomFactoryProccess.Add(new RoomContainer(wayDirIndex, new List<MapWay>() { WayInverseSet[currentWay] }));
-            }
-            else
-            {
-                container.Way.Add(WayInverseSet[currentWay]);
-            }
-
-            return true;
-        }
-        else if(container.Way.Contains(WayInverseSet[currentWay]))
-        {
-            return true;
-        }
-
-        return false;
-    }
-
-    void ChooseMapInstance(RoomContainer current)
-    {
-        if (current.RoomInstance != null)
-            return;
-
-        List<List<MapWay>> keys = mapList.Keys.Where((k) => current.Way.Count == k.Count 
-            && k.Intersect(current.Way).Count() == current.Way.Count).ToList();
-
-        current.RoomInstance = Room.CreateRoom(mapList[keys[Random.Range(0, keys.Count)]].mapName, current.RoomIndex);
-    }
-
-    void SetMapInstance(RoomContainer current, string mapName)
-    {
-        if (current.RoomInstance != null)
-            return;
-        current.RoomInstance = Room.CreateRoom(mapName, current.RoomIndex);
-    }
-
-    void CreateMap(ThemeTable data)
-    {
-        roomFactoryProccess = new List<RoomContainer>();
-        madeRooms = new List<RoomContainer>();
-
-        RoomContainer first = new RoomContainer(Vector2Int.zero, new List<MapWay>() { MapWay.E_TOP });
-        //RoomContainer boss = new RoomContainer(new Vector2Int((Random.Range(0, 2) - 1) * Random.Range(rangeX.x, rangeX.y),
-        //    (Random.Range(0, 2) - 1) * Random.Range(rangeY.x, rangeY.y)), (int)MapWay.E_BOTTOM);
-
-
-        SetMapInstance(first, DataManager.GetFirstData<ThemeTable>()._StartRoomName);
-
-        madeRooms.Add(first);
-
-        Vector2Int firstIndex;
-        first.GetWayDestinationIndex(MapWay.E_TOP, out firstIndex);
-
-        roomFactoryProccess.Add(new RoomContainer(firstIndex, new List<MapWay>() { WayInverseSet[MapWay.E_TOP]}));
-
-        RoomContainer current;
-
-        while (roomFactoryProccess.Count != 0)
-        {
-            current = roomFactoryProccess[0];
-            roomFactoryProccess.RemoveAt(0);
-
-            TransitionRoomFactoryProccess(current);
-        }
-
-        foreach(var roomContainer in madeRooms)
-        {
-            ChooseMapInstance(roomContainer);
-        }
-
-        AllRoom = madeRooms;
-    }
 
     public void CreatePlayer()
     {
@@ -215,7 +72,8 @@ public class RoomManager : BehaviorSingleton<RoomManager>
         ChangeRoom(AllRoom[0].RoomInstance);
         player.transform.position = CurrentRoom.transform.position;
     }
-    public void ChangeRoom(Room room)
+
+    void ChangeRoom(Room room)
     {
         CurrentRoom?.SetActiveMap(false);
         CurrentRoom = room;
