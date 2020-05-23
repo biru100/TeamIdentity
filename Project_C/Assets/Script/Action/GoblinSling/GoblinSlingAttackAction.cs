@@ -14,7 +14,7 @@ public class GoblinSlingAttackAction : CharacterAction
     public override void StartAction(Character owner)
     {
         base.StartAction(owner);
-        TimelineEvents.Add(new TimeLineEvent(0.6f, TimeLine_4));
+        TimelineEvents.Add(new TimeLineEvent(0.8f, TimeLine_4));
         NodeUtil.PlayAnim(Owner, "attack");
         des = Player.CurrentPlayer.transform.position;
     }
@@ -49,6 +49,6 @@ public class GoblinSlingAttackAction : CharacterAction
 
     void TimeLine_4()
     {
-        NodeUtil.ShootProjectile(Owner, "Bullet", NodeUtil.VectorMinus(des, Owner.transform.position).normalized, 20f);
+        NodeUtil.ShootProjectile(Owner, "Bullet", NodeUtil.VectorMinus(des, Owner.transform.position).normalized, 6.5f);
     }
 }

@@ -5,46 +5,42 @@ using UnityEngine;
 
 
 
-public class GoblinStoreMoveAction : CharacterAction
+public class GoblinStoreTiredAction : CharacterAction
 {
 
-    public static GoblinStoreMoveAction GetInstance() { return new GoblinStoreMoveAction(); }
+    public static GoblinStoreTiredAction GetInstance() { return new GoblinStoreTiredAction(); }
 
     bool IsEnd;
 
     public override void StartAction(Character owner)
     {
         base.StartAction(owner);
-        NodeUtil.PlayAnim(Owner, "run");
+        NodeUtil.PlayAnim(Owner, "idle");
         TimelineEvents.Add(new TimeLineEvent(3f, End));
     }
 
     public override void UpdateAction()
     {
         base.UpdateAction();
-
         if (NodeUtil.StateActionMacro(Owner))
         {
         }
 
         else
         {
-            NodeUtil.AvoidFormPlayer(Owner);
-            NodeUtil.RotationAnim(Owner, "run");
 
-            if (!NodeUtil.PlayerInRange(Owner, 5f) || IsEnd)
+            if (IsEnd)
             {
-                NodeUtil.ChangeAction(Owner, "GoblinStoreTiredAction");
+                NodeUtil.ChangeAction(Owner, "GoblinStoreIdleAction");
             }
+
 
         }
     }
 
-
     public override void FinishAction()
     {
         base.FinishAction();
-        NodeUtil.StopMovement(Owner);
     }
 
     void End()
