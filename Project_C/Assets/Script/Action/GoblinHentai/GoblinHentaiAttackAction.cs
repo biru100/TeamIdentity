@@ -70,19 +70,21 @@ public class GoblinHentaiAttackAction : CharacterAction
             {
                 //카드 드로우
                 NodeUtil.DrawCard();
-                if (Owner.StateStack.Count > 0)
+                if (Owner.StateStack.Count > 2)
                 {
                     SaveCurrentDamage = Owner.Status.CurrentDamage - Owner.Status.Damage;
                     SaveCurrentSpeed = Owner.Status.CurrentSpeed - Owner.Status.Speed;
-                    Owner.StateStack.Clear();
-                }
-    
-                    //고블린의 데미지를 업!
-                    Owner.AddState(new CharacterIncreaseDamageState(Owner, NodeUtil.GetMosterParameter(Owner, 1)+ SaveCurrentDamage, 10f));
-                    //고블린의 이동속도를 업!
-                    Owner.AddState(new CharacterIncreaseSpeedState(Owner, NodeUtil.GetMosterParameter(Owner, 2) + SaveCurrentSpeed, 10f));
 
-   
+                    Owner.DeleteState(CharacterStateType.E_IncreaseDamage);
+                    Owner.DeleteState(CharacterStateType.E_IncreaseSpeed);
+                }
+
+                //고블린의 데미지를 업!
+                Owner.AddState(new CharacterIncreaseDamageState(Owner, NodeUtil.GetMosterParameter(Owner, 1) + SaveCurrentDamage, 10f));
+                //고블린의 이동속도를 업!
+                Owner.AddState(new CharacterIncreaseSpeedState(Owner, NodeUtil.GetMosterParameter(Owner, 2) + SaveCurrentSpeed, 10f));
+
+
             }
 
             //if(NodeUtil.IsActivateAbility(Owner ,201))
