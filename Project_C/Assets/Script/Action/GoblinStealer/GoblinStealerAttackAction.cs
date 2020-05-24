@@ -17,7 +17,7 @@ public class GoblinStealerAttackAction : CharacterAction
         base.StartAction(owner);
         NodeUtil.PlayAnim(Owner, "attack");
         PlayerPosition = Player.CurrentPlayer.transform.position ;
-        TimelineEvents.Add(new TimeLineEvent(0.5f, TimeLine_4));
+        TimelineEvents.Add(new TimeLineEvent(0.6f, TimeLine_4));
 
     }
 
@@ -55,10 +55,10 @@ public class GoblinStealerAttackAction : CharacterAction
 
     void TimeLine_4()
     {
-        Owner.NavAgent.destination = PlayerPosition;
-        if (NodeUtil.PlayerInSight(Owner, 3f, 15f))
+
+        if (NodeUtil.PlayerInSight(Owner, 6f, 15f))
         {
-            NodeUtil.TakeDamageToPlayer(10f);
+            NodeUtil.TakeDamageToPlayer(Owner.Status.CurrentDamage);
 
             if (NodeUtil.IsActivateAbility(Owner, 215))
             {
@@ -78,5 +78,7 @@ public class GoblinStealerAttackAction : CharacterAction
         else
         {
         }
+
+        Owner.NavAgent.Move(Owner.transform.forward*2);
     }
 }

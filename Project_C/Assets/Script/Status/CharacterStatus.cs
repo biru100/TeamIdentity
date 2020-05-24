@@ -57,8 +57,8 @@ public class CharacterStatus
         CurrentHp = 100f;
 
 
-        Speed = 1.2f;
-        CurrentSpeed = 1.2f;
+        Speed = 1.8f;
+        CurrentSpeed = 1.8f;
 
         CurrentStates = new List<CharacterStateType>();
         CurrentAbility = new List<CharacterAbilityType>();

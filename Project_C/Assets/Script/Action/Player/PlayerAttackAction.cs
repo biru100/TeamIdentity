@@ -29,7 +29,7 @@ public class PlayerAttackAction : CharacterAction
         }
 
 
-        Owner.NavAgent.Move(Owner.transform.forward * Isometric.IsometricGridSize * Owner.Status.CurrentSpeed * curve.Evaluate(ElapsedTime)  * Time.deltaTime 
+        Owner.NavAgent.Move(Owner.transform.forward * Isometric.IsometricGridSize * (Owner.Status.CurrentSpeed/2) * curve.Evaluate(ElapsedTime)  * Time.deltaTime 
             + Owner.transform.forward * Mathf.Clamp01(Vector3.Dot(PlayerUtil.GetVelocityInput(), Owner.transform.forward)) * Isometric.IsometricGridSize * Owner.Status.CurrentSpeed * Time.deltaTime);
 
         float currentAnimTime = AnimUtil.GetAnimNormalizedTime(Owner);

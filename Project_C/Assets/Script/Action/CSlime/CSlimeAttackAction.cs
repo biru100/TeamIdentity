@@ -49,8 +49,8 @@ void TimeLine_4()
 
 if(NodeUtil.PlayerInSight(Owner ,1f ,45f))
 {
-NodeUtil.TakeDamageToPlayer(5f);
-}
+NodeUtil.TakeDamageToPlayer(Owner.Status.CurrentDamage);
+        }
 
 else
 {

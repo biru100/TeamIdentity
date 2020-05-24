@@ -37,7 +37,7 @@ public class PlayerAttack1Action : CharacterAction
                 isAttackCommand = true;
         }
 
-        Owner.NavAgent.Move(Owner.transform.forward * Isometric.IsometricTileSize.x * -1f * Owner.Status.CurrentSpeed * curve.Evaluate(ElapsedTime) * Time.deltaTime);
+        Owner.NavAgent.Move(Owner.transform.forward * Isometric.IsometricTileSize.x * -1f * (Owner.Status.CurrentSpeed/2) * curve.Evaluate(ElapsedTime) * Time.deltaTime);
 
         if (AnimUtil.IsLastFrame(Owner))
         {
