@@ -20,9 +20,10 @@ public class UserCardData
 [Serializable]
 public class DeckData
 {
-    public string DeckName;
+    public string DeckName = "새로운 덱";
     public bool IsPrepareToUse;
-    public List<UserCardData> DeckCards;
+    public int CardCount;
+    public List<UserCardData> DeckCards = new List<UserCardData>();
 }
 
 [Serializable]
@@ -39,7 +40,7 @@ public class UserData
         OwnedCardList = new List<UserCardData>();
         foreach (var ct in cardList)
         {
-            OwnedCardList.Add(new UserCardData(ct._Index, 1));
+            OwnedCardList.Add(new UserCardData(ct._Index, 5));
         }
     }
 
@@ -83,6 +84,6 @@ public class UserData
         File.WriteAllText(Application.persistentDataPath + "/MagiaCarta/SaveDat.userData", data);
     }
 
-    public List<UserCardData> OwnedCardList;
-    public List<DeckData> OwnedDeckList;
+    public List<UserCardData> OwnedCardList = new List<UserCardData>();
+    public List<DeckData> OwnedDeckList = new List<DeckData>();
 }

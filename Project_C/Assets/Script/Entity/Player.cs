@@ -27,11 +27,6 @@ public class Player : Character
         CurrentPlayer = this;
         Status = new PlayerStatus(this);
         UseCardStack = new List<UseCardData>();
-
-        for (int i = 0; i < 100; ++i)
-        {
-            Deck.Instance.AddCard(new Card(Random.Range(0, 18)));
-        }
     }
 
     // Start is called before the first frame update

@@ -7,9 +7,7 @@ public class GameActivator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        RoomManager.CreateRogueMap();
-        RoomManager.CreatePlayer();
-        MinimapInterface.Instance.gameObject.SetActive(false);
+        MainUIInterface.Instance.StartInterface();
     }
 
     // Update is called once per frame
@@ -17,7 +15,10 @@ public class GameActivator : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.M))
         {
-            MinimapInterface.Instance.gameObject.SetActive(!MinimapInterface.Instance.gameObject.activeSelf);
+            if (MinimapInterface.Instance.gameObject.activeSelf)
+                MinimapInterface.Instance.StartInterface();
+            else
+                MinimapInterface.Instance.StopInterface();
         }
     }
 

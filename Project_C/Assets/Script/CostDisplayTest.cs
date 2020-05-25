@@ -15,6 +15,8 @@ public class CostDisplayTest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (PlayerStatus.CurrentStatus == null)
+            return;
         text.text = "Cost : " + PlayerStatus.CurrentStatus.CurrentManaCost;
     }
 }

@@ -22,18 +22,19 @@ public class ManagedUIInterface<SingletonClass> : UIBase<SingletonClass> where S
 
     protected IEnumerator HookAnimationFinished(string animName, Action finishAction)
     {
+        yield return null;
         UIAnim.Play(animName);
 
-        while (true)
-        {
-            yield return null;
+        //while (true)
+        //{
+        //    yield return null;
 
-            if (UIAnim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.95f)
-            {
-                finishAction?.Invoke();
-                break;
-            }
-        }
+        //    if (UIAnim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.95f)
+        //    {
+        //        finishAction?.Invoke();
+        //        break;
+        //    }
+        //}
 
         gameObject.SetActive(false);
     }

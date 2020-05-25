@@ -326,7 +326,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7094684520077042732}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.05503734, z: 0, w: 0.99848425}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -334,7 +334,7 @@ RectTransform:
   - {fileID: 566635951976295716}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 6.31, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -358,6 +358,8 @@ MonoBehaviour:
   _cardCost: {fileID: 391371187363766580}
   _originCardSize: {x: 194, y: 281}
   _dissolveValue: 1
+  _grayScaleValue: 0
+  _alphaValue: 1
 --- !u!223 &8989904346404479776
 Canvas:
   m_ObjectHideFlags: 0

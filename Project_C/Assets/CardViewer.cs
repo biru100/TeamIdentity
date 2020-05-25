@@ -46,12 +46,7 @@ public class CardViewer : MonoBehaviour
         }
     }
 
-    private void Awake()
-    {
-        SettingCard();
-    }
-
-    void SettingCard()
+    public void SettingCard()
     {
         if(CardList == null)
         {

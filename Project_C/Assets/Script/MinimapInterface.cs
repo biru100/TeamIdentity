@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MinimapInterface : UIBase<MinimapInterface>
+public class MinimapInterface : ManagedUIInterface<MinimapInterface>
 {
     public Sprite currentRoomS;
     public Sprite roomS;

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class InGameInterface : UIBase<InGameInterface>
+public class InGameInterface : ManagedUIInterface<InGameInterface>
 {
     protected List<CardInterface> HandCards;
 

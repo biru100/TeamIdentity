@@ -17,6 +17,9 @@ public class StateDisplayTest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (PlayerStatus.CurrentStatus == null)
+            return;
+
         text.text = "";
         foreach (var state in PlayerStatus.CurrentStatus.CurrentStates)
         {

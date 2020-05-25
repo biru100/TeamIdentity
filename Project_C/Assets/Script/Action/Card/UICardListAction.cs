@@ -24,7 +24,7 @@ public class UICardListAction : CardInterfaceAction
         if (eventData.button == PointerEventData.InputButton.Left)
         {
             if (currentDisplayType == CardListElementDisplayType.E_Idle)
-                Deck.Instance.AddCard(Owner.CardData);
+                DeckBuildingUIInterface.Instance.DeckView.AddCard(Owner.CardData.Data);
 
             SettingUIDisplayMode();
         }
@@ -64,7 +64,10 @@ public class UICardListAction : CardInterfaceAction
     void SettingUIDisplayMode()
     {
         UserCardData userCard = UserData.Instance.OwnedCardList.Find((usd) => usd.cardIndex == Owner.CardData.Data._Index);
-        int alreadyInDeckCount = Deck.Instance.DeckCards.FindAll((card) => card.Data == Owner.CardData.Data).Count;
+        UserCardData deckCard = DeckBuildingUIInterface.Instance.DeckView.ControlledDeckData.DeckCards.Find((card) => card.cardIndex == Owner.CardData.Data._Index);
+        int alreadyInDeckCount = deckCard?.cardCount ?? 0;
+
+        Debug.Log(alreadyInDeckCount);
 
         if (userCard != null)
         {
@@ -81,14 +84,12 @@ public class UICardListAction : CardInterfaceAction
         //non equit more card
         else if(alreadyInDeckCount == Mathf.Min(3, CardCount))
         {
-            Debug.Log("check non have");
             currentDisplayType = CardListElementDisplayType.E_NonMoreEquited;
             Owner.GrayScaleValue = 0f;
             Owner.AlphaValue = 0.3f;
         }
         else
         {
-            Debug.Log("check default");
             Owner.GrayScaleValue = 0f;
             Owner.AlphaValue = 1f;
             currentDisplayType = CardListElementDisplayType.E_Idle;

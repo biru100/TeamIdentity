@@ -6,7 +6,8 @@ public class MainUIInterface : ManagedUIInterface<MainUIInterface>
 { 
     public void StartGame()
     {
-
+        StopInterface();
+        DeckSelectUIInterface.Instance.StartInterface();
     }
 
     public void GoSetting()

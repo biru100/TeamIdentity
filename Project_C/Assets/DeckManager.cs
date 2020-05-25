@@ -75,7 +75,7 @@ public class DeckManager : BehaviorSingleton<DeckManager>
         {
             for (int i = 0; i < cardData.cardCount; ++i)
             {
-                deck.DeckCards.Add(Card.CardInstanceSet[DataManager.GetData<CardTable>(cardData.cardIndex)]);
+                deck.AddCard(Card.CardInstanceSet[DataManager.GetData<CardTable>(cardData.cardIndex)]);
             }
         }
 
