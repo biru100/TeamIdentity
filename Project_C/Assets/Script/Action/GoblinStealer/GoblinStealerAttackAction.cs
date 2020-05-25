@@ -79,6 +79,6 @@ public class GoblinStealerAttackAction : CharacterAction
         {
         }
 
-        Owner.NavAgent.Move(Owner.transform.forward*2);
+        Owner.NavAgent.Move(Owner.transform.forward);
     }
 }

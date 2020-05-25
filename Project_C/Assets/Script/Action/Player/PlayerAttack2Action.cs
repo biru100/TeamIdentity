@@ -27,7 +27,7 @@ public class PlayerAttack2Action : CharacterAction
             return;
         }
 
-        Owner.NavAgent.Move(Owner.transform.forward * Isometric.IsometricGridSize * (Owner.Status.CurrentSpeed/3) * curve.Evaluate(ElapsedTime) * Time.deltaTime
+        Owner.NavAgent.Move(Owner.transform.forward * Isometric.IsometricGridSize * Owner.Status.CurrentSpeed * curve.Evaluate(ElapsedTime) * Time.deltaTime
     + Owner.transform.forward * Mathf.Clamp01(Vector3.Dot(PlayerUtil.GetVelocityInput(), Owner.transform.forward)) * Isometric.IsometricGridSize * Owner.Status.CurrentSpeed * Time.deltaTime);
 
         if (AnimUtil.IsLastFrame(Owner))
@@ -51,7 +51,7 @@ public class PlayerAttack2Action : CharacterAction
         if (enemys == null)
             return;
 
-        foreach(var e in enemys)
+        foreach (var e in enemys)
         {
             if (e == Owner) continue;
             float angle = Mathf.Acos(Vector3.Dot((e.transform.position - Owner.transform.position).normalized, Owner.transform.forward))
@@ -65,7 +65,7 @@ public class PlayerAttack2Action : CharacterAction
 
                 IsoParticle.CreateParticle("Sliced1", e.transform.position
                     + new Vector3(0f, Isometric.IsometricTileSize.y * 0.5f, 0f),
-                    zAngle );
+                    zAngle);
                 IsoParticle.CreateParticle("Sliced2", e.transform.position
                     + new Vector3(0f, Isometric.IsometricTileSize.y * 0.5f, 0f),
                     angle + 90f);
