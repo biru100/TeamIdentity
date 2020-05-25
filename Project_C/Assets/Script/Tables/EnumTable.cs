@@ -43,3 +43,11 @@ using System;
     E_Target = 1 , //  
     E_Point = 2 , //  
   }
+ public enum CardRangeType
+ {
+    E_None = 0 , //  
+    E_PlayerRelativeCircularSector = 1 , //  
+    E_PlayerRelativeCircle = 2 , //  
+    E_PointCircularSector = 3 , //  
+    E_PointCircle = 4 , //  
+  }

@@ -8,43 +8,104 @@ using UnityEngine;
 public class SlimeMoveAction : CharacterAction
 {
 
-public static SlimeMoveAction GetInstance() { return new SlimeMoveAction(); }
+    public static SlimeMoveAction GetInstance() { return new SlimeMoveAction(); }
 
-public override void StartAction(Character owner)
-{
-base.StartAction(owner);
-NodeUtil.PlayAnim(Owner ,"run");
-NodeUtil.MoveToPlayer(Owner);
-}
+    int timer1, timer2;
+    int check1;
 
-public override void UpdateAction()
-{
-base.UpdateAction();
+    public override void StartAction(Character owner)
+    {
+        base.StartAction(owner);
+        NodeUtil.PlayAnim(Owner, "run");
 
-if(NodeUtil.StateActionMacro(Owner))
-{
-}
+        timer1 = 0;
+        timer2 = UnityEngine.Random.Range(40, 100);
+        check1 = UnityEngine.Random.Range(1, 4);
 
-else
-{
-NodeUtil.LookPlayer(Owner);
-NodeUtil.RotationAnim(Owner ,"run");
+    }
 
-if(NodeUtil.PlayerInRange(Owner ,1f))
-{
-NodeUtil.ChangeAction(Owner ,"SlimeAttackAction");
-}
+    public override void UpdateAction()
+    {
+        base.UpdateAction();
 
-else
-{
-NodeUtil.MoveToPlayer(Owner);
-}
-}
-}
+        if (NodeUtil.StateActionMacro(Owner))
+        {
+        }
 
-public override void FinishAction()
-{
-base.FinishAction();
-NodeUtil.StopMovement(Owner);
-}
+        else
+        {
+            if (check1 == 1)
+            {
+                timer1 = timer1 + 1;
+
+                if (timer1 == timer2)
+                {
+                    timer1 = 0;
+                    timer2 = UnityEngine.Random.Range(40, 100);
+                    check1 = UnityEngine.Random.Range(1, 3);
+                    NodeUtil.StopMovement(Owner);
+                }
+                else
+                {
+                    NodeUtil.LookPlayer(Owner);
+                    NodeUtil.RotationAnim(Owner, "run");
+
+                    if (NodeUtil.PlayerInRange(Owner, 1f))
+                    {
+                        NodeUtil.ChangeAction(Owner, "SlimeAttackAction");
+                    }
+
+                    else
+                    {
+                        NodeUtil.MoveToPlayer(Owner);
+                    }
+                }
+            }
+
+            else if(check1 == 2)
+            {
+                timer1 = timer1 + 1;
+
+                if (timer1 == timer2)
+                {
+                    timer1 = 0;
+                    timer2 = UnityEngine.Random.Range(40, 100);
+                    check1 = UnityEngine.Random.Range(1, 3);
+
+                }
+                else
+                {
+                    NodeUtil.LookPlayer(Owner);
+                    NodeUtil.RotationAnim(Owner, "idle");
+                    NodeUtil.StopMovement(Owner);
+                }
+            }
+            else if(check1 == 3)
+            {
+                timer1 = timer1 + 1;
+
+                if (timer1 == timer2)
+                {
+                    timer1 = 0;
+                    timer2 = UnityEngine.Random.Range(40, 100);
+                    check1 = UnityEngine.Random.Range(1, 3);
+
+                }
+                else
+                {
+                    Owner.transform.rotation = Quaternion.LookRotation((Owner.transform.position- Player.CurrentPlayer.transform.position).normalized , Vector3.up);
+                    NodeUtil.RotationAnim(Owner, "run");
+                    NodeUtil.AvoidFormPlayer(Owner);
+                }
+
+            }
+
+        }
+    }
+
+    public override void FinishAction()
+    {
+        base.FinishAction();
+        NodeUtil.StopMovement(Owner);
+    }
 }

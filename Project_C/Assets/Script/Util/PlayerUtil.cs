@@ -79,13 +79,12 @@ public static class PlayerUtil
 {
     public static float CalculatingCardPowerValue(float basePower)
     {
-        return (basePower + PlayerStatus.CurrentStatus.CardPowerSupport) * PlayerStatus.CurrentStatus.CardPowerScale;
+        return (basePower + PlayerStatus.CurrentStatus.CardPowerSupport);
     }
 
     public static void ConsumeCardPowerUpStatus()
     {
         PlayerStatus.CurrentStatus.CardPowerSupport = PlayerStatus.CurrentStatus.BaseCardPowerSupport;
-        PlayerStatus.CurrentStatus.CardPowerScale = PlayerStatus.CurrentStatus.BaseCardPowerScale;
     }
 
     public static bool GetAttackInput()
@@ -131,7 +130,11 @@ public static class AnimUtil
 {
     public static int GetRenderAngle(Quaternion rotation)
     {
-        return (int)(Mathf.Round(rotation.eulerAngles.y / 45f) * 45f);
+        int angle = Mathf.RoundToInt(rotation.eulerAngles.y / 45f) * 45;
+        if (angle == 360)
+            angle = 0;
+
+        return angle;
     }
 
     public static void PlayAnim(Character owner, string animationName)
@@ -159,7 +162,7 @@ public static class AnimUtil
 
     public static bool IsLastFrame(Character owner)
     {
-        return ((owner.Anim.GetCurrentAnimatorStateInfo(0).normalizedTime)
+        return ((owner.Anim.GetCurrentAnimatorStateInfo(0).normalizedTime % 1f)
             + Time.deltaTime / owner.Anim.GetCurrentAnimatorStateInfo(0).length) >= 0.9f;
     }
 }

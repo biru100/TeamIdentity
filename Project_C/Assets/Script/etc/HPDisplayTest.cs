@@ -15,6 +15,6 @@ public class HPDisplayTest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        text.text = PlayerStatus.CurrentStatus.CurrentHp + " / " + PlayerStatus.CurrentStatus.Hp;
+        text.text = PlayerStatus.CurrentStatus.CurrentArmor + "\n" + PlayerStatus.CurrentStatus.CurrentHp + " / " + PlayerStatus.CurrentStatus.Hp;
     }
 }

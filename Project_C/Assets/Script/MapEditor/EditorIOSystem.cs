@@ -25,6 +25,8 @@ public class EditorIOSystem : MonoBehaviour
     public InputField saveMapTheme;
     public InputField saveMapDifficulty;
     public InputField saveMapWeight;
+    public InputField saveMapCost;
+    public InputField saveMapDraw;
     public List<RoomWayToggleSet> DoorToggle;
 
     private void Start()
@@ -68,7 +70,9 @@ public class EditorIOSystem : MonoBehaviour
             mapMax = tileMap.max,
             mapDifficulty = int.Parse(saveMapDifficulty.text),
             mapData = tileMap.ToJson(),
-            mapWay = way
+            mapWay = way,
+            mapDraw = int.Parse(saveMapDraw.text),
+            mapCost = int.Parse(saveMapCost.text)
         };
 
         File.WriteAllText(Application.dataPath + "/Resources/Map/" + data.mapName + ".txt", JsonUtility.ToJson(data));
@@ -81,6 +85,8 @@ public class EditorIOSystem : MonoBehaviour
         saveMapTheme.text = data.mapTheme;
         saveMapWeight.text = data.mapWeight.ToString();
         saveMapDifficulty.text = data.mapDifficulty.ToString();
+        saveMapDraw.text = data.mapDraw.ToString();
+        saveMapCost.text = data.mapCost.ToString();
 
         foreach (var set in DoorToggle)
         {

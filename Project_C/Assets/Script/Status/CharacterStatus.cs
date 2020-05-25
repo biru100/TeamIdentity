@@ -7,21 +7,19 @@ public class PlayerStatus : CharacterStatus
 {
     public static PlayerStatus CurrentStatus{ get; set; }
 
-    public int BaseCardPowerScale { get; set; }
-    public int CardPowerScale { get; set; }
+    public int CurrentManaCost { get; set; }
+
     public int BaseCardPowerSupport { get; set; }
     public int CardPowerSupport { get; set; }
 
     public PlayerStatus(Character owner) : base(owner)
     {
-        Hp = 10000f;
-        CurrentHp = 10000f;
+        Hp = 150f;
+        CurrentHp = 150f;
 
         CurrentStatus = this;
 
-        BaseCardPowerScale = 1;
         BaseCardPowerSupport = 0;
-        CardPowerScale = BaseCardPowerScale;
         CardPowerSupport = BaseCardPowerSupport;
     }
 }

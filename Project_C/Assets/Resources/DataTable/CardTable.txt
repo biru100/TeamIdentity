@@ -1,10 +1,19 @@
-301	PowerAttack	강타	E_NonTarget	범위 내 적에게 _ 의 데미지를 줍니다.	Sprites/Card/card_power_atk	0	PlayerPowerAttackAction	80	0	
-302	FamilyKill	종족 말살	E_Target	같은 방에 있는 동일한 유닛에게 _ 의 데미지를 줍니다.	Sprites/Card/card_family_kill	0	PlayerFamilyKillAction	50	0	
-303	CardPowerUp	근력 강화	E_NonTarget	카드 주문력을 _ 강화합니다.	Sprites/Card/card_atk_up	0	PlayerCardPowerUpAction	100	0	
-304	PowerUp	공격 강화	E_NonTarget	캐릭터의 기본 공격력을 _ 초 동안 _ 강화합니다.	Sprites/Card/card_player_atk_up	0	PlayerPowerUpAction	60	20	
-305	IncreaseSpeed	이동속도 증가	E_NonTarget	캐릭터의 이동 속도를 _ 초 동안 _  증가 시킵니다.	Sprites/Card/card_player_speed_up	0	PlayerIncreaseSpeedAction	5	0.3	
-306	Silence	침묵	E_Target	몬스터 하나를 침묵 시킵니다.	Sprites/Card/card_silence	0	PlayerSilenceAction	5	0	
-307	Transition	슬라임 변이	E_Target	몬스터 하나를 슬라임으로 변이 시킵니다.	Sprites/Card/card_change_slime	0	PlayerCallTransitionAction	0	0	
-308	Slow	슬로우	E_Target	몬스터 하나의 이동속도를 _ 초 동안 _ 감소 시킵니다.	Sprites/Card/card_slow	0	PlayerCallSlowAction	5	0.3	
-309	DrawCard	드로우	E_NonTarget	카드를 _ 장 드로우 합니다.	Sprites/Card/card_draw	0	PlayerDrawCardAction	3	0	
-310	LandAttack	지면 강타	E_NonTarget	범위 내 적에게 _ 의 데미지를 줍니다.	Sprites/Card/card_earthquake_atk	0	PlayerGroundPowerAttackAction	200	0	
+301	PowerAttack	강타	E_NonTarget	범위 내 적에게 _ 의 데미지를 줍니다.	Sprites/Card/card_power_atk	2	PlayerPowerAttackAction	1	80	0	True	False	Sprites/Range/powerattack_range	E_PlayerRelativeCircularSector	
+302	FamilyKill	종족 말살	E_Target	같은 방에 있는 동일한 유닛에게 _ 의 데미지를 줍니다.	Sprites/Card/card_family_kill	4	PlayerFamilyKillAction	1	50	0	True	False	null	E_None	
+303	CardPowerUp	근력 강화	E_NonTarget	카드 주문력을 _ 강화합니다.	Sprites/Card/card_atk_up	2	PlayerCardPowerUpAction	1	100	0	False	False	null	E_None	
+304	PowerUp	공격 강화	E_NonTarget	캐릭터의 기본 공격력을 _ 초 동안 _ 강화합니다.	Sprites/Card/card_player_atk_up	2	PlayerPowerUpAction	2	60	20	True	False	null	E_None	
+305	IncreaseSpeed	이동속도 증가	E_NonTarget	캐릭터의 이동 속도를 _ 초 동안 _  증가 시킵니다.	Sprites/Card/card_player_speed_up	1	PlayerIncreaseSpeedAction	2	5	0.3	False	False	null	E_None	
+306	Silence	침묵	E_Target	몬스터 하나를 침묵 시킵니다.	Sprites/Card/card_silence	3	PlayerSilenceAction	1	5	0	False	False	null	E_None	
+307	Transition	슬라임 변이	E_Target	몬스터 하나를 슬라임으로 변이 시킵니다.	Sprites/Card/card_change_slime	4	PlayerCallTransitionAction	0	0	0	False	False	null	E_None	
+308	Slow	슬로우	E_Target	몬스터 하나의 이동속도를 _ 초 동안 _ 감소 시킵니다.	Sprites/Card/card_slow	1	PlayerCallSlowAction	2	5	0.3	False	False	null	E_None	
+309	DrawCard	드로우	E_NonTarget	카드를 _ 장 드로우 합니다.	Sprites/Card/card_draw	3	PlayerDrawCardAction	1	3	0	False	False	null	E_None	
+310	LandAttack	지면 강타	E_NonTarget	범위 내 적에게 _ 의 데미지를 줍니다.	Sprites/Card/card_earthquake_atk	5	PlayerGroundPowerAttackAction	1	200	0	True	False	Sprites/Range/groundpowerattack_range	E_PlayerRelativeCircularSector	
+311	Heal	회복	E_NonTarget	플레이어의 체력을 _ 회복합니다.	Sprites/Card/card_heal	2	PlayerHealAction	1	50	0	False	False	null	E_None	
+312	Thunter	낙뢰	E_Point	선택한 범위 내의 적에게 _의 데미지를 주고, _초 동안 스턴시킵니다.	Sprites/Card/card_thunter	3	PlayerThunterAction	2	100	3	True	False	Sprites/Range/thunter_range	E_PointCircle	
+313	EverybodySlime	슬라임 너무좋아	E_NonTarget	범위 내의 적을 모두 슬라임으로 변이 시킵니다.	Sprites/Card/card_everybody_slime	4	PlayerEverybodySlimeAction	0	0	0	False	False	Sprites/Range/everybodyslime_range	E_PlayerRelativeCircle	
+314	CardUseAttack	발악	E_Target	선택한 적에게 _ 의 데미지를 이번 맵에서 카드를 사용한 개수만큼 줍니다.	Sprites/Card/card_card_use_attack	0	PlayerNoneAction	1	50	0	True	False	null	E_None	
+315	Counter	카운터	E_NonTarget	_ 초간 무적을 얻습니다. 무적상태가 끝나면 범위 내의 적에게 공격받은 데미지 만큼 데미지를 줍니다.	Sprites/Card/card_counter	0	PlayerNoneAction	1	3	0	False	False	Sprites/Range/counter_range	E_PlayerRelativeCircle	
+316	ShuildAttack	방패 타격	E_NonTarget	범위 내의 적에게 현재 방어도 만큼의 데미지를 줍니다.	Sprites/Card/card_shuild_attack	2	PlayerShuildAttackAction	0	0	0	False	False	Sprites/Range/powerattack_range	E_PlayerRelativeCircularSector	
+317	Assassin	암살	E_Target	선택한 적에게 이동하여 _의 데미지를 줍니다.	Sprites/Card/card_assassin	3	PlayerAssassinAction	1	100	0	True	False	null	E_None	
+318	ShuildUp	수비	E_NonTarget	_의 방어도를 얻습니다.	Sprites/Card/card_shuild_up	2	PlayerShuildUpAction	1	30	0	False	False	null	E_None	
+319	Storm	폭풍	E_NonTarget	무작위 범위에 _의 데미지를 주는 번개를 _회 소환합니다.	Sprites/Card/card_storm	0	PlayerNoneAction	2	150	3	True	False	null	E_None	

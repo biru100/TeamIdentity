@@ -27,7 +27,7 @@ if(NodeUtil.StateActionMacro(Owner))
 else
 {
 
-if(NodeUtil.PlayerInRange(Owner ,3f))
+if(NodeUtil.PlayerInRange(Owner ,2f))
 {
 NodeUtil.ChangeAction(Owner ,"GoblinStoreMoveAction");
 }

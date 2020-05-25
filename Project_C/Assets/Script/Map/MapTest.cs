@@ -7,6 +7,8 @@ using System;
 public class MapTest : MonoBehaviour
 {
     [SerializeField] string _mapDataName;
+    [SerializeField] int _testCost;
+    [SerializeField] int _testDraw;
 
     // Start is called before the first frame update
     void Start()
@@ -15,6 +17,11 @@ public class MapTest : MonoBehaviour
         TileMapData data = JsonUtility.FromJson<TileMapData>(jsonData);
         GetComponent<IsometricTileMap>().FromJson(data.mapData, true);
         DynamicNavigation.Instance.SetNavMeshData(DynamicNavigation.Instance.BuildNavigation(null));
+        PlayerStatus.CurrentStatus.CurrentManaCost = _testCost;
+        InGameInterface.Instance.DrawCard(_testDraw);
+
+        //Player player = Instantiate(ResourceManager.GetResource<GameObject>("Tiles/Player")).GetComponent<Player>();
+        //player.transform.position = CurrentRoom.transform.position;
     }
 
     // Update is called once per frame

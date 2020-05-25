@@ -30,6 +30,7 @@ MonoBehaviour:
       methodName: Start
       returnType: Character
       nodeType: 5
+      parameters: []
       points:
       - 67ddf35e-4d9f-4361-8478-ebb068228907
       - 9c96b3db-1a24-46e5-b27f-c0dda91cb3d5
@@ -43,6 +44,7 @@ MonoBehaviour:
       methodName: Update
       returnType: Character
       nodeType: 5
+      parameters: []
       points:
       - e4708966-207c-40a7-8d7c-c6fbfa83cad1
       - 15fbe6f5-cb81-4a8e-b48a-dca45a6ee649
@@ -56,6 +58,7 @@ MonoBehaviour:
       methodName: IF
       returnType: True Logic, False Logic
       nodeType: 3
+      parameters: []
       points:
       - be07e76b-7b92-4390-879b-435f2cdd9790
       - 48552297-3851-4e19-b67d-c83587792704
@@ -71,6 +74,7 @@ MonoBehaviour:
       methodName: IF
       returnType: True Logic, False Logic
       nodeType: 3
+      parameters: []
       points:
       - fd3e55a9-12db-46f6-972f-3c1b9fb32883
       - 38da913f-cac1-4161-8aa7-6b734c1ed419
@@ -86,6 +90,7 @@ MonoBehaviour:
       methodName: TimeLine
       returnType: Character
       nodeType: 6
+      parameters: []
       points:
       - 83034e1d-8e87-4b12-ad39-d66eb6571655
       - 01a35f4f-e11f-4b22-b726-01ec0243a4d8
@@ -100,6 +105,7 @@ MonoBehaviour:
       methodName: IF
       returnType: True Logic, False Logic
       nodeType: 3
+      parameters: []
       points:
       - 2503dd6d-e05e-4982-993b-b7b8140a578e
       - fb116fe8-4d56-49ac-9820-f5f8c5d50840
@@ -116,6 +122,7 @@ MonoBehaviour:
       methodName: PlayAnim
       returnType: Void
       nodeType: 0
+      parameters: []
       points:
       - a23f8277-93ab-45d0-96e2-f39026089444
       - 2bb3effd-bd34-4ac1-957e-31ab0d00ddd6
@@ -132,6 +139,7 @@ MonoBehaviour:
       methodName: IsLastFrame
       returnType: Boolean
       nodeType: 1
+      parameters: []
       points:
       - 5afde552-4686-4ace-ab26-afc86f0783d2
       - 239ce138-ef46-4b6b-ad18-0194131bad55
@@ -146,6 +154,7 @@ MonoBehaviour:
       methodName: TakeDamageToPlayer
       returnType: Void
       nodeType: 0
+      parameters: []
       points:
       - 85e29da7-9331-4ef6-b3be-dd1066716072
       - 191bbbe1-a69c-421d-b2db-75babcf99fed
@@ -161,6 +170,7 @@ MonoBehaviour:
       methodName: ChangeAction
       returnType: Void
       nodeType: 0
+      parameters: []
       points:
       - abd8c48a-3ce1-4dbc-b531-e743e6b91dd6
       - 6200028a-8a89-4ca3-b687-5ac62f8378d0
@@ -177,6 +187,7 @@ MonoBehaviour:
       methodName: StateActionMacro
       returnType: Boolean
       nodeType: 1
+      parameters: []
       points:
       - 8cf2a0f0-2b18-4cb2-8598-4df2d063ba51
       - bbeb32c4-0c7f-4fee-968d-3345924e9249
@@ -191,6 +202,7 @@ MonoBehaviour:
       methodName: PlayerInSight
       returnType: Boolean
       nodeType: 1
+      parameters: []
       points:
       - e4d2a884-5383-4d32-852d-8f3157c401c6
       - 962883c0-edca-4683-9dfe-19ba028636cd

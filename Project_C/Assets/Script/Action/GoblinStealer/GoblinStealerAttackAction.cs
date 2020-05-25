@@ -8,62 +8,75 @@ using UnityEngine;
 public class GoblinStealerAttackAction : CharacterAction
 {
 
-public static GoblinStealerAttackAction GetInstance() { return new GoblinStealerAttackAction(); }
+    public static GoblinStealerAttackAction GetInstance() { return new GoblinStealerAttackAction(); }
 
-public override void StartAction(Character owner)
-{
-base.StartAction(owner);
-TimelineEvents.Add(new TimeLineEvent(0.5f, TimeLine_4));
-NodeUtil.PlayAnim(Owner ,"attack");
-NodeUtil.MoveToPlayer(Owner);
-}
+    Vector3 PlayerPosition;
 
-public override void UpdateAction()
-{
-base.UpdateAction();
+    public override void StartAction(Character owner)
+    {
+        base.StartAction(owner);
+        NodeUtil.PlayAnim(Owner, "attack");
+        PlayerPosition = Player.CurrentPlayer.transform.position ;
+        TimelineEvents.Add(new TimeLineEvent(0.5f, TimeLine_4));
 
-if(NodeUtil.StateActionMacro(Owner))
-{
-}
+    }
 
-else
-{
+    public override void UpdateAction()
+    {
+        base.UpdateAction();
+        
 
-if(NodeUtil.IsLastFrame(Owner))
-{
-NodeUtil.ChangeAction(Owner ,"GoblinStealerIdleAction");
-}
+        if (NodeUtil.StateActionMacro(Owner))
+        {
+        }
 
-else
-{
-}
-}
-}
+        else
+        {
+            Owner.Status.CurrentSpeed = 20f;
 
-public override void FinishAction()
-{
-base.FinishAction();
-}
+            if (NodeUtil.IsLastFrame(Owner))
+            {
+                Owner.Status.CurrentSpeed = Owner.Status.Speed;
+                NodeUtil.StopMovement(Owner);
+                NodeUtil.ChangeAction(Owner, "GoblinStealerAvoidAction");
+                return;
+            }
 
-void TimeLine_4()
-{
+            else
+            {
+            }
+        }
+    }
 
-if(NodeUtil.PlayerInSight(Owner ,1f ,50f))
-{
-NodeUtil.TakeDamageToPlayer(10f);
+    public override void FinishAction()
+    {
+        base.FinishAction();
+    }
 
-if(NodeUtil.IsActivateAbility(Owner ,215))
-{
-NodeUtil.BurnCard();
-}
+    void TimeLine_4()
+    {
+        Owner.NavAgent.destination = PlayerPosition;
+        if (NodeUtil.PlayerInSight(Owner, 3f, 15f))
+        {
+            NodeUtil.TakeDamageToPlayer(10f);
 
-else
-{
-}
-}
+            if (NodeUtil.IsActivateAbility(Owner, 215))
+            {
+                NodeUtil.GiveSilence(Player.CurrentPlayer, 2f);
+                NodeUtil.BurnCard();
+            }
 
-else
-{
-}
-}
+            //if (NodeUtil.IsActivateAbility(Owner, 207))
+            //{
+            //    NodeUtil.GiveSilence(Player.CurrentPlayer, 2f);
+            //}
+            else
+            {
+
+            }
+        }
+        else
+        {
+        }
+    }
 }

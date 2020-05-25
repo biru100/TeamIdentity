@@ -31,7 +31,7 @@ else
 
 if(NodeUtil.IsLastFrame(Owner))
 {
-NodeUtil.ChangeAction(Owner ,"GoblinDrunkIdleAction");
+NodeUtil.ChangeAction(Owner , "GoblinDrunkAvoidAction");
 }
 
 else
@@ -50,7 +50,7 @@ void TimeLine_4()
 
 if(NodeUtil.IsActivateAbility(Owner ,211))
 {
-NodeUtil.ChangeAction(NodeUtil.CreateEntity("GoblinDrunk" ,NodeUtil.VectorAdd(NodeUtil.GetPosition(Owner) ,NodeUtil.CreateVector3(0.4808326f ,0f ,0f))) ,"GoblinDrunkIdleAction");
+NodeUtil.ChangeAction(NodeUtil.CreateEntity("GoblinDrunk" ,NodeUtil.VectorAdd(NodeUtil.GetPosition(Owner) ,NodeUtil.CreateVector3(0.4808326f ,0f ,0f))) ,"GoblinDrunkCreateAction");
 }
 
 else

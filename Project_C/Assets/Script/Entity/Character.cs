@@ -18,13 +18,14 @@ public class Character : MonoBehaviour
     public List<CharacterAbility> AbilityStack { get; protected set; }
     public List<CharacterState> StateStack { get; protected set; }
 
+    public float HUDOffset { get; protected set; }
+    public float EffectOffset { get; protected set; }
+
+    public CharacterHUD HUD { get; protected set; }
+
     protected List<CharacterState> DeleteStateList { get; set; }
     protected CharacterAction _currentAction;
 
-    protected List<AbilityDisplay> _abilityDisplays;
-    protected List<StateDisplay> _stateDisplays;
-
-    protected HPDisplay _hpDisplay;
 
 
     public CharacterAction CurrentAction {
@@ -45,8 +46,8 @@ public class Character : MonoBehaviour
         DeleteStateList = new List<CharacterState>();
         AbilityStack = new List<CharacterAbility>();
 
-        _abilityDisplays = new List<AbilityDisplay>();
-        _stateDisplays = new List<StateDisplay>();
+        if(!(this is Player))
+            HUD = CharacterHUD.CreateHUD(this);
 
         RenderTrasform = GetComponentInChildren<RenderTransform>();
         Anim = GetComponentInChildren<Animator>();
@@ -55,9 +56,6 @@ public class Character : MonoBehaviour
 
     protected virtual void Update()
     {
-        if (_hpDisplay == null && !(this is Player))
-            _hpDisplay = HPDisplay.CreateHPDisplay();
-
         Status.PrepareState();
         for (int i = 0; i < StateStack.Count; ++i)
             StateStack[i].UpdateState();
@@ -73,53 +71,8 @@ public class Character : MonoBehaviour
 
         NavAgent.speed = Status.CurrentSpeed;
 
-        while(_abilityDisplays.Count < Status.CurrentAbility.Count)
-        {
-            _abilityDisplays.Add(AbilityDisplay.CreateAbilityDisplay());
-        }
-
-        while (_stateDisplays.Count < Status.CurrentStates.Count)
-        {
-            _stateDisplays.Add(StateDisplay.CreateStateDisplay());
-        }
-
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(CanvasHelper.Main.transform as RectTransform, 
-            RectTransformUtility.WorldToScreenPoint(Camera.main, RenderTrasform.transform.position + Vector3.up * 0.3f), 
-            CanvasHelper.Main.worldCamera, 
-            out Vector2 displayCenterPosition);
-
-        (_hpDisplay.transform as RectTransform).anchoredPosition = displayCenterPosition - Vector2.up * 40f;
-        _hpDisplay.SetHPAmount(Status.CurrentHp / Status.Hp);
-
-        for (int i = 0; i < _abilityDisplays.Count; ++i)
-        {
-            if(i < Status.CurrentAbility.Count)
-            {
-                _abilityDisplays[i].gameObject.SetActive(true);
-                (_abilityDisplays[i].transform as RectTransform).anchoredPosition = displayCenterPosition
-                    + Vector2.right * (i - (Status.CurrentAbility.Count - 1) * 0.5f) * 60f;
-                _abilityDisplays[i].Data = DataManager.GetData<AbilityTable>((int)Status.CurrentAbility[i]);
-            }
-            else
-            {
-                _abilityDisplays[i].gameObject.SetActive(false);
-            }
-        }
-
-        for (int i = 0; i < _stateDisplays.Count; ++i)
-        {
-            if (i < Status.CurrentStates.Count)
-            {
-                _stateDisplays[i].gameObject.SetActive(true);
-                (_stateDisplays[i].transform as RectTransform).anchoredPosition = displayCenterPosition
-                    + Vector2.right * (i - (Status.CurrentStates.Count - 1) * 0.5f) * 60f + Vector2.up * 50f;
-                _stateDisplays[i].Data = DataManager.GetData<StateTable>((int)Status.CurrentStates[i]);
-            }
-            else
-            {
-                _stateDisplays[i].gameObject.SetActive(false);
-            }
-        }
+        if (gameObject.activeInHierarchy == true)
+            HUD?.gameObject.SetActive(true);
     }
 
     public virtual bool AddState(CharacterState state, bool isUnique = false)
@@ -167,19 +120,7 @@ public class Character : MonoBehaviour
 
         AbilityStack.Clear();
 
-        foreach(var ability in _abilityDisplays)
-        {
-            if (ability != null)
-                Destroy(ability.gameObject);
-        }
-
-        foreach (var state in _stateDisplays)
-        {
-            if (state != null)
-                Destroy(state.gameObject);
-        }
-
-        if (_hpDisplay != null)
-            Destroy(_hpDisplay.gameObject);
+        if (HUD != null)
+            Destroy(HUD.gameObject);
     }
 }

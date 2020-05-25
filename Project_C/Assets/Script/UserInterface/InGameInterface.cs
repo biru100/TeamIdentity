@@ -92,14 +92,19 @@ public class InGameInterface : UIBase<InGameInterface>
     public RectTransform HandField { get => _handField; set => _handField = value; }
     public GameObject ArrowBody { get => _arrowBody; set => _arrowBody = value; }
     public GameObject CollectCircle { get => _collectCircle; set => _collectCircle = value; }
+    public Vector3 DeckPosition { get => _deckImg.transform.localPosition; }
     public bool IsStart { get; set; }
     public bool IsMouseOver { get; set; }
     public bool IsCardDrag { get; set; }
+
+    public int DrawCardQueueCount { get; set; }
 
     protected override void Awake()
     {
         base.Awake();
         HandCards = new List<CardInterface>();
+
+        StartCoroutine(UpdateCardInterface());
     }
 
     private void Update()
@@ -110,32 +115,58 @@ public class InGameInterface : UIBase<InGameInterface>
         _deckImg.SetActive(Deck.Instance.DeckCount() != 0);
     }
 
-    public void DrawCard()
+    public void DrawCard(int DrawCount)
+    {
+        bool alreadyDrawing = DrawCardQueueCount > 0;
+        DrawCardQueueCount += DrawCount;
+        if(DrawCardQueueCount > 0 && !alreadyDrawing)
+            CreateDrawCard();
+    }
+
+    void CreateDrawCard()
     {
         if (Deck.Instance.DispenseOneCard(out Card dispencedCard))
         {
             CardInterface ci = CardInterface.CreateCard();
             ci.CardData = dispencedCard;
-            
-            if(HandCards.Count == 10)
+
+            if (HandCards.Count == 10)
             {
-                //draw burnCard ani
-                Destroy(ci.gameObject);
+                BurnCardAction burnAction = BurnCardAction.GetInstance();
+                burnAction.OnFinish = () => { if (DrawCardQueueCount > 0) CreateDrawCard(); };
+                ci.CurrentAction = burnAction;
             }
             else
             {
                 HandCards.Add(ci);
                 ci.HandIndex = HandCards.Count - 1;
-                //draw card ani
+                DrawCardAction drawAction = DrawCardAction.GetInstance();
+                drawAction.OnFinish = () => { if (DrawCardQueueCount > 0) CreateDrawCard(); };
+                ci.CurrentAction = drawAction;
             }
         }
+        DrawCardQueueCount = Mathf.Max(DrawCardQueueCount - 1, 0);
     }
 
     public void DestroyCard()
     {
         if (Deck.Instance.DispenseOneCard(out Card dispencedCard))
         {
+            CardInterface ci = CardInterface.CreateCard();
+            ci.CurrentAction = BurnCardAction.GetInstance();
+        }
+    }
 
+    IEnumerator UpdateCardInterface()
+    {
+        while(true)
+        {
+            yield return new WaitForSeconds(0.5f);
+            for (int i = 0; i < HandCards.Count; ++i)
+            {
+                HandCards[i].UpdateLore();
+                HandCards[i].HandIndex = i;
+            }
         }
     }
 

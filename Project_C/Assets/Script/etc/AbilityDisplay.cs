@@ -15,20 +15,17 @@ public class AbilityDisplay : MonoBehaviour
         {
             if(_data != value)
             {
+                if(_image == null)
+                    _image = GetComponent<Image>();
                 _image.sprite = ResourceManager.GetResource<Sprite>(value._StatePath);
             }
             _data = value;
         }
     }
 
-    public static AbilityDisplay CreateAbilityDisplay()
+    public static AbilityDisplay CreateAbilityDisplay(Transform parent)
     {
-        AbilityDisplay display= Instantiate(ResourceManager.GetResource<GameObject>("UI/AbilityDisplay"), CanvasHelper.Main.transform).GetComponent<AbilityDisplay>();
+        AbilityDisplay display= Instantiate(ResourceManager.GetResource<GameObject>("UI/AbilityDisplay"), parent).GetComponent<AbilityDisplay>();
         return display;
-    }
-
-    private void Awake()
-    {
-        _image = GetComponent<Image>();
     }
 }

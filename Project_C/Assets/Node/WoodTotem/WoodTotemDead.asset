@@ -28,6 +28,7 @@ MonoBehaviour:
       methodName: Start
       returnType: Character
       nodeType: 5
+      parameters: []
       points:
       - ee0d33af-5451-483d-9275-37a81b3468d0
       - 9fc9aee0-74a1-4e46-8cc4-dfb198f5f27e
@@ -41,6 +42,7 @@ MonoBehaviour:
       methodName: Update
       returnType: Character
       nodeType: 5
+      parameters: []
       points:
       - 641af0d1-036a-42fc-96af-df20468eec00
       - da05f9ba-8fb3-4ffe-b91e-22eace355fa9
@@ -54,6 +56,7 @@ MonoBehaviour:
       methodName: IF
       returnType: True Logic, False Logic
       nodeType: 3
+      parameters: []
       points:
       - b66fe6ee-3b3c-4829-be0e-64b3c68f1611
       - 09346ac3-033f-47ff-a937-b945248d2ea3
@@ -70,6 +73,7 @@ MonoBehaviour:
       methodName: PlayAnimOneSide
       returnType: Void
       nodeType: 0
+      parameters: []
       points:
       - 887b650d-cd19-4560-9428-1a4f3114a1e4
       - 77204bb4-c74c-4afb-81db-98efcf9c47ba
@@ -86,6 +90,7 @@ MonoBehaviour:
       methodName: IsLastFrame
       returnType: Boolean
       nodeType: 1
+      parameters: []
       points:
       - dda243b3-7747-4fa6-a32b-e62d3985eb4b
       - 6c767335-7460-4a03-852e-1e46e052f008
@@ -100,6 +105,7 @@ MonoBehaviour:
       methodName: DestroyEntity
       returnType: Void
       nodeType: 0
+      parameters: []
       points:
       - 41fa164a-b2dc-4f95-ac94-2885a1291bbc
       - a83e13fc-84a5-417c-b7ac-0491d0f9f1af

@@ -8,31 +8,47 @@ using UnityEngine;
 public class GoblinStoreMoveAction : CharacterAction
 {
 
-public static GoblinStoreMoveAction GetInstance() { return new GoblinStoreMoveAction(); }
+    public static GoblinStoreMoveAction GetInstance() { return new GoblinStoreMoveAction(); }
 
-public override void StartAction(Character owner)
-{
-base.StartAction(owner);
-NodeUtil.PlayAnim(Owner ,"run");
-}
+    bool IsEnd;
 
-public override void UpdateAction()
-{
-base.UpdateAction();
+    public override void StartAction(Character owner)
+    {
+        base.StartAction(owner);
+        NodeUtil.PlayAnim(Owner, "run");
+        TimelineEvents.Add(new TimeLineEvent(3f, End));
+    }
 
-if(NodeUtil.StateActionMacro(Owner))
-{
-}
+    public override void UpdateAction()
+    {
+        base.UpdateAction();
 
-else
-{
-NodeUtil.RotationAnim(Owner ,"run");
-}
-}
+        if (NodeUtil.StateActionMacro(Owner))
+        {
+        }
 
-public override void FinishAction()
-{
-base.FinishAction();
-NodeUtil.StopMovement(Owner);
-}
+        else
+        {
+            NodeUtil.AvoidFormPlayer(Owner);
+            NodeUtil.RotationAnim(Owner, "run");
+
+            if (!NodeUtil.PlayerInRange(Owner, 5f) || IsEnd)
+            {
+                NodeUtil.ChangeAction(Owner, "GoblinStoreTiredAction");
+            }
+
+        }
+    }
+
+
+    public override void FinishAction()
+    {
+        base.FinishAction();
+        NodeUtil.StopMovement(Owner);
+    }
+
+    void End()
+    {
+        IsEnd = true;
+    }
 }

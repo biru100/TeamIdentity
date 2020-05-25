@@ -39,7 +39,7 @@ public abstract class BehaviorSingleton<SingletonClass> : MonoBehaviour
         {
             _instance = (SingletonClass)this;
             if (!_isInit) Init();
-            DontDestroyOnLoad(gameObject);
+            //DontDestroyOnLoad(gameObject);
         }
         else if (_instance != this)
             Destroy(gameObject);      
