@@ -51,7 +51,7 @@ public class PlayerAttack2Action : CharacterAction
         if (enemys == null)
             return;
 
-        foreach(var e in enemys)
+        foreach (var e in enemys)
         {
             if (e == Owner) continue;
             float angle = Mathf.Acos(Vector3.Dot((e.transform.position - Owner.transform.position).normalized, Owner.transform.forward))
@@ -65,7 +65,7 @@ public class PlayerAttack2Action : CharacterAction
 
                 IsoParticle.CreateParticle("Sliced1", e.transform.position
                     + new Vector3(0f, Isometric.IsometricTileSize.y * 0.5f, 0f),
-                    zAngle );
+                    zAngle);
                 IsoParticle.CreateParticle("Sliced2", e.transform.position
                     + new Vector3(0f, Isometric.IsometricTileSize.y * 0.5f, 0f),
                     angle + 90f);

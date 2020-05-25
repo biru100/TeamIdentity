@@ -54,7 +54,7 @@ public class PlayerThunterAction : PlayerCardAction
             if (e == Owner) continue;
 
             if ((Target.Point - 
-                e.transform.position).magnitude <= Isometric.IsometricTileSize.x * 3f)
+                e.transform.position).magnitude <= Isometric.IsometricTileSize.x * 1.5f)
             {
                 e.AddState(new CharacterHitState(e, damage, 0.1f).Init());
                 e.AddState(new CharacterState(CharacterStateType.E_Stun, e, DataTable._Parameter[1]));

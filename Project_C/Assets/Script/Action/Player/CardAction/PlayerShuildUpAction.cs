@@ -43,6 +43,6 @@ public class PlayerShuildUpAction : PlayerCardAction
 
     public void AddBuff()
     {
-        Owner.Status.CurrentArmor =+ DataTable._Parameter[0];
+        Owner.Status.CurrentArmor += DataTable._Parameter[0];
     }
 }
