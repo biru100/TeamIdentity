@@ -48,9 +48,19 @@ public class Door : MonoBehaviour
         {
             Debug.Log("change room");
             RoomManager.ChangeRoom(DoorType);
-            Vector3 newPos = RoomManager.Instance.CurrentRoom.RoomDoors.Find((d) => d.DoorType == RoomManager.WayInverseSet[DoorType]).GetIntoPosition;
-            Player.CurrentPlayer.transform.position = newPos;
-            Player.CurrentPlayer.NavAgent.Warp(newPos);
+
+            Door intoDoor = RoomManager.Instance.CurrentRoom.RoomDoors.Find((d) => d.DoorType == RoomManager.WayInverseSet[DoorType]);
+
+            if (intoDoor != null)
+            {
+                Vector3 newPos = intoDoor.GetIntoPosition;
+                Player.CurrentPlayer.transform.position = newPos;
+                Player.CurrentPlayer.NavAgent.Warp(newPos);
+            }
+            else
+            {
+                Debug.Log("맵 이상하다");
+            }
         }
     }
 }

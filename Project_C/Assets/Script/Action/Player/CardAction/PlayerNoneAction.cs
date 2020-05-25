@@ -15,7 +15,7 @@ public class PlayerNoneAction : PlayerCardAction
         base.StartAction(owner);
         owner.transform.rotation = Quaternion.Euler(0f, 135f, 0f);
         AnimUtil.PlayAnim(owner, "buff");
-        Deck.Instance.AddCard(new Card(Random.Range(0, 18)));
+        DeckManager.Instance.CurrentDeck.AddCard(new Card(Random.Range(0, 18)));
         InGameInterface.Instance.DrawCard(1);
     }
 

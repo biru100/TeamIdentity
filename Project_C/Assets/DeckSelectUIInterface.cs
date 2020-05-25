@@ -68,7 +68,6 @@ public class DeckSelectUIInterface : ManagedUIInterface<DeckSelectUIInterface>
         InGameInterface.Instance.StartInterface();
         RoomManager.CreateRogueMap();
         RoomManager.CreatePlayer();
-        MinimapInterface.Instance.gameObject.SetActive(false);
     }
 
     public void GotoDeckBuilding(DeckData data)

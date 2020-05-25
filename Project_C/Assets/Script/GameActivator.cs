@@ -15,7 +15,7 @@ public class GameActivator : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.M))
         {
-            if (MinimapInterface.Instance.gameObject.activeSelf)
+            if (!MinimapInterface.Instance.gameObject.activeSelf)
                 MinimapInterface.Instance.StartInterface();
             else
                 MinimapInterface.Instance.StopInterface();

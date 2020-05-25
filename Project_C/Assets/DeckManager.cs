@@ -70,6 +70,10 @@ public class DeckManager : BehaviorSingleton<DeckManager>
     public static void LoadDeck(string deckName)
     {
         DeckData selectDeckData = UserData.Instance.OwnedDeckList.Find((data) => data.DeckName == deckName);
+
+        if (Card.CardInstanceSet == null)
+            Card.MakeCardInstanceSet(DataManager.GetDatas<CardTable>());
+
         Deck deck = new Deck();
         foreach (var cardData in selectDeckData.DeckCards)
         {

@@ -14,6 +14,11 @@ public class InGameInterface : ManagedUIInterface<InGameInterface>
     [SerializeField] protected GameObject _arrowBody;
     [SerializeField] protected GameObject _collectCircle;
 
+    [SerializeField] protected Image _hp;
+    [SerializeField] protected Text _armor;
+    [SerializeField] protected Text _cost;
+
+
     public RectTransform HandField { get => _handField; set => _handField = value; }
     public GameObject ArrowBody { get => _arrowBody; set => _arrowBody = value; }
     public GameObject CollectCircle { get => _collectCircle; set => _collectCircle = value; }
@@ -38,6 +43,13 @@ public class InGameInterface : ManagedUIInterface<InGameInterface>
         IsMouseOver = false;
         _deckCount.text = DeckManager.Instance.CurrentDeck.DeckCount().ToString();
         _deckImg.SetActive(DeckManager.Instance.CurrentDeck.DeckCount() != 0);
+
+        if(PlayerStatus.CurrentStatus != null)
+        {
+            _hp.fillAmount = PlayerStatus.CurrentStatus.CurrentHp / PlayerStatus.CurrentStatus.Hp;
+            _armor.text = PlayerStatus.CurrentStatus.CurrentArmor.ToString();
+            _cost.text = PlayerStatus.CurrentStatus.CurrentManaCost.ToString();
+        }
     }
 
     public void DrawCard(int DrawCount)
