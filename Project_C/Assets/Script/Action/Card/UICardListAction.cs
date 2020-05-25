@@ -67,8 +67,6 @@ public class UICardListAction : CardInterfaceAction
         UserCardData deckCard = DeckBuildingUIInterface.Instance.DeckView.ControlledDeckData.DeckCards.Find((card) => card.cardIndex == Owner.CardData.Data._Index);
         int alreadyInDeckCount = deckCard?.cardCount ?? 0;
 
-        Debug.Log(alreadyInDeckCount);
-
         if (userCard != null)
         {
             CardCount = userCard.cardCount;
