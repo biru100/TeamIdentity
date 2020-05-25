@@ -8,6 +8,24 @@ public interface IRoomFactory
     List<RoomContainer> CreateMap(ThemeTable data);
 }
 
+public class TestRoomFactory : IRoomFactory
+{
+
+    public string MapName { get; set; }
+
+    public TestRoomFactory(string mapName)
+    {
+        MapName = mapName;
+    }
+
+
+    public List<RoomContainer> CreateMap(ThemeTable data)
+    {
+        RoomContainer testMap = new RoomContainer(Vector2Int.zero, new List<MapWay>());
+        testMap.RoomInstance = Room.CreateRoom(MapName, Vector2Int.zero);
+        return new List<RoomContainer>() { testMap };
+    }
+}
 
 public class RogueRoomFactory : IRoomFactory
 {
@@ -117,11 +135,6 @@ public class RogueRoomFactory : IRoomFactory
     void TransitionRoomFactoryProccess(RoomContainer current)
     {
         int randomConnectionCount = CalculateTransitionRoomWayCount(current.Way.Count);
-
-        if(randomConnectionCount == 0)
-        {
-            int a = 0;
-        }
 
         List<MapWay> otherList = RoomManager.WayList.Except(current.Way).ToList();
 

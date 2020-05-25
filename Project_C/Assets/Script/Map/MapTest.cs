@@ -13,13 +13,15 @@ public class MapTest : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        string jsonData = ResourceManager.GetResource<TextAsset>("Map/" + _mapDataName).text;
-        TileMapData data = JsonUtility.FromJson<TileMapData>(jsonData);
-        GetComponent<IsometricTileMap>().FromJson(data.mapData, true);
-        DynamicNavigation.Instance.SetNavMeshData(DynamicNavigation.Instance.BuildNavigation(null));
-        PlayerStatus.CurrentStatus.CurrentManaCost = _testCost;
-        InGameInterface.Instance.DrawCard(_testDraw);
+        //string jsonData = ResourceManager.GetResource<TextAsset>("Map/" + _mapDataName).text;
+        //TileMapData data = JsonUtility.FromJson<TileMapData>(jsonData);
+        //GetComponent<IsometricTileMap>().FromJson(data.mapData, true);
+        //DynamicNavigation.Instance.SetNavMeshData(DynamicNavigation.Instance.BuildNavigation(null));
+        //PlayerStatus.CurrentStatus.CurrentManaCost = _testCost;
+        //InGameInterface.Instance.DrawCard(_testDraw);
 
+        RoomManager.CreateTestMap(_mapDataName);
+        RoomManager.CreatePlayer();
         //Player player = Instantiate(ResourceManager.GetResource<GameObject>("Tiles/Player")).GetComponent<Player>();
         //player.transform.position = CurrentRoom.transform.position;
     }

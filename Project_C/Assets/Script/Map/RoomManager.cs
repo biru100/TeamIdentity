@@ -59,18 +59,27 @@ public class RoomManager : BehaviorSingleton<RoomManager>
     protected override void Init()
     {
         base.Init();
-        ThemeTable firstTheme = DataManager.GetFirstData<ThemeTable>();
-        AllRoom = new RogueRoomFactory().CreateMap(firstTheme);
     }
 
     public Room CurrentRoom { get; set; }
     public List<RoomContainer> AllRoom { get; protected set; }
 
-    public void CreatePlayer()
+    public static void CreateRogueMap()
+    {
+        ThemeTable firstTheme = DataManager.GetFirstData<ThemeTable>();
+        Instance.AllRoom = new RogueRoomFactory().CreateMap(firstTheme);
+    }
+
+    public static void CreateTestMap(string mapName)
+    {
+        Instance.AllRoom = new TestRoomFactory(mapName).CreateMap(null);
+    }
+
+    public static void CreatePlayer()
     {
         Player player = Instantiate(ResourceManager.GetResource<GameObject>("Tiles/Player")).GetComponent<Player>();
-        ChangeRoom(AllRoom[0].RoomInstance);
-        player.transform.position = CurrentRoom.transform.position;
+        Instance.ChangeRoom(Instance.AllRoom[0].RoomInstance);
+        player.transform.position = Instance.CurrentRoom.transform.position;
     }
 
     void ChangeRoom(Room room)
@@ -86,13 +95,13 @@ public class RoomManager : BehaviorSingleton<RoomManager>
     }
 
 
-    public void ChangeRoom(MapWay way)
+    public static void ChangeRoom(MapWay way)
     {
-        RoomContainer rc = AllRoom.Find((r) => r.RoomIndex == CurrentRoom.RoomIndex + WayDirectionSet[way]);
+        RoomContainer rc = Instance.AllRoom.Find((r) => r.RoomIndex == Instance.CurrentRoom.RoomIndex + WayDirectionSet[way]);
 
         if (rc != null)
         {
-            ChangeRoom(rc.RoomInstance);
+            Instance.ChangeRoom(rc.RoomInstance);
         }
     }
 }

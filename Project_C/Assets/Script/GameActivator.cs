@@ -7,7 +7,8 @@ public class GameActivator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        RoomManager.Instance.CreatePlayer();
+        RoomManager.CreateRogueMap();
+        RoomManager.CreatePlayer();
         MinimapInterface.Instance.gameObject.SetActive(false);
     }
 

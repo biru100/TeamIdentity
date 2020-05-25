@@ -5,11 +5,11 @@ using UnityEngine.AI;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class CardInterface : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
+public class CardInterface : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
 {
-    public static CardInterface CreateCard()
+    public static CardInterface CreateCard(Transform parent)
     {
-        return Instantiate(ResourceManager.GetResource<GameObject>("Cards/Card"), InGameInterface.Instance.transform).GetComponent<CardInterface>();
+        return Instantiate(ResourceManager.GetResource<GameObject>("Cards/Card"), parent).GetComponent<CardInterface>();
     }
 
     protected Card _cardData;
@@ -30,12 +30,35 @@ public class CardInterface : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public int OriginFontSize { get => _originFontSize; }
     public int HandIndex { get; set; }
 
+
     [SerializeField] protected float _dissolveValue = 1f;
     public float DissolveValue { get => _dissolveValue;
         set
         {
             _dissolveValue = value;
-            _frontSide.material.SetFloat("_DissolveValue", Mathf.Clamp01(_dissolveValue));
+            _frontSide.material.SetFloat("_DissolveValue", Mathf.Clamp01(value));
+        }
+    }
+
+    [SerializeField] protected float _grayScaleValue = 0f;
+    public float GrayScaleValue
+    {
+        get => _grayScaleValue;
+        set
+        {
+            _grayScaleValue = value;
+            _frontSide.GetModifiedMaterial(_frontSide.material).SetFloat("_GrayScale", Mathf.Clamp01(value));
+        }
+    }
+
+    [SerializeField] protected float _alphaValue = 1f;
+    public float AlphaValue
+    {
+        get => _alphaValue;
+        set
+        {
+            _alphaValue = value;
+            _frontSide.GetModifiedMaterial(_frontSide.material).SetFloat("_AlphaValue", value);
         }
     }
 
@@ -50,7 +73,9 @@ public class CardInterface : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
             {
                 _frontSide.sprite = value.FrontSprite;
                 _backSide.sprite = value.BackSprite;
-                _cardLore.text = value.GetLore(PlayerStatus.CurrentStatus);
+                _cardLore.text = PlayerStatus.CurrentStatus != null ? 
+                    value.GetLore(PlayerStatus.CurrentStatus) :
+                    value.GetLore();
                 _cardCost.text = value.Cost.ToString();
                 _originFontSize = _cardLore.fontSize;
             }
@@ -79,9 +104,13 @@ public class CardInterface : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         CardCanvas = GetComponent<Canvas>();
         Material instanceMat = Instantiate(_frontSide.material);
         _frontSide.material = instanceMat;
+        _frontSide.SetMaterialDirty();
         _backSide.material = instanceMat;
+        _backSide.SetMaterialDirty();
         _cardLore.material = instanceMat;
+        _cardLore.SetMaterialDirty();
         _cardCost.material = instanceMat;
+        _cardCost.SetMaterialDirty();
     }
 
     void Start()
@@ -91,6 +120,10 @@ public class CardInterface : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     private void Update()
     {
         _currentAction?.Update();
+
+        //_frontSide.material.SetFloat("_DissolveValue", Mathf.Clamp01(DissolveValue));
+        //_frontSide.material.SetFloat("_GrayScale", Mathf.Clamp01(GrayScaleValue));
+        //_frontSide.material.SetFloat("_AlphaValue", AlphaValue);
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -117,9 +150,14 @@ public class CardInterface : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     {
         _currentAction?.OnDrag(eventData);
     }
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        _currentAction?.OnPointerClick(eventData);
+    }
 
     public void UpdateLore()
     {
         _cardLore.text = CardData.GetLore(PlayerStatus.CurrentStatus);
     }
+
 }

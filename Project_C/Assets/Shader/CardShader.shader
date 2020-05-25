@@ -7,7 +7,9 @@
 		_GradientTex("Gradient Texture", 2D) = "white" {}
 		_DissolveValue("Dissolve Value", Range(0,1)) = 0
 		_GradientAdjust("Gradient Adjust", Range(0,2)) = 0
+		_GrayScale("Gray-Scale", Range(0,1)) = 0
 		_Color("Tint", Color) = (1,1,1,1)
+		_AlphaValue("Alpha", Range(0,1)) = 1
 
 		_StencilComp("Stencil Comparison", Float) = 8
 		_Stencil("Stencil ID", Float) = 0
@@ -84,6 +86,8 @@
 
 				float _DissolveValue;
 				float _GradientAdjust;
+				float _GrayScale;
+				float _AlphaValue;
 
 				fixed4 _Color;
 				fixed4 _TextureSampleAdd;
@@ -120,9 +124,13 @@
 					color.a *= UnityGet2DClipping(IN.worldPosition.xy, _ClipRect);
 					#endif
 
+					color.a *= _AlphaValue;
+
 					#ifdef UNITY_UI_ALPHACLIP
 					clip(color.a - 0.001);
 					#endif
+
+					color.rgb = lerp(color.rgb, dot(color.rgb, float3(0.3, 0.59, 0.11)), _GrayScale);
 
 					return color;
 				}

@@ -28,7 +28,7 @@ public class TileData
 
 public class IsometricTileMap : MonoBehaviour
 {
-    Dictionary<Vector3Int, GameObject> _tileMap = new Dictionary<Vector3Int, GameObject>();
+    Dictionary<Vector3Int, List<GameObject>> _tileMap = new Dictionary<Vector3Int, List<GameObject>>();
     GameObject _tileMapPivotObject;
 
     public Vector3Int min { get; private set; }
@@ -65,7 +65,10 @@ public class IsometricTileMap : MonoBehaviour
         List<TileIndexStringPair> data = new List<TileIndexStringPair>();
         foreach (var iter in _tileMap)
         {
-            data.Add(new TileIndexStringPair(iter.Key, iter.Value.GetComponentInChildren<TileTag>().Tag));
+            foreach (var obj in iter.Value)
+            {
+                data.Add(new TileIndexStringPair(iter.Key, obj.GetComponentInChildren<TileTag>().Tag));
+            }
         }
 
         TileData dataOBJ = new TileData(data);
@@ -109,7 +112,7 @@ public class IsometricTileMap : MonoBehaviour
             else
             {
                 min = EffectiveUtility.Min(min, index);
-                max = EffectiveUtility.Min(max, index);
+                max = EffectiveUtility.Max(max, index);
             }
 
             GameObject instance = Instantiate(go, isoPos, Quaternion.identity, _tileMapPivotObject.transform);
@@ -119,7 +122,18 @@ public class IsometricTileMap : MonoBehaviour
             if (instance.GetComponent<Room>())
                 instance.GetComponent<Room>().enabled = activateLogic;
 
-            _tileMap.Add(index, instance);
+            _tileMap.Add(index, new List<GameObject>() { instance });
+        }
+        else
+        {
+            GameObject instance = Instantiate(go, isoPos, Quaternion.identity, _tileMapPivotObject.transform);
+            if (instance.GetComponent<Character>())
+                instance.GetComponent<Character>().enabled = activateLogic;
+
+            if (instance.GetComponent<Room>())
+                instance.GetComponent<Room>().enabled = activateLogic;
+
+            _tileMap[index].Add(instance);
         }
     }
 
@@ -127,7 +141,7 @@ public class IsometricTileMap : MonoBehaviour
     {
         Vector3Int index = EffectiveUtility.IsoPositionToIndex(isoPos);
         if (ContainsTile(index))
-            return _tileMap[index];
+            return _tileMap[index][_tileMap[index].Count - 1];
         else
             return null;
     }
@@ -137,9 +151,16 @@ public class IsometricTileMap : MonoBehaviour
         Vector3Int index = EffectiveUtility.IsoPositionToIndex(isoPos);
         if (ContainsTile(index))
         {
-            GameObject instance = _tileMap[index];
+            List<GameObject> objectList = _tileMap[index];
+
+            GameObject instance = objectList[objectList.Count - 1];
             Destroy(instance);
-            _tileMap.Remove(index);
+            objectList.Remove(objectList[objectList.Count - 1]);
+
+            if(objectList.Count == 0)
+            {
+                _tileMap.Remove(index);
+            }
         }
     }
 }

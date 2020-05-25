@@ -48,15 +48,4 @@ public class UIBase<SingletonClass> : MonoBehaviour where SingletonClass : UIBas
     }
 
     public Animator UIAnim { get; protected set; }
-
-    public virtual void StartInterface()
-    {
-        UIAnim?.Play("Start");
-    }
-
-
-    public virtual void StopInterface()
-    {
-        UIAnim?.Play("Stop");
-    }
 }

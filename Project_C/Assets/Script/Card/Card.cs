@@ -6,6 +6,17 @@ using System.Linq;
 
 public class Card
 {
+    public static Dictionary<CardTable, Card> CardInstanceSet { get; protected set; }
+
+    public static void MakeCardInstanceSet(List<CardTable> datas)
+    {
+        CardInstanceSet = new Dictionary<CardTable, Card>();
+        foreach (var ct in datas)
+        {
+            CardInstanceSet.Add(ct, new Card(ct));
+        }
+    }
+
     public string CardName { get; protected set; }
     public string CardActionName { get; protected set; }
     /// <summary>

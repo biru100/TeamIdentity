@@ -4,7 +4,7 @@ using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class CardInterfaceAction : IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
+public class CardInterfaceAction : IPointerClickHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public CardInterface Owner { get; set; }
 
@@ -33,6 +33,10 @@ public class CardInterfaceAction : IBeginDragHandler, IDragHandler, IEndDragHand
     {
 
     }
+    public virtual void OnPointerClick(PointerEventData eventData)
+    {
+        
+    }
 
     public virtual void Start(CardInterface owner)
     {
@@ -48,4 +52,5 @@ public class CardInterfaceAction : IBeginDragHandler, IDragHandler, IEndDragHand
     {
 
     }
+
 }

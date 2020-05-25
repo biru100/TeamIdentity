@@ -47,7 +47,7 @@ public class Door : MonoBehaviour
         if(Player.CurrentPlayer.gameObject == collider.gameObject)
         {
             Debug.Log("change room");
-            RoomManager.Instance.ChangeRoom(DoorType);
+            RoomManager.ChangeRoom(DoorType);
             Vector3 newPos = RoomManager.Instance.CurrentRoom.RoomDoors.Find((d) => d.DoorType == RoomManager.WayInverseSet[DoorType]).GetIntoPosition;
             Player.CurrentPlayer.transform.position = newPos;
             Player.CurrentPlayer.NavAgent.Warp(newPos);

@@ -3,81 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Deck
-{
-
-    protected static Deck _instance;
-
-    public static Deck Instance
-    {
-        get
-        {
-            if (_instance == null)
-                _instance = new Deck();
-            return _instance;
-        }
-    }
-
-    protected List<Card> DeckCards;
-
-    protected Deck()
-    {
-        DeckCards = new List<Card>();
-    }
-
-    public void AddCard(Card card)
-    {
-        if (DeckCards.Count == 0)
-            DeckCards.Add(card);
-        else
-        {
-            int inputIndex = Random.Range(0, DeckCards.Count);
-            Card temp = DeckCards[inputIndex];
-            DeckCards[inputIndex] = card;
-            DeckCards.Add(temp);
-        }
-    }
-
-    public void SetCard(List<Card> card)
-    {
-        Suffle(card);
-        DeckCards = card;
-    }
-
-    public bool DispenseOneCard(out Card card)
-    {
-        card = null;
-        if (DeckCards.Count != 0)
-        {
-            card = DeckCards[0];
-            DeckCards.RemoveAt(0);
-        }
-
-        return card != null;
-    }
-
-    void Suffle(List<Card> card)
-    {
-        for(int i = 0; i < 100; ++i)
-        {
-            int pre = Random.Range(0, card.Count), next = Random.Range(0, card.Count);
-            Card temp = card[pre];
-            card[pre] = card[next];
-            card[next] = temp;
-        }
-    }
-
-    public int DeckCount()
-    {
-        return DeckCards.Count;
-    }
-
-    public void Destroy()
-    {
-        _instance = null;
-    }
-}
-
 public class InGameInterface : UIBase<InGameInterface>
 {
     protected List<CardInterface> HandCards;
@@ -111,8 +36,8 @@ public class InGameInterface : UIBase<InGameInterface>
     {
         Time.timeScale = Mathf.Lerp(Time.timeScale, IsMouseOver || IsCardDrag ? 0.05f : 1f, 0.05f);
         IsMouseOver = false;
-        _deckCount.text = Deck.Instance.DeckCount().ToString();
-        _deckImg.SetActive(Deck.Instance.DeckCount() != 0);
+        _deckCount.text = DeckManager.Instance.CurrentDeck.DeckCount().ToString();
+        _deckImg.SetActive(DeckManager.Instance.CurrentDeck.DeckCount() != 0);
     }
 
     public void DrawCard(int DrawCount)
@@ -125,9 +50,9 @@ public class InGameInterface : UIBase<InGameInterface>
 
     void CreateDrawCard()
     {
-        if (Deck.Instance.DispenseOneCard(out Card dispencedCard))
+        if (DeckManager.Instance.CurrentDeck.DispenseOneCard(out Card dispencedCard))
         {
-            CardInterface ci = CardInterface.CreateCard();
+            CardInterface ci = CardInterface.CreateCard(transform);
             ci.CardData = dispencedCard;
 
             if (HandCards.Count == 10)
@@ -150,9 +75,9 @@ public class InGameInterface : UIBase<InGameInterface>
 
     public void DestroyCard()
     {
-        if (Deck.Instance.DispenseOneCard(out Card dispencedCard))
+        if (DeckManager.Instance.CurrentDeck.DispenseOneCard(out Card dispencedCard))
         {
-            CardInterface ci = CardInterface.CreateCard();
+            CardInterface ci = CardInterface.CreateCard(transform);
             ci.CurrentAction = BurnCardAction.GetInstance();
         }
     }
@@ -195,6 +120,5 @@ public class InGameInterface : UIBase<InGameInterface>
     protected override void OnDestroy()
     {
         base.OnDestroy();
-        Deck.Instance.Destroy();
     }
 }
