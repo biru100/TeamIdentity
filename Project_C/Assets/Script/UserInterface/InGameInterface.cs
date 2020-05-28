@@ -18,6 +18,8 @@ public class InGameInterface : ManagedUIInterface<InGameInterface>
     [SerializeField] protected Text _armor;
     [SerializeField] protected Text _cost;
 
+    [SerializeField] protected Image _slowBackground;
+
 
     public RectTransform HandField { get => _handField; set => _handField = value; }
     public GameObject ArrowBody { get => _arrowBody; set => _arrowBody = value; }
@@ -39,7 +41,19 @@ public class InGameInterface : ManagedUIInterface<InGameInterface>
 
     private void Update()
     {
-        Time.timeScale = Mathf.Lerp(Time.timeScale, IsMouseOver || IsCardDrag ? 0.05f : 1f, 0.05f);
+        if(Input.GetKey(KeyCode.Space))
+        {
+            _slowBackground.raycastTarget = true;
+            _slowBackground.color = Color.Lerp(_slowBackground.color, new Color(0f, 0f, 0f, 0.3f), 3f * Time.unscaledDeltaTime);
+            Time.timeScale = Mathf.Lerp(Time.timeScale, 0.05f, 3f * Time.unscaledDeltaTime);
+        }
+        else
+        {
+            _slowBackground.raycastTarget = false;
+            _slowBackground.color = Color.Lerp(_slowBackground.color, new Color(0f, 0f, 0f, 0f), 3f * Time.unscaledDeltaTime);
+            Time.timeScale = Mathf.Lerp(Time.timeScale, 1f, 3f * Time.unscaledDeltaTime);
+        }
+
         IsMouseOver = false;
         _deckCount.text = DeckManager.Instance.CurrentDeck.DeckCount().ToString();
         _deckImg.SetActive(DeckManager.Instance.CurrentDeck.DeckCount() != 0);
