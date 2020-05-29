@@ -91,7 +91,7 @@ public class CardRangeInterface : MonoBehaviour
             {
                 transform.position = Player.CurrentPlayer.transform.position + Vector3.down * Isometric.IsometricGridSize;
 
-                int newAngle = AnimUtil.GetRenderAngle(Player.CurrentPlayer.transform.rotation);
+                int newAngle = EffectiveUtility.GetMouseAngle(Player.CurrentPlayer.transform);
                 if (newAngle != CurrentAngle || NeedUpdate)
                 {
                     CurrentAngle = newAngle;

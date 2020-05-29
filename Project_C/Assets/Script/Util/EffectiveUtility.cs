@@ -32,4 +32,17 @@ public static class EffectiveUtility
     {
         return new Vector3Int(Mathf.Max(a.x, b.x), Mathf.Max(a.y, b.y), Mathf.Max(a.z, b.z));
     }
+
+    public static Quaternion GetMouseRotation(Transform pivotTransform)
+    {
+        Vector3 point = Isometric.GetIsometicBasePositionByWorldRay(Camera.main.ScreenToWorldPoint(Input.mousePosition),
+            Camera.main.transform.forward);
+
+        return Quaternion.FromToRotation(Vector3.forward, (point - pivotTransform.position).normalized);
+    }
+
+    public static int GetMouseAngle(Transform pivotTransform)
+    {
+        return AnimUtil.GetRenderAngle(GetMouseRotation(pivotTransform));
+    }
 }

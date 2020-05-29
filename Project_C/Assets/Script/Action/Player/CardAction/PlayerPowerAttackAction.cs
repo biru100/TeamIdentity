@@ -13,6 +13,9 @@ public class PlayerPowerAttackAction : PlayerCardAction
     public override void StartAction(Character owner)
     {
         base.StartAction(owner);
+
+        owner.transform.rotation = EffectiveUtility.GetMouseRotation(owner.transform);
+
         AnimUtil.PlayAnim(owner, "power_atk");
         TimelineEvents.Add(new TimeLineEvent(0.22f, SendDamage));
         Owner.AddState(new CharacterState(CharacterStateType.E_SuperArmor, Owner).Init());

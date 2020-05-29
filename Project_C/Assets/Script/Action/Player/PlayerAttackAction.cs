@@ -12,9 +12,11 @@ public class PlayerAttackAction : CharacterAction
     public override void StartAction(Character owner)
     {
         base.StartAction(owner);
-        AnimUtil.PlayAnim(owner, "attack0");
         isAttackCommand = false;
         TimelineEvents.Add(new TimeLineEvent(0.22f, SendDamage));
+
+        owner.transform.rotation = EffectiveUtility.GetMouseRotation(owner.transform);
+        AnimUtil.PlayAnim(owner, "attack0");
 
         curve = FloatCurve.GetCurve("Curves/AttackMoveCurve");
     }
