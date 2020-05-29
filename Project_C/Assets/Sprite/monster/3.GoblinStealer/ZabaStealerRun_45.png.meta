@@ -100,6 +100,30 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -108,9 +132,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 100
-        width: 138
-        height: 100
+        y: 80
+        width: 139
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,10 +152,10 @@ TextureImporter:
       name: ZabaStealerRun_45_1
       rect:
         serializedVersion: 2
-        x: 138
-        y: 100
-        width: 138
-        height: 100
+        x: 139
+        y: 80
+        width: 139
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -149,10 +173,10 @@ TextureImporter:
       name: ZabaStealerRun_45_2
       rect:
         serializedVersion: 2
-        x: 276
-        y: 100
-        width: 138
-        height: 100
+        x: 278
+        y: 80
+        width: 139
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -172,8 +196,8 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 138
-        height: 100
+        width: 139
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -191,10 +215,10 @@ TextureImporter:
       name: ZabaStealerRun_45_4
       rect:
         serializedVersion: 2
-        x: 138
+        x: 139
         y: 0
-        width: 138
-        height: 100
+        width: 139
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -212,10 +236,10 @@ TextureImporter:
       name: ZabaStealerRun_45_5
       rect:
         serializedVersion: 2
-        x: 276
+        x: 278
         y: 0
-        width: 138
-        height: 100
+        width: 139
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

@@ -120,9 +120,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 100
-        width: 138
-        height: 100
+        y: 0
+        width: 67
+        height: 74
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,10 +140,10 @@ TextureImporter:
       name: ZabaStoreHit_1
       rect:
         serializedVersion: 2
-        x: 0
+        x: 67
         y: 0
-        width: 138
-        height: 100
+        width: 67
+        height: 74
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
