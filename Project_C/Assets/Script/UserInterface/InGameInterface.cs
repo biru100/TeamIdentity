@@ -41,7 +41,7 @@ public class InGameInterface : ManagedUIInterface<InGameInterface>
 
     private void Update()
     {
-        if(Input.GetKey(KeyCode.Space))
+        if(IsCardDrag || Input.GetKey(KeyCode.Space))
         {
             _slowBackground.raycastTarget = true;
             _slowBackground.color = Color.Lerp(_slowBackground.color, new Color(0f, 0f, 0f, 0.3f), 3f * Time.unscaledDeltaTime);
