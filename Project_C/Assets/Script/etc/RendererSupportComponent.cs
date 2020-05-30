@@ -50,7 +50,7 @@ public class RendererSupportComponent : MonoBehaviour
         if(IsChangeProperty)
         {
             _renderer.GetPropertyBlock(_propBlock);
-            if (_renderer.sharedMaterial?.shader.name == DepthShaderName)
+            if (_renderer.sharedMaterial?.shader.name == DepthShaderName && _renderer.sprite != null)
             {
                 Vector4 spriteRectData = new Vector4(_renderer.sprite.rect.x, _renderer.sprite.rect.y, _renderer.sprite.rect.width, _renderer.sprite.rect.height);
                 _propBlock.SetVector("_SpriteRect", spriteRectData);

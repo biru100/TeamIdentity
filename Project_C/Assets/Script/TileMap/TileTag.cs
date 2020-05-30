@@ -11,5 +11,7 @@ public class TileTag : MonoBehaviour
     {
         if (!Application.IsPlaying(gameObject))
             Tag = transform.parent.gameObject.name;
+
+
     }
 }
