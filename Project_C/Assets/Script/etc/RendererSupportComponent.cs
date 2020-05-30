@@ -7,7 +7,9 @@ using UnityEngine;
 [RequireComponent(typeof(RenderTransform))]
 public class RendererSupportComponent : MonoBehaviour
 {
-    public static readonly string DepthShaderName = "Sprites/DepthSprite";
+    public static readonly string DepthShaderName = "Sprites/DepthSprite-Lit";
+
+    [SerializeField] Texture _normalMap;
 
     RenderTransform _renderTransform;
 
@@ -15,6 +17,9 @@ public class RendererSupportComponent : MonoBehaviour
     MaterialPropertyBlock _propBlock;
 
     bool _isDepthTile = false;
+
+    public bool IsChangeProperty { get; set; }
+    public bool IsChangePosition { get; set; }
 
     void Update()
     {
@@ -30,8 +35,11 @@ public class RendererSupportComponent : MonoBehaviour
 
     void InputMaterialProperty()
     {
-        if(_propBlock == null)
+        if (_propBlock == null)
+        {
             _propBlock = new MaterialPropertyBlock();
+            IsChangeProperty = true;
+        }
 
         if(_renderer == null)
             _renderer = GetComponent<SpriteRenderer>();
@@ -39,18 +47,28 @@ public class RendererSupportComponent : MonoBehaviour
         if (_renderTransform == null)
             _renderTransform = GetComponent<RenderTransform>();
 
-        if(_renderer.sharedMaterial?.shader.name == DepthShaderName)
+        if(IsChangeProperty)
+        {
+            _renderer.GetPropertyBlock(_propBlock);
+            if (_renderer.sharedMaterial?.shader.name == DepthShaderName)
+            {
+                Vector4 spriteRectData = new Vector4(_renderer.sprite.rect.x, _renderer.sprite.rect.y, _renderer.sprite.rect.width, _renderer.sprite.rect.height);
+                _propBlock.SetVector("_SpriteRect", spriteRectData);
+            }
+            if (_normalMap != null)
+                _propBlock.SetTexture("_BumpMap", _normalMap);
+            _renderer.SetPropertyBlock(_propBlock);
+        }
+
+        if(IsChangePosition && _renderer.sharedMaterial?.shader.name == DepthShaderName)
         {
             _renderer.sortingOrder = Mathf.FloorToInt((-_renderTransform.z_weight + 1f) * 100f);
-            _renderer.GetPropertyBlock(_propBlock);
-            Vector4 spriteRectData = new Vector4(_renderer.sprite.rect.x, _renderer.sprite.rect.y, _renderer.sprite.rect.width, _renderer.sprite.rect.height);
-
-            _propBlock.SetVector("_SpriteRect", spriteRectData);
-            _renderer.SetPropertyBlock(_propBlock);
+            IsChangePosition = false;
         }
         else
         {
             _renderer.sortingOrder = 300;
+            IsChangePosition = false;
         }
     }
 }

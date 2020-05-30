@@ -32,7 +32,7 @@ public class IsoParticle : MonoBehaviour
     public float Angle { get => _angle;
         set
         {
-            RenderChild.rotation = Quaternion.Euler(new Vector3(0f, 0f, value));
+            RenderChild.Rotation = Quaternion.Euler(new Vector3(0f, 0f, value));
             _angle = value;
         }
     }

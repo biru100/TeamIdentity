@@ -63,7 +63,7 @@ public class IsoProjectile : MonoBehaviour
         rotatedDir.Normalize();
 
         float angle = Quaternion.FromToRotation(Vector3.right, rotatedDir).eulerAngles.z;
-        RenderChild.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
+        RenderChild.Rotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
 
         Body.MovePosition(transform.position + Direction * Speed * Isometric.IsometricGridSize * Time.deltaTime);
 

@@ -58,6 +58,7 @@ GameObject:
   - component: {fileID: 7347235682949421655}
   - component: {fileID: 4818401125040839889}
   - component: {fileID: 197640133845667397}
+  - component: {fileID: 3276633260969923491}
   m_Layer: 0
   m_Name: img (3)
   m_TagString: Untagged
@@ -141,8 +142,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86bed7d58ad6e044da0a5e75d8c369eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imageOffset: {x: 0, y: 0.36, z: 0}
-  rotation: {x: 0, y: 0, z: 0, w: 1}
   z_weight: -0.02
 --- !u!114 &4818401125040839889
 MonoBehaviour:
@@ -171,3 +170,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   guideSize: {x: 1, y: 1, z: 1}
   visible: 1
+--- !u!114 &3276633260969923491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4426011069849009197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e09456f176cd1b340bf0a01905cef67b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _normalMap: {fileID: 0}

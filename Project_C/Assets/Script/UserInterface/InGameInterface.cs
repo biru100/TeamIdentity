@@ -57,7 +57,6 @@ public class InGameInterface : ManagedUIInterface<InGameInterface>
         IsMouseOver = false;
         _deckCount.text = DeckManager.Instance.CurrentDeck.DeckCount().ToString();
         _deckImg.SetActive(DeckManager.Instance.CurrentDeck.DeckCount() != 0);
-
         if(PlayerStatus.CurrentStatus != null)
         {
             _hp.fillAmount = PlayerStatus.CurrentStatus.CurrentHp / PlayerStatus.CurrentStatus.Hp;

@@ -142,8 +142,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86bed7d58ad6e044da0a5e75d8c369eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imageOffset: {x: -0.12, y: 0.34, z: 0}
-  rotation: {x: 0, y: 0, z: 0, w: 1}
+  _imageOffset: {x: -0.12, y: 0.34, z: 0}
+  _rotation: {x: 0, y: 0, z: 0, w: 1}
   z_weight: 0
 --- !u!114 &7498963601364740530
 MonoBehaviour:
@@ -184,3 +184,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e09456f176cd1b340bf0a01905cef67b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _normalMap: {fileID: 0}

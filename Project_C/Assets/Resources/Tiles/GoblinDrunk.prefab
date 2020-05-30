@@ -132,8 +132,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86bed7d58ad6e044da0a5e75d8c369eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imageOffset: {x: 0, y: 0.26, z: 0}
-  rotation: {x: 0, y: 0, z: 0, w: 1}
   z_weight: 0
 --- !u!212 &2005298741044575556
 SpriteRenderer:
@@ -153,7 +151,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 4a6f0fa73a683f148953757b85d0c746, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -173,7 +171,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 300
   m_Sprite: {fileID: -1883690109627374724, guid: ac5e5fac0a2280d40ae73d8380d054d1,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -270,3 +268,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e09456f176cd1b340bf0a01905cef67b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _normalMap: {fileID: 0}

@@ -102,7 +102,7 @@ public class IsometricTileMapEditor : MonoBehaviour
             previewTileTransform.position = currentMouseTilePos;
         }
 
-        if (Input.GetKey(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             if (EventSystem.current.IsPointerOverGameObject())
                 return;
@@ -127,7 +127,7 @@ public class IsometricTileMapEditor : MonoBehaviour
             }
         }
 
-        if (Input.GetKey(KeyCode.Mouse1))
+        if (Input.GetKeyDown(KeyCode.Mouse1))
         {
             GameObject tile = tileManager.GetTile(currentMouseTilePos);
             if (tile != null)
