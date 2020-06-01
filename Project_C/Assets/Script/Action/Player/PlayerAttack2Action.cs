@@ -59,21 +59,23 @@ public class PlayerAttack2Action : CharacterAction
         foreach (var e in enemys)
         {
             if (e == Owner) continue;
-            float angle = Mathf.Acos(Vector3.Dot((e.transform.position - Owner.transform.position).normalized, Owner.transform.forward))
-                * Mathf.Rad2Deg;
-            if ((Owner.transform.position - e.transform.position).magnitude <= Isometric.IsometricTileSize.x * 1.8f &&
-                angle < 80f)
+            Vector3 direction = e.RenderTrasform.GetIsometricPosition() - Owner.RenderTrasform.GetIsometricPosition();
+            direction.z = 0f;
+
+            float angle = Quaternion.FromToRotation(Vector3.right, direction.normalized).eulerAngles.z;
+            if ((Owner.transform.position - e.transform.position).magnitude <= Isometric.IsometricTileSize.x * 2f &&
+                Mathf.Acos(Vector3.Dot((e.transform.position - Owner.transform.position).normalized, Owner.transform.forward)) * Mathf.Rad2Deg < 85f)
             {
                 isValidAttack = true;
                 e.AddState(new CharacterHitState(e, Owner.Status.CurrentDamage, 0.1f).Init());
 
-                float zAngle = -1 * AnimUtil.GetRenderAngle(e.transform.rotation) + 45f - 15f;
+                angle -= 12f;
 
                 IsoParticle.CreateParticle("Sliced1", e.transform.position
-                    + new Vector3(0f, Isometric.IsometricTileSize.y * 0.5f, 0f),
-                    zAngle);
+                    + Vector3.up * Isometric.IsometricTileSize.y * e.EffectOffset,
+                    angle);
                 IsoParticle.CreateParticle("Sliced2", e.transform.position
-                    + new Vector3(0f, Isometric.IsometricTileSize.y * 0.5f, 0f),
+                    + Vector3.up * Isometric.IsometricTileSize.y * e.EffectOffset,
                     angle + 90f);
             }
         }

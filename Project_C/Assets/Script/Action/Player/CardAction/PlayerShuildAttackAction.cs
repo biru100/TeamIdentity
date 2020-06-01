@@ -61,10 +61,10 @@ public class PlayerShuildAttackAction : PlayerCardAction
             {
                 e.AddState(new CharacterHitState(e, damage, 0.1f).Init());
                 IsoParticle.CreateParticle("Sliced_Power1", e.transform.position
-                    + new Vector3(0f, Isometric.IsometricTileSize.y * 0.5f, 0f),
+                    + Vector3.up * Isometric.IsometricTileSize.y * e.EffectOffset,
                     angle);
                 IsoParticle.CreateParticle("Sliced_Power2", e.transform.position
-                    + new Vector3(0f, Isometric.IsometricTileSize.y * 0.5f, 0f),
+                    + Vector3.up * Isometric.IsometricTileSize.y * e.EffectOffset,
                     angle + 90f);
             }
         }

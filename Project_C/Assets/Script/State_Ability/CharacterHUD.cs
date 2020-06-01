@@ -44,12 +44,13 @@ public class CharacterHUD : MonoBehaviour
         }
 
         if (RectTransformUtility.ScreenPointToLocalPointInRectangle(CanvasHelper.Main.transform as RectTransform,
-            RectTransformUtility.WorldToScreenPoint(Camera.main, Owner.RenderTrasform.GetIsometricPosition()),
+            RectTransformUtility.WorldToScreenPoint(Camera.main, Owner.RenderTrasform.GetIsometricPosition()
+            + Vector3.up * Isometric.IsometricGridSize * Owner.HUDOffset),
             CanvasHelper.Main.worldCamera,
             out Vector2 displayCenterPosition))
         {
             Vector2 lastPos = (transform as RectTransform).anchoredPosition;
-            (transform as RectTransform).anchoredPosition = displayCenterPosition + Vector2.up * Owner.HUDOffset;
+            (transform as RectTransform).anchoredPosition = displayCenterPosition;
 
             //if((lastPos - displayCenterPosition + Vector2.up * Owner.HUDOffset).magnitude > 1000f)
             //{

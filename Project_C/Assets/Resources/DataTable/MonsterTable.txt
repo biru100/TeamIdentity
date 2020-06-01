@@ -1,13 +1,13 @@
-501	Slime	슬라임	5	13	0.7	0	15	100	이 몬스터는 사망 시 작은 슬라임 _마리로 분열합니다.	E_Spawn	E_None	E_None	E_None	E_None	E_None	2	0	0	0	
-502	CSlime	작은 슬라임	3	8	0.7	0	15	100	이 몬스터는 아무런 효과도 가지고 있지 않습니다.	E_None	E_None	E_None	E_None	E_None	E_None	0	0	0	0	
-503	WoodTotem	덩굴정령	1	50	0	0	15	100	이 몬스터는 적을 _초간 속박하는 공격을 합니다.	E_GiveHold	E_None	E_None	E_None	E_None	E_None	1.5	0	0	0	
-504	GoblinStealer	고블린 약탈자	10	28	1	0	15	100	이 몬스터는 공격에 성공 할 시 적의 패를 _장 파괴한 뒤 _만큼 침묵을 줍니다.	E_CardBreak	E_GiveSilence	E_None	E_None	E_None	E_None	1	2	0	0	
-505	GoblinStore	고블린 보부상	0	23	1	0	15	100	이 몬스터는 적에게 공격 당하면 _장 만큼 드로우 합니다.	E_GiveDraw	E_None	E_None	E_None	E_None	E_None	1	0	0	0	
-506	GoblinHentai	장난 꾸러기 고블린	6	60	1	0	15	100	이 몬스터는 적에게 공격이 성공하면 _장 만큼 드로우 준 뒤 _만큼 공격력이 증가하고 _만큼 이동속도가 증가합니다.	E_GiveDraw	E_IncreaseDamage	E_IncreaseSpeed	E_None	E_None	E_None	1	5	0.2	0	
-507	GuardianStone	수호석상	0	75	0	0	15	100	이 몬스터는 자신을 제외한 맵에 있는 모든 몬스터에게 도발 상태를 부여합니다.	E_Taunt	E_None	E_None	E_None	E_None	E_None	0	0	0	0	
-508	GoblinFirst	고블린 선봉대	20	100	0.5	100	15	100	이 몬스터는 맵에 있는 모든 몬스터에게 _초간 무적 상태를 부여합니다. 방어도가 전부 사라지면 적에게 _만큼 스턴을 준 뒤 공격을 받게 되면 _ 몬스터를 _마리 만큼 소환 합니다.	E_GiveInvincibility	E_GiveStun	E_Spawn	E_None	E_None	E_None	2	2	512	1	
-509	Druid	드루이드	5	50	0.5	0	15	100	이 몬스터는 공격에 성공할 시 적에게 _만큼 슬로우를 부여하고 체력이 _이하로 줄어들게 되면 자신을 기준으로 한 원형의 범위 힐을 초당 _만큼 준다.	E_GiveHeal	E_GiveHeal	E_None	E_None	E_None	E_None	0.25	100	15	0	
-510	GoblinBuilder	고블린조각가	0	20	0.5	0	15	100	이 몬스터는 죽게되면 _몬스터를 소환한다.	E_Spawn	E_None	E_None	E_None	E_None	E_None	507	0	0	0	
-511	GoblinSling	고블린 투석병	5	34	0.5	0	15	100	없음	E_None	E_None	E_None	E_None	E_None	E_None	0	0	0	0	
-512	GoblinShiled	고블린 방패병	0	10	0.25	0	15	100	이 몬스터는 자신을 제외한 맵에 있는 모든 몬스터에게 도발 무적 상태를 부여합니다.	E_Taunt	E_None	E_None	E_None	E_None	E_None	0	0	0	0	
-513	GoblinDrunk	고블린취객	12	12	0.5	0	15	100	이 몬스터는 공격을 받고 죽지 않으면 고블린 취객을 _마리 소환합니다.	E_Spawn	E_None	E_None	E_None	E_None	E_None	1	0	0	0	
+501	Slime	슬라임	5	13	0.7	0	0.2	0.8	이 몬스터는 사망 시 작은 슬라임 _마리로 분열합니다.	E_Spawn	E_None	E_None	E_None	E_None	E_None	2	0	0	0	
+502	CSlime	작은 슬라임	3	8	0.7	0	0.15	0.9	이 몬스터는 아무런 효과도 가지고 있지 않습니다.	E_None	E_None	E_None	E_None	E_None	E_None	0	0	0	0	
+503	WoodTotem	덩굴정령	1	50	0	0	0.4	1	이 몬스터는 적을 _초간 속박하는 공격을 합니다.	E_GiveHold	E_None	E_None	E_None	E_None	E_None	1.5	0	0	0	
+504	GoblinStealer	고블린 약탈자	10	28	1	0	0.4	1	이 몬스터는 공격에 성공 할 시 적의 패를 _장 파괴한 뒤 _만큼 침묵을 줍니다.	E_CardBreak	E_GiveSilence	E_None	E_None	E_None	E_None	1	2	0	0	
+505	GoblinStore	고블린 보부상	0	23	1	0	0.4	1	이 몬스터는 적에게 공격 당하면 _장 만큼 드로우 합니다.	E_GiveDraw	E_None	E_None	E_None	E_None	E_None	1	0	0	0	
+506	GoblinHentai	장난 꾸러기 고블린	6	60	1	0	0.2	0.9	이 몬스터는 적에게 공격이 성공하면 _장 만큼 드로우 준 뒤 _만큼 공격력이 증가하고 _만큼 이동속도가 증가합니다.	E_GiveDraw	E_IncreaseDamage	E_IncreaseSpeed	E_None	E_None	E_None	1	5	0.2	0	
+507	GuardianStone	수호석상	0	75	0	0	0.5	1.15	이 몬스터는 자신을 제외한 맵에 있는 모든 몬스터에게 도발 상태를 부여합니다.	E_Taunt	E_None	E_None	E_None	E_None	E_None	0	0	0	0	
+508	GoblinFirst	고블린 선봉대	20	100	0.5	100	0.2	0.9	이 몬스터는 맵에 있는 모든 몬스터에게 _초간 무적 상태를 부여합니다. 방어도가 전부 사라지면 적에게 _만큼 스턴을 준 뒤 공격을 받게 되면 _ 몬스터를 _마리 만큼 소환 합니다.	E_GiveInvincibility	E_GiveStun	E_Spawn	E_None	E_None	E_None	2	2	512	1	
+509	Druid	드루이드	5	50	0.5	0	0.2	0.9	이 몬스터는 공격에 성공할 시 적에게 _만큼 슬로우를 부여하고 체력이 _이하로 줄어들게 되면 자신을 기준으로 한 원형의 범위 힐을 초당 _만큼 준다.	E_GiveHeal	E_GiveHeal	E_None	E_None	E_None	E_None	0.25	100	15	0	
+510	GoblinBuilder	고블린조각가	0	20	0.5	0	0.5	1.15	이 몬스터는 죽게되면 _몬스터를 소환한다.	E_Spawn	E_None	E_None	E_None	E_None	E_None	507	0	0	0	
+511	GoblinSling	고블린 투석병	5	34	0.5	0	0.2	0.9	없음	E_None	E_None	E_None	E_None	E_None	E_None	0	0	0	0	
+512	GoblinShiled	고블린 방패병	0	10	0.25	0	0.2	0.9	이 몬스터는 자신을 제외한 맵에 있는 모든 몬스터에게 도발 무적 상태를 부여합니다.	E_Taunt	E_None	E_None	E_None	E_None	E_None	0	0	0	0	
+513	GoblinDrunk	고블린취객	12	12	0.5	0	0.2	0.9	이 몬스터는 공격을 받고 죽지 않으면 고블린 취객을 _마리 소환합니다.	E_Spawn	E_None	E_None	E_None	E_None	E_None	1	0	0	0	

@@ -56,10 +56,10 @@ public class PlayerThunterAction : PlayerCardAction
                 e.AddState(new CharacterHitState(e, damage, 0.1f).Init());
                 e.AddState(new CharacterState(CharacterStateType.E_Stun, e, DataTable._Parameter[1]));
                 IsoParticle.CreateParticle("Sliced_Power1", e.transform.position
-                    + new Vector3(0f, Isometric.IsometricTileSize.y * 0.5f, 0f), 0f
-                    );
+                    + Vector3.up * Isometric.IsometricTileSize.y * e.EffectOffset,
+                    0f);
                 IsoParticle.CreateParticle("Sliced_Power2", e.transform.position
-                    + new Vector3(0f, Isometric.IsometricTileSize.y * 0.5f, 0f),
+                    + Vector3.up * Isometric.IsometricTileSize.y * e.EffectOffset,
                     0f);
             }
         }

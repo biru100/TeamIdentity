@@ -139,7 +139,7 @@ public static class AnimUtil
 
     public static void PlayAnim(Character owner, string animationName)
     {
-        owner.Anim.Play(animationName + "_" + GetRenderAngle(owner.transform.rotation), 0);
+        owner.Anim.Play(animationName + "_" + GetRenderAngle(owner.transform.rotation), 0, 0f);
     }
 
     public static void PlayAnimOneSide(Character owner, string animationName)

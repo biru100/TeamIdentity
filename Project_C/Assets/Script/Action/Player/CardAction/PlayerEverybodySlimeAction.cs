@@ -59,12 +59,10 @@ public class PlayerEverybodySlimeAction : PlayerCardAction
                     GameObject.Destroy(e.gameObject);
                     NodeUtil.CreateEntity("Slime", pos);
                 }
-                IsoParticle.CreateParticle("Sliced_Power1", e.transform.position
-                    + new Vector3(0f, Isometric.IsometricTileSize.y * 0.5f, 0f), 0f);
+                IsoParticle.CreateParticle("Sliced_Power1", e.transform.position 
+                    + Vector3.up * Isometric.IsometricTileSize.y * e.EffectOffset, 0f);
             }
         }
-
-        PlayerUtil.ConsumeCardPowerUpStatus();
     }
 
     public void Trans()

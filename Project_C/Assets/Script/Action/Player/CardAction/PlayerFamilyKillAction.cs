@@ -96,7 +96,8 @@ public class PlayerFamilyKillAction : PlayerCardAction
 
         float zAngle = Quaternion.FromToRotation(Vector3.right, velocity).eulerAngles.z;
 
-        IsoParticle.CreateParticle("Sliced_Family", targetCharacters[currentTargetIndex].transform.position, zAngle, false , 0.3f);
+        IsoParticle.CreateParticle("Sliced_Family", targetCharacters[currentTargetIndex].transform.position
+            + Vector3.up * Isometric.IsometricTileSize.y * targetCharacters[currentTargetIndex].EffectOffset, zAngle, false , 0.3f);
         targetCharacters[currentTargetIndex].AddState(new CharacterHitState(targetCharacters[currentTargetIndex], damage, 0.1f).Init());
         Owner.NavAgent.Move(targetCharacters[currentTargetIndex].transform.position - Owner.transform.position);
 
@@ -123,8 +124,8 @@ public class PlayerFamilyKillAction : PlayerCardAction
 
         float zAngle = Quaternion.FromToRotation(Vector3.right, velocity).eulerAngles.z;
 
-        IsoParticle.CreateParticle("Round_Family", Owner.transform.position, 0f, false, 0.2f);
-        IsoParticle.CreateParticle("Rotate_Family", Owner.transform.position, zAngle, false, 0.1f);
+        IsoParticle.CreateParticle("Round_Family", Owner.transform.position + Vector3.up * Isometric.IsometricTileSize.y * 0.5f, 0f, false, 0.2f);
+        IsoParticle.CreateParticle("Rotate_Family", Owner.transform.position + Vector3.up * Isometric.IsometricTileSize.y * 0.5f, zAngle, false, 0.1f);
 
         TimelineEvents.Add(new TimeLineEvent(ElapsedTime + 0.1f, AttackCurrentTarget));
         currentTargetIndex++;
