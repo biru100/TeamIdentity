@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _movementList:
   - time: 0
-    movePixel: {x: 0, y: 0}
+    movePixel: {x: 12, y: -5}
