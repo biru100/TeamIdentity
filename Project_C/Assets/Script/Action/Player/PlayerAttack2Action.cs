@@ -7,7 +7,7 @@ public class PlayerAttack2Action : CharacterAction
     public static PlayerAttack2Action GetInstance() { return ObjectPooling.PopObject<PlayerAttack2Action>(); }
 
 
-    FloatCurve curve;
+    MovementSetController movementAnimController;
 
     public override void StartAction(Character owner)
     {
@@ -15,7 +15,7 @@ public class PlayerAttack2Action : CharacterAction
         AnimUtil.PlayAnim(owner, "attack2");
         TimelineEvents.Add(new TimeLineEvent(0.22f, SendDamage));
 
-        curve = FloatCurve.GetCurve("Curves/Attack2MoveCurve");
+        movementAnimController = MovementSetController.GetMovementSetByAngle(owner.transform.rotation, "MovementList/Attack3Movement");
     }
 
     public override void UpdateAction()
@@ -27,9 +27,11 @@ public class PlayerAttack2Action : CharacterAction
             return;
         }
 
-        Owner.NavAgent.Move(Owner.transform.forward * Isometric.IsometricGridSize * Owner.Status.CurrentSpeed *
-            curve.Evaluate(ElapsedTime) * (Mathf.Clamp01(Vector3.Dot(PlayerUtil.GetVelocityInput(), Owner.transform.forward)) + 1f)
-            * Time.deltaTime);
+        Vector3 offset;
+        if (movementAnimController.GetMovementData(Time.deltaTime, out offset))
+        {
+            Owner.NavAgent.Move(offset);
+        }
 
         if (AnimUtil.IsLastFrame(Owner))
         {
