@@ -7,7 +7,7 @@ public class PlayerAttackAction : CharacterAction
     public static PlayerAttackAction GetInstance() { return ObjectPooling.PopObject<PlayerAttackAction>(); }
 
     bool isAttackCommand;
-    FloatCurve curve;
+    MovementSetController movementAnimController;
 
     public override void StartAction(Character owner)
     {
@@ -18,7 +18,7 @@ public class PlayerAttackAction : CharacterAction
         owner.transform.rotation = EffectiveUtility.GetMouseRotation(owner.transform);
         AnimUtil.PlayAnim(owner, "attack0");
 
-        curve = FloatCurve.GetCurve("Curves/AttackMoveCurve");
+        movementAnimController = MovementSetController.GetMovementSetByAngle(owner.transform.rotation, "MovementList/Attack1Movement");
     }
 
     public override void UpdateAction()
@@ -29,8 +29,15 @@ public class PlayerAttackAction : CharacterAction
             return;
         }
 
-        Owner.NavAgent.Move(Owner.transform.forward * Isometric.IsometricGridSize * Owner.Status.CurrentSpeed * curve.Evaluate(ElapsedTime) * Time.deltaTime
-            + Owner.transform.forward * Mathf.Clamp01(Vector3.Dot(PlayerUtil.GetVelocityInput(), Owner.transform.forward)) * Isometric.IsometricGridSize * Owner.Status.CurrentSpeed * Time.deltaTime);
+        //Owner.NavAgent.Move(Owner.transform.forward * Isometric.IsometricGridSize * Owner.Status.CurrentSpeed * 
+        //    curve.Evaluate(ElapsedTime) * (Mathf.Clamp01(Vector3.Dot(PlayerUtil.GetVelocityInput(), Owner.transform.forward)) + 1f) 
+        //    * Time.deltaTime);
+
+        Vector3 offset;
+        if(movementAnimController.GetMovementData(Time.deltaTime, out offset))
+        {
+            Owner.NavAgent.Move(offset);
+        }
 
         float currentAnimTime = AnimUtil.GetAnimNormalizedTime(Owner);
 
