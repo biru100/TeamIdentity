@@ -15,6 +15,6 @@ public class CameraManager : BehaviorSingleton<CameraManager>
 
     public static void PlayAnim(string name, int angle)
     {
-        Instance.Anim.Play(name + "_" + angle);
+        Instance.Anim.Play(name + "_" + angle, 0, 0f);
     }
 }

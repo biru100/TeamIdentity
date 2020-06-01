@@ -71,10 +71,12 @@ public class PlayerAttackAction : CharacterAction
     public void SendDamage()
     {
 
-        Character[] enemys = Object.FindObjectsOfType<Character>();
+        Character[] enemys = Object.FindObjectsOfType<Monster>();
 
-        if (enemys == null)
+        if (enemys == null || enemys.Length == 0)
             return;
+
+        CameraManager.PlayAnim("attack", 0);
 
         foreach (var e in enemys)
         {
