@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 05cec16b5d9b46d4dbc4e2a378aa882d, type: 3}
-  m_Name: Attack3Movement
+  m_Name: Attack3Movement_180
   m_EditorClassIdentifier: 
   _movementList:
   - time: 0
