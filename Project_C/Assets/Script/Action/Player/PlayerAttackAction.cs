@@ -76,7 +76,7 @@ public class PlayerAttackAction : CharacterAction
         if (enemys == null || enemys.Length == 0)
             return;
 
-        CameraManager.PlayAnim("attack", 0);
+        bool isValidAttack = false;
 
         foreach (var e in enemys)
         {
@@ -86,6 +86,7 @@ public class PlayerAttackAction : CharacterAction
             if ((Owner.transform.position - e.transform.position).magnitude <= Isometric.IsometricTileSize.x * 1.8f &&
                 angle < 45f)
             {
+                isValidAttack = true;
                 e.AddState(new CharacterHitState(e, Owner.Status.CurrentDamage, 0.1f).Init());
 
                 IsoParticle.CreateParticle("Sliced1", e.transform.position
@@ -96,5 +97,8 @@ public class PlayerAttackAction : CharacterAction
                     angle + 90f);
             }
         }
+
+        if(isValidAttack)
+            CameraManager.PlayAnim("attack", AnimUtil.GetRenderAngle(Owner.transform.rotation));
     }
 }

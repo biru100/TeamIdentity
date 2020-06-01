@@ -12,7 +12,7 @@
 		{
 			Tags
 			{
-				"Queue" = "Transparent"
+				"Queue" = "AlphaTest"
 				"IgnoreProjector" = "True"
 				"RenderType" = "Transparent"
 				"PreviewType" = "Plane"

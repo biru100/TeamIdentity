@@ -7,7 +7,8 @@ using UnityEngine;
 [RequireComponent(typeof(RenderTransform))]
 public class RendererSupportComponent : MonoBehaviour
 {
-    public static readonly string DepthShaderName = "Sprites/DepthSprite-Lit";
+    public static readonly string DepthShaderName = "Sprites/DepthSprite";
+    public static readonly string DepthShaderLitName = "Sprites/DepthSprite-Lit";
 
     [SerializeField] Texture _normalMap;
 
@@ -50,7 +51,8 @@ public class RendererSupportComponent : MonoBehaviour
         if(IsChangeProperty)
         {
             _renderer.GetPropertyBlock(_propBlock);
-            if (_renderer.sharedMaterial?.shader.name == DepthShaderName && _renderer.sprite != null)
+            if ((_renderer.sharedMaterial?.shader.name == DepthShaderName ||
+                _renderer.sharedMaterial?.shader.name == DepthShaderLitName) && _renderer.sprite != null)
             {
                 Vector4 spriteRectData = new Vector4(_renderer.sprite.rect.x, _renderer.sprite.rect.y, _renderer.sprite.rect.width, _renderer.sprite.rect.height);
                 _propBlock.SetVector("_SpriteRect", spriteRectData);
@@ -60,7 +62,8 @@ public class RendererSupportComponent : MonoBehaviour
             _renderer.SetPropertyBlock(_propBlock);
         }
 
-        if(_renderer.sharedMaterial?.shader.name == DepthShaderName)
+        if((_renderer.sharedMaterial?.shader.name == DepthShaderName ||
+                _renderer.sharedMaterial?.shader.name == DepthShaderLitName))
         {
             _renderer.sortingOrder = Mathf.FloorToInt((-_renderTransform.z_weight + 1f) * 100f);
             IsChangePosition = false;

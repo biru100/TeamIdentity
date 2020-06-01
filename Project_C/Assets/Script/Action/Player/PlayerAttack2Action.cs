@@ -54,6 +54,8 @@ public class PlayerAttack2Action : CharacterAction
         if (enemys == null)
             return;
 
+        bool isValidAttack = false;
+
         foreach (var e in enemys)
         {
             if (e == Owner) continue;
@@ -62,6 +64,7 @@ public class PlayerAttack2Action : CharacterAction
             if ((Owner.transform.position - e.transform.position).magnitude <= Isometric.IsometricTileSize.x * 1.8f &&
                 angle < 80f)
             {
+                isValidAttack = true;
                 e.AddState(new CharacterHitState(e, Owner.Status.CurrentDamage, 0.1f).Init());
 
                 float zAngle = -1 * AnimUtil.GetRenderAngle(e.transform.rotation) + 45f - 15f;
@@ -74,5 +77,8 @@ public class PlayerAttack2Action : CharacterAction
                     angle + 90f);
             }
         }
+
+        if (isValidAttack)
+            CameraManager.PlayAnim("attack2", AnimUtil.GetRenderAngle(Owner.transform.rotation));
     }
 }

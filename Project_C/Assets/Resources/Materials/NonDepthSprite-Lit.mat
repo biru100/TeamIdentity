@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: NonDepthSprite
-  m_Shader: {fileID: 4800000, guid: 4ec820e07bf941b47bc4acb9a4c47e0d, type: 3}
+  m_Name: NonDepthSprite-Lit
+  m_Shader: {fileID: 4800000, guid: 2b0a92c3ea9990242b981cb391b347da, type: 3}
   m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
