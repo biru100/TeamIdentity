@@ -13,7 +13,7 @@ public class PlayerAttackAction : CharacterAction
     {
         base.StartAction(owner);
         isAttackCommand = false;
-        TimelineEvents.Add(new TimeLineEvent(0.22f, SendDamage));
+        TimelineEvents.Add(new TimeLineEvent(0.1f, SendDamage));
 
         owner.transform.rotation = EffectiveUtility.GetMouseRotation(owner.transform);
         AnimUtil.PlayAnim(owner, "attack0");

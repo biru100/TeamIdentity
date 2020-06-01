@@ -13,7 +13,7 @@ public class PlayerAttack2Action : CharacterAction
     {
         base.StartAction(owner);
         AnimUtil.PlayAnim(owner, "attack2");
-        TimelineEvents.Add(new TimeLineEvent(0.22f, SendDamage));
+        TimelineEvents.Add(new TimeLineEvent(0f, SendDamage));
 
         movementAnimController = MovementSetController.GetMovementSetByAngle(owner.transform.rotation, "MovementList/Attack3Movement");
     }

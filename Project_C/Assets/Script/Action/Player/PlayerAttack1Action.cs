@@ -14,7 +14,7 @@ public class PlayerAttack1Action : CharacterAction
         base.StartAction(owner);
         AnimUtil.PlayAnim(owner, "attack1");
         isAttackCommand = false;
-        TimelineEvents.Add(new TimeLineEvent(0.22f, SendDamage));
+        TimelineEvents.Add(new TimeLineEvent(0f, SendDamage));
 
         movementAnimController = MovementSetController.GetMovementSetByAngle(owner.transform.rotation, "MovementList/Attack2Movement");
     }
