@@ -8,7 +8,7 @@ using UnityEngine;
 public class PlayerHoldAction : CharacterAction
 {
 
-public static PlayerHoldAction GetInstance() { return new PlayerHoldAction(); }
+public static PlayerHoldAction GetInstance() { return ObjectPooling.PopObject<PlayerHoldAction>(); }
 
 public override void StartAction(Character owner)
 {

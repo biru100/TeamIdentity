@@ -19,6 +19,8 @@ public class IsoParticle : MonoBehaviour
         IsoParticle iparticle = Instantiate(particle, position, Quaternion.identity).GetComponent<IsoParticle>();
         iparticle.Angle = zAngle;
         iparticle.LifeTime = lifeTime;
+        iparticle.IsAnimationLifeTime = isAnimLifeTime;
+
         iparticle.RenderChild.z_weight += _zFightingOffset * 0.021f;
         iparticle.RenderChild.TranslateIsometricToWorldCoordination();
         _zFightingOffset = (_zFightingOffset + 1) % _zFightingPoolLenght;
@@ -61,7 +63,7 @@ public class IsoParticle : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if(IsAnimationLifeTime && Anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.095f)
+        if(IsAnimationLifeTime && Anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.95f)
         {
             Destroy(gameObject);
         }

@@ -4,12 +4,9 @@ using UnityEngine;
 
 public class PlayerCallTransitionAction : PlayerCardAction
 {
-    public static PlayerCallTransitionAction GetInstance(CardTable dataTable, TargetData target) { return new PlayerCallTransitionAction(dataTable, target); }
+    public static PlayerCallTransitionAction GetInstance(CardTable dataTable, TargetData target)
+    { return ObjectPooling.PopObject<PlayerCallTransitionAction>().SetData(dataTable, target) as PlayerCallTransitionAction; }
 
-    public PlayerCallTransitionAction(CardTable dataTable, TargetData target) : base(dataTable, target)
-    {
-
-    }
 
     public override void StartAction(Character owner)
     {

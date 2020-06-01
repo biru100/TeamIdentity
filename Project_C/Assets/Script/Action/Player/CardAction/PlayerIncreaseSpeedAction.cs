@@ -4,12 +4,9 @@ using UnityEngine;
 
 public class PlayerIncreaseSpeedAction : PlayerCardAction
 {
-    public static PlayerIncreaseSpeedAction GetInstance(CardTable dataTable, TargetData target) { return new PlayerIncreaseSpeedAction(dataTable, target); }
+    public static PlayerIncreaseSpeedAction GetInstance(CardTable dataTable, TargetData target)
+    { return ObjectPooling.PopObject<PlayerIncreaseSpeedAction>().SetData(dataTable, target) as PlayerIncreaseSpeedAction; }
 
-    public PlayerIncreaseSpeedAction(CardTable dataTable, TargetData target) : base(dataTable, target)
-    {
-
-    }
 
     public override void StartAction(Character owner)
     {

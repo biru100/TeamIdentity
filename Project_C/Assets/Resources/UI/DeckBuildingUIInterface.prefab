@@ -1407,7 +1407,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Content: {fileID: 9001450853753101768}
-  DeckNameText: {fileID: 9001450853931269322}
+  DeckNameText: {fileID: 9001450854149060776}
   DeckCardCountText: {fileID: 1223471125239973218}
 --- !u!1 &9001450853931269316
 GameObject:
@@ -2006,8 +2006,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 9001450853741941024}
   m_HandleRect: {fileID: 9001450853741941025}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 1
+  m_Value: 1.0000082
+  m_Size: 0.96299887
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2643,8 +2643,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 9001450853944480355}
   m_HandleRect: {fileID: 9001450853944480380}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 1
+  m_Value: 1.0000004
+  m_Size: 0.23773336
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

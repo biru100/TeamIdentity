@@ -4,11 +4,8 @@ using UnityEngine;
 
 public class PlayerThunterAction : PlayerCardAction
 {
-    public static PlayerThunterAction GetInstance(CardTable dataTable, TargetData target) { return new PlayerThunterAction(dataTable, target); }
-
-    public PlayerThunterAction(CardTable dataTable, TargetData target) : base(dataTable, target)
-    {
-    }
+    public static PlayerThunterAction GetInstance(CardTable dataTable, TargetData target)
+    { return ObjectPooling.PopObject<PlayerThunterAction>().SetData(dataTable, target) as PlayerThunterAction; }
 
     public override void StartAction(Character owner)
     {

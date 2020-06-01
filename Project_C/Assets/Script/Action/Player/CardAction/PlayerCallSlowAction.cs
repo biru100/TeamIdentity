@@ -4,12 +4,9 @@ using UnityEngine;
 
 public class PlayerCallSlowAction : PlayerCardAction
 {
-    public static PlayerCallSlowAction GetInstance(CardTable dataTable, TargetData target) { return new PlayerCallSlowAction(dataTable, target); }
+    public static PlayerCallSlowAction GetInstance(CardTable dataTable, TargetData target)
+    { return ObjectPooling.PopObject<PlayerCallSlowAction>().SetData(dataTable, target) as PlayerCallSlowAction; }
 
-    public PlayerCallSlowAction(CardTable dataTable, TargetData target) : base(dataTable, target)
-    {
-
-    }
 
     public override void StartAction(Character owner)
     {

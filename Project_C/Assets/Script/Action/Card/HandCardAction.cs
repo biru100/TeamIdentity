@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 public class HandCardAction : CardInterfaceAction
 {
-    public static HandCardAction GetInstance() { return new HandCardAction(); }
+    public static HandCardAction GetInstance() { return ObjectPooling.PopObject<HandCardAction>(); }
 
     public bool IsHover { get; set; }
     public bool IsDrag { get; set; }
@@ -174,7 +174,8 @@ public class HandCardAction : CardInterfaceAction
     public override void OnPointerEnter(PointerEventData eventData)
     {
         base.OnPointerEnter(eventData);
-        IsHover = true;
+        if(InGameInterface.Instance.IsCardDrag == false)
+            IsHover = true;
     }
     public override void OnPointerExit(PointerEventData eventData)
     {

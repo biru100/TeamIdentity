@@ -29,9 +29,17 @@ public class PlayerCardAction : CharacterAction
     public CardTable DataTable { get; set; }
     public TargetData Target { get; set; }
 
-    public PlayerCardAction(CardTable dataTable, TargetData target)
+    public PlayerCardAction SetData(CardTable dataTable, TargetData target)
     {
         DataTable = dataTable;
         Target = target;
+        return this;
+    }
+
+    public override void ClearMember()
+    {
+        base.ClearMember();
+        DataTable = null;
+        Target = null;
     }
 }

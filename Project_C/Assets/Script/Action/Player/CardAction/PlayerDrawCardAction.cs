@@ -4,12 +4,8 @@ using UnityEngine;
 
 public class PlayerDrawCardAction : PlayerCardAction
 {
-    public static PlayerDrawCardAction GetInstance(CardTable dataTable, TargetData target) { return new PlayerDrawCardAction(dataTable, target); }
-
-    public PlayerDrawCardAction(CardTable dataTable, TargetData target) : base(dataTable, target)
-    {
-
-    }
+    public static PlayerDrawCardAction GetInstance(CardTable dataTable, TargetData target)
+    { return ObjectPooling.PopObject<PlayerDrawCardAction>().SetData(dataTable, target) as PlayerDrawCardAction; }
 
     public override void StartAction(Character owner)
     {

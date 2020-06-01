@@ -8,7 +8,7 @@ using UnityEngine;
 public class PlayerStunAction : CharacterAction
 {
 
-public static PlayerStunAction GetInstance() { return new PlayerStunAction(); }
+public static PlayerStunAction GetInstance() { return ObjectPooling.PopObject<PlayerStunAction>(); }
 
 public override void StartAction(Character owner)
 {

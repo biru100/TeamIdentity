@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1733917069441335323}
   - component: {fileID: 1252845492595239132}
   m_Layer: 0
-  m_Name: SlicedParticle1
+  m_Name: Sliced1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73,7 +73,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3816121814293771836}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.42, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1733917069441335323}
@@ -91,8 +91,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86bed7d58ad6e044da0a5e75d8c369eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imageOffset: {x: 0, y: 0, z: 0}
-  rotation: {x: 0, y: 0, z: 0, w: 1}
+  _imageOffset: {x: 0, y: 0.415, z: 0}
+  _rotation: {x: 0, y: 0, z: 0, w: 1}
   z_weight: 0
 --- !u!212 &2005298741044575556
 SpriteRenderer:
@@ -175,7 +175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34768437faac7a646a710d2fc0e197b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Tag: SlicedParticle1
+  Tag: Sliced1
 --- !u!114 &5529772523035914740
 MonoBehaviour:
   m_ObjectHideFlags: 0

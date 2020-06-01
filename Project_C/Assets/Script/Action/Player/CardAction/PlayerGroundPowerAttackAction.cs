@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class PlayerGroundPowerAttackAction : PlayerCardAction
 {
-    public static PlayerGroundPowerAttackAction GetInstance(CardTable dataTable, TargetData target) { return new PlayerGroundPowerAttackAction(dataTable, target); }
+    public static PlayerGroundPowerAttackAction GetInstance(CardTable dataTable, TargetData target)
+    { return ObjectPooling.PopObject<PlayerGroundPowerAttackAction>().SetData(dataTable, target) as PlayerGroundPowerAttackAction; }
 
-    public PlayerGroundPowerAttackAction(CardTable dataTable, TargetData target) : base(dataTable, target)
-    {
-    }
 
     public override void StartAction(Character owner)
     {

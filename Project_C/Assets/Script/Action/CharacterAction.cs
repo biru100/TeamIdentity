@@ -19,7 +19,7 @@ public class TimeLineEvent
 }
 
 [Serializable]
-public abstract class CharacterAction
+public abstract class CharacterAction : IPoolObject
 {
     public Character Owner { get; protected set; }
     public float ElapsedTime { get; protected set; }
@@ -49,6 +49,12 @@ public abstract class CharacterAction
 
     public virtual void FinishAction()
     {
+        ObjectPooling.PushObject(this);
+    }
 
+    public virtual void ClearMember()
+    {
+        ElapsedTime = 0f;
+        TimelineEvents.Clear();
     }
 }

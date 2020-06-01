@@ -4,12 +4,8 @@ using UnityEngine;
 
 public class PlayerHealAction : PlayerCardAction
 {
-    public static PlayerHealAction GetInstance(CardTable dataTable, TargetData target) { return new PlayerHealAction(dataTable, target); }
-
-    public PlayerHealAction(CardTable dataTable, TargetData target) : base(dataTable, target)
-    {
-
-    }
+    public static PlayerHealAction GetInstance(CardTable dataTable, TargetData target)
+    { return ObjectPooling.PopObject<PlayerHealAction>().SetData(dataTable, target) as PlayerHealAction; }
 
     public override void StartAction(Character owner)
     {

@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class PlayerSilenceAction : PlayerCardAction
 {
-    public static PlayerSilenceAction GetInstance(CardTable dataTable, TargetData target) { return new PlayerSilenceAction(dataTable, target); }
+    public static PlayerSilenceAction GetInstance(CardTable dataTable, TargetData target)
+    { return ObjectPooling.PopObject<PlayerSilenceAction>().SetData(dataTable, target) as PlayerSilenceAction; }
 
-    public PlayerSilenceAction(CardTable dataTable, TargetData target) : base(dataTable, target)
-    {
-    }
 
     public override void StartAction(Character owner)
     {

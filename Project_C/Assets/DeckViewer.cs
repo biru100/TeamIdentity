@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class DeckViewer : MonoBehaviour
 {
     public GameObject Content;
-    public Text DeckNameText;
+    public InputField DeckNameText;
     public Text DeckCardCountText;
 
     public DeckData ControlledDeckData { get; protected set; }

@@ -5,9 +5,9 @@ using System.Linq;
 
 public class PlayerAssassinAction : PlayerCardAction
 {
-    public static PlayerAssassinAction GetInstance(CardTable dataTable, TargetData target) { return new PlayerAssassinAction(dataTable, target); }
+    public static PlayerAssassinAction GetInstance(CardTable dataTable, TargetData target)
+    { return ObjectPooling.PopObject<PlayerAssassinAction>().SetData(dataTable, target) as PlayerAssassinAction; }
 
-    List<Monster> targetCharacters;
     float damage;
 
     int currentTargetIndex;
@@ -15,13 +15,13 @@ public class PlayerAssassinAction : PlayerCardAction
     //0 - pre skill, 1 - on skill, 2 - post skill
     int StateOrder = 0;
 
-    public PlayerAssassinAction(CardTable dataTable, TargetData target) : base(dataTable, target)
-    {
-    }
-
     public override void StartAction(Character owner)
     {
         base.StartAction(owner);
+
+        currentTargetIndex = 0;
+        StateOrder = 0;
+
         AnimUtil.PlayAnim(owner, "effect0");
 
         damage = PlayerUtil.CalculatingCardPowerValue(DataTable._Parameter[0]);

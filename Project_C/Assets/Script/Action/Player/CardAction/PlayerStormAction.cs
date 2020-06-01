@@ -4,11 +4,8 @@ using UnityEngine;
 
 public class PlayerStormAction : PlayerCardAction
 {
-    public static PlayerStormAction GetInstance(CardTable dataTable, TargetData target) { return new PlayerStormAction(dataTable, target); }
-
-    public PlayerStormAction(CardTable dataTable, TargetData target) : base(dataTable, target)
-    {
-    }
+    public static PlayerStormAction GetInstance(CardTable dataTable, TargetData target)
+    { return ObjectPooling.PopObject<PlayerStormAction>().SetData(dataTable, target) as PlayerStormAction; }
 
     public override void StartAction(Character owner)
     {

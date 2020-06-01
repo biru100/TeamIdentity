@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class PlayerHitAction : CharacterAction
 {
-    public static PlayerHitAction GetInstance() { return new PlayerHitAction(); }
+    public static PlayerHitAction GetInstance() { return ObjectPooling.PopObject<PlayerHitAction>(); }
 
     public override void StartAction(Character owner)
     {

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerAttackAction : CharacterAction
 {
-    public static PlayerAttackAction GetInstance() { return new PlayerAttackAction(); }
+    public static PlayerAttackAction GetInstance() { return ObjectPooling.PopObject<PlayerAttackAction>(); }
 
     bool isAttackCommand;
     FloatCurve curve;
@@ -44,7 +44,7 @@ public class PlayerAttackAction : CharacterAction
 
         if (currentAnimTime >= 0.78f && isAttackCommand)
         {
-            Owner.CurrentAction = (CharacterAction)PlayerAttack1Action.GetInstance();
+            Owner.CurrentAction = PlayerAttack1Action.GetInstance();
             return;
         }
 

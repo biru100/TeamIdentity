@@ -86,12 +86,11 @@ Shader "Sprites/DepthSprite-Lit"
 					0 );
 				float4 depth = tex2Dlod(_DepthTex, lodTexcoord);
 				IN.vertex.z = IN.vertex.z + _ZTileLength * (depth.r - 0.5) * _SpriteRect.w / _SpriteYSize;
-
 				#ifdef PIXELSNAP_ON
 				IN.vertex = UnityPixelSnap(IN.vertex);
 				#endif
 
-				IN.normal = float3(0, 0, -1);
+				IN.normal = normalize(float3(0, 1, - 1));
 				IN.tangent = float4(1, 0, 0, 1);
 
 				UNITY_INITIALIZE_OUTPUT(Input, o);

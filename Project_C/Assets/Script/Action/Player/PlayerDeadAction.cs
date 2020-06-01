@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerDeadAction : CharacterAction
 {
-    public static PlayerDeadAction GetInstance() { return new PlayerDeadAction(); }
+    public static PlayerDeadAction GetInstance() { return ObjectPooling.PopObject<PlayerDeadAction>(); }
 
     public override void StartAction(Character owner)
     {

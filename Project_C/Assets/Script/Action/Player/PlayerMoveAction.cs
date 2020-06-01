@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMoveAction : CharacterAction
 {
-    public static PlayerMoveAction GetInstance() { return new PlayerMoveAction(); }
+    public static PlayerMoveAction GetInstance() { return ObjectPooling.PopObject<PlayerMoveAction>(); }
 
     public override void StartAction(Character owner)
     {

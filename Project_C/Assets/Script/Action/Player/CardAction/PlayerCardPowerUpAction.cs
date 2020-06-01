@@ -5,11 +5,9 @@ using UnityEngine;
 public class PlayerCardPowerUpAction : PlayerCardAction
 {
 
-    public static PlayerCardPowerUpAction GetInstance(CardTable dataTable, TargetData target) { return new PlayerCardPowerUpAction(dataTable, target); }
+    public static PlayerCardPowerUpAction GetInstance(CardTable dataTable, TargetData target)
+    { return ObjectPooling.PopObject<PlayerCardPowerUpAction>().SetData(dataTable, target) as PlayerCardPowerUpAction; }
 
-    public PlayerCardPowerUpAction(CardTable dataTable, TargetData target) : base(dataTable, target)
-    {
-    }
 
     public override void StartAction(Character owner)
     {

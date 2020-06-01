@@ -4,11 +4,8 @@ using UnityEngine;
 
 public class PlayerNoneAction : PlayerCardAction
 {
-    public static PlayerNoneAction GetInstance(CardTable dataTable, TargetData target) { return new PlayerNoneAction(dataTable, target); }
-
-    public PlayerNoneAction(CardTable dataTable, TargetData target) : base(dataTable, target)
-    {
-    }
+    public static PlayerNoneAction GetInstance(CardTable dataTable, TargetData target)
+    { return ObjectPooling.PopObject<PlayerNoneAction>().SetData(dataTable, target) as PlayerNoneAction; }
 
     public override void StartAction(Character owner)
     {

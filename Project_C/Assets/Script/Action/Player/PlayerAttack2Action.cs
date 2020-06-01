@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerAttack2Action : CharacterAction
 {
-    public static PlayerAttack2Action GetInstance() { return new PlayerAttack2Action(); }
+    public static PlayerAttack2Action GetInstance() { return ObjectPooling.PopObject<PlayerAttack2Action>(); }
 
 
     FloatCurve curve;

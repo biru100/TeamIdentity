@@ -4,12 +4,8 @@ using UnityEngine;
 
 public class PlayerShuildUpAction : PlayerCardAction
 {
-    public static PlayerShuildUpAction GetInstance(CardTable dataTable, TargetData target) { return new PlayerShuildUpAction(dataTable, target); }
-
-    public PlayerShuildUpAction(CardTable dataTable, TargetData target) : base(dataTable, target)
-    {
-
-    }
+    public static PlayerShuildUpAction GetInstance(CardTable dataTable, TargetData target)
+    { return ObjectPooling.PopObject<PlayerShuildUpAction>().SetData(dataTable, target) as PlayerShuildUpAction; }
 
     public override void StartAction(Character owner)
     {

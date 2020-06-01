@@ -4,11 +4,8 @@ using UnityEngine;
 
 public class PlayerShuildAttackAction : PlayerCardAction
 {
-    public static PlayerShuildAttackAction GetInstance(CardTable dataTable, TargetData target) { return new PlayerShuildAttackAction(dataTable, target); }
-
-    public PlayerShuildAttackAction(CardTable dataTable, TargetData target) : base(dataTable, target)
-    {
-    }
+    public static PlayerShuildAttackAction GetInstance(CardTable dataTable, TargetData target)
+    { return ObjectPooling.PopObject<PlayerShuildAttackAction>().SetData(dataTable, target) as PlayerShuildAttackAction; }
 
     public override void StartAction(Character owner)
     {

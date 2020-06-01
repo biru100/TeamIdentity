@@ -60,7 +60,7 @@ public class RendererSupportComponent : MonoBehaviour
             _renderer.SetPropertyBlock(_propBlock);
         }
 
-        if(IsChangePosition && _renderer.sharedMaterial?.shader.name == DepthShaderName)
+        if(_renderer.sharedMaterial?.shader.name == DepthShaderName)
         {
             _renderer.sortingOrder = Mathf.FloorToInt((-_renderTransform.z_weight + 1f) * 100f);
             IsChangePosition = false;

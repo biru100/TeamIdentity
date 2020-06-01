@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class PlayerEverybodySlimeAction : PlayerCardAction
 {
-    public static PlayerEverybodySlimeAction GetInstance(CardTable dataTable, TargetData target) { return new PlayerEverybodySlimeAction(dataTable, target); }
+    public static PlayerEverybodySlimeAction GetInstance(CardTable dataTable, TargetData target)
+    { return ObjectPooling.PopObject<PlayerEverybodySlimeAction>().SetData(dataTable, target) as PlayerEverybodySlimeAction; }
 
-    public PlayerEverybodySlimeAction(CardTable dataTable, TargetData target) : base(dataTable, target)
-    {
-    }
 
     public override void StartAction(Character owner)
     {

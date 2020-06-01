@@ -4,7 +4,7 @@ using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class CardInterfaceAction : IPointerClickHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
+public class CardInterfaceAction : IPoolObject, IPointerClickHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public CardInterface Owner { get; set; }
 
@@ -53,4 +53,8 @@ public class CardInterfaceAction : IPointerClickHandler, IBeginDragHandler, IDra
 
     }
 
+    public virtual void ClearMember()
+    {
+        Owner = null;
+    }
 }

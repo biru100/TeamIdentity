@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerIdleAction : CharacterAction
 {
-    public static PlayerIdleAction GetInstance() { return new PlayerIdleAction(); }
+    public static PlayerIdleAction GetInstance() { return ObjectPooling.PopObject<PlayerIdleAction>(); }
 
     public override void StartAction(Character owner)
     {

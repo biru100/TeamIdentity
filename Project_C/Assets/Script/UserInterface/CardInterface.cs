@@ -120,10 +120,6 @@ public class CardInterface : MonoBehaviour, IPointerClickHandler, IBeginDragHand
     private void Update()
     {
         _currentAction?.Update();
-
-        //_frontSide.material.SetFloat("_DissolveValue", Mathf.Clamp01(DissolveValue));
-        //_frontSide.material.SetFloat("_GrayScale", Mathf.Clamp01(GrayScaleValue));
-        //_frontSide.material.SetFloat("_AlphaValue", AlphaValue);
     }
 
     public void OnBeginDrag(PointerEventData eventData)

@@ -5,7 +5,8 @@ using System.Linq;
 
 public class PlayerFamilyKillAction : PlayerCardAction
 {
-    public static PlayerFamilyKillAction GetInstance(CardTable dataTable, TargetData target) { return new PlayerFamilyKillAction(dataTable, target); }
+    public static PlayerFamilyKillAction GetInstance(CardTable dataTable, TargetData target)
+    { return ObjectPooling.PopObject<PlayerFamilyKillAction>().SetData(dataTable, target) as PlayerFamilyKillAction; }
 
     List<Monster> targetCharacters;
     float damage;
@@ -15,13 +16,12 @@ public class PlayerFamilyKillAction : PlayerCardAction
     //0 - pre skill, 1 - on skill, 2 - post skill
     int StateOrder = 0;
 
-    public PlayerFamilyKillAction(CardTable dataTable, TargetData target) : base(dataTable, target)
-    {
-    }
-
     public override void StartAction(Character owner)
     {
         base.StartAction(owner);
+        currentTargetIndex = 0;
+        StateOrder = 0;
+
         AnimUtil.PlayAnim(owner, "effect0");
 
         targetCharacters = new List<Monster>();
