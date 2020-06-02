@@ -76,7 +76,7 @@ public class PlayerAttack2Action : CharacterAction
                     angle);
                 IsoParticle.CreateParticle("Sliced2", e.transform.position
                     + Vector3.up * Isometric.IsometricTileSize.y * e.EffectOffset,
-                    angle + 90f);
+                    Random.Range(0, 360));
             }
         }
 
