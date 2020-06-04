@@ -17,18 +17,18 @@ public class SoundManager : BehaviorSingleton<SoundManager>
     {
         base.Init();
 
-        BGMAudioSource = new List<AudioSource>(CurrentBgmAudioSourceIndex);
+        BGMAudioSource = new List<AudioSource>();
 
         for (int i = 0; i < CurrentBgmAudioSourceIndex; ++i)
         {
-            BGMAudioSource[i] = gameObject.AddComponent<AudioSource>();
+            BGMAudioSource.Add(gameObject.AddComponent<AudioSource>());
         }
 
-        EffectAudioSource = new List<AudioSource>(EffectAudioSourceCount);
+        EffectAudioSource = new List<AudioSource>();
 
         for (int i = 0; i < EffectAudioSourceCount; ++i)
         {
-            EffectAudioSource[i] = gameObject.AddComponent<AudioSource>();
+            EffectAudioSource.Add(gameObject.AddComponent<AudioSource>());
         }
     }
 

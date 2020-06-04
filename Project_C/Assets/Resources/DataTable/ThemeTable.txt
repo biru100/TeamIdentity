@@ -1,1 +1,1 @@
-1001	WoodMap	BeginningVillage	WoodMapBossRoom	60	100	430	5	20	300	100	10	WoodMapReward1	WoodMapReward2	WoodMapReward3	WoodMapReward4	WoodMapReward5	WoodMapReward6	WoodMapReward7	WoodMapReward8	WoodMapReward9	WoodMapReward10	
+1001	WoodMap	BeginningVillage	WoodMapBossRoom	20	40	430	5	20	300	100	10	WoodMapReward1	WoodMapReward2	WoodMapReward3	WoodMapReward4	WoodMapReward5	WoodMapReward6	WoodMapReward7	WoodMapReward8	WoodMapReward9	WoodMapReward10	

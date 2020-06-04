@@ -136,10 +136,14 @@ public class RogueRoomFactory : IRoomFactory
     {
         int randomConnectionCount = CalculateTransitionRoomWayCount(current.Way.Count);
 
-        List<MapWay> otherList = RoomManager.WayList.Except(current.Way).ToList();
+        List<MapWay> otherList = RoomManager.WayList.Except(current.Way).Where((way) => roomFactoryProccess.FindIndex((r) => r.RoomIndex == current.RoomIndex + RoomManager.WayDirectionSet[way]) == -1 &&
+        madeRooms.FindIndex((r) => r.RoomIndex == current.RoomIndex + RoomManager.WayDirectionSet[way]) == -1).ToList();
 
         for (int i = 0; i < randomConnectionCount; ++i)
         {
+            if (otherList.Count == 0)
+                break;
+
             int index = Random.Range(0, otherList.Count);
             MapWay currentWay = otherList[index];
 
