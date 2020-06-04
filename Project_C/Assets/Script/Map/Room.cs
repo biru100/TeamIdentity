@@ -79,7 +79,7 @@ public class Room : MonoBehaviour
 
         GameObject instance = Instantiate(go, isoPos, Quaternion.identity, transform);
 
-        Character entity = instance.GetComponent<Character>();
+        Character entity = instance.GetComponent<Monster>();
         if (entity != null)
         {
             RoomAllEntitys.Add(entity);

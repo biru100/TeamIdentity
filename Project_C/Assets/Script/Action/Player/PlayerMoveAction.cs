@@ -21,6 +21,8 @@ public class PlayerMoveAction : CharacterAction
             return;
         }
 
+        PlayerUtil.CallInteractionInput(Owner);
+
         if (PlayerUtil.GetAttackInput())
         {
             Owner.CurrentAction = PlayerAttackAction.GetInstance();

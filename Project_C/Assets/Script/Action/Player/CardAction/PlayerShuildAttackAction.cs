@@ -45,7 +45,7 @@ public class PlayerShuildAttackAction : PlayerCardAction
     public void SendDamage()
     {
 
-        Character[] enemys = Object.FindObjectsOfType<Character>();
+        Character[] enemys = Object.FindObjectsOfType<Monster>();
         float damage = Owner.Status.CurrentArmor;
 
         if (enemys == null)

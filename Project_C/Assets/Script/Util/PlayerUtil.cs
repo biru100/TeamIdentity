@@ -98,6 +98,23 @@ public static class PlayerUtil
         return Input.GetKeyDown(KeyCode.Space);
     }
 
+    public static void CallInteractionInput(Character owner)
+    {
+        if(Input.GetKeyDown(KeyCode.F))
+        {
+            NPC[] npcs = GameObject.FindObjectsOfType<NPC>();
+
+            foreach(var npc in npcs)
+            {
+                if((owner.transform.position - npc.transform.position).magnitude < Isometric.IsometricGridSize * 2.5f)
+                {
+                    npc.IsCalledInteraction = true;
+                    return;
+                }
+            }
+        }
+    }
+
     public static Vector3 GetVelocityInput()
     {
         Vector3 velocity = Vector3.zero;

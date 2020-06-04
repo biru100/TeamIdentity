@@ -86,6 +86,20 @@ public class DeckManager : BehaviorSingleton<DeckManager>
         Instance.CurrentDeck = deck;
     }
 
+    public static void LoadDeck()
+    {
+        int cardCount = DataManager.GetDatas<CardTable>().Count;
+
+        Deck deck = new Deck();
+
+        for (int i = 0; i < 30; ++i)
+        {
+            deck.AddCard(new Card(Random.Range(0, cardCount)));
+        }
+
+        Instance.CurrentDeck = deck;
+    }
+
     public static void InspectDeckEffectiveness()
     {
         foreach (var deckData in UserData.Instance.OwnedDeckList)

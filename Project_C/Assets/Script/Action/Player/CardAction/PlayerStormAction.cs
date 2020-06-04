@@ -44,7 +44,7 @@ public class PlayerStormAction : PlayerCardAction
     public void SendDamage()
     {
 
-        Character[] enemys = Object.FindObjectsOfType<Character>();
+        Character[] enemys = Object.FindObjectsOfType<Monster>();
         float damage = PlayerUtil.CalculatingCardPowerValue(DataTable._Parameter[0]);
 
         if (enemys == null)

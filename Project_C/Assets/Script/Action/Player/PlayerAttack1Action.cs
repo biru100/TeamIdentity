@@ -64,7 +64,7 @@ public class PlayerAttack1Action : CharacterAction
     public void SendDamage()
     {
 
-        Character[] enemys = Object.FindObjectsOfType<Character>();
+        Character[] enemys = Object.FindObjectsOfType<Monster>();
 
         if (enemys == null)
             return;

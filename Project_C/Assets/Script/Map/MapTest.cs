@@ -19,7 +19,7 @@ public class MapTest : MonoBehaviour
         //DynamicNavigation.Instance.SetNavMeshData(DynamicNavigation.Instance.BuildNavigation(null));
         //PlayerStatus.CurrentStatus.CurrentManaCost = _testCost;
         //InGameInterface.Instance.DrawCard(_testDraw);
-
+        DeckManager.LoadDeck();
         RoomManager.CreateTestMap(_mapDataName);
         RoomManager.CreatePlayer();
         //Player player = Instantiate(ResourceManager.GetResource<GameObject>("Tiles/Player")).GetComponent<Player>();

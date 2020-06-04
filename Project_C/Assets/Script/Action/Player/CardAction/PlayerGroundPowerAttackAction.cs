@@ -46,7 +46,7 @@ public class PlayerGroundPowerAttackAction : PlayerCardAction
         IsoParticle.CreateParticle("BreakGround", Owner.transform.position - Vector3.up * Isometric.IsometricTileSize.y, 0f)
             .RotationAnim("effect_ground_power_atk", Owner.transform.rotation);
 
-        Character[] enemys = Object.FindObjectsOfType<Character>();
+        Character[] enemys = Object.FindObjectsOfType<Monster>();
         float damage = PlayerUtil.CalculatingCardPowerValue(DataTable._Parameter[0]);
 
         if (enemys == null)
