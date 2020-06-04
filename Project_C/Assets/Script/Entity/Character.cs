@@ -113,12 +113,15 @@ public class Character : MonoBehaviour
 
     protected virtual void OnDestroy()
     {
-        foreach(var abilityStack in AbilityStack)
+        if (AbilityStack != null)
         {
-            abilityStack?.ClearAbility();
-        }
+            foreach (var abilityStack in AbilityStack)
+            {
+                abilityStack?.ClearAbility();
+            }
 
-        AbilityStack.Clear();
+            AbilityStack.Clear();
+        }
 
         if (HUD != null)
             Destroy(HUD.gameObject);

@@ -47,7 +47,8 @@ public class ObjectPooling : BehaviorSingleton<ObjectPooling>
         }
         else
         {
-            T retObj = Activator.CreateInstance<T>();//(T)Activator.CreateInstance(typeof(T), BindingFlags.Public, null, parameters, null);
+            T retObj = Activator.CreateInstance<T>();
+            //(T)Activator.CreateInstance(typeof(T), BindingFlags.Public, null, parameters, null);
             return retObj;
         }
     }
