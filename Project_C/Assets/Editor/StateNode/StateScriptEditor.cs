@@ -491,7 +491,7 @@ public class StateClassCode : ICodeBase
         CodeBlock updateAction = new CodeBlock();
         CodeBlock finishAction = new CodeBlock();
 
-        Variable defineInstance = new Variable() { Var = "\npublic static " + ClassName + " GetInstance() { return new " + ClassName + "(); }\n" };
+        Variable defineInstance = new Variable() { Var = "\npublic static " + ClassName + " GetInstance() { return ObjectPooling.PopObject<" + ClassName + ">(); }\n" };
 
         startAction.Condition = new Variable() { Var = "public override void StartAction(Character owner)" };
         updateAction.Condition = new Variable() { Var = "public override void UpdateAction()" };

@@ -10,7 +10,6 @@ public interface IRoomFactory
 
 public class TestRoomFactory : IRoomFactory
 {
-
     public string MapName { get; set; }
 
     public TestRoomFactory(string mapName)
@@ -32,6 +31,7 @@ public class RogueRoomFactory : IRoomFactory
     ThemeTable currentTheme;
 
     Dictionary<List<MapWay>, TileMapData> mapList;
+    Dictionary<List<MapWay>, TileMapData> rewardMapList;
 
     List<RoomContainer> roomFactoryProccess;
     List<RoomContainer> madeRooms;
@@ -56,9 +56,9 @@ public class RogueRoomFactory : IRoomFactory
         return ways;
     }
 
-    void SamplingMapList(string mapThema)
+    void SamplingMapList(ref Dictionary<List<MapWay>, TileMapData> list, string mapThema)
     {
-        mapList = new Dictionary<List<MapWay>, TileMapData>();
+        list = new Dictionary<List<MapWay>, TileMapData>();
         TextAsset[] mapTxtDatas = Resources.LoadAll<TextAsset>("Map");
 
         foreach (var txt in mapTxtDatas)
@@ -76,7 +76,7 @@ public class RogueRoomFactory : IRoomFactory
                     }
                 }
 
-                mapList.Add(ways, mapData);
+                list.Add(ways, mapData);
             }
         }
     }
@@ -191,15 +191,15 @@ public class RogueRoomFactory : IRoomFactory
         return false;
     }
 
-    void ChooseMapInstance(RoomContainer current)
+    void ChooseMapInstance(RoomContainer current, Dictionary<List<MapWay>, TileMapData> roomList)
     {
         if (current.RoomInstance != null)
             return;
 
-        List<List<MapWay>> keys = mapList.Keys.Where((k) => current.Way.Count == k.Count
+        List<List<MapWay>> keys = roomList.Keys.Where((k) => current.Way.Count == k.Count
             && k.Intersect(current.Way).Count() == current.Way.Count).ToList();
 
-        current.RoomInstance = Room.CreateRoom(mapList[keys[Random.Range(0, keys.Count)]].mapName, current.RoomIndex);
+        current.RoomInstance = Room.CreateRoom(roomList[keys[Random.Range(0, keys.Count)]].mapName, current.RoomIndex);
     }
 
     void SetMapInstance(RoomContainer current, string mapName)
@@ -238,7 +238,8 @@ public class RogueRoomFactory : IRoomFactory
     {
         currentTheme = data;
 
-        SamplingMapList(data._Name);
+        SamplingMapList(ref mapList, data._Name);
+        SamplingMapList(ref rewardMapList, data._RewardRoomThema);
 
         roomFactoryProccess = new List<RoomContainer>();
         madeRooms = new List<RoomContainer>();
@@ -271,9 +272,17 @@ public class RogueRoomFactory : IRoomFactory
 
         specificRoomList.Add(DeterminantSpecificRoom(specificRoomList, ConvertWayList(currentTheme._BossRoomName), currentTheme._BossRoomName));
 
+        List<RoomContainer> normalRoomList = madeRooms.Where((r) => r.RoomInstance == null).ToList();
+        EffectiveUtility.SuffleList<RoomContainer>(ref normalRoomList, 100);
+
+        for(int i = 0; i < currentTheme._RewardRoomCount; ++i)
+        {
+            ChooseMapInstance(normalRoomList[i], rewardMapList);
+        }
+
         foreach (var roomContainer in madeRooms)
         {
-            ChooseMapInstance(roomContainer);
+            ChooseMapInstance(roomContainer, mapList);
         }
 
         return madeRooms;

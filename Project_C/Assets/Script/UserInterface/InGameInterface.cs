@@ -20,6 +20,8 @@ public class InGameInterface : ManagedUIInterface<InGameInterface>
 
     [SerializeField] protected Image _slowBackground;
 
+    public CardState GlobalCardState { get; protected set; }
+
 
     public RectTransform HandField { get => _handField; set => _handField = value; }
     public GameObject ArrowBody { get => _arrowBody; set => _arrowBody = value; }
@@ -35,6 +37,7 @@ public class InGameInterface : ManagedUIInterface<InGameInterface>
     {
         base.Awake();
         HandCards = new List<CardInterface>();
+        GlobalCardState = new CardState();
 
         StartCoroutine(UpdateCardInterface());
     }

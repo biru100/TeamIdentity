@@ -5,6 +5,12 @@ using UnityEngine.AI;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
+public class CardState
+{
+    public int CostChangeValue { get; set; }
+    public bool IsLock { get; set; }
+}
+
 public class CardInterface : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public static CardInterface CreateCard(Transform parent)
@@ -16,6 +22,7 @@ public class CardInterface : MonoBehaviour, IPointerClickHandler, IBeginDragHand
 
     [SerializeField]    protected Image _backSide;
     [SerializeField]    protected Image _frontSide;
+    [SerializeField]    protected Image _outLine;
     [SerializeField]    protected Text _cardLore;
     [SerializeField]    protected Text _cardCost;
     [SerializeField]    protected Vector2 _originCardSize;
@@ -24,6 +31,7 @@ public class CardInterface : MonoBehaviour, IPointerClickHandler, IBeginDragHand
     public Animator Anim { get; set; }
     public Image BackSide { get => _backSide; }
     public Image FrontSide { get => _frontSide; }
+    public Image OutLine { get => _outLine; }
     public Text CardLore { get => _cardLore; }
     public Text CardCost { get => _cardCost; }
     public Vector2 OriginCardSize { get => _originCardSize; }
@@ -83,6 +91,8 @@ public class CardInterface : MonoBehaviour, IPointerClickHandler, IBeginDragHand
         }
     }
 
+    public CardState CardState { get; set; }
+
     public Canvas CardCanvas { get; set; }
 
     protected CardInterfaceAction _currentAction;
@@ -102,6 +112,7 @@ public class CardInterface : MonoBehaviour, IPointerClickHandler, IBeginDragHand
     {
         Anim = GetComponent<Animator>();
         CardCanvas = GetComponent<Canvas>();
+        CardState = new CardState();
         Material instanceMat = Instantiate(_frontSide.material);
         _frontSide.material = instanceMat;
         _frontSide.SetMaterialDirty();

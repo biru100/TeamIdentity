@@ -12,7 +12,7 @@ public class ThemeTable {
    public int _TotalWayWeight;
    public int _RewardRoomCount;
    public int[] _WayForWeight = new int[4];
-   public string[] _RewardRoomNames = new string[1];
+   public string _RewardRoomThema;
    public static ThemeTable Load(string[] parts) {
        int i = 0;
        ThemeTable p = new ThemeTable();
@@ -28,7 +28,7 @@ public class ThemeTable {
        p._WayForWeight[1] = int.Parse(parts[i++]);
        p._WayForWeight[2] = int.Parse(parts[i++]);
        p._WayForWeight[3] = int.Parse(parts[i++]);
-       p._RewardRoomNames[0] = parts[i++];
+       p._RewardRoomThema = parts[i++];
 
     return p;
     }

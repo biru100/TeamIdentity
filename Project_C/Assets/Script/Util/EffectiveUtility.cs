@@ -45,4 +45,21 @@ public static class EffectiveUtility
     {
         return AnimUtil.GetRenderAngle(GetMouseRotation(pivotTransform));
     }
+
+    public static void SuffleList<T>(ref List<T> list, int suffleCount)
+    {
+        T temp;
+        int prev;
+        int next;
+
+        for(int i = 0; i < suffleCount; ++i)
+        {
+            prev = Random.Range(0, list.Count);
+            next = Random.Range(0, list.Count);
+
+            temp = list[prev];
+            list[prev] = list[next];
+            list[next] = temp;
+        }
+    }
 }

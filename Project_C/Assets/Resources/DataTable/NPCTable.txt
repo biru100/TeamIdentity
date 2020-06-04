@@ -1,0 +1,4 @@
+1201	TreasureBox	보물상자	False	2	0	0	0	
+1202	CardCharger	덱보충 마법사	False	0	0	0	0	
+1203	CardPresent	타로카드 마법사	False	1	0	0	0	
+1204	HealTotem	회복 석상	False	10000	0	0	0	
