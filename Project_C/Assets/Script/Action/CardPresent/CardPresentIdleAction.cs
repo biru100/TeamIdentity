@@ -18,7 +18,12 @@ base.StartAction(owner);
 public override void UpdateAction()
 {
 base.UpdateAction();
-}
+        if ((Owner as NPC).IsCalledInteraction && (Owner as NPC).CanUse)
+        {
+            EntityUtil.ChangeAction(Owner, "CardPresentAbilityAction");
+            return;
+        }
+    }
 
 public override void FinishAction()
 {

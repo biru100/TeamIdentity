@@ -31,7 +31,11 @@ public class InGameInterface : ManagedUIInterface<InGameInterface>
     public bool IsMouseOver { get; set; }
     public bool IsCardDrag { get; set; }
 
+    public int CurrentHandCardCount { get => HandCards?.Count ?? 0; }
+    public int MaxHandCardCount { get => 10; }
+
     public int DrawCardQueueCount { get; set; }
+    public bool IsDrawing { get; set; }
 
     protected override void Awake()
     {
@@ -57,6 +61,11 @@ public class InGameInterface : ManagedUIInterface<InGameInterface>
             Time.timeScale = Mathf.Lerp(Time.timeScale, 1f, 3f * Time.unscaledDeltaTime);
         }
 
+        if(DrawCardQueueCount > 0 && !IsDrawing)
+        {
+            CreateDrawCard();
+        }
+
         IsMouseOver = false;
         _deckCount.text = DeckManager.Instance.CurrentDeck.DeckCount().ToString();
         _deckImg.SetActive(DeckManager.Instance.CurrentDeck.DeckCount() != 0);
@@ -68,25 +77,35 @@ public class InGameInterface : ManagedUIInterface<InGameInterface>
         }
     }
 
+    public void AddToHand(CardInterface ci)
+    {
+        if (HandCards.Count < MaxHandCardCount)
+        {
+            HandCards.Add(ci);
+            ci.transform.parent = transform;
+            ci.HandIndex = HandCards.Count - 1;
+            ci.CurrentAction = HandCardAction.GetInstance();
+        }
+    }
+
     public void DrawCard(int DrawCount)
     {
-        bool alreadyDrawing = DrawCardQueueCount > 0;
         DrawCardQueueCount += DrawCount;
-        if(DrawCardQueueCount > 0 && !alreadyDrawing)
-            CreateDrawCard();
     }
 
     void CreateDrawCard()
     {
+        IsDrawing = true;
+
         if (DeckManager.Instance.CurrentDeck.DispenseOneCard(out Card dispencedCard))
         {
             CardInterface ci = CardInterface.CreateCard(transform);
             ci.CardData = dispencedCard;
 
-            if (HandCards.Count == 10)
+            if (HandCards.Count == MaxHandCardCount)
             {
                 BurnCardAction burnAction = BurnCardAction.GetInstance();
-                burnAction.OnFinish = () => { if (DrawCardQueueCount > 0) CreateDrawCard(); };
+                burnAction.OnFinish = () => { IsDrawing = false; };
                 ci.CurrentAction = burnAction;
             }
             else
@@ -94,7 +113,7 @@ public class InGameInterface : ManagedUIInterface<InGameInterface>
                 HandCards.Add(ci);
                 ci.HandIndex = HandCards.Count - 1;
                 DrawCardAction drawAction = DrawCardAction.GetInstance();
-                drawAction.OnFinish = () => { if (DrawCardQueueCount > 0) CreateDrawCard(); };
+                drawAction.OnFinish = () => { IsDrawing = false; };
                 ci.CurrentAction = drawAction;
             }
         }
