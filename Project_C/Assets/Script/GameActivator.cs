@@ -7,6 +7,7 @@ public class GameActivator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        BasicLogData.GetInstance().Init("---------------game start");
         MainUIInterface.Instance.StartInterface();
     }
 

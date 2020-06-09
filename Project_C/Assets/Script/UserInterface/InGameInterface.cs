@@ -125,6 +125,7 @@ public class InGameInterface : ManagedUIInterface<InGameInterface>
         if (DeckManager.Instance.CurrentDeck.DispenseOneCard(out Card dispencedCard))
         {
             CardInterface ci = CardInterface.CreateCard(transform);
+            ci.CardData = dispencedCard;
             ci.CurrentAction = BurnCardAction.GetInstance();
         }
     }

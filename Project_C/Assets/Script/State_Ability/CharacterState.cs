@@ -80,6 +80,11 @@ public class CharacterHitState : CharacterState
 
         return this;
     }
+
+    public override void AddLogData()
+    {
+        AddStateLogData.GetInstance().Init(StateType, Owner.name, StateLifeTime, Damage);
+    }
 }
 
 public class CharacterIncreaseDamageState : CharacterState
@@ -102,15 +107,20 @@ public class CharacterIncreaseDamageState : CharacterState
 
         return true;
     }
+
+    public override void AddLogData()
+    {
+        AddStateLogData.GetInstance().Init(StateType, Owner.name, StateLifeTime, IncreaseDamage);
+    }
 }
 public class CharacterDecreaseDamageState : CharacterState
 {
-    public float IncreaseDamage { get; set; }
+    public float DecreaseDamage { get; set; }
 
-    public CharacterDecreaseDamageState(Character owner, float increaseDamage, float lifeTime = -1)
+    public CharacterDecreaseDamageState(Character owner, float decreaseDamage, float lifeTime = -1)
         : base(CharacterStateType.E_DecreaseDamage, owner, lifeTime)
     {
-        IncreaseDamage = increaseDamage;
+        DecreaseDamage = decreaseDamage;
     }
 
     public override bool UpdateState()
@@ -119,9 +129,14 @@ public class CharacterDecreaseDamageState : CharacterState
         if (retVal == false)
             return false;
 
-        Status.CurrentDamage += IncreaseDamage;
+        Status.CurrentDamage -= DecreaseDamage;
 
         return true;
+    }
+
+    public override void AddLogData()
+    {
+        AddStateLogData.GetInstance().Init(StateType, Owner.name, StateLifeTime, DecreaseDamage);
     }
 }
 
@@ -145,6 +160,11 @@ public class CharacterIncreaseSpeedState : CharacterState
 
         return true;
     }
+
+    public override void AddLogData()
+    {
+        AddStateLogData.GetInstance().Init(StateType, Owner.name, StateLifeTime, IncreaseSpeed);
+    }
 }
 
 public class CharacterSlowState : CharacterState
@@ -166,6 +186,11 @@ public class CharacterSlowState : CharacterState
         Status.CurrentSpeed -= DecreaseSpeed;
 
         return true;
+    }
+
+    public override void AddLogData()
+    {
+        AddStateLogData.GetInstance().Init(StateType, Owner.name, StateLifeTime, DecreaseSpeed);
     }
 }
 
@@ -237,5 +262,10 @@ public class CharacterState
     public virtual void ForcedDeleteState()
     {
         Owner.DeleteState(this);
+    }
+
+    public virtual void AddLogData()
+    {
+        AddStateLogData.GetInstance().Init(StateType, Owner.name, StateLifeTime, 0f);
     }
 }

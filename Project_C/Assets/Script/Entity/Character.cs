@@ -85,6 +85,7 @@ public class Character : MonoBehaviour
             if (StateStack.Find((s) => s.StateType == state.StateType) == null)
             {
                 StateStack.Add(state);
+                state.AddLogData();
                 return true;
             }
             return false;
@@ -92,6 +93,7 @@ public class Character : MonoBehaviour
         else
         {
             StateStack.Add(state);
+            state.AddLogData();
             return true;
         }
     }
