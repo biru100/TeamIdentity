@@ -10,6 +10,11 @@ public class Isometric
     Vector3 isometricTileSize = Vector3.one;
     Vector2 isometricRenderSize = Vector2.one;
 
+    float isometricZtileDistance;
+    float isometricYTileDistance;
+    float isometricStandZTileDistance;
+    float isometricStandYSpriteSize;
+
     public static Vector3 IsometricTileSize
     {
         get => instance.isometricTileSize;
@@ -23,6 +28,9 @@ public class Isometric
     }
 
     public static float IsometricGridSize { get => instance.isometricTileSize.x; }
+    public static float IsometricZTileDistance { get => instance.isometricZtileDistance; }
+    public static float IsometricStandZTileDistance { get => instance.isometricStandZTileDistance; }
+    public static float IsometricStandYSpriteSize { get => instance.isometricStandYSpriteSize; }
 
     private static Isometric _instance = null;
 
@@ -51,22 +59,6 @@ public class Isometric
 
         Quaternion isoToWorld = q1 * q;
         Quaternion worldToIso = Quaternion.Inverse(isoToWorld);
-        q = worldToIso;
-
-        Matrix4x4 mat = new Matrix4x4();
-
-        mat[0, 0] = 1 - 2 * (q.y * q.y + q.z * q.z);
-        mat[1, 0] = 2 * (q.x * q.y - q.z * q.w);
-        mat[2, 0] = 2 * (q.x * q.z + q.y * q.w);
-        mat[0, 1] = 2 * (q.x * q.y + q.z * q.w);
-        mat[1, 1] = 1 - 2 * (q.x * q.x + q.z * q.z);
-        mat[2, 1] = 2 * (q.y * q.z - q.x * q.w);
-        mat[0, 2] = 2 * (q.x * q.z - q.y * q.w);
-        mat[1, 2] = 2 * (q.y * q.z + q.x * q.w);
-        mat[2, 2] = 1 - 2 * (q.x * q.x + q.y * q.y);
-        mat[3, 0] = mat[3, 1] = mat[3, 2] = mat[0, 3] = mat[1, 3] = mat[2, 3] = 0;
-        mat[3, 3] = 1;
-
 
         File.WriteAllText(Application.dataPath + "/Resources/Config/IsometricToWorld.txt", isoToWorld.x + "\t" +
             isoToWorld.y + "\t" +
@@ -77,8 +69,6 @@ public class Isometric
             worldToIso.y + "\t" +
             worldToIso.z + "\t" +
             worldToIso.w);
-
-        File.WriteAllText(Application.dataPath + "/Resources/Config/IsometricToWorldMatrix.txt", mat.ToString());
 
         UpdateConfig();
     }
@@ -98,6 +88,14 @@ public class Isometric
             float.Parse(tileSize[2]));
 
         _instance.isometricRenderSize = new Vector2(float.Parse(tileSize[3]), float.Parse(tileSize[4]));
+
+
+        Vector3 offset = IsometricToWorldRotation * new Vector3(-1f, 0f, 1f) * _instance.isometricTileSize.x - IsometricToWorldRotation * Vector3.zero;
+        _instance.isometricZtileDistance = offset.z;
+
+        offset = IsometricToWorldRotation * Vector3.up * _instance.isometricTileSize.x - IsometricToWorldRotation * Vector3.zero;
+        _instance.isometricStandYSpriteSize = offset.y;
+        _instance.isometricStandZTileDistance = offset.z;
     }
 
     public static void SaveConfig()
