@@ -74,7 +74,7 @@ public class PlayerAttack1Action : CharacterAction
         foreach (var e in enemys)
         {
             if (e == Owner) continue;
-            Vector3 direction = e.RenderTrasform.GetIsometricPosition() - Owner.RenderTrasform.GetIsometricPosition();
+            Vector3 direction = e.RenderTransform.GetIsometricPosition() - Owner.RenderTransform.GetIsometricPosition();
             direction.z = 0f;
 
             float angle = Quaternion.FromToRotation(Vector3.right, direction.normalized).eulerAngles.z;

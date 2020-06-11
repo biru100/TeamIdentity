@@ -7,7 +7,7 @@ using System.Linq;
 [RequireComponent(typeof(NavMeshAgent))]
 public class Character : MonoBehaviour
 {
-    public RenderTransform RenderTrasform { get; protected set; }
+    public RenderTransform RenderTransform { get; protected set; }
 
     public Room OwnerRoom { get; set; }
 
@@ -49,7 +49,7 @@ public class Character : MonoBehaviour
         if(!(this is Player))
             HUD = CharacterHUD.CreateHUD(this);
 
-        RenderTrasform = GetComponentInChildren<RenderTransform>();
+        RenderTransform = GetComponentInChildren<RenderTransform>();
         Anim = GetComponentInChildren<Animator>();
         NavAgent = GetComponent<NavMeshAgent>();
     }

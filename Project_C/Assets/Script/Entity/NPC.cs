@@ -21,7 +21,7 @@ public class NPC : Character
 
     protected override void Awake()
     {
-        RenderTrasform = GetComponentInChildren<RenderTransform>();
+        RenderTransform = GetComponentInChildren<RenderTransform>();
         Anim = GetComponentInChildren<Animator>();
         NavAgent = GetComponent<NavMeshAgent>();
 

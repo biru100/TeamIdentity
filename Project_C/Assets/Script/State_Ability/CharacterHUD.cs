@@ -44,7 +44,7 @@ public class CharacterHUD : MonoBehaviour
         }
 
         if (RectTransformUtility.ScreenPointToLocalPointInRectangle(CanvasHelper.Main.transform as RectTransform,
-            RectTransformUtility.WorldToScreenPoint(Camera.main, Owner.RenderTrasform.GetIsometricPosition()
+            RectTransformUtility.WorldToScreenPoint(Camera.main, Owner.RenderTransform.GetIsometricPosition()
             + Vector3.up * Isometric.IsometricGridSize * Owner.HUDOffset),
             CanvasHelper.Main.worldCamera,
             out Vector2 displayCenterPosition))
