@@ -102,6 +102,7 @@ public class UseCardLogData : BaseLogData
     public static UseCardLogData GetInstance() { return new UseCardLogData(); }
 
     public int CardIndex { get; set; }
+    public int UseCost { get; set; }
     public string CardName { get; set; }
 
     public UseCardLogData()
@@ -109,11 +110,12 @@ public class UseCardLogData : BaseLogData
         Type = LogType.E_BurnCard;
     }
 
-    public void Init(Card card)
+    public void Init(CardInterface card)
     {
         LogPrefix = EventLogPrefix.GetInstance();
-        CardIndex = card.Data._Index;
-        CardName = card.Data._krName;
+        CardIndex = card.CardData.Data._Index;
+        CardName = card.CardData.Data._krName;
+        UseCost = card.CardData.Data._Cost;
 
         LogManager.Instance.AddLog(this);
     }
@@ -252,6 +254,7 @@ public class LogManager : BehaviorSingleton<LogManager>
         }
 
         LogDatas.Add(logData);
+        PlayingDataManager.ReferencingLog(logData);
 
         if(LogDatas.Count == 1000)
         {

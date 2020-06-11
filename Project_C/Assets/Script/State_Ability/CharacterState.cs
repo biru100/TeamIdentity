@@ -27,9 +27,23 @@ public class CharacterSilenceState : CharacterState
 
     public override bool UpdateState()
     {
-        bool retVal = base.UpdateState();
-        if (retVal == false)
+        ElapsedTime += Time.deltaTime;
+        if (StateLifeTime > 0f && ElapsedTime >= StateLifeTime)
+        {
+            Owner.DeleteState(this);
+            if (Owner is Player)
+            {
+                InGameInterface.Instance.GlobalCardState.IsLock = false;
+            }
             return false;
+        }
+        
+        if(Owner is Player)
+        {
+            InGameInterface.Instance.GlobalCardState.IsLock = true;
+        }
+
+        Status.CurrentStates.Add(StateType);
 
         Status.CurrentStates.RemoveAll((s) => s != CharacterStateType.E_TauntInvincibility 
         && s != CharacterStateType.E_Stun

@@ -14,7 +14,7 @@ public class UsedCardAction : CardInterfaceAction
         base.Start(owner);
         owner.Anim.enabled = false;
         _startFloat = Owner.DissolveValue;
-        UseCardLogData.GetInstance().Init(Owner.CardData);
+        UseCardLogData.GetInstance().Init(Owner);
     }
 
     public override void Update()

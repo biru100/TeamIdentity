@@ -9,6 +9,8 @@ public class PlayerAttack1Action : CharacterAction
     bool isAttackCommand;
     MovementSetController movementAnimController;
 
+    LocalAnimatedSpriteEffectModule attackEffect;
+
     public override void StartAction(Character owner)
     {
         base.StartAction(owner);
@@ -17,6 +19,9 @@ public class PlayerAttack1Action : CharacterAction
         TimelineEvents.Add(new TimeLineEvent(0f, SendDamage));
 
         movementAnimController = MovementSetController.GetMovementSetByAngle(owner.transform.rotation, "MovementList/Attack2Movement");
+
+        attackEffect = LocalAnimatedSpriteEffectModule.CreateEffect(owner, owner.RenderTransform.transform, "PlayerLocalEffect");
+        attackEffect.Play("attack2");
     }
 
     public override void UpdateAction()
@@ -59,6 +64,7 @@ public class PlayerAttack1Action : CharacterAction
     public override void FinishAction()
     {
         base.FinishAction();
+        GameObject.Destroy(attackEffect.gameObject);
     }
 
     public void SendDamage()
