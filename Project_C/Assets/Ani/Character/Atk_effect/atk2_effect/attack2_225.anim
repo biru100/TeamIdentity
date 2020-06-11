@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: cha_atk2_effect_225
+  m_Name: attack2_225
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
