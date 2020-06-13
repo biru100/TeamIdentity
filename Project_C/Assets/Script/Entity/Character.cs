@@ -15,6 +15,8 @@ public class Character : MonoBehaviour
     public NavMeshAgent NavAgent { get; protected set; }
     public CharacterStatus Status { get; protected set; }
 
+    public OutlineController Outline { get; protected set; }
+
     public List<CharacterAbility> AbilityStack { get; protected set; }
     public List<CharacterState> StateStack { get; protected set; }
 
@@ -45,6 +47,8 @@ public class Character : MonoBehaviour
         StateStack = new List<CharacterState>();
         DeleteStateList = new List<CharacterState>();
         AbilityStack = new List<CharacterAbility>();
+
+        Outline = GetComponentInChildren<OutlineController>();
 
         if(!(this is Player))
             HUD = CharacterHUD.CreateHUD(this);
