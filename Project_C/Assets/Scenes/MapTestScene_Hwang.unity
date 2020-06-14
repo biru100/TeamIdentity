@@ -303,7 +303,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mapDataName: GraphicTest
-  _testCost: 10
+  _testCost: 99
   _testDraw: 5
 --- !u!114 &317845812
 MonoBehaviour:
