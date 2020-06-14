@@ -11,6 +11,10 @@ public class RendererSupportComponent : MonoBehaviour
     public static readonly string DepthShaderLitName = "Sprites/DepthSprite-Lit";
 
     [SerializeField] Texture _normalMap;
+    [SerializeField] Texture _depthTexture;
+    [SerializeField] float _tileLength = 0.5888972f;
+    [SerializeField] float _spriteYSize = 34;
+    [SerializeField] float _depthColorMultiplier = 1f;
 
     RenderTransform _renderTransform;
 
@@ -24,8 +28,11 @@ public class RendererSupportComponent : MonoBehaviour
 
     void Update()
     {
-        if(!Application.isPlaying)
+        if (!Application.isPlaying)
+        {
+            IsChangeProperty = true;
             InputMaterialProperty();
+        }
     }
 
     // Update is called once per frame
@@ -59,6 +66,12 @@ public class RendererSupportComponent : MonoBehaviour
             }
             if (_normalMap != null)
                 _propBlock.SetTexture("_BumpMap", _normalMap);
+            if(_depthTexture != null)
+                _propBlock.SetTexture("_DepthTex", _depthTexture);
+
+            _propBlock.SetFloat("_TileLength", _tileLength * _depthColorMultiplier);
+            _propBlock.SetFloat("_SpriteYSize", _spriteYSize);
+
             _renderer.SetPropertyBlock(_propBlock);
         }
 

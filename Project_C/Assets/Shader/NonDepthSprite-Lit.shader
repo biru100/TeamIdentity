@@ -87,7 +87,6 @@
 				o.Normal = UnpackNormal(tex2D(_BumpMap, IN.uv_BumpMap));
 				o.Normal.z = o.Normal.z;
 				o.Normal = normalize((half3)o.Normal);
-
 			}
 
 		ENDCG

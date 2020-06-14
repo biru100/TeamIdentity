@@ -54,8 +54,8 @@ public class PlayerAssassinAction : PlayerCardAction
     public void ReadyToAction()
     {
         StateOrder = 1;
-        Owner.RenderTrasform.GetComponent<SpriteRenderer>().enabled = false;
-        Vector3 velocity = Owner.RenderTrasform.transform.position - Target.Target.RenderTrasform.transform.position;
+        Owner.RenderTransform.GetComponent<SpriteRenderer>().enabled = false;
+        Vector3 velocity = Owner.RenderTransform.transform.position - Target.Target.RenderTransform.transform.position;
         velocity.z = 0f;
         velocity.Normalize();
 
@@ -79,7 +79,7 @@ public class PlayerAssassinAction : PlayerCardAction
     public void ReadyToFinish()
     {
         StateOrder = 2;
-        Owner.RenderTrasform.GetComponent<SpriteRenderer>().enabled = true;
+        Owner.RenderTransform.GetComponent<SpriteRenderer>().enabled = true;
         AnimUtil.PlayAnim(Owner, "stand_up");
     }
 }

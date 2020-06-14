@@ -185,3 +185,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _normalMap: {fileID: 2800000, guid: 93ab82d2d4b6a2e4891cd714ad3160ed, type: 3}
+  _depthTexture: {fileID: 2800000, guid: 671f0951aaddf6b41b13c55d49e0e591, type: 3}

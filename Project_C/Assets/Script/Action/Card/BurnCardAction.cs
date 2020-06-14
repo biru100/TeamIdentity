@@ -18,6 +18,7 @@ public class BurnCardAction : CardInterfaceAction
         base.Start(owner);
         owner.Anim.enabled = true;
         owner.Anim.Play("BurnCard");
+        BurnCardLogData.GetInstance().Init(Owner.CardData);
     }
 
     public override void Update()
@@ -29,7 +30,7 @@ public class BurnCardAction : CardInterfaceAction
         if (Owner.Anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.95f)
         {
             OnFinish?.Invoke();
-            GameObject.Destroy(Owner);
+            GameObject.Destroy(Owner.gameObject);
         }
     }
 }

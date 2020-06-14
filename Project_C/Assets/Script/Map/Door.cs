@@ -12,6 +12,8 @@ public class Door : MonoBehaviour
     public NavMeshObstacle Obstacle { get; protected set; }
     public BoxCollider Collider { get; protected set; }
 
+    public Animator Anim { get; protected set; }
+
     public Vector3 GetIntoPosition {
         get
         {
@@ -24,6 +26,7 @@ public class Door : MonoBehaviour
     {
         Obstacle = GetComponent<NavMeshObstacle>();
         Collider = GetComponent<BoxCollider>();
+        Anim = GetComponentInChildren<Animator>();
     }
 
     public void Update()

@@ -8,10 +8,10 @@ Shader "Sprites/DepthSprite-Lit"
 		[PerRendererData] _MainTex("Sprite Texture", 2D) = "white" {}
 		[PerRendererData] _SpriteRect("Sprite Rect", Vector) = (1, 1, 1, 1)
 		[PerRendererData] _BumpMap("Normalmap", 2D) = "bump" {}
-		_DepthTex("Depth Texture", 2D) = "white" {}
+		[PerRendererData] _DepthTex("Depth Texture", 2D) = "white" {}
 		_Color("Tint", Color) = (1,1,1,1)
-		_ZTileLength("Z Tile Length", Float) = 0
-		_SpriteYSize("Sprite Y Size", Float) = 0
+		[PerRendererData] _TileLength("Z Tile Length", Float) = 0
+		[PerRendererData] _SpriteYSize("Sprite Y Size", Float) = 0
 		_Cutoff("Alpha Cutoff", Range(0,1)) = 0.0
 		[MaterialToggle] PixelSnap("Pixel snap", Float) = 0
 	}
@@ -72,7 +72,7 @@ Shader "Sprites/DepthSprite-Lit"
 			float4 _MainTex_TexelSize;
 			float4 _SpriteRect;
 			float _AlphaSplitEnabled;
-			float _ZTileLength;
+			float _TileLength;
 			float _SpriteYSize;
 
 
@@ -85,7 +85,7 @@ Shader "Sprites/DepthSprite-Lit"
 					0, 
 					0 );
 				float4 depth = tex2Dlod(_DepthTex, lodTexcoord);
-				IN.vertex.z = IN.vertex.z + _ZTileLength * (depth.r - 0.5) * _SpriteRect.w / _SpriteYSize;
+				IN.vertex.z = IN.vertex.z + _TileLength * (depth.r - 0.5) * _SpriteRect.w / _SpriteYSize;
 				#ifdef PIXELSNAP_ON
 				IN.vertex = UnityPixelSnap(IN.vertex);
 				#endif

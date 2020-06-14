@@ -21,6 +21,11 @@ public class IsometricEditorWindow : EditorWindow
         GUILayout.Label("TileSize_Y : " + Isometric.IsometricTileSize.y);
         GUILayout.Label("TileSize_Z : " + Isometric.IsometricTileSize.z);
 
+        GUILayout.Label("ZTileDistance : " + Isometric.IsometricZTileDistance);
+
+        GUILayout.Label("StandYSpriteSize : " + Isometric.IsometricStandYSpriteSize);
+        GUILayout.Label("StandZTileDistance : " + Isometric.IsometricStandZTileDistance);
+
         float x = EditorGUILayout.FloatField("RenderSize_X", Isometric.IsometricRenderSize.x);
         float y = EditorGUILayout.FloatField("RenderSize_Y", Isometric.IsometricRenderSize.y);
 

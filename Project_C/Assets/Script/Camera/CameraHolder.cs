@@ -16,7 +16,7 @@ public class CameraHolder : MonoBehaviour
         if (Player.CurrentPlayer == null)
             return;
 
-        RenderTransform target = Player.CurrentPlayer.RenderTrasform;
+        RenderTransform target = Player.CurrentPlayer.RenderTransform;
 
         Vector3 target2DPos = Isometric.IsometricToWorldRotation * target.transform.parent.position
             + target.ImageOffset;

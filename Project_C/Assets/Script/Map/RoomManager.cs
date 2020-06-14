@@ -68,6 +68,8 @@ public class RoomManager : BehaviorSingleton<RoomManager>
     {
         ThemeTable firstTheme = DataManager.GetFirstData<ThemeTable>();
         Instance.AllRoom = new RogueRoomFactory().CreateMap(firstTheme);
+
+        FactoringRoomLogData.GetInstance().Init();
     }
 
     public static void CreateTestMap(string mapName)
@@ -92,6 +94,8 @@ public class RoomManager : BehaviorSingleton<RoomManager>
         InGameInterface.Instance.DrawCard(room.SupportDrawCount);
         room.SupportCostCount = 0;
         room.SupportDrawCount = 0;
+
+        ChangeRoomLogData.GetInstance().Init(room);
     }
 
 

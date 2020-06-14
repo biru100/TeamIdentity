@@ -185,3 +185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _normalMap: {fileID: 2800000, guid: 92839284a8938e841ac380a989c4dfbe, type: 3}
+  _depthTexture: {fileID: 2800000, guid: 20397faf39ccee34ea2259237fcecf46, type: 3}
+  _tileLength: 0.2404164
+  _spriteYSize: 41
+  _depthColorMultiplier: 1

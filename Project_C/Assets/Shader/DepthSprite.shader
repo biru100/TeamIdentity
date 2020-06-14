@@ -8,10 +8,10 @@ Shader "Sprites/DepthSprite"
 	{
 		[PerRendererData] _MainTex("Sprite Texture", 2D) = "white" {}
 		[PerRendererData] _SpriteRect("Sprite Rect", Vector) = (1, 1, 1, 1)
-		_DepthTex("Depth Texture", 2D) = "white" {}
+		[PerRendererData] _DepthTex("Depth Texture", 2D) = "white" {}
 		_Color("Tint", Color) = (1,1,1,1)
-		_ZTileLength("Z Tile Length", Float) = 0
-		_SpriteYSize("Sprite Y Size", Float) = 0
+		[PerRendererData] _TileLength("Z Tile Length", Float) = 0
+		[PerRendererData] _SpriteYSize("Sprite Y Size", Float) = 0
 		[MaterialToggle] PixelSnap("Pixel snap", Float) = 0
 	}
 
@@ -62,7 +62,7 @@ Shader "Sprites/DepthSprite"
 				float4 _MainTex_TexelSize;
 				float4 _SpriteRect;
 				float _AlphaSplitEnabled;
-				float _ZTileLength;
+				float _TileLength;
 				float _SpriteYSize;
 
 
@@ -76,7 +76,7 @@ Shader "Sprites/DepthSprite"
 						0, 
 						0 );
 					float4 depth = tex2Dlod(_DepthTex, lodTexcoord);
-					IN.vertex.z = IN.vertex.z + _ZTileLength * (depth.r - 0.5) * _SpriteRect.w / _SpriteYSize;
+					IN.vertex.z = IN.vertex.z + _TileLength * (depth.r - 0.5) * _SpriteRect.w / _SpriteYSize;
 					OUT.vertex = UnityObjectToClipPos(IN.vertex);
 					OUT.texcoord = IN.texcoord;
 					OUT.color = IN.color * _Color;

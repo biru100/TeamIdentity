@@ -62,7 +62,7 @@ public class PlayerFamilyKillAction : PlayerCardAction
     public void ReadyToAction()
     {
         StateOrder = 1;
-        Owner.RenderTrasform.GetComponent<SpriteRenderer>().enabled = false;
+        Owner.RenderTransform.GetComponent<SpriteRenderer>().enabled = false;
 
         if (targetCharacters.Count == 0)
             ReadyToFinish();
@@ -82,13 +82,13 @@ public class PlayerFamilyKillAction : PlayerCardAction
     public void ReadyToFinish()
     {
         StateOrder = 2;
-        Owner.RenderTrasform.GetComponent<SpriteRenderer>().enabled = true;
+        Owner.RenderTransform.GetComponent<SpriteRenderer>().enabled = true;
         AnimUtil.PlayAnim(Owner, "stand_up");
     }
 
     public void AttackCurrentTarget()
     {
-        Vector3 velocity = Owner.RenderTrasform.transform.position - targetCharacters[currentTargetIndex].RenderTrasform.transform.position;
+        Vector3 velocity = Owner.RenderTransform.transform.position - targetCharacters[currentTargetIndex].RenderTransform.transform.position;
         velocity.z = 0f;
         velocity.Normalize();
 
@@ -117,7 +117,7 @@ public class PlayerFamilyKillAction : PlayerCardAction
 
     public void RotateNextTarget()
     {
-        Vector3 velocity = Owner.RenderTrasform.transform.position - targetCharacters[currentTargetIndex + 1].RenderTrasform.transform.position;
+        Vector3 velocity = Owner.RenderTransform.transform.position - targetCharacters[currentTargetIndex + 1].RenderTransform.transform.position;
 
         velocity.z = 0f;
         velocity.Normalize();

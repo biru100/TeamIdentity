@@ -1,1 +1,1 @@
-1001	WoodMap	BeginningVillage	WoodMapBossRoom	20	40	430	5	20	300	100	10	WoodMapReward	
+1001	WoodMap	BeginningVillage	WoodMapBossRoom	20	40	430	19	20	300	100	10	WoodMapReward	

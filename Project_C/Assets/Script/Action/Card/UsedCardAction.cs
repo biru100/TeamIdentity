@@ -14,6 +14,7 @@ public class UsedCardAction : CardInterfaceAction
         base.Start(owner);
         owner.Anim.enabled = false;
         _startFloat = Owner.DissolveValue;
+        UseCardLogData.GetInstance().Init(Owner);
     }
 
     public override void Update()
@@ -21,7 +22,9 @@ public class UsedCardAction : CardInterfaceAction
         base.Update();
         _elapsedTime += Time.unscaledDeltaTime;
         Owner.DissolveValue = _startFloat - _elapsedTime * 2f;
-        if(_startFloat - _elapsedTime * 2f <= 0f)
+        if (_startFloat - _elapsedTime * 2f <= 0f)
+        {
             GameObject.Destroy(Owner.gameObject);
+        }
     }
 }
