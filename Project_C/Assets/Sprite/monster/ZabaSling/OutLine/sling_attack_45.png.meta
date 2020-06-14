@@ -1,7 +1,25 @@
 fileFormatVersion: 2
 guid: aae92c7b3fb587f4fad0c08c67d9d504
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 2543877891637264361
+    second: sling_attack_45_0
+  - first:
+      213: -6801009746986253593
+    second: sling_attack_45_1
+  - first:
+      213: -2041788795869624754
+    second: sling_attack_45_2
+  - first:
+      213: -4472099955510485495
+    second: sling_attack_45_3
+  - first:
+      213: -3795352915917237816
+    second: sling_attack_45_4
+  - first:
+      213: -4709419229897337334
+    second: sling_attack_45_5
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -108,7 +126,133 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: sling_attack_45_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 70
+        width: 75
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ef3203e67bad4320800000000000000
+      internalID: 2543877891637264361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sling_attack_45_1
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 70
+        width: 75
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e24aec1ba5fd91a0800000000000000
+      internalID: -6801009746986253593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sling_attack_45_2
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 70
+        width: 75
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4681d378eb1aa3e0800000000000000
+      internalID: -2041788795869624754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sling_attack_45_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 75
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90ed1cfd8c8efe1c0800000000000000
+      internalID: -4472099955510485495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sling_attack_45_4
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 0
+        width: 75
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c19281b1a2345bc0800000000000000
+      internalID: -3795352915917237816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sling_attack_45_5
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 0
+        width: 75
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0653977928c4aeb0800000000000000
+      internalID: -4709419229897337334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

@@ -1,7 +1,19 @@
 fileFormatVersion: 2
 guid: 2d0c50f4b9eb86345a20ac92d3887ae0
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -4970924182672726801
+    second: syameon_die_45_0
+  - first:
+      213: 1212841566007755773
+    second: syameon_die_45_1
+  - first:
+      213: 5520750638219531176
+    second: syameon_die_45_2
+  - first:
+      213: -526183111587088966
+    second: syameon_die_45_3
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -108,7 +120,91 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: syameon_die_45_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 94
+        width: 133
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe4a46efacab30bb0800000000000000
+      internalID: -4970924182672726801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: syameon_die_45_1
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 94
+        width: 133
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df388b67af0e4d010800000000000000
+      internalID: 1212841566007755773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: syameon_die_45_2
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 94
+        width: 133
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a3169c8475ad9c40800000000000000
+      internalID: 5520750638219531176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: syameon_die_45_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 133
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab5ba037f3f92b8f0800000000000000
+      internalID: -526183111587088966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

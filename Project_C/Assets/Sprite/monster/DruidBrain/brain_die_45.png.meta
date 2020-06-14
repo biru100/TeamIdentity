@@ -1,7 +1,19 @@
 fileFormatVersion: 2
 guid: 8567e632449f4604b84672a045a9fc24
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -6992895362823357583
+    second: brain_die_45_0
+  - first:
+      213: 2310126025778644266
+    second: brain_die_45_1
+  - first:
+      213: -1408834770630405262
+    second: brain_die_45_2
+  - first:
+      213: -3271563850585418856
+    second: brain_die_45_3
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -108,7 +120,91 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: brain_die_45_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 99
+        width: 85
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17bff6ba7be34fe90800000000000000
+      internalID: -6992895362823357583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: brain_die_45_1
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 99
+        width: 85
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a25cbe081673f0020800000000000000
+      internalID: 2310126025778644266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: brain_die_45_2
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 99
+        width: 85
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2731b5d8d30d27ce0800000000000000
+      internalID: -1408834770630405262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: brain_die_45_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 85
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 893d8d9e2021992d0800000000000000
+      internalID: -3271563850585418856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
