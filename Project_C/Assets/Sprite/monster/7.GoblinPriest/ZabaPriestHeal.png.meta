@@ -14,6 +14,12 @@ TextureImporter:
   - first:
       213: 8600762691138752111
     second: ZabaPriestHeal_3
+  - first:
+      213: -1102006465492991881
+    second: ZabaPriestHeal_4
+  - first:
+      213: -6327590740929507201
+    second: ZabaPriestHeal_5
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -201,6 +207,48 @@ TextureImporter:
       bones: []
       spriteID: f6e02ca491c0c5770800000000000000
       internalID: 8600762691138752111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZabaPriestHeal_4
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 0
+        width: 77
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7704b1455f2e4b0f0800000000000000
+      internalID: -1102006465492991881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZabaPriestHeal_5
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 0
+        width: 77
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7098d20fb1ef28a0800000000000000
+      internalID: -6327590740929507201
       vertices: []
       indices: 
       edges: []
