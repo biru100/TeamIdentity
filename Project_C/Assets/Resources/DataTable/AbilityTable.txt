@@ -13,3 +13,5 @@
 213	이동불가	Sprites/IconAbility/ability_cant_move	
 214	드로우	Sprites/IconAbility/ability_draw	
 215	카드파괴	Sprites/IconAbility/ability_card_destroy	
+216	검기생성	Sprites/IconAbility/ability_card_destroy	
+217	검기강화	Sprites/IconAbility/ability_card_destroy	

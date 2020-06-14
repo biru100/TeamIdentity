@@ -11,9 +11,20 @@
 311	Heal	회복	E_NonTarget	플레이어의 체력을 _ 회복합니다.	Sprites/Card/card_heal	2	PlayerHealAction	1	50	0	False	False	null	E_None	
 312	Thunter	낙뢰	E_Point	선택한 범위 내의 적에게 _의 데미지를 주고, _초 동안 스턴시킵니다.	Sprites/Card/card_thunter	3	PlayerThunterAction	2	100	3	True	False	Sprites/Range/thunter_range	E_PointCircle	
 313	EverybodySlime	슬라임 너무좋아	E_NonTarget	범위 내의 적을 모두 슬라임으로 변이 시킵니다.	Sprites/Card/card_everybody_slime	4	PlayerEverybodySlimeAction	0	0	0	False	False	Sprites/Range/everybodyslime_range	E_PlayerRelativeCircle	
-314	CardUseAttack	발악	E_Target	미구현	Sprites/Card/card_card_use_attack	0	PlayerNoneAction	1	50	0	True	False	null	E_None	
+314	CardUseAttack	발악	E_Target	선택한 적에게 내가 이번 맵에서 소모한 카드의 수 만큼 _의 데미지를 줍니다.	Sprites/Card/card_card_use_attack	0	PlayerCardUseAttackAction	1	50	0	True	False	null	E_None	
 315	Counter	카운터	E_NonTarget	미구현	Sprites/Card/card_counter	0	PlayerNoneAction	1	3	0	False	False	Sprites/Range/counter_range	E_PlayerRelativeCircle	
 316	ShuildAttack	방패 타격	E_NonTarget	범위 내의 적에게 현재 방어도 만큼의 데미지를 줍니다.	Sprites/Card/card_shuild_attack	2	PlayerShuildAttackAction	0	0	0	False	False	Sprites/Range/powerattack_range	E_PlayerRelativeCircularSector	
 317	Assassin	암살	E_Target	선택한 적에게 이동하여 _의 데미지를 줍니다.	Sprites/Card/card_assassin	3	PlayerAssassinAction	1	100	0	True	False	null	E_None	
 318	ShuildUp	수비	E_NonTarget	_의 방어도를 얻습니다.	Sprites/Card/card_shuild_up	2	PlayerShuildUpAction	1	30	0	False	False	null	E_None	
 319	Storm	폭풍	E_NonTarget	미구현	Sprites/Card/card_storm	0	PlayerNoneAction	2	150	3	True	False	null	E_None	
+320	SwordToken	검기	E_NonTarget	범위 내 적에게 _의 데미지를 줍니다.	Sprites/Card/card_storm	0	PlayerSwordTokenAction	1	50	0	True	False	Sprites/Range/powerattack_range	E_PlayerRelativeCircularSector	
+321	SwordTeaching	검의 가르침	E_NonTarget	검기'카드를 _장 손에 얻습니다.	Sprites/Card/card_storm	0	PlayerSwordTeachingAction	1	3	0	False	False	null	E_None	
+322	SwordTraining	검술 단련	E_NonTarget	적에게 데미지를 _ 줄 때 마다, '검기'카드를 손에 얻습니다.	Sprites/Card/card_storm	0	PlayerSwordTrainingAction	1	200	0	False	False	null	E_None	
+323	SwordMax	검기의 경지	E_NonTarget	패가 10장이 될 때 까지 '검기'카드를 손에 얻습니다.	Sprites/Card/card_storm	0	PlayerSwordMaxAction	0	0	0	False	False	null	E_None	
+324	SwordUp	수련의 결과	E_NonTarget	검기'의 데미지를 _강화합니다.	Sprites/Card/card_storm	0	PlayerNoneAction	1	30	0	False	False	null	E_None	
+325	SwordUseUp	복기	E_NonTarget	내가 이번 맵에서 소모한 '검기'카드의 수 만큼 '검기'의 데미지를 _ 강화합니다.	Sprites/Card/card_storm	0	PlayerNoneAction	1	10	0	False	False	null	E_None	
+326	SwordBoom	잔재 폭발	E_Target	선택한 적에게 내가 이번 테마던전에서 소모한 '검기'카드의 수 만큼 _의 데미지를 줍니다.	Sprites/Card/card_storm	0	PlayerSwordBoomAction	1	30	0	True	False	null	E_None	
+327	SwordSpwan	천검 소환	E_NonTarget	이번 테마던전에서 소모한 '검기'카드의 수 만큼 _의 데미지를 주는 무작위 범위를 생성합니다.	Sprites/Card/card_storm	0	PlayerNoneAction	1	150	0	True	False	null	E_None	
+328	SwordDance	검기난무	E_NonTarget	패에 있는 '검기'카드를 모두 소모합니다. 소모한 '검기'카드의 수만큼, 무작위 적에게 _의 데미지를 줍니다.	Sprites/Card/card_storm	0	PlayerSwordDanceAction	1	150	0	True	False	null	E_None	
+329	SwordReward	노력의 보상	E_NonTarget	이번 맵에서 사용한 '검기'카드의 수 만큼, 덱에 무작위 카드를 생성합니다.	Sprites/Card/card_storm	0	PlayerSwordRewardAction	0	0	0	False	False	null	E_None	
+330	Recycle	재활용	E_NonTarget	무작위 패 한 장을 버립니다. 이번 맵에서 소모한 코스트의 절반을 회복합니다.	Sprites/Card/card_storm	0	PlayerRecycleAction	0	0	0	False	False	null	E_None	
