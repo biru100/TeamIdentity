@@ -184,4 +184,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e09456f176cd1b340bf0a01905cef67b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _supportType: 3
+  _isStatic: 0
   _normalMap: {fileID: 2800000, guid: cea84e54068d4d4469a162db52120d1c, type: 3}
+  _depthTexture: {fileID: 2800000, guid: 671f0951aaddf6b41b13c55d49e0e591, type: 3}
+  _tileLength: 0.5888972
+  _spriteYSize: 34
+  _depthColorMultiplier: 1

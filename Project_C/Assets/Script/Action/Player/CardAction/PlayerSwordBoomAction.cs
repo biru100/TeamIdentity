@@ -15,7 +15,7 @@ public class PlayerSwordBoomAction : PlayerCardAction
         base.StartAction(owner);
         owner.transform.rotation = Quaternion.Euler(0f, 135f, 0f);
         AnimUtil.PlayAnim(owner, "buff");
-        CardUseCount = PlayingDataManager.GetModule<UseCardsCountFilterModule>().GlobalUseCardCountData[320];
+        CardUseCount = PlayingDataManager.GetModule<UseCardsCountFilterModule>().GetGlobalUseCardCount(320);
         damage = PlayerUtil.CalculatingCardPowerValue(DataTable._Parameter[0]);
         PlayerUtil.ConsumeCardPowerUpStatus();
         for (int i = 0; i < CardUseCount; ++i)

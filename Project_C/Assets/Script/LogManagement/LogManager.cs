@@ -47,7 +47,7 @@ public class EventLogPrefix : BaseLogPrefix
 
     public override string ToLogPrefix()
     {
-        return base.ToLogPrefix() + " : " + RoomIndex.ToString() + " - " + RoomName;
+        return base.ToLogPrefix() + "\troom index : " + RoomIndex.ToString() + "\troom name : " + RoomName;
     }
 }
 
@@ -93,7 +93,7 @@ public class BasicLogData : BaseLogData
 
     public override string ToLogString()
     {
-        return base.ToLogString() + " : " + Log;
+        return base.ToLogString() + "\t" + Log + "\n";
     }
 }
 
@@ -122,7 +122,7 @@ public class UseCardLogData : BaseLogData
 
     public override string ToLogString()
     {
-        return base.ToLogString() + " : cardIndex : " + CardIndex + " , cardName : " + CardName;
+        return base.ToLogString() + "\tUseCardLog\tcardIndex : " + CardIndex + "/tcardName : " + CardName + "\n";
     }
 }
 
@@ -149,7 +149,7 @@ public class BurnCardLogData : BaseLogData
 
     public override string ToLogString()
     {
-        return base.ToLogString() + " : cardIndex : " + CardIndex + " , cardName : " + CardName;
+        return base.ToLogString() + "\tBurnCardLog\tcardIndex : " + CardIndex + "\tcardName : " + CardName + "\n";
     }
 }
 
@@ -180,7 +180,7 @@ public class AddStateLogData : BaseLogData
 
     public override string ToLogString()
     {
-        return base.ToLogString() + " : owner name : " + OwnerName + " , state : " + StateType.ToString() + " , duration : " + Duration + " , amount : " + Amount;
+        return base.ToLogString() + "\tAddStateLog\towner name : " + OwnerName + "\tstate : " + StateType.ToString() + "\tduration : " + Duration + "\tamount : " + Amount + "\n";
     }
 }
 
@@ -207,7 +207,7 @@ public class ChangeRoomLogData : BaseLogData
 
     public override string ToLogString()
     {
-        return base.ToLogString() + " : " + RoomIndex + " - " + RoomName + "\n";
+        return base.ToLogString() + "\tChangeRoomLog\troom index : " + RoomIndex + "\troom name : " + RoomName + "\n";
     }
 }
 
@@ -229,7 +229,7 @@ public class FactoringRoomLogData : BaseLogData
         Data = "";
         foreach (var rc in RoomManager.Instance.AllRoom)
         {
-            Data += rc.RoomIndex + " - " + rc.RoomInstance.MapData.mapName + "\n";
+            Data += "room index : " + rc.RoomIndex + "\troom name : " + rc.RoomInstance.MapData.mapName + "\n";
         }
 
         LogManager.Instance.AddLog(this);
@@ -237,7 +237,7 @@ public class FactoringRoomLogData : BaseLogData
 
     public override string ToLogString()
     {
-        return base.ToLogString() + " : " + Data;
+        return base.ToLogString() + "\t" + Data;
     }
 }
 
@@ -245,6 +245,18 @@ public class FactoringRoomLogData : BaseLogData
 public class LogManager : BehaviorSingleton<LogManager>
 {
     static List<BaseLogData> LogDatas { get; set; }
+
+    protected override void Init()
+    {
+        base.Init();
+        Application.logMessageReceived += _instance.AddErrorLog;
+    }
+
+    public void AddErrorLog(string logString, string stackTrace, LogType type)
+    {
+        if(type == LogType.Error || type == LogType.Exception)
+            LogDatas.Add(new BasicLogData() { LogPrefix = BaseLogPrefix.GetInstance(), Log = logString + "\n" + stackTrace, Type = BaseLogData.LogType.E_Basic });
+    }
 
     public void AddLog(BaseLogData logData)
     {
@@ -267,7 +279,7 @@ public class LogManager : BehaviorSingleton<LogManager>
         StringBuilder sb = new StringBuilder();
         foreach(var log in LogDatas)
         {
-            sb.Append(log.ToLogString()).Append("\n");
+            sb.Append(log.ToLogString());
         }
 
         DirectoryInfo di = new DirectoryInfo(Application.persistentDataPath + "/MagiaCarta");
@@ -290,9 +302,10 @@ public class LogManager : BehaviorSingleton<LogManager>
 
     protected override void OnDestroy()
     {
-        BasicLogData.GetInstance().Init("-----------------game end");
-        base.OnDestroy();
-
+        LogDatas.Add(new BasicLogData() { LogPrefix = BaseLogPrefix.GetInstance(), Log = "-----------------game end" , Type = BaseLogData.LogType.E_Basic});
         SaveLog();
+        if(_instance == this)
+            Application.logMessageReceived -= _instance.AddErrorLog;
+        base.OnDestroy();
     }
 }

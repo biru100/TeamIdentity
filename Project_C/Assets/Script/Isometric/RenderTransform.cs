@@ -28,12 +28,6 @@ public class RenderTransform : MonoBehaviour
 
     private void Update()
     {
-        if(!Application.isPlaying)
-            TranslateIsometricToWorldCoordination(true);
-    }
-
-    private void LateUpdate()
-    {
         TranslateIsometricToWorldCoordination();
     }
 

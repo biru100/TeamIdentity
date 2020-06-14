@@ -15,6 +15,16 @@ public class UseCardsCountFilterModule : DataFilterModule
         GlobalUseCardCountData = new Dictionary<int, int>();
     }
 
+    public int GetGlobalUseCardCount(int cardIndex)
+    {
+        return GlobalUseCardCountData.ContainsKey(cardIndex) ? GlobalUseCardCountData[cardIndex] : 0;
+    }
+
+    public int GetRoomUseCardCount(int cardIndex)
+    {
+        return RoomUseCardCountData.ContainsKey(cardIndex) ? RoomUseCardCountData[cardIndex] : 0;
+    }
+
     public override void InspectData(BaseLogData logData)
     {
         base.InspectData(logData);

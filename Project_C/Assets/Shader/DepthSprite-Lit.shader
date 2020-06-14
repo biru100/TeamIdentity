@@ -101,6 +101,8 @@ Shader "Sprites/DepthSprite-Lit"
 			{
 				fixed4 c = tex2D(_MainTex, IN.uv_MainTex) * IN.color;
 
+
+
 				clip(ceil(c.a) * 2 - 1);
 
 				o.Albedo = c.rgb;

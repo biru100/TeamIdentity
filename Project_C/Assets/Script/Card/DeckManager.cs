@@ -94,7 +94,7 @@ public class DeckManager : BehaviorSingleton<DeckManager>
 
         for (int i = 0; i < 30; ++i)
         {
-            deck.AddCard(new Card(Random.Range(0, cardCount)));
+            deck.AddCard(new Card(Random.Range(301, 330)));
         }
 
         Instance.CurrentDeck = deck;

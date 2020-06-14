@@ -9,11 +9,11 @@ public class PlayingDataManager : BehaviorSingleton<PlayingDataManager>
     protected override void Init()
     {
         base.Init();
-        PlayingDataFilterModules = new List<DataFilterModule>();
-
-        //add fixed module
-
-        PlayingDataFilterModules.Add(new UseCardsCountFilterModule());
+        PlayingDataFilterModules = new List<DataFilterModule>
+        {
+            new UseCardsCountFilterModule(),
+            new UseCostFilterModule()
+        };
     }
 
     public static void ReferencingLog(BaseLogData logData)
@@ -27,7 +27,7 @@ public class PlayingDataManager : BehaviorSingleton<PlayingDataManager>
     public static T GetModule<T>() where T : DataFilterModule
     {
         int index = Instance.PlayingDataFilterModules.FindIndex((m) => m.GetType() == typeof(T));
-        if (index > 0)
+        if (index >= 0)
         {
             return Instance.PlayingDataFilterModules[index] as T;
         }
@@ -46,7 +46,7 @@ public class PlayingDataManager : BehaviorSingleton<PlayingDataManager>
     public static void RemoveModule<T>() where T : DataFilterModule, new()
     {
         int index = Instance.PlayingDataFilterModules.FindIndex((m) => m.GetType() == typeof(T));
-        if (index > 0)
+        if (index >= 0)
         {
             Instance.PlayingDataFilterModules.RemoveAt(index);
         }

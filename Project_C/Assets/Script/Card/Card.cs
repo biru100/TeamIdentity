@@ -39,7 +39,7 @@ public class Card
     //temp
     public Card(int i)
     {
-        CardTable data = DataManager.GetDatas<CardTable>()[i];
+        CardTable data = DataManager.GetData<CardTable>(i);
         Data = data;
         Cost = data._Cost;
         CardName = data._krName;

@@ -3,7 +3,6 @@
 	Properties
 	{
 		[PerRendererData] _MainTex("Sprite Texture", 2D) = "white" {}
-		[PerRendererData] _SpriteRect("Sprite Rect", Vector) = (1, 1, 1, 1)
 		_Color("Tint", Color) = (1,1,1,1)
 		[MaterialToggle] PixelSnap("Pixel snap", Float) = 0
 	}
@@ -52,7 +51,6 @@
 				sampler2D _MainTex;
 				sampler2D _AlphaTex;
 				float _AlphaSplitEnabled;
-				float4 _SpriteRect;
 
 
 				v2f vert(appdata_t IN)

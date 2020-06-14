@@ -15,7 +15,7 @@ public class PlayerSwordRewardAction : PlayerCardAction
         owner.transform.rotation = Quaternion.Euler(0f, 135f, 0f);
         AnimUtil.PlayAnim(owner, "buff");
 
-        CardUseCount = PlayingDataManager.GetModule<UseCardsCountFilterModule>().RoomUseCardCountData[320];
+        CardUseCount = PlayingDataManager.GetModule<UseCardsCountFilterModule>().GetRoomUseCardCount(320);
 
 
         TimelineEvents.Add(new TimeLineEvent(0.1f, AddBuff));
@@ -47,7 +47,7 @@ public class PlayerSwordRewardAction : PlayerCardAction
     {
         for(int i = 0;i < CardUseCount; i++)
         {
-            DeckManager.Instance.CurrentDeck.AddCard(new Card(UnityEngine.Random.Range(301,330)));
+            DeckManager.Instance.CurrentDeck.AddCard(new Card(Random.Range(301,330)));
         }
     }
 }
