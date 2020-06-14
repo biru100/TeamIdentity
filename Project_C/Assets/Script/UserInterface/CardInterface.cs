@@ -23,6 +23,7 @@ public class CardInterface : MonoBehaviour, IPointerClickHandler, IBeginDragHand
     [SerializeField]    protected Image _backSide;
     [SerializeField]    protected Image _frontSide;
     [SerializeField]    protected Image _outLine;
+    [SerializeField]    protected Image _useOutLine;
     [SerializeField]    protected Text _cardLore;
     [SerializeField]    protected Text _cardCost;
     [SerializeField]    protected Vector2 _originCardSize;
@@ -32,6 +33,7 @@ public class CardInterface : MonoBehaviour, IPointerClickHandler, IBeginDragHand
     public Image BackSide { get => _backSide; }
     public Image FrontSide { get => _frontSide; }
     public Image OutLine { get => _outLine; }
+    public Image UseOutLine { get => _useOutLine; }
     public Text CardLore { get => _cardLore; }
     public Text CardCost { get => _cardCost; }
     public Vector2 OriginCardSize { get => _originCardSize; }
@@ -122,6 +124,10 @@ public class CardInterface : MonoBehaviour, IPointerClickHandler, IBeginDragHand
         _cardLore.SetMaterialDirty();
         _cardCost.material = instanceMat;
         _cardCost.SetMaterialDirty();
+        _outLine.material = instanceMat;
+        _outLine.SetMaterialDirty();
+        _useOutLine.material = instanceMat;
+        _useOutLine.SetMaterialDirty();
     }
 
     void Start()

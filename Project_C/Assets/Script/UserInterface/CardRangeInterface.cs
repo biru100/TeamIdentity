@@ -37,6 +37,7 @@ public class CardRangeInterface : MonoBehaviour
 
         RenderChild = GetComponentInChildren<RenderTransform>();
         Renderer = GetComponentInChildren<SpriteRenderer>();
+        Renderer.enabled = false;
     }
 
     protected virtual void OnDestroy()
@@ -65,6 +66,22 @@ public class CardRangeInterface : MonoBehaviour
         Instance.CardSpriteName = cardData._CardRangeSprite;
         Instance.NeedUpdate = true;
         Instance.IsVisible = false;
+    }
+
+    void UpdateCharacterOutline()
+    {
+        if (RangeType == CardRangeType.E_PlayerRelativeCircularSector)
+        {
+            Renderer.sprite = ResourceManager.GetResource<Sprite>(CardSpriteName + "_" + CurrentAngle);
+        }
+        if (RangeType == CardRangeType.E_PlayerRelativeCircle)
+        {
+            Renderer.sprite = ResourceManager.GetResource<Sprite>(CardSpriteName);
+        }
+        else if (RangeType == CardRangeType.E_PointCircle)
+        {
+            Renderer.sprite = ResourceManager.GetResource<Sprite>(CardSpriteName);
+        }
     }
 
     void UpdateSprite()

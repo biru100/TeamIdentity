@@ -12,7 +12,6 @@ public class InGameInterface : ManagedUIInterface<InGameInterface>
 
     [SerializeField] protected RectTransform _handField;
     [SerializeField] protected GameObject _arrowBody;
-    [SerializeField] protected GameObject _collectCircle;
 
     [SerializeField] protected Image _hp;
     [SerializeField] protected Text _armor;
@@ -25,7 +24,6 @@ public class InGameInterface : ManagedUIInterface<InGameInterface>
 
     public RectTransform HandField { get => _handField; set => _handField = value; }
     public GameObject ArrowBody { get => _arrowBody; set => _arrowBody = value; }
-    public GameObject CollectCircle { get => _collectCircle; set => _collectCircle = value; }
     public Vector3 DeckPosition { get => _deckImg.transform.localPosition; }
     public bool IsStart { get; set; }
     public bool IsMouseOver { get; set; }
@@ -157,9 +155,16 @@ public class InGameInterface : ManagedUIInterface<InGameInterface>
     {
         float half = (HandCards.Count - 1) * 0.5f;
 
-        return new Vector3((index - half) * 140f, -450f, 0f);
+        return Quaternion.Euler(0f, 0f, -(index - half) * 5f) * new Vector3(0f, 2000f, 0f) + new Vector3(0f, -2410f, 0f);
     }
-    
+
+    public Quaternion GetCardRotationInHand(int index)
+    {
+        float half = (HandCards.Count - 1) * 0.5f;
+
+        return Quaternion.Euler(0f, 0f, -(index - half) * 5f);
+    }
+
     public void MouseOverCard()
     {
         //IsMouseOver = true;

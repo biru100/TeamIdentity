@@ -168,6 +168,14 @@ public static class NodeUtil
         }).ToList();
     }
 
+    public static void AddCardToHand(int cardIndex)
+    {
+        CardInterface ci = CardInterface.CreateCard(InGameInterface.Instance.transform);
+        ci.CardData = new Card(cardIndex);
+        ci.CurrentAction = HandCardAction.GetInstance();
+        InGameInterface.Instance.AddToHand(ci);
+    }
+
     public static void DrawCard()
     {
         if (!PlayerStatus.CurrentStatus.CurrentStates.Contains(CharacterStateType.E_Invincibility))

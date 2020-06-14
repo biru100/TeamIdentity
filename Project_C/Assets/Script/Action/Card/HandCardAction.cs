@@ -12,6 +12,7 @@ public class HandCardAction : CardInterfaceAction
     public bool IsVisible { get; set; }
     public bool IsUsing { get; set; }
     public bool IsUseEffect { get; set; }
+    public bool IsUseCardZone { get; set; }
 
     int _currentCost;
     bool _isLock;
@@ -62,6 +63,8 @@ public class HandCardAction : CardInterfaceAction
         {
             if (RectTransformUtility.RectangleContainsScreenPoint(InGameInterface.Instance.HandField, Input.mousePosition))
             {
+                IsUseCardZone = false;
+
                 if (!IsVisible)
                     ((RectTransform)Owner.transform).anchoredPosition = _targetPosition;
                 SetUseEffect(false);
@@ -72,6 +75,8 @@ public class HandCardAction : CardInterfaceAction
             }
             else
             {
+                IsUseCardZone = true;
+
                 CardRangeInterface.Instance.IsVisible = true;
                 InGameInterface.Instance.ArrowBody.SetActive(true);
 
@@ -106,8 +111,6 @@ public class HandCardAction : CardInterfaceAction
                     {
                         _target.SetTarget(null);
                     }
-
-                    InGameInterface.Instance.CollectCircle.SetActive(_target.Target != null);
                 }
                 else
                 {
@@ -122,10 +125,12 @@ public class HandCardAction : CardInterfaceAction
         {
             if (RectTransformUtility.RectangleContainsScreenPoint(InGameInterface.Instance.HandField, Input.mousePosition))
             {
+                IsUseCardZone = false;
                 CardRangeInterface.Instance.IsVisible = false;
             }
             else
             {
+                IsUseCardZone = true;
                 CardRangeInterface.Instance.IsVisible = true;
             }
         }
@@ -138,13 +143,15 @@ public class HandCardAction : CardInterfaceAction
         if (!IsDrag)
             return;
 
+        IsUseCardZone = false;
+
         InGameInterface.Instance.IsCardDrag = false;
         IsDrag = false;
         CardRangeInterface.Instance.IsVisible = false;
 
         if (!RectTransformUtility.RectangleContainsScreenPoint(InGameInterface.Instance.HandField, Input.mousePosition))
         {
-            if (_currentCost <= PlayerStatus.CurrentStatus.CurrentManaCost && Owner.CardData.TargetType == CardTargetType.E_NonTarget)
+            if (!_isLock && _currentCost <= PlayerStatus.CurrentStatus.CurrentManaCost && Owner.CardData.TargetType == CardTargetType.E_NonTarget)
             {
                 PlayerStatus.CurrentStatus.CurrentManaCost -= Owner.CardData.Cost;
                 Player.CurrentPlayer.UseCardStack.Add(new UseCardData(Owner.CardData, _target));
@@ -158,7 +165,7 @@ public class HandCardAction : CardInterfaceAction
             {
                 InGameInterface.Instance.ArrowBody.SetActive(false);
 
-                if (_currentCost <= PlayerStatus.CurrentStatus.CurrentManaCost && _target.Target != null)
+                if (!_isLock && _currentCost <= PlayerStatus.CurrentStatus.CurrentManaCost && _target.Target != null)
                 {
                     PlayerStatus.CurrentStatus.CurrentManaCost -= Owner.CardData.Cost;
                     Player.CurrentPlayer.UseCardStack.Add(new UseCardData(Owner.CardData, _target));
@@ -175,7 +182,7 @@ public class HandCardAction : CardInterfaceAction
                 }
             }
             //point
-            else if (_currentCost <= PlayerStatus.CurrentStatus.CurrentManaCost)
+            else if (!_isLock && _currentCost <= PlayerStatus.CurrentStatus.CurrentManaCost)
             {
                 PlayerStatus.CurrentStatus.CurrentManaCost -= Owner.CardData.Cost;
                 InGameInterface.Instance.ArrowBody.SetActive(false);
@@ -242,11 +249,11 @@ public class HandCardAction : CardInterfaceAction
         base.Update();
         UpdateState();
 
-        if(_currentCost > Owner.CardData.Cost)
+        if (_currentCost > Owner.CardData.Cost)
         {
             Owner.CardCost.color = Color.red;
         }
-        else if(_currentCost == Owner.CardData.Cost)
+        else if (_currentCost == Owner.CardData.Cost)
         {
             Owner.CardCost.color = Color.white;
         }
@@ -255,13 +262,20 @@ public class HandCardAction : CardInterfaceAction
             Owner.CardCost.color = Color.green;
         }
 
-        if(_currentCost <= PlayerStatus.CurrentStatus.CurrentManaCost && !_isLock && !IsDrag)
+        if (_currentCost <= PlayerStatus.CurrentStatus.CurrentManaCost && !_isLock && !IsDrag)
         {
             Owner.OutLine.gameObject.SetActive(true);
+            Owner.UseOutLine.gameObject.SetActive(false);
+        }
+        else if (IsDrag && IsUseCardZone)
+        {
+            Owner.OutLine.gameObject.SetActive(false);
+            Owner.UseOutLine.gameObject.SetActive(true);
         }
         else
         {
             Owner.OutLine.gameObject.SetActive(false);
+            Owner.UseOutLine.gameObject.SetActive(false);
         }
 
         if (_isLock)
@@ -299,7 +313,7 @@ public class HandCardAction : CardInterfaceAction
             {
                 Owner.CardCanvas.sortingOrder = Owner.HandIndex + 2;
                 _targetPosition = InGameInterface.Instance.GetCardLocationInHand(Owner.HandIndex);
-                _destRotation = Quaternion.identity;
+                _destRotation = InGameInterface.Instance.GetCardRotationInHand(Owner.HandIndex);
                 _destCardSize = Owner.OriginCardSize;
             }
 
