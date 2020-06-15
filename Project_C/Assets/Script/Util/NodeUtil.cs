@@ -240,6 +240,16 @@ public static class NodeUtil
                 Mathf.Acos(Vector3.Dot((player.transform.position - owner.transform.position).normalized, owner.transform.forward)) < Mathf.Deg2Rad * angle;
     }
 
+    public static bool SweepInRange(Vector3 pos1, Vector3 pos2, float Range, Vector3 target)
+    {
+        Vector3 v1 = pos2 - pos1;
+        Vector3 right = Quaternion.FromToRotation(Vector3.forward, v1.normalized) * Vector3.right;
+
+        return (target - pos1).magnitude < v1.magnitude && Vector3.Cross(v1.normalized, (target - pos1 + right * Isometric.IsometricGridSize * Range).normalized).y > 0f &&
+            Vector3.Cross((target - pos1 - right * Isometric.IsometricGridSize * Range).normalized, v1.normalized).y > 0f;
+
+    }
+
     public static Vector3 CreateVector3(float x, float y, float z)
     {
         return new Vector3(x, y, z);
